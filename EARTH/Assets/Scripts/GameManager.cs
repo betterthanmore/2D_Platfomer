@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(gameState == GAMESTATE.GAMEINIT)
+        if(gameState == GAMESTATE.GAMEINIT)    //플레이어1을 시작할 때 생성
         {
             if (player[0] == null)
             {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         PlayerGen();
     }
 
-    void PlayerGen()
+    void PlayerGen()            //F1과 F2로 플레이어들을 생성
     {
         if (gameState > GAMESTATE.GAMEINIT)
         {

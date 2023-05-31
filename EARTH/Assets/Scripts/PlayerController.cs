@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : IPlayerController
 {
     // Start is called before the first frame update
-    public override void Start()
+    public override void Start()        //플레이어 이동
     {
-        base.Start();
+        base.Start();       //부모 스크립트의 start메서드의 내용을 가져옴
     }
 
     // Update is called once per frame

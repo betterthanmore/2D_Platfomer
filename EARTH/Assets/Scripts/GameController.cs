@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void Update()
+    private void Update()       //입력 값이 뭔지 찾아내기 위해 적어놓은것같아용
     {
         for(int i = 0; i < enumLength; i++)
         {
