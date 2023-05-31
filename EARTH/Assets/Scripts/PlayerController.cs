@@ -32,7 +32,9 @@ public class PlayerController : IPlayerController
 
         // 점프 입력 처리
         if ((Input.GetKeyDown(KeyCode.W) && isGrounded && playertype == PLAYERTYPE.PLAYER_01) ||
-            (Input.GetKeyDown(KeyCode.P) && isGrounded && playertype == PLAYERTYPE.PLAYER_02))
+            (Input.GetKeyDown(KeyCode.P) && isGrounded && playertype == PLAYERTYPE.PLAYER_02) ||
+            (Input.GetKeyDown(KeyCode.W) && isPlayerOn && playertype == PLAYERTYPE.PLAYER_01) ||
+            (Input.GetKeyDown(KeyCode.P) && isPlayerOn && playertype == PLAYERTYPE.PLAYER_02))
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
