@@ -68,7 +68,7 @@ public class IPlayerController : MonoBehaviour
         }
 
         // 점프 입력 처리
-        if (Input.GetButtonDown(JumpKeyMap) && (isGrounded || isPlayerOn))
+        if (Input.GetButtonDown(JumpKeyMap) && (isGrounded || isPlayerOn))  //땅 혹은 상대 플레이어랑 붙어 있을 경우 점프
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }

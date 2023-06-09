@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameState > GAMESTATE.GAMEINIT)
         {
-            if (Input.GetButtonDown("GamePad1_START") || Input.GetButtonDown("GamePad1_RT") || Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetButtonDown("GamePad1_START") || Input.GetButtonDown("GamePad1_LB") || Input.GetKeyDown(KeyCode.F1))
             {
                 if (player[0] == null)
                 {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("GamePad2_START") || Input.GetButtonDown("GamePad2_RT") || Input.GetKeyDown(KeyCode.F2))
+            if (Input.GetButtonDown("GamePad2_START") || Input.GetButtonDown("GamePad2_LB") || Input.GetKeyDown(KeyCode.F2))
             {
                 if (player[1] == null)
                 {
