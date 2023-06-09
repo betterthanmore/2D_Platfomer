@@ -24,14 +24,18 @@ public class SubPlayer : PlayerMainController
     {
         base.Update();
         subPlayerPosYTrs = gameObject.transform.position.y;
-        if (Input.GetKeyDown(KeyCode.W) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
+        if (Input.GetButtonDown(JumpKeyMap) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
         {
             subplayerPosYCrt = gameObject.transform.position.y;
         }
-        
-        if (gameObject.tag == "SubPlayer" && Input.GetKey(KeyCode.W) && scrollbar.size > 0.001 && maxDistance)        //부스트
+        if (Input.GetButtonUp(JumpKeyMap) && !enableBoost || !maxDistance)  //점프키를 
         {
-            
+            an.SetBool("Jump", false);
+
+        }
+        if (gameObject.tag == "SubPlayer" && Input.GetButton(JumpKeyMap) && scrollbar.size > 0.001 && maxDistance)        //부스트
+        {
+            an.SetBool("Jump", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             scrollbar.size -= 1 * Time.deltaTime /boostTime;
             if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
@@ -47,9 +51,10 @@ public class SubPlayer : PlayerMainController
         }
         else           //땅에서 떨어진다면
         {
+            an.SetBool("Run", false);
             enableBoost = false;
         }
+        
         scrollbar.transform.position = cm.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + 1.5f));
-
     }
 }

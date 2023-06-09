@@ -15,9 +15,18 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        if (gameObject.tag == "MainPlayer" && Input.GetKeyDown(KeyCode.UpArrow) && isGround)
+        if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround))
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
+        if (!isGround)      //¶¥À» ¹â°í ÀÖÁö ¾Ê´Ù¸é °È´Â ¸ð¼Ç ÁßÁö
+        {
+            an.SetBool("Run", false);
+            an.SetBool("Jump", true);
+        }
+        else//¶¥À» ¹â°í ÀÖ´Ù¸é ¸ð¼Ç Á¡ÇÁ ÁßÁö
+        {
+            an.SetBool("Jump", false);
         }
     }
 }
