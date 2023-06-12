@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainKeyBoard : PlayerMainController
 {
     public bool isPlayerOn;
+    public static int sawtoothWheelNum = 0;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -15,8 +16,9 @@ public class MainKeyBoard : PlayerMainController
     public override void Update()
     {
         base.Update();
+        
+        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //플레이어 머리를 밟고 있다면
 
-        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed, rb.velocity.y);
@@ -42,5 +44,13 @@ public class MainKeyBoard : PlayerMainController
             an.SetBool("Jump", true);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D other)     //톱니바퀴에 관한 코드
+    {
+        if(other.gameObject.tag == "SawtoothWheel")
+        {
+            Destroy(other);
+            sawtoothWheelNum++;
+        }
+    }
+
 }

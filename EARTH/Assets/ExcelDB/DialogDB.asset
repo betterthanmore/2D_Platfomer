@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8b505d40a88ad489d40a0eea1c4b26, type: 3}
+  m_Name: DialogDB
+  m_EditorClassIdentifier: 
+  sheets:
+  - name: Sheet1
+    list:
+    - index: 0
+      speakerUIindex: 0
+      name: "\uC774\uB984_001"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uC784\uD3EC\uD2B8
+        \uD574\uC57C\uB418\uB294\uC9C0 \uC5EC\uBD80"
+      characterPath: None
+      tweenType: 0
+      nextindex: 1
+    - index: 1
+      speakerUIindex: 0
+      name: "\uC774\uB984_002"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 002"
+      characterPath: None
+      tweenType: 0
+      nextindex: 2
+    - index: 2
+      speakerUIindex: 0
+      name: "\uC774\uB984_003"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 003"
+      characterPath: None
+      tweenType: 0
+      nextindex: 3
+    - index: 3
+      speakerUIindex: 0
+      name: "\uC774\uB984_004"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 004"
+      characterPath: None
+      tweenType: 0
+      nextindex: 4
+    - index: 4
+      speakerUIindex: 0
+      name: "\uC774\uB984_005"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 005"
+      characterPath: None
+      tweenType: 0
+      nextindex: 5
+    - index: 5
+      speakerUIindex: 0
+      name: "\uC774\uB984_006"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 006"
+      characterPath: None
+      tweenType: 0
+      nextindex: 6
+    - index: 6
+      speakerUIindex: 0
+      name: "\uC774\uB984_007"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 007"
+      characterPath: None
+      tweenType: 0
+      nextindex: 7
+    - index: 7
+      speakerUIindex: 0
+      name: "\uC774\uB984_008"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 008"
+      characterPath: None
+      tweenType: 0
+      nextindex: 8
+    - index: 8
+      speakerUIindex: 0
+      name: "\uC774\uB984_009"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 009"
+      characterPath: None
+      tweenType: 0
+      nextindex: 9
+    - index: 9
+      speakerUIindex: 0
+      name: "\uC774\uB984_010"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 010"
+      characterPath: None
+      tweenType: 0
+      nextindex: 10
+    - index: 10
+      speakerUIindex: 0
+      name: "\uC774\uB984_011"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 011"
+      characterPath: None
+      tweenType: 0
+      nextindex: 11
+    - index: 11
+      speakerUIindex: 0
+      name: "\uC774\uB984_012"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 012"
+      characterPath: None
+      tweenType: 0
+      nextindex: 12
+    - index: 12
+      speakerUIindex: 0
+      name: "\uC774\uB984_013"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 013"
+      characterPath: None
+      tweenType: 0
+      nextindex: 13
+    - index: 13
+      speakerUIindex: 0
+      name: "\uC774\uB984_014"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 014"
+      characterPath: None
+      tweenType: 0
+      nextindex: 14
+    - index: 14
+      speakerUIindex: 0
+      name: "\uC774\uB984_015"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 015"
+      characterPath: None
+      tweenType: 0
+      nextindex: 15
+    - index: 15
+      speakerUIindex: 0
+      name: "\uC774\uB984_016"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 016"
+      characterPath: None
+      tweenType: 0
+      nextindex: 16
+    - index: 16
+      speakerUIindex: 0
+      name: "\uC774\uB984_017"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 017"
+      characterPath: None
+      tweenType: 0
+      nextindex: 17
+    - index: 17
+      speakerUIindex: 0
+      name: "\uC774\uB984_018"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 018"
+      characterPath: None
+      tweenType: 0
+      nextindex: 18
+    - index: 18
+      speakerUIindex: 0
+      name: "\uC774\uB984_019"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 019"
+      characterPath: None
+      tweenType: 0
+      nextindex: 19
+    - index: 19
+      speakerUIindex: 0
+      name: "\uC774\uB984_020"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 020"
+      characterPath: None
+      tweenType: 0
+      nextindex: 20
+    - index: 20
+      speakerUIindex: 0
+      name: "\uC774\uB984_021"
+      dialogue: "\uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8
+        \uD14C\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uD14C\uC2A4\uD2B8 021"
+      characterPath: None
+      tweenType: 0
+      nextindex: -100
