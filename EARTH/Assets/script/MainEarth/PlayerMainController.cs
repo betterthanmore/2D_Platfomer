@@ -10,24 +10,24 @@ public class PlayerMainController : MonoBehaviour
         PLAYER_02
     }
     public PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
-    public string HorizontalKeyMap = "Horizontal1";
-    public string JumpKeyMap = "GamePad1_A";
     public Transform groundCheck;    // 땅 체크를 위한 오브젝트
     public LayerMask playerLayer;    // 플레이어 레이어
+    protected string HorizontalKeyMap = "Horizontal1";
+    protected string JumpKeyMap = "GamePad1_A";
     // 아래부턴 내가 한것
-    public Rigidbody2D rb;
-    public SpriteRenderer sr;
-    public Animator an;
-    public bool isGround;       //땅에 닿으면 true;
     public float ObjectImageScale = 1;
     public LayerMask groundLayer;
     public float jumpForce = 0;
     public static float moveSpeed = 3;      //이동속도 여기서 바꾸면 됭
+    protected Rigidbody2D rb;
+    protected SpriteRenderer sr;
+    protected Animator an;
+    protected bool isGround;       //땅에 닿으면 true;
+
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        Debug.Log("베이스 작동");
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
@@ -68,7 +68,6 @@ public class PlayerMainController : MonoBehaviour
         }
         if(rb.velocity.x == 0)
         {
-            Debug.Log("반응");
             an.SetBool("Run", false);
         }
         rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
