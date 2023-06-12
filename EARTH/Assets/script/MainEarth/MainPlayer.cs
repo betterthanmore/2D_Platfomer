@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MainPlayer : PlayerMainController
 {
-   
+    public bool isPlayerOn;
     // Start is called before the first frame update
     public override void Start()
     {
+        Debug.Log("ÀÛµ¿");
         base.Start();
     }
 
@@ -15,18 +16,20 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
+        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
+
         if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround))
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
-        if (!isGround)      //¶¥À» ¹â°í ÀÖÁö ¾Ê´Ù¸é °È´Â ¸ð¼Ç ÁßÁö
+        if (!isGround && isPlayerOn || isGround && !isPlayerOn)      //¶¥À» ¹â°í ÀÖÁö ¾Ê´Ù¸é °È´Â ¸ð¼Ç ÁßÁö
         {
-            an.SetBool("Run", false);
-            an.SetBool("Jump", true);
+            an.SetBool("Jump", false);
         }
         else//¶¥À» ¹â°í ÀÖ´Ù¸é ¸ð¼Ç Á¡ÇÁ ÁßÁö
         {
-            an.SetBool("Jump", false);
+            an.SetBool("Run", false);
+            an.SetBool("Jump", true);
         }
     }
 }
