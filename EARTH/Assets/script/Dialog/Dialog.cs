@@ -47,14 +47,14 @@ public class Dialog : MonoBehaviour
     //함수를 통해 UI가 보여지거나 안보여지게 설정
     private void SetActiveObjects(SpeakerUI speaker, bool visible)
     {
-        speaker.imageDialog.gameObject.SetActive(visible);
-        speaker.textName.gameObject.SetActive(visible);
-        speaker.textDialogue.gameObject.SetActive(visible);
+        speaker.imageDialog.gameObject.SetActive(visible);              //대화창
+        speaker.textName.gameObject.SetActive(visible);                 //캐릭터 이름
+        speaker.textDialogue.gameObject.SetActive(visible);             //대화
         //화살표 대사가 종료되었을 때만 활성화 되기 때문에
-        speaker.objectArrow.SetActive(false);
+        speaker.objectArrow.SetActive(false);                           //캐릭터가 한 대사를 끝내면 나오기 때문에 처음엔 false이다
 
 
-        Color color = speaker.imgCharacter.color;
+        Color color = speaker.imgCharacter.color;                       //캐릭터 이미지
         if (visible)
         {
             color.a = 1;
@@ -78,7 +78,7 @@ public class Dialog : MonoBehaviour
     private void SetNextDialog(int currentIndex)
     {
         SetAllClose();
-        currentDialogIndex = currentIndex;                  //다음 대사를 진행하도록
+        currentDialogIndex = currentIndex;                  //다음 대사를 진행하도록          처음에 0이다
         currentSpeakerIndex = dialogs[currentDialogIndex].speakerUIindex;       //현재 화자 순번 설정
         SetActiveObjects(speakers[currentSpeakerIndex], true);                  //현재 화자의 대화 관련 오브젝트 활성화
         speakers[currentSpeakerIndex].textName.text = dialogs[currentDialogIndex].name; //현재 화자의 이름 텍스트 설정
@@ -95,7 +95,7 @@ public class Dialog : MonoBehaviour
             speakers[currentSpeakerIndex].imgCharacter.sprite =
                 Resources.Load<Sprite>(dialogs[currentDialogIndex].characterPath);      //엑셀의 이 경로에 원하는 이미지의 에셋주소를 달아주면 이미지가 들어간다.     
         }
-        while (index < dialogs[currentDialogIndex].dialogue.Length + 1)
+        while (index < dialogs[currentDialogIndex].dialogue.Length + 1)                 //index가 대화 길이보다 작을 때까지
         {
             speakers[currentSpeakerIndex].textDialogue.text =
                 dialogs[currentDialogIndex].dialogue.Substring(0, index);   //텍스트를 한글자씩 타이핑 재생
@@ -106,15 +106,15 @@ public class Dialog : MonoBehaviour
 
         isTypingEffect = false;
 
-        speakers[currentSpeakerIndex].objectArrow.SetActive(true);
+        speakers[currentSpeakerIndex].objectArrow.SetActive(true);                  //대화를 마치면 화살표가 켜짐
     }
 
-    public bool UpdateDialog(int currenIndex, bool InitType)
+    public bool UpdateDialog(int currenIndex, bool InitType)           //여기서 시작@@@@@@@@@@@@@@@@@@@@@@@@@@@      처음에 0과 true를 받고 시작
     {
         //대사 분기가 1회만 호출
-        if (DialogInit == true && InitType == true)
+        if (DialogInit == true && InitType == true)                     //DialogInit는 처음에 true이다
         {
-            SetAllClose();
+            SetAllClose();                                              //모든 대화나 캐릭터 이미지등을 끄고 시작
             SetNextDialog(currenIndex);
             DialogInit = false;
         }
@@ -129,12 +129,12 @@ public class Dialog : MonoBehaviour
                 //대사가 완료되었을 때 커서
                 speakers[currentSpeakerIndex].objectArrow.SetActive(true);
 
-                return false;
+                return false;                           //
             }
 
 
 
-            if (dialogs[currentDialogIndex].nextindex != -100)
+            if (dialogs[currentDialogIndex].nextindex != -100)                  //마지막 대화까지 진행이 안됐다면
             {
                 SetNextDialog(dialogs[currentDialogIndex].nextindex);           //다음대사 진행되게 하는 코드
             }

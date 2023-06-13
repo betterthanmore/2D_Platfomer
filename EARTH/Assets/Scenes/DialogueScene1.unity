@@ -488,7 +488,14 @@ MonoBehaviour:
     textName: {fileID: 82919526}
     textDialogue: {fileID: 1321026657}
     objectArrow: {fileID: 12824112}
-  dialogs: []
+  dialogs:
+  - index: 0
+    speakerUIindex: 0
+    name: 
+    dialogue: 
+    characterPath: 
+    tweenType: 0
+    nextindex: 0
   DialogInit: 1
   dialogsDB: 1
   currentDialogIndex: -1
