@@ -45,7 +45,7 @@ public class Dialog : MonoBehaviour
         }
     }
     //함수를 통해 UI가 보여지거나 안보여지게 설정
-    private void SetActiveObjects(SpeakerUI speaker, bool visible)
+    private void SetActiveObjects(SpeakerUI speaker, bool visible)      //0과 true
     {
         speaker.imageDialog.gameObject.SetActive(visible);              //대화창
         speaker.textName.gameObject.SetActive(visible);                 //캐릭터 이름
