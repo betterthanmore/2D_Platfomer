@@ -22,7 +22,7 @@ public class FootHold : MonoBehaviour
         doorOpen = Physics2D.OverlapCircle(transform.position, 0.7f, isPlayers);
         if (doorOpen)
         {
-            if(doorOpenPos.transform.position.y >= posTime)
+            if(doorOpenPos.transform.position.y >= posTime)     //문이 열렸을 때의 위치가 PosTime보다 클 때 (PosTime을 doorOpenPos의 위치만큼 매프레임마다 한 프레임마다 걸리는 시간 만큼 더해준다)
             {
                 posTime += Time.deltaTime;
             }
