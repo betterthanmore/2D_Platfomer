@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;                           //Arry 수정 기능을 사용하기 위해 추가
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.SceneManagement;
 
 public class Dialog : MonoBehaviour
 {
@@ -21,26 +22,79 @@ public class Dialog : MonoBehaviour
     public float typingSpeed = 0.1f;                                    //텍스트 타이핑 효과의 재생 속도
     public bool isTypingEffect = false;                                 //텍스트 타이핑 효과가 재생중인지 판단.
 
+    public List<string> sceneNameList = new List<string>();
+    //여기서부터 아래 불값은 나중에 변경
+    public bool sceneLoad1;
+    public bool sceneLoad2;
+    public bool sceneLoad3;
+
     public Entity_Dialog entity_Dialogue;
 
     private void Awake()
     {
+        SceneManager.sceneLoaded += OnSceneName;
         SetAllClose();
-        if (dialogsDB)
+        
+        //여기 바깥 if문 나중에 변경
+        if (sceneLoad1)
         {
-            Array.Clear(dialogs, 0, dialogs.Length);
-            Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
 
-            int ArrayCursor = 0;
-            foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
+            if (dialogsDB)
             {
-                dialogs[ArrayCursor].index = param.index;
-                dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
-                dialogs[ArrayCursor].name = param.name;
-                dialogs[ArrayCursor].dialogue = param.dialogue;
-                dialogs[ArrayCursor].characterPath = param.characterPath;
-                dialogs[ArrayCursor].nextindex = param.nextindex;
-                ArrayCursor += 1;
+                Array.Clear(dialogs, 0, dialogs.Length);
+                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
+
+                int ArrayCursor = 0;
+                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
+                {
+                    dialogs[ArrayCursor].index = param.index;
+                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
+                    dialogs[ArrayCursor].name = param.name;
+                    dialogs[ArrayCursor].dialogue = param.dialogue;
+                    dialogs[ArrayCursor].characterPath = param.characterPath;
+                    dialogs[ArrayCursor].nextindex = param.nextindex;
+                    ArrayCursor += 1;
+                }
+            } 
+        }
+        if (sceneLoad2)
+        {
+            if (dialogsDB)
+            {
+                Array.Clear(dialogs, 0, dialogs.Length);
+                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
+
+                int ArrayCursor = 0;
+                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
+                {
+                    dialogs[ArrayCursor].index = param.index;
+                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
+                    dialogs[ArrayCursor].name = param.name;
+                    dialogs[ArrayCursor].dialogue = param.dialogue;
+                    dialogs[ArrayCursor].characterPath = param.characterPath;
+                    dialogs[ArrayCursor].nextindex = param.nextindex;
+                    ArrayCursor += 1;
+                }
+            }
+        }
+        if (sceneLoad3)
+        {
+            if (dialogsDB)
+            {
+                Array.Clear(dialogs, 0, dialogs.Length);
+                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
+
+                int ArrayCursor = 0;
+                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
+                {
+                    dialogs[ArrayCursor].index = param.index;
+                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
+                    dialogs[ArrayCursor].name = param.name;
+                    dialogs[ArrayCursor].dialogue = param.dialogue;
+                    dialogs[ArrayCursor].characterPath = param.characterPath;
+                    dialogs[ArrayCursor].nextindex = param.nextindex;
+                    ArrayCursor += 1;
+                }
             }
         }
     }
@@ -172,5 +226,16 @@ public class Dialog : MonoBehaviour
         public string characterPath;        //캐릭터 이미지 경로
         public int tweenType;               //트윈 번호
         public int nextindex;               //다음 대사
+    }
+    private void OnSceneName(Scene sceneNameInfo, LoadSceneMode arg)
+    {
+
+        for (int i = 0; i < sceneNameList.Count; i++)
+        {
+            if (sceneNameInfo.name == sceneNameList[i])
+            {
+                //씬 순서에 맞는 불값을 true로 만드는 코드
+            }
+        }
     }
 }
