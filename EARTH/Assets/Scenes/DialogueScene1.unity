@@ -659,10 +659,14 @@ MonoBehaviour:
     nextindex: 0
   DialogInit: 1
   dialogsDB: 1
-  currentDialogIndex: -1
+  currentDialogIndex: 1
   currentSpeakerIndex: 0
   typingSpeed: 0.1
   isTypingEffect: 0
+  sceneNameList: []
+  sceneLoad1: 0
+  sceneLoad2: 0
+  sceneLoad3: 0
   entity_Dialogue: {fileID: 11400000, guid: e01fa2834540f2e44b1daefd85e40cc5, type: 2}
 --- !u!4 &1268610989
 Transform:

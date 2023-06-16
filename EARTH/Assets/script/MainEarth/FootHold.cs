@@ -13,7 +13,7 @@ public class FootHold : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //나중에 현재 포시션의 +-를 써서 설정하기 쉽게 만들고 그 식은 이미지 크기에 맞춰 코드를 만들기
     }
 
     // Update is called once per frame

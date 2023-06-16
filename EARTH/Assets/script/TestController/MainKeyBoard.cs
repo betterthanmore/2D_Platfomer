@@ -6,6 +6,10 @@ public class MainKeyBoard : PlayerMainController
 {
     public bool isPlayerOn;
     public static int sawtoothWheelNum = 0;
+
+    protected GameManager GameManager => GameManager.Instance;
+
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -48,9 +52,27 @@ public class MainKeyBoard : PlayerMainController
     {
         if(other.gameObject.tag == "SawtoothWheel")
         {
-            Destroy(other);
+            Destroy(other.gameObject);
             sawtoothWheelNum++;
         }
+
+        if (other.gameObject.tag == "GearItem")
+        {
+            Destroy(other.gameObject);
+            GameManager.gearItem += 1;
+        }
+
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "BreakAbleObject")
+        {
+            collision.gameObject.GetComponent<BreakAbleObject>().DoFadeInOut();
+            Destroy(collision.collider , 2.0f);
+        }
+
     }
 
 }

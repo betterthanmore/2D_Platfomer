@@ -23,7 +23,8 @@ public class PlayerMainController : MonoBehaviour
     protected SpriteRenderer sr;
     protected Animator an;
     protected bool isGround;       //땅에 닿으면 true;
-
+    public static bool fadeOut = false;     //화면 전환 불값으로 페이드 아웃 실행여부
+    public bool isplayer = false;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -72,7 +73,7 @@ public class PlayerMainController : MonoBehaviour
         }
         rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
 
-
+        isplayer = Physics2D.OverlapCircle(transform.position, ObjectImageScale / 3, playerLayer);
         isGround = Physics2D.OverlapCircle(transform.position, ObjectImageScale / 3, groundLayer);
     }
 }

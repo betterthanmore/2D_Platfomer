@@ -32,71 +32,25 @@ public class Dialog : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += OnSceneName;
         SetAllClose();
-        
+        if (dialogsDB)
+        {
+            Array.Clear(dialogs, 0, dialogs.Length);
+            Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
+
+            int ArrayCursor = 0;
+            foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
+            {
+                dialogs[ArrayCursor].index = param.index;
+                dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
+                dialogs[ArrayCursor].name = param.name;
+                dialogs[ArrayCursor].dialogue = param.dialogue;
+                dialogs[ArrayCursor].characterPath = param.characterPath;
+                dialogs[ArrayCursor].nextindex = param.nextindex;
+                ArrayCursor += 1;
+            }
+        }
         //여기 바깥 if문 나중에 변경
-        if (sceneLoad1)
-        {
-
-            if (dialogsDB)
-            {
-                Array.Clear(dialogs, 0, dialogs.Length);
-                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
-
-                int ArrayCursor = 0;
-                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
-                {
-                    dialogs[ArrayCursor].index = param.index;
-                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
-                    dialogs[ArrayCursor].name = param.name;
-                    dialogs[ArrayCursor].dialogue = param.dialogue;
-                    dialogs[ArrayCursor].characterPath = param.characterPath;
-                    dialogs[ArrayCursor].nextindex = param.nextindex;
-                    ArrayCursor += 1;
-                }
-            } 
-        }
-        if (sceneLoad2)
-        {
-            if (dialogsDB)
-            {
-                Array.Clear(dialogs, 0, dialogs.Length);
-                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
-
-                int ArrayCursor = 0;
-                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
-                {
-                    dialogs[ArrayCursor].index = param.index;
-                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
-                    dialogs[ArrayCursor].name = param.name;
-                    dialogs[ArrayCursor].dialogue = param.dialogue;
-                    dialogs[ArrayCursor].characterPath = param.characterPath;
-                    dialogs[ArrayCursor].nextindex = param.nextindex;
-                    ArrayCursor += 1;
-                }
-            }
-        }
-        if (sceneLoad3)
-        {
-            if (dialogsDB)
-            {
-                Array.Clear(dialogs, 0, dialogs.Length);
-                Array.Resize(ref dialogs, entity_Dialogue.sheets[0].list.Count);
-
-                int ArrayCursor = 0;
-                foreach (Entity_Dialog.Param param in entity_Dialogue.sheets[0].list)
-                {
-                    dialogs[ArrayCursor].index = param.index;
-                    dialogs[ArrayCursor].speakerUIindex = param.speakerUIindex;
-                    dialogs[ArrayCursor].name = param.name;
-                    dialogs[ArrayCursor].dialogue = param.dialogue;
-                    dialogs[ArrayCursor].characterPath = param.characterPath;
-                    dialogs[ArrayCursor].nextindex = param.nextindex;
-                    ArrayCursor += 1;
-                }
-            }
-        }
     }
     //함수를 통해 UI가 보여지거나 안보여지게 설정
     private void SetActiveObjects(SpeakerUI speaker, bool visible)      //0과 true
