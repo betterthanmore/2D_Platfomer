@@ -9,7 +9,7 @@ public class BreakAbleObject : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    public bool isBreak = false;
+    public bool isBreak = true;
 
 
 
@@ -19,15 +19,13 @@ public class BreakAbleObject : MonoBehaviour
 
         // 시작 시 투명한 상태로 설정
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
-
-        // 페이드인 애니메이션 실행
-        spriteRenderer.DOFade(1f, 1f);
     }
 
     public void DoFadeInOut()
     {
         if(isBreak == false)
         {
+            Debug.Log("false 반응");
             isBreak = true;
             StartCoroutine(CoFadeInOut());
            
@@ -37,25 +35,14 @@ public class BreakAbleObject : MonoBehaviour
 
     IEnumerator CoFadeInOut()
     {
-        spriteRenderer.DOFade(0f, 1f);
-
-        yield return new WaitForSeconds(1.0f);
-
         spriteRenderer.DOFade(1f, 1f);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
 
-
-    }
-    public void FadeOut()
-    {
-        // 페이드아웃 애니메이션 실행
         spriteRenderer.DOFade(0f, 1f);
-    }
+        yield return new WaitForSeconds(1.0f);
+        isBreak = false;
+        Debug.Log("false로 바뀜");
 
-    public void FadeIn()
-    {
-        // 페이드아웃 애니메이션 실행
-        spriteRenderer.DOFade(1f, 0f);
     }
 }

@@ -50,19 +50,15 @@ public class MainKeyBoard : PlayerMainController
     }
     private void OnTriggerEnter2D(Collider2D other)     //Åé´Ï¹ÙÄû¿¡ °üÇÑ ÄÚµå
     {
-        if(other.gameObject.tag == "SawtoothWheel")
-        {
-            Destroy(other.gameObject);
-            sawtoothWheelNum++;
-        }
-
         if (other.gameObject.tag == "GearItem")
         {
             Destroy(other.gameObject);
             GameManager.gearItem += 1;
+            if(GameManager.gearItem < 5)
+            {
+                GameManager.mixGears -= 1;
+            }
         }
-
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,7 +66,6 @@ public class MainKeyBoard : PlayerMainController
         if (collision.gameObject.tag == "BreakAbleObject")
         {
             collision.gameObject.GetComponent<BreakAbleObject>().DoFadeInOut();
-            Destroy(collision.collider , 2.0f);
         }
 
     }
