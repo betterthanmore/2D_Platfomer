@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainPlayer : PlayerMainController
 {
-    public bool isPlayerOn;
+    protected GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -16,7 +16,6 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
 
         if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround))
         {
@@ -30,6 +29,18 @@ public class MainPlayer : PlayerMainController
         {
             an.SetBool("Run", false);
             an.SetBool("Jump", true);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)     //Åé´Ï¹ÙÄû¿¡ °üÇÑ ÄÚµå
+    {
+        if (other.gameObject.tag == "GearItem")
+        {
+            Destroy(other.gameObject);
+            GameManager.gearItem += 1;
+            if (GameManager.gearItem < 5)
+            {
+                GameManager.mixGears -= 1;
+            }
         }
     }
 }

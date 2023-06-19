@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MainKeyBoard : PlayerMainController
 {
-    public bool isPlayerOn;
-    public static int sawtoothWheelNum = 0;
+    public float addMoveSpeed;
 
     protected GameManager GameManager => GameManager.Instance;
 
@@ -21,11 +20,23 @@ public class MainKeyBoard : PlayerMainController
     {
         base.Update();
         
-        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //플레이어 머리를 밟고 있다면
-
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed, rb.velocity.y);
+            if (rb.velocity.x < 0)                  //이미지 좌우 반전 옮김
+            {
+                sr.flipX = true;
+            }
+            else if (rb.velocity.x > 0)
+            {
+                sr.flipX = false;
+
+            }
+            if (isGround || isPlayerOn)       //땅을 밟고 있다면 걷는 모션 진행
+            {
+                an.SetBool("Run", true);
+
+            }
         }
         if(Input.GetKeyDown(KeyCode.UpArrow) && (isPlayerOn || isGround))
         {

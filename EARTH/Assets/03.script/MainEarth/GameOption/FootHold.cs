@@ -10,6 +10,7 @@ public class FootHold : MonoBehaviour
     public GameObject doorOpenPos;
     public GameObject doorClosePos;
     public float posTime;
+    public float imgSizeInt;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class FootHold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        doorOpen = Physics2D.OverlapCircle(transform.position, 0.7f, isPlayers);
+        doorOpen = Physics2D.OverlapCircle(transform.position, imgSizeInt / 10, isPlayers);
         if (doorOpen)
         {
             if(doorOpenPos.transform.position.y >= posTime)     //문이 열렸을 때의 위치가 PosTime보다 클 때 (PosTime을 doorOpenPos의 위치만큼 매프레임마다 한 프레임마다 걸리는 시간 만큼 더해준다)

@@ -25,6 +25,8 @@ public class PlayerMainController : MonoBehaviour
     protected bool isGround;       //땅에 닿으면 true;
     public static bool fadeOut = false;     //화면 전환 불값으로 페이드 아웃 실행여부
     public bool isplayer = false;
+    public bool isPlayerOn;
+
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -49,9 +51,15 @@ public class PlayerMainController : MonoBehaviour
     {
 
         //이동에 따른 캐릭터 이미지 좌우 반전
-        if (rb.velocity.x != 0)
-        {
+        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //플레이어 머리를 밟고 있다면
 
+        if (rb.velocity.x == 0)
+        {
+            an.SetBool("Run", false);
+        }
+        rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
+        if (Input.GetAxis(HorizontalKeyMap) != 0)
+        {
             if (rb.velocity.x < 0)
             {
                 sr.flipX = true;
@@ -61,17 +69,12 @@ public class PlayerMainController : MonoBehaviour
                 sr.flipX = false;
 
             }
-            if (isGround)       //땅을 밟고 있다면 걷는 모션 진행
+            if (isGround || isPlayerOn)       //땅을 밟고 있다면 걷는 모션 진행
             {
                 an.SetBool("Run", true);
 
             }
         }
-        if(rb.velocity.x == 0)
-        {
-            an.SetBool("Run", false);
-        }
-        rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
 
         isplayer = Physics2D.OverlapCircle(transform.position, ObjectImageScale / 3, playerLayer);
         isGround = Physics2D.OverlapCircle(transform.position, ObjectImageScale / 3, groundLayer);

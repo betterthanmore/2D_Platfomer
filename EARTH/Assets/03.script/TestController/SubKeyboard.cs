@@ -47,19 +47,32 @@ public class SubKeyboard : PlayerMainController
         if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             rb.velocity = new Vector2(Input.GetAxis("HorizontalSub") * moveSpeed, rb.velocity.y);
+            if (rb.velocity.x < 0)                  //이미지 좌우 반전 옮김
+            {
+                sr.flipX = true;
+            }
+            else if (rb.velocity.x > 0)
+            {
+                sr.flipX = false;
+
+            }
+            if (isGround || isPlayerOn)       //땅을 밟고 있다면 걷는 모션 진행
+            {
+                an.SetBool("Run", true);
+
+            }
         }
         if (isGround)   //땅에 닿는다면
         {
             enableBoost = true;
             maxDistance = true;
         }
-        else           //땅에서 떨어진다면
+        else if(!isGround && !isPlayerOn)          //땅이랑 플레이어 모두 접촉중이지 않을 때
         {
             an.SetBool("Run", false);
         }
 
-        if (gameObject.tag == "MainPlayer" && Input.GetKeyUp(KeyCode.LeftArrow) || gameObject.tag == "MainPlayer" && Input.GetKeyUp(KeyCode.RightArrow) //메인플레이어가 좌,우로 움직임을 멈출 때 바로 멈추게 하기
-        || gameObject.tag == "SubPlayer" && Input.GetKeyUp(KeyCode.A) || gameObject.tag == "SubPlayer" && Input.GetKeyUp(KeyCode.D))                    //서브플레이어가 좌,우로 움직임을 멈출 때 바로 멈추게 하기
+        if (gameObject.tag == "SubPlayer" && Input.GetKeyUp(KeyCode.A) || gameObject.tag == "SubPlayer" && Input.GetKeyUp(KeyCode.D))                    //서브플레이어가 좌,우로 움직임을 멈출 때 바로 멈추게 하기 이거 조이스틱은 없어도 됨
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
             an.SetBool("Run", false);        //걷는 모션 중지

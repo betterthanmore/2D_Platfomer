@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
 
-    public Transform portal;
     public bool isPlayer;
     public float portalImgScale;
     public LayerMask player;
@@ -38,8 +38,8 @@ public class Portal : MonoBehaviour
                     
                     if (!mainReady)
                     {
-                        mainReady = true;
-                        
+                        mainReady = true;                    //다음씬 이동하기 위한 준비버튼
+
                     }
                     else
                     {
@@ -54,7 +54,7 @@ public class Portal : MonoBehaviour
                 {
                     if (!subReady)
                     {
-                        subReady = true;
+                        subReady = true;                    //다음씬 이동하기 위한 준비버튼
                     }
                     else
                     {
@@ -96,7 +96,7 @@ public class Portal : MonoBehaviour
                 scrollbar.size += 0.7f;
             }
             GameManager.gearItem = 0;
-            // 다음 맵으로 이동시키는 코드
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             mainReady = false;
             subReady = false;
         }
