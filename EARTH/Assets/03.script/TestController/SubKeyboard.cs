@@ -78,6 +78,6 @@ public class SubKeyboard : PlayerMainController
             an.SetBool("Run", false);        //걷는 모션 중지
 
         }
-        scrollbar.transform.position = cm.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + 1.5f));
+        scrollbar.transform.position = cm.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + 0.5f));
     }
 }

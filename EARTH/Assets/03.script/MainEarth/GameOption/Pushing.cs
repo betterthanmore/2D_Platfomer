@@ -17,13 +17,14 @@ public class Pushing : MonoBehaviour
     {
         if (!isPush)
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
         {
+            collision.rigidbody.velocity = new Vector2(collision.rigidbody.velocity.x / 2, collision.rigidbody.velocity.y);
             isPush = true;
         }
     }

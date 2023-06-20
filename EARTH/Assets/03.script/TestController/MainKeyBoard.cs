@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainKeyBoard : PlayerMainController
 {
-    public float addMoveSpeed;
 
     protected GameManager GameManager => GameManager.Instance;
 
@@ -68,6 +67,7 @@ public class MainKeyBoard : PlayerMainController
             if(GameManager.gearItem < 5)
             {
                 GameManager.mixGears -= 1;
+                StartCoroutine(GameManager.MinimumGears());           //6월 20일 추가하고 아직 조이스틱용 스크립트엔 안넣음 넣으면 지울 것
             }
         }
     }

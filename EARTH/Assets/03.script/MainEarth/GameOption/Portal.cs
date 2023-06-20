@@ -15,6 +15,9 @@ public class Portal : MonoBehaviour
     public bool subReady = false;                       //포탈을 넘어가기 위한 서브캐의 불리언 값
     public bool mainReady = false;                      //포탈을 넘어가기 위한 메인캐의 불리언 값
     public Scrollbar scrollbar;
+    private float flipTime;
+    private float timer;
+    private SpriteRenderer sr;
 
     protected GameManager GameManager => GameManager.Instance;
 
@@ -22,11 +25,26 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        if(timer >= 0.15f)
+        {
+            sr.flipY = true;
+            if(timer >= 0.3f)
+            {
+                timer = 0;
+            }
+        }
+        else
+        {
+            sr.flipY = false;
+        }
+
         isPlayer = Physics2D.OverlapCircle(transform.position, portalImgScale / 3, player);
         if (isPlayer)
         {

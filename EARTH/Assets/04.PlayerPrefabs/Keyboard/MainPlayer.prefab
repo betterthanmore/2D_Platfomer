@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1899887517851265554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.98, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1899887518415667169}
@@ -127,13 +127,14 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  ObjectImageScale: 3
+  ObjectImageScale: 1.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpForce: 10
+  jumpForce: 5
   isplayer: 0
   isPlayerOn: 0
+  addMoveSpeed: 0
 --- !u!95 &1899887517851265556
 Animator:
   serializedVersion: 4

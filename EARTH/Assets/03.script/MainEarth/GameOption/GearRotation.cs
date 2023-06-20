@@ -8,11 +8,11 @@ public class GearRotation : MonoBehaviour
     private int[] rotateDir = new int[2] { 1, -1 };
     private int dir;
     public int randomNum;
-    public float rotateSpeed;
+    private float rotateSpeed = 30;
     // Start is called before the first frame update
     void Start()
     {
-        randomNum = Random.Range(0, 1);
+        randomNum = Random.Range(0, 2);
     }
 
     // Update is called once per frame
