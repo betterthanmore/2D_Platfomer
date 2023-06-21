@@ -3,7 +3,7 @@ public class KeyMap
     public enum KEYTYPE
     {
         GamePad1_A,     //점프키, 키 입력: A
-        GamePad2_A,     
+        GamePad2_A,     //2가 로봇 컨트롤러
         GamePad1_B,     //키 입력: B
         GamePad2_B,
         GamePad1_X,     //키 입력: X

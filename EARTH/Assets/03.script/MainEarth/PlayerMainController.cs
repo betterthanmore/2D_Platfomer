@@ -10,26 +10,27 @@ public class PlayerMainController : MonoBehaviour
         PLAYER_02
     }
     public PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
-    public Transform groundCheck;    // ¶¥ Ã¼Å©¸¦ À§ÇÑ ¿ÀºêÁ§Æ®
-    public LayerMask playerLayer;    // ÇÃ·¹ÀÌ¾î ·¹ÀÌ¾î
+    public Transform groundCheck;    // ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public LayerMask playerLayer;    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½
     protected string HorizontalKeyMap = "Horizontal1";
     protected string JumpKeyMap = "GamePad1_A";
-    // ¾Æ·¡ºÎÅÏ ³»°¡ ÇÑ°Í
+    // ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½
     public float ObjectImageScale = 1;
     public LayerMask groundLayer;
     public float jumpForce = 0;
-    public static float moveSpeed = 2;      //ÀÌµ¿¼Óµµ ¿©±â¼­ ¹Ù²Ù¸é ‰è
+    public static float moveSpeed = 2;      //ï¿½Ìµï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½Ù²Ù¸ï¿½ ï¿½ï¿½
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected Animator an;
-    protected bool isGround;       //¶¥¿¡ ´êÀ¸¸é true;
-    public static bool fadeOut = false;     //È­¸é ÀüÈ¯ ºÒ°ªÀ¸·Î ÆäÀÌµå ¾Æ¿ô ½ÇÇà¿©ºÎ
+    protected bool isGround;       //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ true;
+    public static bool fadeOut = false;     //È­ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½à¿©ï¿½ï¿½
     public bool isplayer = false;
     public bool isPlayerOn;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        groundCheck = gameObject.transform.Find("GroundCheckPos");
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
@@ -49,8 +50,8 @@ public class PlayerMainController : MonoBehaviour
     public virtual void Update()
     {
          
-        //ÀÌµ¿¿¡ µû¸¥ Ä³¸¯ÅÍ ÀÌ¹ÌÁö ÁÂ¿ì ¹ÝÀü
-        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //ÇÃ·¹ÀÌ¾î ¸Ó¸®¸¦ ¹â°í ÀÖ´Ù¸é
+        //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+        isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ó¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
 
         if (rb.velocity.x == 0)
         {
@@ -72,14 +73,14 @@ public class PlayerMainController : MonoBehaviour
                 sr.flipX = false;
 
             }
-            if (isGround || isPlayerOn)       //¶¥À» ¹â°í ÀÖ´Ù¸é °È´Â ¸ð¼Ç ÁøÇà
+            if (isGround || isPlayerOn)       //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½È´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
                 an.SetBool("Run", true);
 
             }
         }
 
-        isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
-        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 }

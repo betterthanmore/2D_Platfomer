@@ -9,26 +9,19 @@ public class GameManager : MonoBehaviour
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
     public GameManager() { }
     public static GameManager Instance { get; private set; }    //싱글톤 
-    /*public GameObject player1;
-    public GameObject player2;
-    public Transform playerPos1;
-    public Transform PlayerPos2;*/
     public GameObject minimumGears;
-    private bool minimumbool = true;
     public Image fadeOutscreenBoard;           //페이드 아웃되는 이미지
-
     public static bool nextScene;       //여러번 눌렀을 때 실행되는 것을 막기 위해
-
     public int mixGears = 5;        //다음 맵으로 가기위한 조건용 변수(최소 5개를 먹어야되기 때문)
     public int gearItem;
+    private Canvas canvas;
+    private Image blackBoard;
+    private bool nextSceneLoad1P = false;
+    private bool nextSceneLoad2P = false;
 
-    public static int num;
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += NextScene;
-        num++;
-        Debug.Log(num);
         if (Instance)
         {
             Destroy(gameObject);
@@ -45,9 +38,9 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("스타트 실행");
         
-        
+            StartCoroutine(FadeScreen());
+
 
 
     }
@@ -57,25 +50,53 @@ public class GameManager : MonoBehaviour
         {
             minimumGears.GetComponent<Text>().text = mixGears + "개만 더 모으면 포탈 이동이 가능합니다.";
         }
+        if(fadeOutscreenBoard == null)
+        {
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            GameObject temp = Instantiate<GameObject>(Resources.Load<GameObject>("fadeOutscreenBoard"),canvas.transform);
+            fadeOutscreenBoard = temp.GetComponent<Image>();
+            nextScene = true;
+            StartCoroutine(FadeScreen());
+            minimumGears = GameObject.Find("MinimumGears");
+        }
+        if (Input.GetButtonDown("GamePad2_X"))
+        {
+            nextSceneLoad2P = true;
+        }
+        if (Input.GetButtonDown("GamePad1_X"))
+        {
+            nextSceneLoad1P = true;
+        }
+        if(nextSceneLoad1P && nextSceneLoad2P)
+        {
+            nextSceneLoad1P = false;
+            nextSceneLoad2P = false;
+            mixGears = 5;
+            gearItem = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        /*if(blackBoard == null)
+        {
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            GameObject temp2 = Instantiate<GameObject>(Resources.Load<GameObject>("BlackBoard"), canvas.transform);
+            blackBoard = temp2.GetComponent<Image>();
 
+        }*/
     }
     public IEnumerator MinimumGears()
     {
-        if (minimumbool)
-        {
-            minimumbool = false;
-            minimumGears.GetComponent<Text>().DOFade(1f, 1f);
-            yield return new WaitForSeconds(1.5f);
-            minimumGears.GetComponent<Text>().DOFade(0f, 1f);
-            yield return new WaitForSeconds(1.5f);
-            minimumbool = true; 
-        }
+        minimumGears.GetComponent<Text>().DOFade(1f, 1f);
+        yield return new WaitForSeconds(1.5f);
+        minimumGears.GetComponent<Text>().DOFade(0f, 1f);
+        yield return new WaitForSeconds(1.01f);
+        
 
     }
     public void SelectScene()       //스테이지 버튼을 누르면
     {
         if (nextScene)          //여러번 눌렀을 때 실행되는 것을 막기 위해
         {
+            Debug.Log("반응");
             nextScene = false;
             StartCoroutine(SelectedSceneLoad());
         }
@@ -94,17 +115,9 @@ public class GameManager : MonoBehaviour
         fadeOutscreenBoard.gameObject.SetActive(false);
 
     }
-    public void NextScene(Scene arg, LoadSceneMode arg2)
+    
+    /*public IEnumerator BlackScreen()
     {
-        if (!GameObject.Find("FadeOutscreenBoard"))         //페이드 아웃되는 이미지가 없다면
-        {
-
-        }
-        nextScene = true;
-        fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
-        StartCoroutine(FadeScreen());
-        Debug.Log("반응");
-        minimumGears = GameObject.Find("MinimumGears");
-    }
-
+        blackBoard.DOFade
+    }*/
 }

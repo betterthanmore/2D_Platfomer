@@ -15,8 +15,7 @@ public class Portal : MonoBehaviour
     public bool subReady = false;                       //포탈을 넘어가기 위한 서브캐의 불리언 값
     public bool mainReady = false;                      //포탈을 넘어가기 위한 메인캐의 불리언 값
     public Scrollbar scrollbar;
-    private float flipTime;
-    private float timer;
+    public float timer;
     private SpriteRenderer sr;
 
     protected GameManager GameManager => GameManager.Instance;
@@ -25,6 +24,8 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        portalText = GameObject.Find("NextStage").GetComponent<Text>();
+        scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -32,13 +33,25 @@ public class Portal : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= 0.15f)
+        if (timer <= 0.10f)
+        {
+            sr.flipX = false;
+            
+        }
+        else if (timer <= 0.20f)
         {
             sr.flipY = true;
-            if(timer >= 0.3f)
-            {
-                timer = 0;
-            }
+            
+        }
+        else if (timer <= 0.30f)
+        {
+            sr.flipX = true;
+            
+        }
+        else if (timer >= 0.40f)
+        {
+            timer = 0;
+
         }
         else
         {
@@ -51,7 +64,7 @@ public class Portal : MonoBehaviour
             Debug.Log("플레이어 닿음");
             if (GameManager.gearItem >= 5)
             {
-                if (Input.GetKeyDown(KeyCode.DownArrow))    //메인 플레이어 버튼//나중에 키 변경
+                if (Input.GetButtonDown("GamePad1_Y"))    //메인 플레이어 버튼//나중에 키 변경
                 {
                     
                     if (!mainReady)
@@ -68,7 +81,7 @@ public class Portal : MonoBehaviour
                         }
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.S))            //서브 플레이어 버튼//나중에 키 변경
+                if (Input.GetButtonDown("GamePad2_Y"))            //서브 플레이어 버튼//나중에 키 변경
                 {
                     if (!subReady)
                     {
@@ -90,7 +103,7 @@ public class Portal : MonoBehaviour
                 if (textFadeRun)
                 {
                     Debug.Log("페이드 허용");
-                    if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))                 //나중에 키 변경
+                    if (Input.GetButtonDown("GamePad1_Y") || Input.GetButtonDown("GamePad2_Y"))                 //나중에 키 변경
                     {
                         portalText.text = "기어가 모자랍니다. 남은 갯수: " + GameManager.mixGears;
                         StartCoroutine(TextFade());

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainPlayer : PlayerMainController
 {
+    public static int mainDir;
     protected GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     public override void Start()
@@ -16,8 +17,15 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-
-        if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround))
+        if (rb.velocity.x > 0)
+        {
+            mainDir = -1;
+        }
+        if (rb.velocity.x < 0)
+        {
+            mainDir = 1;
+        }
+        if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn))
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
@@ -40,6 +48,8 @@ public class MainPlayer : PlayerMainController
             if (GameManager.gearItem < 5)
             {
                 GameManager.mixGears -= 1;
+                StopCoroutine(GameManager.MinimumGears());
+                StartCoroutine(GameManager.MinimumGears());           //6월 20일 추가하고 아직 조이스틱용 스크립트엔 안넣음 넣으면 지울 것
             }
         }
     }
