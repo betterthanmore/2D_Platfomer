@@ -116,16 +116,17 @@ public class Portal : MonoBehaviour
         {
             if(GameManager.gearItem <= 7)
             {
-                scrollbar.size += 0.2f;
+                GameManager.gauge += 0.2f;
             }
             else if(GameManager.gearItem <= 9)
             {
-                scrollbar.size += 0.5f;
+                GameManager.gauge += 0.5f;
             }
             else
             {
-                scrollbar.size += 0.7f;
+                GameManager.gauge += 0.7f;
             }
+            GameManager.mixGears = 5;
             GameManager.gearItem = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             mainReady = false;

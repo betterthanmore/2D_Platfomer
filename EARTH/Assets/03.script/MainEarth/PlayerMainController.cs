@@ -26,6 +26,8 @@ public class PlayerMainController : MonoBehaviour
     public static bool fadeOut = false;     //ȭ�� ��ȯ �Ұ����� ���̵� �ƿ� ���࿩��
     public bool isplayer = false;
     public bool isPlayerOn;
+    protected GameManager GameManager => GameManager.Instance;
+
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -57,7 +59,10 @@ public class PlayerMainController : MonoBehaviour
         {
             an.SetBool("Run", false);
         }
-        rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
+        if (GameManager.playerMove == true)
+        {
+            rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y); 
+        }
         if(rb.velocity.y < 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -5, 5));

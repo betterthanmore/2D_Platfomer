@@ -5,7 +5,6 @@ using UnityEngine;
 public class MainKeyBoard : PlayerMainController
 {
 
-    protected GameManager GameManager => GameManager.Instance;
 
 
     // Start is called before the first frame update

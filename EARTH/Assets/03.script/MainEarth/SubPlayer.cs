@@ -20,6 +20,7 @@ public class SubPlayer : PlayerMainController
         base.Start();
         cm = GameObject.Find("Main Camera").GetComponent<Camera>();
         scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
+        scrollbar.size = GameManager.gauge;
     }
 
     // Update is called once per frame
@@ -50,6 +51,7 @@ public class SubPlayer : PlayerMainController
             an.SetBool("Jump", true);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             scrollbar.size -= 1 * Time.deltaTime /boostTime;
+            GameManager.gauge = scrollbar.size;
             if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
             {
                 Debug.Log(subplayerPosYCrt);

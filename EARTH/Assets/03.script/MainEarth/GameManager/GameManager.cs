@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
     public int mixGears = 5;        //다음 맵으로 가기위한 조건용 변수(최소 5개를 먹어야되기 때문)
     public int gearItem;
     private Canvas canvas;
-    private Image blackBoard;
     private bool nextSceneLoad1P = false;
     private bool nextSceneLoad2P = false;
+    public bool playerMove = true;
+    public float gauge = 1;
 
 
     private void Awake()
@@ -48,7 +49,14 @@ public class GameManager : MonoBehaviour
     {
         if (minimumGears != null)
         {
-            minimumGears.GetComponent<Text>().text = mixGears + "개만 더 모으면 포탈 이동이 가능합니다.";
+            if (mixGears > 0)
+            {
+                minimumGears.GetComponent<Text>().text = mixGears + "개만 더 모으면 포탈 이동이 가능합니다."; 
+            }
+            if(mixGears <= 0)
+            {
+                minimumGears.GetComponent<Text>().text = "포탈 이동이 가능합니다.";
+            }
         }
         if(fadeOutscreenBoard == null)
         {
@@ -73,15 +81,29 @@ public class GameManager : MonoBehaviour
             nextSceneLoad2P = false;
             mixGears = 5;
             gearItem = 0;
+            gauge = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        /*if(blackBoard == null)
+        if (Time.timeScale != 0)
         {
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            GameObject temp2 = Instantiate<GameObject>(Resources.Load<GameObject>("BlackBoard"), canvas.transform);
-            blackBoard = temp2.GetComponent<Image>();
-
-        }*/
+            if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
+            {
+                Time.timeScale = 0;
+                canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+                GameObject temp2 = Instantiate<GameObject>(Resources.Load<GameObject>("PAUSEBOARD"), canvas.transform);
+                playerMove = false;
+            } 
+        }
+        else
+        {
+            if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
+            {
+                Destroy(GameObject.Find("PAUSEBOARD(Clone)"));
+                playerMove = true;
+                Time.timeScale = 1;
+            }
+        }
+       
     }
     public IEnumerator MinimumGears()
     {
@@ -116,8 +138,4 @@ public class GameManager : MonoBehaviour
 
     }
     
-    /*public IEnumerator BlackScreen()
-    {
-        blackBoard.DOFade
-    }*/
 }

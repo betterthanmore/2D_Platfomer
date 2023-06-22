@@ -5,7 +5,6 @@ using UnityEngine;
 public class MainPlayer : PlayerMainController
 {
     public static int mainDir;
-    protected GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -45,7 +44,7 @@ public class MainPlayer : PlayerMainController
         {
             Destroy(other.gameObject);
             GameManager.gearItem += 1;
-            if (GameManager.gearItem < 5)
+            if (GameManager.mixGears >= 0)
             {
                 GameManager.mixGears -= 1;
                 StopCoroutine(GameManager.MinimumGears());
