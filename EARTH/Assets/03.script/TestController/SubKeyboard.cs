@@ -17,6 +17,8 @@ public class SubKeyboard : PlayerMainController
     public override void Start()
     {
         base.Start();
+        GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
+        GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame

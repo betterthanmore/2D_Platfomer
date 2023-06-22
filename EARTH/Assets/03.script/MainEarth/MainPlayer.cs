@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MainPlayer : PlayerMainController
 {
-    public static int mainDir;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -16,14 +15,7 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        if (rb.velocity.x > 0)
-        {
-            mainDir = -1;
-        }
-        if (rb.velocity.x < 0)
-        {
-            mainDir = 1;
-        }
+        
         if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn))
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);

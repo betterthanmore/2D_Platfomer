@@ -22,7 +22,7 @@ public class PlayerMainController : MonoBehaviour
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected Animator an;
-    protected bool isGround;       //���� ������ true;
+    public bool isGround;       //���� ������ true;
     public static bool fadeOut = false;     //ȭ�� ��ȯ �Ұ����� ���̵� �ƿ� ���࿩��
     public bool isplayer = false;
     public bool isPlayerOn;
