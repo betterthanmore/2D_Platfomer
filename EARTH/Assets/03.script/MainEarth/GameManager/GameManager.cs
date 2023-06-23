@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     private bool nextSceneLoad2P = false;
     public bool playerMove = true;
     public float gauge = 1;
-
+    public bool selectStage1 = true;
+    public bool selectStage2 = false;
+    public bool selectStage3 = false;
+    
 
     private void Awake()
     {
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        
         if (minimumGears != null)
         {
             if (mixGears > 0)
