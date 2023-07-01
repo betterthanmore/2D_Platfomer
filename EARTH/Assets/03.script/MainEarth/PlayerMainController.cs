@@ -26,6 +26,8 @@ public class PlayerMainController : MonoBehaviour
     public static bool fadeOut = false;     //ȭ�� ��ȯ �Ұ����� ���̵� �ƿ� ���࿩��
     public bool isplayer = false;
     public bool isPlayerOn;
+    public bool wall;
+    public int rayDir;
     protected GameManager GameManager => GameManager.Instance;
 
 
@@ -72,10 +74,12 @@ public class PlayerMainController : MonoBehaviour
             if (rb.velocity.x < 0)
             {
                 sr.flipX = true;
+                rayDir = -1;
             }
             else if (rb.velocity.x > 0)
             {
                 sr.flipX = false;
+                rayDir = 1;
 
             }
             if (isGround || isPlayerOn)       //���� ��� �ִٸ� �ȴ� ��� ����
@@ -84,8 +88,12 @@ public class PlayerMainController : MonoBehaviour
 
             }
         }
-
+        wall = Physics2D.Raycast(transform.position, new Vector2(rayDir, 0), 0.1f, groundLayer);
         isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        if(wall && !isGround)
+        {
+            // 나중에 벽에 닿았을 때 벽에 걸리지 않고 부드럽게 떨어지 코드 넣기
+        }
     }
 }

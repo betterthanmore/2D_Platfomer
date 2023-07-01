@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
-    public GameManager() { }
     public static GameManager Instance { get; private set; }    //½Ì±ÛÅæ 
     public GameObject minimumGears;
     public Image fadeOutscreenBoard;           //ÆäÀÌµå ¾Æ¿ôµÇ´Â ÀÌ¹ÌÁö
@@ -42,14 +41,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        
             StartCoroutine(FadeScreen());
-
-
-
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         
         if (minimumGears != null)
         {

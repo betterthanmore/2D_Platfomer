@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public AudioSource bgSound;
     public AudioClip[] bglist;
+    Sequence sequence;
+    public GameObject soundWindow;
+    private float bgValue;
+    private float sfValue;
     // Start is called before the first frame update
     public void Awake()
     {
@@ -36,11 +42,27 @@ public class SoundManager : MonoBehaviour
     }
     public void SFXSoundVolume(float val)
     {
-        mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20);
+        if (val > 0)
+        {
+            mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20); 
+        }
+        else
+        {
+            mixer.SetFloat("SFXVolume", -80);
+        }
+        sfValue = val;
     }
     public void BGSoundVolume(float val)
     {
-        mixer.SetFloat("BGSound", Mathf.Log10(val) * 20);
+        if (val > 0)
+        {
+            mixer.SetFloat("BGMVolume", Mathf.Log10(val) * 20); 
+        }
+        else
+        {
+            mixer.SetFloat("BGMVolume", -80);
+        }
+        bgValue = val;
     }
     public void SFXplay(string sfxName, AudioClip clip)
     {
@@ -59,5 +81,27 @@ public class SoundManager : MonoBehaviour
         bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
         bgSound.volume = 0.1f;
         bgSound.Play();
+    }
+    public void SoundWindow()
+    {
+
+        if (!soundWindow.activeSelf)
+        {
+            soundWindow.SetActive(true);
+            sequence = DOTween.Sequence();
+            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.6f, 0.6f), 0.1f));
+            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.5f, 0.5f), 0.1f)); 
+        }
+        else
+        {
+            soundWindow.transform.DOScale(new Vector2(0.1f, 0.1f), 0.1f);
+            StartCoroutine(SoundWindowF());
+        }
+
+    }
+    IEnumerator SoundWindowF()
+    {
+        yield return new WaitForSeconds(0.1f);
+        soundWindow.SetActive(false);
     }
 }
