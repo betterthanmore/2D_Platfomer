@@ -17,10 +17,20 @@ public class MainKeyBoard : PlayerMainController
     public override void Update()
     {
         base.Update();
-        
+
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed, rb.velocity.y);
+            if (rayHit)
+            {
+                Debug.Log("°¨Áö");
+                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed + otherVelocity, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed, rb.velocity.y);
+
+            }
             if (rb.velocity.x < 0)                  //ÀÌ¹ÌÁö ÁÂ¿ì ¹ÝÀü ¿Å±è
             {
                 sr.flipX = true;
@@ -28,15 +38,24 @@ public class MainKeyBoard : PlayerMainController
             else if (rb.velocity.x > 0)
             {
                 sr.flipX = false;
-
             }
             if (isGround || isPlayerOn)       //¶¥À» ¹â°í ÀÖ´Ù¸é °È´Â ¸ð¼Ç ÁøÇà
             {
                 an.SetBool("Run", true);
+            }
 
+        }
+        else
+        {
+            if (rayHit)
+            {
+                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
             }
         }
-        if(Input.GetKeyDown(KeyCode.UpArrow) && (isPlayerOn || isGround))
+
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && (isPlayerOn || isGround))
         {
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
         }
