@@ -54,14 +54,21 @@ public class SelectStageMode : MonoBehaviour
     {
         if (GameManager.selectStage1)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+            SceneManager.LoadScene("Stage1"); 
         }
     }
     public void Stage2()
     {
         if (GameManager.selectStage2)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 11); 
+            SceneManager.LoadScene("Stage6"); 
+        }
+    }
+    public void Stage3()
+    {
+        if (GameManager.selectStage3)
+        {
+            SceneManager.LoadScene("Stage10");
         }
     }
 }

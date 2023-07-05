@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }    //싱글톤 
     public GameObject minimumGears;
     public Image fadeOutscreenBoard;           //페이드 아웃되는 이미지
-    public static bool nextScene;       //여러번 눌렀을 때 실행되는 것을 막기 위해
     public int mixGears = 5;        //다음 맵으로 가기위한 조건용 변수(최소 5개를 먹어야되기 때문)
     public int gearItem;
     private Canvas canvas;
@@ -65,7 +64,6 @@ public class GameManager : MonoBehaviour
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
             GameObject temp = Instantiate<GameObject>(Resources.Load<GameObject>("fadeOutscreenBoard"),canvas.transform);
             fadeOutscreenBoard = temp.GetComponent<Image>();
-            nextScene = true;
             StartCoroutine(FadeScreen());
             minimumGears = GameObject.Find("MinimumGears");
         }
@@ -113,22 +111,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         minimumGears.GetComponent<Text>().DOFade(0f, 1f);
         yield return new WaitForSeconds(1.01f);
-    }
-    public void SelectScene()       //스테이지 버튼을 누르면
-    {
-        if (nextScene)          //여러번 눌렀을 때 실행되는 것을 막기 위해
-        {
-            Debug.Log("반응");
-            nextScene = false;
-            StartCoroutine(SelectedSceneLoad());
-        }
-    }
-    public IEnumerator SelectedSceneLoad()
-    {
-        fadeOutscreenBoard.gameObject.SetActive(true);
-        fadeOutscreenBoard.DOFade(1, 1);
-        yield return new WaitForSeconds(1.1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public IEnumerator FadeScreen()
     {
