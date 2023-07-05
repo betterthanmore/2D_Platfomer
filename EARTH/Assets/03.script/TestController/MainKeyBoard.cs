@@ -29,7 +29,6 @@ public class MainKeyBoard : PlayerMainController
             else
             {
                 rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed, rb.velocity.y);
-
             }
             if (rb.velocity.x < 0)                  //이미지 좌우 반전 옮김
             {
@@ -85,7 +84,7 @@ public class MainKeyBoard : PlayerMainController
             if(GameManager.gearItem < 5)
             {
                 GameManager.mixGears -= 1;
-                StartCoroutine(GameManager.MinimumGears());           //6월 20일 추가하고 아직 조이스틱용 스크립트엔 안넣음 넣으면 지울 것
+                StartCoroutine(GameManager.MinimumGears());           
             }
         }
     }

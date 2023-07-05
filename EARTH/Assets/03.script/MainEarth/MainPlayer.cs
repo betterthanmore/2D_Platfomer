@@ -18,14 +18,16 @@ public class MainPlayer : PlayerMainController
         
         if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn))
         {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
-        if (!isGround && isPlayerOn || isGround && !isPlayerOn)      //땅을 밟고 있지 않다면 걷는 모션 중지
+        if (isPlayerOn || isGround)      //땅을 밟고 있지 않다면 걷는 모션 중지
         {
             an.SetBool("Jump", false);
         }
-        else//땅을 밟고 있다면 모션 점프 중지
+        else
         {
+            Debug.Log("메인 플레이어 달리기 모션 중지");
             an.SetBool("Run", false);
             an.SetBool("Jump", true);
         }

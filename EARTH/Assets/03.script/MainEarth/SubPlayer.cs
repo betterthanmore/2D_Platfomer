@@ -13,7 +13,6 @@ public class SubPlayer : PlayerMainController
     private float subPlayerPosYTrs;     //부스트 사용하면서 바뀌는 위치Y 값을 저장
     private bool enableBoost = true;            //부스트 사용 가능 여부
     private bool maxDistance = true;            //부스트로 올라간 거리가 최대치가 됐을 때 자동으로 떨어지게
-    public static int subDir;
 
     public override void Start()
     {
@@ -27,14 +26,7 @@ public class SubPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        if(rb.velocity.x > 0)
-        {
-            subDir = -1;
-        }
-        if(rb.velocity.x < 0)
-        {
-            subDir = 1;
-        }
+        
         subPlayerPosYTrs = gameObject.transform.position.y;
         if (Input.GetButtonDown(JumpKeyMap) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
         {
@@ -63,7 +55,7 @@ public class SubPlayer : PlayerMainController
             enableBoost = true;
             maxDistance = true;
         }
-        else           //땅에서 떨어진다면
+        if(!(isGround || isPlayerOn))          //땅에서 떨어진다면
         {
             an.SetBool("Run", false);
         }

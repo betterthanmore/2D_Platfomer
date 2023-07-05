@@ -54,7 +54,9 @@ public class PlayerMainController : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-         
+        isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        rayHit = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
         //�̵��� ���� ĳ���� �̹��� �¿� ����
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);  //�÷��̾� �Ӹ��� ��� �ִٸ�
 
@@ -62,9 +64,21 @@ public class PlayerMainController : MonoBehaviour
         {
             an.SetBool("Run", false);
         }
-        if (GameManager.playerMove == true)
+        if (!GameManager.butttonBPress)
         {
-            rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y); 
+            if (rayHit)
+            {
+                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed + otherVelocity, rb.velocity.y);
+                if (Input.GetAxis(HorizontalKeyMap) == 0)
+                {
+                    rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
+                }
+            }
+            else
+            {
+                rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
+            }
         }
         if(rb.velocity.y < 0)
         {
@@ -80,15 +94,12 @@ public class PlayerMainController : MonoBehaviour
             {
                 sr.flipX = false;
             }
-            if (isGround || isPlayerOn)       //���� ��� �ִٸ� �ȴ� ��� ����
+            if (isGround || isPlayerOn)
             {
                 an.SetBool("Run", true);
-
             }
         }
         
-        isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
-        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        rayHit = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
+        
     }
 }

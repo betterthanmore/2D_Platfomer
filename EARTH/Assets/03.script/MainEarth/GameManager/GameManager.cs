@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private Canvas canvas;
     private bool nextSceneLoad1P = false;
     private bool nextSceneLoad2P = false;
-    public bool playerMove = true;
+    public bool butttonBPress = false;
     public float gauge = 1;
     public bool selectStage1 = true;
     public bool selectStage2 = false;
@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-
         }
         else
         {
@@ -94,7 +93,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
                 canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
                 GameObject temp2 = Instantiate<GameObject>(Resources.Load<GameObject>("PAUSEBOARD"), canvas.transform);
-                playerMove = false;
+                butttonBPress = true;
             } 
         }
         else
@@ -102,7 +101,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
             {
                 Destroy(GameObject.Find("PAUSEBOARD(Clone)"));
-                playerMove = true;
+                butttonBPress = false;
                 Time.timeScale = 1;
             }
         }
@@ -114,8 +113,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         minimumGears.GetComponent<Text>().DOFade(0f, 1f);
         yield return new WaitForSeconds(1.01f);
-        
-
     }
     public void SelectScene()       //스테이지 버튼을 누르면
     {
@@ -138,7 +135,6 @@ public class GameManager : MonoBehaviour
         fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);
-
     }
     
 }
