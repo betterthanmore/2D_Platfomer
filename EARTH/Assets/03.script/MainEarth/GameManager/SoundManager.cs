@@ -12,8 +12,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public AudioSource bgSound;
     public AudioClip[] bglist;
-    Sequence sequence;
-    public GameObject soundWindow;
+    
     private float bgValue;
     private float sfValue;
     // Start is called before the first frame update
@@ -82,26 +81,5 @@ public class SoundManager : MonoBehaviour
         bgSound.volume = 0.1f;
         bgSound.Play();
     }
-    public void SoundWindow()
-    {
-
-        if (!soundWindow.activeSelf)
-        {
-            soundWindow.SetActive(true);
-            sequence = DOTween.Sequence();
-            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.6f, 0.6f), 0.1f));
-            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.5f, 0.5f), 0.1f)); 
-        }
-        else
-        {
-            soundWindow.transform.DOScale(new Vector2(0.1f, 0.1f), 0.1f);
-            StartCoroutine(SoundWindowF());
-        }
-
-    }
-    IEnumerator SoundWindowF()
-    {
-        yield return new WaitForSeconds(0.1f);
-        soundWindow.SetActive(false);
-    }
+    
 }

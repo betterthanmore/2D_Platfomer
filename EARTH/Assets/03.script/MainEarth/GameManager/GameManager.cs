@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public bool selectStage1 = true;
     public bool selectStage2 = false;
     public bool selectStage3 = false;
-    
+    Sequence sequence;
+    public GameObject soundWindow;
 
     private void Awake()
     {
@@ -118,5 +119,27 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);
     }
-    
+    public void GamePab_B_Press()
+    {
+
+        if (!soundWindow.activeSelf)
+        {
+            soundWindow.SetActive(true);
+            sequence = DOTween.Sequence();
+            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.6f, 0.6f), 0.1f));
+            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.5f, 0.5f), 0.1f));
+        }
+        else
+        {
+            soundWindow.transform.DOScale(new Vector2(0.1f, 0.1f), 0.1f);
+            StartCoroutine(SoundWindowF());
+        }
+
+    }
+    IEnumerator SoundWindowF()
+    {
+        yield return new WaitForSeconds(0.1f);
+        soundWindow.SetActive(false);
+    }
+
 }
