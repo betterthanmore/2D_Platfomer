@@ -83,7 +83,7 @@ public class MainKeyBoard : PlayerMainController
             GameManager.gearItem += 1;
             if(GameManager.gearItem < 5)
             {
-                GameManager.mixGears -= 1;
+                GameManager.remainGears -= 1;
                 StartCoroutine(GameManager.MinimumGears());           
             }
         }

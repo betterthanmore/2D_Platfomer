@@ -41,9 +41,9 @@ public class MainPlayer : PlayerMainController
         {
             Destroy(other.gameObject);
             GameManager.gearItem += 1;
-            if (GameManager.mixGears >= 0)
+            if (GameManager.remainGears >= 0)
             {
-                GameManager.mixGears -= 1;
+                GameManager.remainGears -= 1;
                 StopCoroutine(GameManager.MinimumGears());
                 StartCoroutine(GameManager.MinimumGears());           //6월 20일 추가하고 아직 조이스틱용 스크립트엔 안넣음 넣으면 지울 것
             }

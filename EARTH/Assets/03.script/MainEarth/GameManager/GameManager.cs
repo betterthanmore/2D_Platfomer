@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
-    public static GameManager Instance { get; private set; }    //½Ì±ÛÅæ 
+    public static GameManager Instance { get; private set; }    //ï¿½Ì±ï¿½ï¿½ï¿½ 
     public GameObject minimumGears;
-    public Image fadeOutscreenBoard;           //ÆäÀÌµå ¾Æ¿ôµÇ´Â ÀÌ¹ÌÁö
-    public int mixGears = 5;        //´ÙÀ½ ¸ÊÀ¸·Î °¡±âÀ§ÇÑ Á¶°Ç¿ë º¯¼ö(ÃÖ¼Ò 5°³¸¦ ¸Ô¾î¾ßµÇ±â ¶§¹®)
+    public Image fadeOutscreenBoard;           //ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½ï¿½Ç´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
+    public int remainGears = 5;        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ö¼ï¿½ 5ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¾ï¿½ßµÇ±ï¿½ ï¿½ï¿½ï¿½ï¿½)
     public int gearItem;
     private Canvas canvas;
     private bool nextSceneLoad1P = false;
@@ -20,9 +20,6 @@ public class GameManager : MonoBehaviour
     public bool selectStage1 = true;
     public bool selectStage2 = false;
     public bool selectStage3 = false;
-    Sequence sequence;
-    public GameObject soundWindow;
-
     private void Awake()
     {
         if (Instance)
@@ -36,11 +33,11 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-     
+
     }
     private void Start()
     {
-            StartCoroutine(FadeScreen());
+        StartCoroutine(FadeScreen());
     }
     private void Update()
     {
@@ -48,63 +45,62 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        
+
         if (minimumGears != null)
         {
-            if (mixGears > 0)
+            if (remainGears > 0)
             {
-                minimumGears.GetComponent<Text>().text = mixGears + "°³¸¸ ´õ ¸ðÀ¸¸é Æ÷Å» ÀÌµ¿ÀÌ °¡´ÉÇÕ´Ï´Ù."; 
+                minimumGears.GetComponent<Text>().text = remainGears + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å» ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
             }
-            if(mixGears <= 0)
+            if (remainGears <= 0)
             {
-                minimumGears.GetComponent<Text>().text = "Æ÷Å» ÀÌµ¿ÀÌ °¡´ÉÇÕ´Ï´Ù.";
+                minimumGears.GetComponent<Text>().text = "ï¿½ï¿½Å» ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.";
             }
         }
-        if(fadeOutscreenBoard == null)
+        if (fadeOutscreenBoard == null)
         {
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            GameObject temp = Instantiate<GameObject>(Resources.Load<GameObject>("fadeOutscreenBoard"),canvas.transform);
+            GameObject temp = Instantiate<GameObject>(Resources.Load<GameObject>("fadeOutscreenBoard"), canvas.transform);
             fadeOutscreenBoard = temp.GetComponent<Image>();
             StartCoroutine(FadeScreen());
             minimumGears = GameObject.Find("MinimumGears");
         }
-        if (Input.GetButtonDown("GamePad2_X"))
+        if (!butttonBPress)
         {
-            nextSceneLoad2P = true;
+            if (Input.GetButtonDown("GamePad2_X"))
+            {
+                nextSceneLoad2P = true;
+            }
+            if (Input.GetButtonDown("GamePad1_X"))
+            {
+                nextSceneLoad1P = true;
+            } 
         }
-        if (Input.GetButtonDown("GamePad1_X"))
-        {
-            nextSceneLoad1P = true;
-        }
-        if(nextSceneLoad1P && nextSceneLoad2P)
+        if (nextSceneLoad1P && nextSceneLoad2P)
         {
             nextSceneLoad1P = false;
             nextSceneLoad2P = false;
-            mixGears = 5;
+            remainGears = 5;
             gearItem = 0;
             gauge = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        if (Time.timeScale != 0)
+        if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
         {
-            if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
+           /* GameObject temp = gameObject.transform.Find("B_Press").gameObject;*/
+            if (!butttonBPress)
             {
-                Time.timeScale = 0;
-                canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-                GameObject temp2 = Instantiate<GameObject>(Resources.Load<GameObject>("PAUSEBOARD"), canvas.transform);
                 butttonBPress = true;
-            } 
-        }
-        else
-        {
-            if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
+                /*temp.SetActive(true);*/
+                Time.timeScale = 0;
+            }
+            else
             {
-                Destroy(GameObject.Find("PAUSEBOARD(Clone)"));
                 butttonBPress = false;
+                /*temp.SetActive(false);*/
                 Time.timeScale = 1;
             }
         }
-       
     }
     public IEnumerator MinimumGears()
     {
@@ -119,27 +115,4 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);
     }
-    public void GamePab_B_Press()
-    {
-
-        if (!soundWindow.activeSelf)
-        {
-            soundWindow.SetActive(true);
-            sequence = DOTween.Sequence();
-            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.6f, 0.6f), 0.1f));
-            sequence.Append(soundWindow.transform.DOScale(new Vector2(0.5f, 0.5f), 0.1f));
-        }
-        else
-        {
-            soundWindow.transform.DOScale(new Vector2(0.1f, 0.1f), 0.1f);
-            StartCoroutine(SoundWindowF());
-        }
-
-    }
-    IEnumerator SoundWindowF()
-    {
-        yield return new WaitForSeconds(0.1f);
-        soundWindow.SetActive(false);
-    }
-
 }

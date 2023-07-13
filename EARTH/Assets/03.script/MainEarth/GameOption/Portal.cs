@@ -105,7 +105,7 @@ public class Portal : MonoBehaviour
                     Debug.Log("페이드 허용");
                     if (Input.GetButtonDown("GamePad1_Y") || Input.GetButtonDown("GamePad2_Y"))                 //나중에 키 변경
                     {
-                        portalText.text = "기어가 모자랍니다. 남은 갯수: " + GameManager.mixGears;
+                        portalText.text = "기어가 모자랍니다. 남은 갯수: " + GameManager.remainGears;
                         StartCoroutine(TextFade());
                     } 
                 }
@@ -126,7 +126,7 @@ public class Portal : MonoBehaviour
             {
                 GameManager.gauge += 0.7f;
             }
-            GameManager.mixGears = 5;
+            GameManager.remainGears = 5;
             GameManager.gearItem = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             mainReady = false;
