@@ -2920,8 +2920,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1459435731}
   - component: {fileID: 1459435730}
-  - component: {fileID: 1459435733}
   - component: {fileID: 1459435732}
+  - component: {fileID: 1459435733}
   m_Layer: 6
   m_Name: Button (1)
   m_TagString: Untagged
@@ -3031,18 +3031,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459435729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff1bb3a284f84342847845d74a228ff, type: 3}
+  m_Script: {fileID: 11500000, guid: eaab6f9b5f2f21445bfed56eb51a777e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leverRotate: 0
+  doorOpen: 0
   isPlayers:
     serializedVersion: 2
     m_Bits: 2816
+  doorPos: {fileID: 1012509044}
+  doorOpenPos: {fileID: 1870294096}
+  doorClosePos: {fileID: 298555974}
+  posTime: 0
   imgSizeInt: 1
-  moveIronFrame: {fileID: 1012509044}
-  UpPos: {fileID: 1870294096}
-  DownPos: {fileID: 298555974}
-  posTimer: 0
 --- !u!1001 &1480753247
 PrefabInstance:
   m_ObjectHideFlags: 0
