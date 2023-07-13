@@ -50,11 +50,11 @@ public class GameManager : MonoBehaviour
         {
             if (remainGears > 0)
             {
-                minimumGears.GetComponent<Text>().text = remainGears + "���� �� ������ ��Ż �̵��� �����մϴ�.";
+                minimumGears.GetComponent<Text>().text = remainGears + "개만 더 먹으면 포탈 이동이 가능합니다.";
             }
             if (remainGears <= 0)
             {
-                minimumGears.GetComponent<Text>().text = "��Ż �̵��� �����մϴ�.";
+                minimumGears.GetComponent<Text>().text = "포탈 이동이 가능합니다.";
             }
         }
         if (fadeOutscreenBoard == null)
@@ -67,11 +67,11 @@ public class GameManager : MonoBehaviour
         }
         if (!butttonBPress)
         {
-            if (Input.GetButtonDown("GamePad2_X"))
+            if (Input.GetButtonDown("GamePad2_RT"))
             {
                 nextSceneLoad2P = true;
             }
-            if (Input.GetButtonDown("GamePad1_X"))
+            if (Input.GetButtonDown("GamePad1_RT"))
             {
                 nextSceneLoad1P = true;
             } 
@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator FadeScreen()
     {
+        yield return new WaitForSeconds(0.5f);
         fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);

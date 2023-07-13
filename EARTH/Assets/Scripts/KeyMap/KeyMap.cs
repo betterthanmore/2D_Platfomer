@@ -14,9 +14,9 @@ public class KeyMap
         GamePad2_LB,    
         GamePad1_RB,    //키 입력: 메뉴바
         GamePad2_RB,
-        GamePad1_LT,    //키 입력: 오른쪽 조이스틱 키 다운
+        GamePad1_LT,    //키 입력: 왼쪽 조이스틱 키 다운
         GamePad2_LT,
-        GamePad1_RT,    //키 입력: 왼쪽 조이스틱 키 다운
+        GamePad1_RT,    //키 입력: 오른쪽 조이스틱 키 다운
         GamePad2_RT,    
         GamePad1_START,
         GamePad2_START,
