@@ -130,11 +130,16 @@ MonoBehaviour:
   ObjectImageScale: 1.5
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
   jumpForce: 5
+  isGround: 0
   isplayer: 0
   isPlayerOn: 0
-  addMoveSpeed: 0
+  rayHit: {fileID: 0}
+  otherVelocity: 0
+  moveGroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &1899887517851265556
 Animator:
   serializedVersion: 4

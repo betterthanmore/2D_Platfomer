@@ -150,10 +150,16 @@ MonoBehaviour:
   ObjectImageScale: 1.65
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
   jumpForce: 2
+  isGround: 0
   isplayer: 0
   isPlayerOn: 0
+  rayHit: {fileID: 0}
+  otherVelocity: 0
+  moveGroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   scrollbar: {fileID: 0}
   boostTime: 8
   boostDistanceLimit: 2
