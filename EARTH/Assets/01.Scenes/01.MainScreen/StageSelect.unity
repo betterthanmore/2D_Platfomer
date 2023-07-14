@@ -910,9 +910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a953a0e81ccd6fc408027a4e809e738c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage1: {fileID: 0}
-  stage2: {fileID: 0}
-  stage3: {fileID: 0}
+  stage1: {fileID: 901550846}
+  stage2: {fileID: 237303250}
+  stage3: {fileID: 1204721732}
 --- !u!4 &827855260
 Transform:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7401703202269633819, guid: fd98ee007bac78d459837a00925756bf, type: 3}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: BGSoundVolume
         m_Mode: 0
@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 1944095246}
   - component: {fileID: 1944095245}
   - component: {fileID: 1944095244}
+  - component: {fileID: 1944095248}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2106,6 +2107,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1944095248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944095243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe5bbc99e4976040b524e164ec3c633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2017245712
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2323,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7401703202269633819, guid: fd98ee007bac78d459837a00925756bf, type: 3}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: SFXSoundVolume
         m_Mode: 0

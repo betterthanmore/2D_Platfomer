@@ -16,7 +16,7 @@ public class MainPlayer : PlayerMainController
     {
         base.Update();
 
-        if (!GameManager.butttonBPress)
+        if (GameManager.move)
         {
             if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn))
             {

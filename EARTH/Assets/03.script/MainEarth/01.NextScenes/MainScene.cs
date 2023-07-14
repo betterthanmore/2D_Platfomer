@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainScene : MonoBehaviour
 {
     public Image img;
+    GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +21,12 @@ public class MainScene : MonoBehaviour
     }
     public void Exit()
     {
+        GameManager.donPress_B = true;
         Application.Quit();
     }
     public void StartButton()
     {
+        GameManager.donPress_B = true;
         StartCoroutine(StartButtonNextScene());
     }
     public IEnumerator StartButtonNextScene()

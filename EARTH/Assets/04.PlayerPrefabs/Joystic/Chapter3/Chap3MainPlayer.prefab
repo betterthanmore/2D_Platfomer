@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 3215600195468353776}
   - component: {fileID: 3215600195468353778}
   - component: {fileID: 3215600195468353781}
-  - component: {fileID: 719659496778254856}
-  - component: {fileID: 2516051317479902117}
+  - component: {fileID: 7153416487612666768}
   m_Layer: 8
   m_Name: Chap3MainPlayer
   m_TagString: MainPlayer
@@ -161,24 +160,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &719659496778254856
+--- !u!70 &7153416487612666768
 CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3215600195468353780}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.185}
-  m_Size: {x: 0.31, y: 0.0001}
-  m_Direction: 0
---- !u!61 &2516051317479902117
-BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -190,19 +173,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.071211345}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.31, y: 0.68}
-    newSize: {x: 0.31, y: 0.68}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.5375773}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.31, y: 0.68}
+  m_Direction: 0
 --- !u!1 &3215600196210503973
 GameObject:
   m_ObjectHideFlags: 0

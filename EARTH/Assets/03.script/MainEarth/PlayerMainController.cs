@@ -64,7 +64,7 @@ public class PlayerMainController : MonoBehaviour
         {
             an.SetBool("Run", false);
         }
-        if (!GameManager.butttonBPress)
+        if (GameManager.move)
         {
             if (rayHit)
             {

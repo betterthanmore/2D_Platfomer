@@ -12,7 +12,6 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public AudioSource bgSound;
     public AudioClip[] bglist;
-    
     private float bgValue;
     private float sfValue;
     // Start is called before the first frame update
@@ -35,8 +34,6 @@ public class SoundManager : MonoBehaviour
         {
             if (arg0.name == bglist[i].name)
                 BgSoundPlay(bglist[i]);
-
-
         }
     }
     public void SFXSoundVolume(float val)

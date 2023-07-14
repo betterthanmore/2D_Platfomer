@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MinimumGearsSC : MonoBehaviour
 {
     private GameManager GameManager => GameManager.Instance;
@@ -11,7 +11,7 @@ public class MinimumGearsSC : MonoBehaviour
     {
         if (GameManager.minimumGears == null)
         {
-            GameManager.minimumGears = gameObject;
+            GameManager.minimumGears = gameObject.GetComponent<Text>();
         }
     }
 

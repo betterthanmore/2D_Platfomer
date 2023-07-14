@@ -42,10 +42,9 @@ GameObject:
   - component: {fileID: 4806827163322576060}
   - component: {fileID: 4806827163322576063}
   - component: {fileID: 4806827163322576062}
-  - component: {fileID: 4806827163322576057}
   - component: {fileID: 4806827163322576056}
   - component: {fileID: 4806827163322576059}
-  - component: {fileID: 9084070687286144528}
+  - component: {fileID: 1872689085222315184}
   m_Layer: 9
   m_Name: Chap3SubPlayer
   m_TagString: SubPlayer
@@ -142,22 +141,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &4806827163322576057
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4806827163322576058}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.14}
-  m_Size: {x: 0.43, y: 0.0001}
-  m_Direction: 0
 --- !u!95 &4806827163322576056
 Animator:
   serializedVersion: 4
@@ -211,8 +194,8 @@ MonoBehaviour:
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
---- !u!61 &9084070687286144528
-BoxCollider2D:
+--- !u!70 &1872689085222315184
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -220,20 +203,10 @@ BoxCollider2D:
   m_GameObject: {fileID: 4806827163322576058}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3aa416f4da304864683c74f69decc6d0, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.105}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.43, y: 0.71}
-    newSize: {x: 0.43, y: 0.71}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.43, y: 0.5}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.03, y: 0}
+  m_Size: {x: 0.35, y: 0.68}
+  m_Direction: 0

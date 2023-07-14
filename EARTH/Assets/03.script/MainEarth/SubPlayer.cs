@@ -28,7 +28,7 @@ public class SubPlayer : PlayerMainController
         base.Update();
         
         subPlayerPosYTrs = gameObject.transform.position.y;
-        if (!GameManager.butttonBPress)
+        if (GameManager.move)
         {
             if (Input.GetButtonDown(JumpKeyMap) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
             {

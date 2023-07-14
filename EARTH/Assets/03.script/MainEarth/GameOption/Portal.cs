@@ -61,7 +61,6 @@ public class Portal : MonoBehaviour
         isPlayer = Physics2D.OverlapCircle(transform.position, portalImgScale / 3, player);
         if (isPlayer)
         {
-            Debug.Log("플레이어 닿음");
             if (GameManager.gearItem >= 5)
             {
                 if (Input.GetButtonDown("GamePad1_Y"))    //메인 플레이어 버튼//나중에 키 변경
@@ -99,10 +98,8 @@ public class Portal : MonoBehaviour
             }
             else
             {
-                Debug.Log("else문 통과");
                 if (textFadeRun)
                 {
-                    Debug.Log("페이드 허용");
                     if (Input.GetButtonDown("GamePad1_Y") || Input.GetButtonDown("GamePad2_Y"))                 //나중에 키 변경
                     {
                         portalText.text = "기어가 모자랍니다. 남은 갯수: " + GameManager.remainGears;
@@ -135,7 +132,6 @@ public class Portal : MonoBehaviour
     }
     IEnumerator TextFade()
     {
-        Debug.Log("페이드 실행");
         textFadeRun = false;
         portalText.DOFade(1f, 1f);
         yield return new WaitForSeconds(1.5f);
