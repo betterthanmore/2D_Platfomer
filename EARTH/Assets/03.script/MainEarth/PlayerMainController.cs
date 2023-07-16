@@ -84,20 +84,23 @@ public class PlayerMainController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -5, 5));
         }
-        if (Input.GetAxis(HorizontalKeyMap) != 0)
+        if (GameManager.move)
         {
-            if (rb.velocity.x < 0)
+            if (Input.GetAxis(HorizontalKeyMap) != 0)
             {
-                sr.flipX = true;
-            }
-            else if (rb.velocity.x > 0)
-            {
-                sr.flipX = false;
-            }
-            if (isGround || isPlayerOn)
-            {
-                an.SetBool("Run", true);
-            }
+                if (rb.velocity.x < 0)
+                {
+                    sr.flipX = true;
+                }
+                else if (rb.velocity.x > 0)
+                {
+                    sr.flipX = false;
+                }
+                if (isGround || isPlayerOn)
+                {
+                    an.SetBool("Run", true);
+                }
+            } 
         }
         
         

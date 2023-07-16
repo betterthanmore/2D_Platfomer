@@ -41,7 +41,7 @@ public class MainPlayer : PlayerMainController
         {
             Destroy(other.gameObject);
             GameManager.gearItem += 1;
-            if (GameManager.remainGears >= 0)
+            if (GameManager.remainGears > 0)
             {
                 GameManager.remainGears -= 1;
                 StopCoroutine(GameManager.MinimumGears());

@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     private Canvas canvas;
     private bool nextSceneLoad1P = false;
     private bool nextSceneLoad2P = false;
+    public bool reGame1P = false;
+    public bool reGame2P = false;
+    private bool reGameButtonDown = false;
+    private bool nextSceneButtonDown = false;
     public bool butttonBPress = false;
     public float gauge = 1;
     public bool selectStage1 = true;
@@ -80,7 +84,7 @@ public class GameManager : MonoBehaviour
                 minimumGears.text = "포탈 이동이 가능합니다.";
             }
         }
-        if (!butttonBPress)
+        if (!butttonBPress && reGameButtonDown && nextSceneButtonDown)
         {
             if (Input.GetButtonDown("GamePad2_RT"))
             {
@@ -92,7 +96,21 @@ public class GameManager : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.P) || nextSceneLoad1P && nextSceneLoad2P)
             {
+                nextSceneButtonDown = false;
                 ForceNextStage();
+            }
+            if (Input.GetButtonDown("GamePad1_LT"))
+            {
+                reGame1P = true;
+            }
+            if (Input.GetButtonDown("GamePad2_LT"))
+            {
+                reGame2P = true;
+            }
+            if(reGame1P && reGame2P)
+            {
+                reGameButtonDown = false;
+                StartCoroutine(REGAME());
             }
         }
         
@@ -123,11 +141,10 @@ public class GameManager : MonoBehaviour
         {
             timeAttack.text = ((int)(timeTAtime -= Time.deltaTime)).ToString(); 
         }
-        else
+        else if(timeTAtime <= 0 && reGameButtonDown)
         {
+            reGameButtonDown = false;
             stage_TA = false;
-            donPress_B = true;
-            move = false;
             timeTAtime = 0;
             gameOverTA_text.DOFade(1, 1);
             gameOverTA_Outline.DOFade(1, 1);
@@ -157,6 +174,8 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator REGAME()
     {
+        donPress_B = true;
+        move = false;
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);
         reGame_Outline.DOFade(1, 1);
@@ -164,7 +183,7 @@ public class GameManager : MonoBehaviour
         for (int i = 3; i > -1; i--)
         {
             reGame_text.text = i + "초 후에 다시 시작합니다.";
-            if(i == 0)
+            if (i == 0)
             {
                 yield return new WaitForSeconds(1);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -174,7 +193,6 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
         }
-        
     }
     public void ForceNextStage()
     {
@@ -191,6 +209,24 @@ public class GameManager : MonoBehaviour
         {
             notVidio = false;
         }
+        else if (arg.name.Contains("Stage"))
+        {
+            nextSceneLoad1P = false;
+            nextSceneLoad2P = false;
+            nextSceneButtonDown = true;
+            reGame1P = false;
+            reGame2P = false;
+            reGameButtonDown = true;
+            move = true;
+            reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
+            reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
+        }
+        else if(!arg.name.Contains("Stage"))
+        {
+            reGameButtonDown = false;
+            nextSceneButtonDown = false;
+        }
+        
         else
         {
             notVidio = true;
@@ -201,10 +237,7 @@ public class GameManager : MonoBehaviour
             timeAttack = GameObject.Find("TimeAttack").GetComponent<Text>();
             gameOverTA_text = GameObject.Find("GameOverTA").GetComponent<Text>();
             gameOverTA_Outline = GameObject.Find("GameOverTA").GetComponent<Outline>();
-            reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
-            reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
             stage_TA = true;
-            move = true;
 
         }
         else

@@ -32,6 +32,7 @@ public class IronFrameBreak : MonoBehaviour
     }
     public IEnumerator FadeScreen2()
     {
+        GameManager.move = false;
         GameManager.fadeOutscreenBoard.gameObject.SetActive(true);
         GameManager.fadeOutscreenBoard.DOFade(1, 1);
         yield return new WaitForSeconds(1.5f);
@@ -41,9 +42,10 @@ public class IronFrameBreak : MonoBehaviour
             gameObject.transform.GetChild(0).gameObject.transform.parent = null;
         }
         gameObject.SetActive(false);
-        scrollbar.size -= 0.3f;
+        scrollbar.size -= 0.1f;
         GameManager.fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         GameManager.fadeOutscreenBoard.gameObject.SetActive(false);
+        GameManager.move = true;
     }
 }
