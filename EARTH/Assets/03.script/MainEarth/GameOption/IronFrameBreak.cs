@@ -8,6 +8,8 @@ public class IronFrameBreak : MonoBehaviour
     public bool isBreak;
     public LayerMask subPlayer;
     private Scrollbar scrollbar;
+    public float sizeX;
+    public float sizeY;
     GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class IronFrameBreak : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isBreak = Physics2D.OverlapBox(transform.position, new Vector2(0.5f, 1), 0, subPlayer);
+        isBreak = Physics2D.OverlapBox(transform.position, new Vector2(sizeX - 0.47f, sizeY), 0, subPlayer);
         if (isBreak)
         {
             if (Input.GetButtonDown("GamePad2_LT"))

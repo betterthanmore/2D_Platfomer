@@ -63,7 +63,7 @@ public class Portal : MonoBehaviour
         {
             if (GameManager.gearItem >= 5)
             {
-                if (Input.GetButtonDown("GamePad1_Y"))    //메인 플레이어 버튼//나중에 키 변경
+                if (Input.GetButtonDown("GamePad1_Y") && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 256))    //메인 플레이어 버튼//나중에 키 변경
                 {
                     
                     if (!mainReady)
@@ -80,7 +80,7 @@ public class Portal : MonoBehaviour
                         }
                     }
                 }
-                if (Input.GetButtonDown("GamePad2_Y"))            //서브 플레이어 버튼//나중에 키 변경
+                if (Input.GetButtonDown("GamePad2_Y") && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 512))            //서브 플레이어 버튼//나중에 키 변경
                 {
                     if (!subReady)
                     {

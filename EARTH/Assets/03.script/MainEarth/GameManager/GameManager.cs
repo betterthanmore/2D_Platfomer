@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             {
                 minimumGears.text = remainGears + "개만 더 먹으면 포탈 이동이 가능합니다.";
             }
-            if (remainGears <= 0)
+            if (remainGears == 0)
             {
                 minimumGears.text = "포탈 이동이 가능합니다.";
             }
