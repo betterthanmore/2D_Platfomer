@@ -36,16 +36,16 @@ public class IronFrameBreak : MonoBehaviour
         GameManager.fadeOutscreenBoard.gameObject.SetActive(true);
         GameManager.fadeOutscreenBoard.DOFade(1, 1);
         yield return new WaitForSeconds(1.5f);
-        if(gameObject.transform.childCount != 0)
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        if (gameObject.transform.childCount == 2)
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            gameObject.transform.GetChild(0).gameObject.transform.parent = null;
+            gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
-        gameObject.SetActive(false);
         scrollbar.size -= 0.1f;
         GameManager.fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         GameManager.fadeOutscreenBoard.gameObject.SetActive(false);
         GameManager.move = true;
+        Debug.Log("움직일수있어");
     }
 }
