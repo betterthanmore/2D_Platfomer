@@ -7,7 +7,7 @@ public class MainPlayer : PlayerMainController
     // Start is called before the first frame update
     public override void Start()
     {
-        Debug.Log("작동");
+        Debug.Log("메인" + playertype);
         base.Start();
     }
 
@@ -15,10 +15,10 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-
+        
         if (GameManager.move)
         {
-            if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn))
+            if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn) || Input.GetKeyDown(KeyCode.W) && (isGround || isPlayerOn))
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -30,7 +30,6 @@ public class MainPlayer : PlayerMainController
         }
         else
         {
-            Debug.Log("메인 플레이어 달리기 모션 중지");
             an.SetBool("Run", false);
             an.SetBool("Jump", true);
         }

@@ -23,7 +23,7 @@ public class IronFrameBreak : MonoBehaviour
         isBreak = Physics2D.OverlapBox(transform.position, new Vector2(sizeX - 0.47f, sizeY), 0, subPlayer);
         if (isBreak)
         {
-            if (Input.GetButtonDown("GamePad2_LT"))
+            if (Input.GetButtonDown("GamePad2_LT") || Input.GetKeyDown(KeyCode.Slash))
             {
                 Debug.Log("버튼 반응");
                 StartCoroutine(FadeScreen2());

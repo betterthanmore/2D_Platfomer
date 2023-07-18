@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     public bool move = true;
     public bool notVidio = false;
     public float timeTAtime = 41;
+    public bool keyDown = true;
+    public bool joysticDown = true;
 
     private void Awake()
     {
@@ -58,6 +60,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            keyDown = true;
+            joysticDown = false;
+        }
+        else
+        {
+            keyDown = false;
+            joysticDown = true;
+        }
         if (fadeOutscreenBoard == null)
         {
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -86,11 +98,11 @@ public class GameManager : MonoBehaviour
         }
         if (!butttonBPress && reGameButtonDown && nextSceneButtonDown)
         {
-            if (Input.GetButtonDown("GamePad2_RT"))
+            if (Input.GetButtonDown("GamePad2_RB"))
             {
                 nextSceneLoad2P = true;
             }
-            if (Input.GetButtonDown("GamePad1_RT"))
+            if (Input.GetButtonDown("GamePad1_RB"))
             {
                 nextSceneLoad1P = true;
             }

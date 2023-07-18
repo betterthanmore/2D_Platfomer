@@ -6960,22 +6960,6 @@ PrefabInstance:
       propertyPath: cm
       value: 
       objectReference: {fileID: 1629916715}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: scrollbar
-      value: 
-      objectReference: {fileID: 348302856}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: playertype
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 9110328504803203196}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: playerLayer.m_Bits
-      value: 2304
-      objectReference: {fileID: 0}
     - target: {fileID: 7832249301321474059, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -7156,11 +7140,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
---- !u!4 &2504632834083052021 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8602042781898720996, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
-  m_PrefabInstance: {fileID: 6170677092691582737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6131218474580582772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7225,18 +7204,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5439974346655379913, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
-      propertyPath: groundCheck
-      value: 
-      objectReference: {fileID: 2504632834083052021}
-    - target: {fileID: 5439974346655379913, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439974346655379913, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
-      propertyPath: playerLayer.m_Bits
-      value: 2560
-      objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034711, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_Name
       value: MainPlayer
@@ -7287,8 +7254,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
---- !u!4 &9110328504803203196 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7832249301975797604, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-  m_PrefabInstance: {fileID: 1360050526950561560}
-  m_PrefabAsset: {fileID: 0}

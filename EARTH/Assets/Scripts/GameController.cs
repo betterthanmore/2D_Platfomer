@@ -23,11 +23,11 @@ public class GameController : MonoBehaviour
 
     private void Update()       //입력 값이 뭔지 찾아내기 위해 적어놓은것같아용
     {
-        for(int i = 0; i < enumLength; i++)
+        for (int i = 0; i < enumLength; i++)
         {
             string enumString = Enum.GetName(typeof(KeyMap.KEYTYPE), i);
 
-            if(Input.GetButtonDown(enumString))
+            if (Input.GetButtonDown(enumString))
             {
                 Debug.Log(enumString + " Key is down");
             }
