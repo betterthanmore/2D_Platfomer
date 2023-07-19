@@ -7,7 +7,6 @@ public class MainPlayer : PlayerMainController
     // Start is called before the first frame update
     public override void Start()
     {
-        Debug.Log("∏ﬁ¿Œ" + playertype);
         base.Start();
     }
 

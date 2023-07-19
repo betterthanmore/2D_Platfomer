@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &7832249301321474056
 Animator:
@@ -163,6 +163,8 @@ MonoBehaviour:
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
+  enableBoost: 1
+  maxDistance: 1
 --- !u!70 &1461924491688125780
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

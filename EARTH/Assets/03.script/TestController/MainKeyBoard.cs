@@ -20,10 +20,9 @@ public class MainKeyBoard : PlayerMainController
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            if (rayHit)
+            if (moveGround)
             {
-                Debug.Log("°¨Áö");
-                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                otherVelocity = moveGround.GetComponent<Rigidbody2D>().velocity.x;
                 rb.velocity = new Vector2(Input.GetAxis("HorizontalMain") * moveSpeed + otherVelocity, rb.velocity.y);
             }
             else
@@ -46,9 +45,9 @@ public class MainKeyBoard : PlayerMainController
         }
         else
         {
-            if (rayHit)
+            if (moveGround)
             {
-                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                otherVelocity = moveGround.GetComponent<Rigidbody2D>().velocity.x;
                 rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
             }
         }

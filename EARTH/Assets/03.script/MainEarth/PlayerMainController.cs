@@ -27,7 +27,7 @@ public class PlayerMainController : MonoBehaviour
     public static bool fadeOut = false;     
     public bool isplayer = false;
     public bool isPlayerOn;
-    public Collider2D rayHit;
+    public Collider2D moveGround;
     public float otherVelocity;
     public LayerMask moveGroundLayer;
     protected GameManager GameManager => GameManager.Instance;
@@ -65,15 +65,14 @@ public class PlayerMainController : MonoBehaviour
     {
         isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        rayHit = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
+        moveGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
-        
-        
+
         if (GameManager.move)
         {
-            if (rayHit)
+            if (moveGround)
             {
-                otherVelocity = rayHit.GetComponent<Rigidbody2D>().velocity.x;
+                otherVelocity = moveGround.GetComponent<Rigidbody2D>().velocity.x;
                 if (GameManager.joysticDown)
                 {
                     rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed + otherVelocity, rb.velocity.y);
