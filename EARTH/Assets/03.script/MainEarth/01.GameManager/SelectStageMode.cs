@@ -17,9 +17,6 @@ public class SelectStageMode : MonoBehaviour
         stage2 = GameObject.Find("STAGE-2").GetComponent<Button>();
         stage3 = GameObject.Find("STAGE-3").GetComponent<Button>();
 
-
-
-
     }
 
     // Update is called once per frame

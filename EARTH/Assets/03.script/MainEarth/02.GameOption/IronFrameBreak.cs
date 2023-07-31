@@ -11,6 +11,7 @@ public class IronFrameBreak : MonoBehaviour
     public float sizeX;
     public float sizeY;
     GameManager GameManager => GameManager.Instance;
+    UIManger UIManger => UIManger.uiManger;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +34,8 @@ public class IronFrameBreak : MonoBehaviour
     public IEnumerator FadeScreen2()
     {
         GameManager.move = false;
-        GameManager.fadeOutscreenBoard.gameObject.SetActive(true);
-        GameManager.fadeOutscreenBoard.DOFade(1, 1);
+        UIManger.fadeOutscreenBoard.gameObject.SetActive(true);
+        UIManger.fadeOutscreenBoard.DOFade(1, 1);
         yield return new WaitForSeconds(1.5f);
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         if (gameObject.transform.childCount == 2)
@@ -42,9 +43,9 @@ public class IronFrameBreak : MonoBehaviour
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
         scrollbar.size -= 0.1f;
-        GameManager.fadeOutscreenBoard.DOFade(0, 1);
+        UIManger.fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
-        GameManager.fadeOutscreenBoard.gameObject.SetActive(false);
+        UIManger.fadeOutscreenBoard.gameObject.SetActive(false);
         GameManager.move = true;
         Debug.Log("움직일수있어");
     }

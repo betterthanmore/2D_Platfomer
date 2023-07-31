@@ -31,6 +31,7 @@ public class PlayerMainController : MonoBehaviour
     public float otherVelocity;
     public LayerMask moveGroundLayer;
     protected GameManager GameManager => GameManager.Instance;
+    protected UIManger UIManager => UIManger.uiManger;
 
 
     // Start is called before the first frame update
@@ -40,6 +41,7 @@ public class PlayerMainController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+
         if (playertype == PLAYERTYPE.PLAYER_01)
         {
             HorizontalKeyMap = "Horizontal1";
@@ -63,7 +65,6 @@ public class PlayerMainController : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        isplayer = Physics2D.OverlapCircle(groundCheck.position, 0.1f, playerLayer);
         isGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
         moveGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
