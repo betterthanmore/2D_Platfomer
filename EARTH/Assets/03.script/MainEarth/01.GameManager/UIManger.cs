@@ -10,6 +10,7 @@ public class UIManger : MonoBehaviour
     public static UIManger uiManger { get; private set; }
     GameManager GameManager => GameManager.Instance;
     public Text minGearText;
+    public Outline miniGearText_Outline;
     public Text time_TA_Text;
     private Text gameOverTA_Text;
     private Outline gameOverTA_Outline;
@@ -63,7 +64,7 @@ public class UIManger : MonoBehaviour
         }
         if (GameManager.reGameStart)
         {
-            StartCoroutine(REGAME());
+            StartCoroutine(ReGameTxet());
         }
     }
     public IEnumerator FadeScreen()
@@ -102,11 +103,12 @@ public class UIManger : MonoBehaviour
             gameOverTA_Text.DOFade(1, 1);
             gameOverTA_Outline.DOFade(1, 1);
             gameOverTA_Text.gameObject.transform.DOLocalMove(Vector2.zero, 1);
-            StartCoroutine(REGAME());
+            GameManager.reGameStart = true;
+            StartCoroutine(ReGameTxet());
         }
 
     }
-    public IEnumerator REGAME()
+    public IEnumerator ReGameTxet()
     {
         GameManager.donPress_B = true;
         GameManager.move = false;

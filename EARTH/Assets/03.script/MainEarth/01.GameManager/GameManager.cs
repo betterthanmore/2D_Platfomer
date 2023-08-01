@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
     public bool reGameButtonDown = false;
     public bool nextSceneButtonDown = false;
     public bool butttonBPress = false;
-    public float gauge = 1;     
+    public float gauge = 1;
+    public float gauge_Init = 0;
     public bool selectStage1 = true;
     public bool selectStage2 = false;
     public bool selectStage3 = false;
@@ -64,8 +65,6 @@ public class GameManager : MonoBehaviour
             joysticDown = true;
         }
         
-        
-        
         if (!butttonBPress && reGameButtonDown && nextSceneButtonDown && (!reGame1P || !reGame2P))
         {
             if (Input.GetButtonDown("GamePad2_RB"))
@@ -96,7 +95,13 @@ public class GameManager : MonoBehaviour
                 //여기에 게임 매니저에서 불값 하나를 더 만들어 그게 트루일 때 씬이 넘어갈 수 있도록 변경
             }
         }
-        
+
+        if (reGameStart || Input.GetKeyDown(KeyCode.R))
+        {
+            reGameStart = false;
+            ReGameStart();
+        }
+
         if (!donPress_B)
         {
             if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
@@ -116,7 +121,11 @@ public class GameManager : MonoBehaviour
             } 
         }
     }
-    
+    public void ReGameStart()
+    {
+        gauge = gauge_Init;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     public void ForceNextStage()
     {
         nextSceneLoad1P = false;
@@ -132,7 +141,12 @@ public class GameManager : MonoBehaviour
         {
             Vidio_N = false;
         }
-        else if (arg.name.Contains("Stage"))
+        else
+        {
+            Vidio_N = true;
+        }
+
+        if (arg.name.Contains("Stage"))
         {
             nextSceneLoad1P = false;
             nextSceneLoad2P = false;
@@ -142,15 +156,10 @@ public class GameManager : MonoBehaviour
             reGameButtonDown = true;
             move = true;
         }
-        else if(!arg.name.Contains("Stage"))
+        else
         {
             reGameButtonDown = false;
             nextSceneButtonDown = false;
         }
-        else
-        {
-            Vidio_N = true;
-        }
-        
     }
 }

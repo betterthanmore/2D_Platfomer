@@ -125,6 +125,7 @@ public class Portal : MonoBehaviour
             }
             GameManager.remainGears = 5;
             GameManager.gearItem = 0;
+            GameManager.gauge_Init = GameManager.gauge;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             mainReady = false;
             subReady = false;
