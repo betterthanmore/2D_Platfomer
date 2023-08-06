@@ -51,7 +51,7 @@ public class UIManger : MonoBehaviour
         {
             TimeATTACK();
         }
-        if (minGearText != null)
+        /*if (minGearText != null)
         {
             if (GameManager.remainGears > 0)
             {
@@ -61,7 +61,7 @@ public class UIManger : MonoBehaviour
             {
                 minGearText.text = "포탈 이동이 가능합니다.";
             }
-        }
+        }*/
         if (GameManager.reGameStart)
         {
             StartCoroutine(ReGameTxet());
@@ -82,6 +82,7 @@ public class UIManger : MonoBehaviour
     }
     public IEnumerator MinimumGears()
     {
+        minGearText.DOFade(0, 0);
         minGearText.GetComponent<Text>().DOFade(1f, 1f);
         yield return new WaitForSeconds(1.5f);
         minGearText.GetComponent<Text>().DOFade(0f, 1f);
@@ -108,6 +109,7 @@ public class UIManger : MonoBehaviour
         }
 
     }
+    
     public IEnumerator ReGameTxet()
     {
         GameManager.donPress_B = true;

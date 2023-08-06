@@ -61,40 +61,44 @@ public class Portal : MonoBehaviour
         isPlayer = Physics2D.OverlapCircle(transform.position, portalImgScale / 3, player);
         if (isPlayer)
         {
-            if (GameManager.gearItem >= 5)
+            if ((Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("GamePad1_Y")) && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 256))    //메인 플레이어 버튼//나중에 키 변경
             {
-                if ((Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("GamePad1_Y")) && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 256))    //메인 플레이어 버튼//나중에 키 변경
-                {
-                    
-                    if (!mainReady)
-                    {
-                        mainReady = true;                    //다음씬 이동하기 위한 준비버튼
 
-                    }
-                    else
-                    {
-                        if (!subReady)
-                        {
-                            portalText.text = "2P가 아직 포탈키를 누르지 않았습니다.";
-                            StartCoroutine(TextFade());
-                        }
-                    }
+                if (!mainReady)
+                {
+                    mainReady = true;                    //다음씬 이동하기 위한 준비버튼
+
                 }
-                if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetButtonDown("GamePad2_Y")) && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 512))            //서브 플레이어 버튼//나중에 키 변경
+                else
                 {
                     if (!subReady)
                     {
-                        subReady = true;                    //다음씬 이동하기 위한 준비버튼
-                    }
-                    else
-                    {
-                        if (!mainReady)
-                        {
-                            portalText.text = "1P가 아직 포탈키를 누르지 않았습니다.";
-                            StartCoroutine(TextFade());
-                        }
+                        portalText.text = "2P가 아직 포탈키를 누르지 않았습니다.";
+                        StartCoroutine(TextFade());
                     }
                 }
+            }
+
+            if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetButtonDown("GamePad2_Y")) && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 256))         //서브 플레이어 버튼//나중에 키 변경
+            {
+                if (!subReady)
+                {
+                    subReady = true;                    //다음씬 이동하기 위한 준비버튼
+                }
+                else
+                {
+                    if (!mainReady)
+                    {
+                        portalText.text = "1P가 아직 포탈키를 누르지 않았습니다.";
+                        StartCoroutine(TextFade());
+                    }
+                }
+            }
+
+            /*if (GameManager.gearItem >= 5)
+            {
+                
+                
             }
             else
             {
@@ -106,16 +110,16 @@ public class Portal : MonoBehaviour
                         StartCoroutine(TextFade());
                     } 
                 }
-            }
+            }*/
 
         }
         if(mainReady && subReady)           //서브랑 메인이 준비가 됐다면
         {
-            if(GameManager.gearItem <= 7)
+            /*if (GameManager.gearItem <= 7)
             {
                 GameManager.gauge += 0.2f;
             }
-            else if(GameManager.gearItem <= 9)
+            else if (GameManager.gearItem <= 9)
             {
                 GameManager.gauge += 0.5f;
             }
@@ -124,7 +128,7 @@ public class Portal : MonoBehaviour
                 GameManager.gauge += 0.7f;
             }
             GameManager.remainGears = 5;
-            GameManager.gearItem = 0;
+            GameManager.gearItem = 0;*/
             GameManager.gauge_Init = GameManager.gauge;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             mainReady = false;

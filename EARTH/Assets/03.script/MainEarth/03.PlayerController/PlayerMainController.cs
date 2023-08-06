@@ -26,7 +26,7 @@ public class PlayerMainController : MonoBehaviour
     public bool isGround;       
     public static bool fadeOut = false;     
     public bool isplayer = false;
-    public bool isPlayerOn;
+    public Collider2D isPlayerOn;
     public Collider2D moveGround;
     public float otherVelocity;
     public LayerMask moveGroundLayer;
@@ -77,19 +77,29 @@ public class PlayerMainController : MonoBehaviour
                 if (GameManager.joysticDown)
                 {
                     rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed + otherVelocity, rb.velocity.y);
+                    /*rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);*/
                     if (Input.GetAxis(HorizontalKeyMap) == 0)
-                    {
-                        rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
-                    } 
-                }
-                else if(GameManager.keyDown)
-                {
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
-                    if(Input.GetAxis(HorizontalKeyBoard) == 0)
                     {
                         rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
                     }
                 }
+                else if (GameManager.keyDown)
+                {
+                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
+                    /*rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);*/
+                    if (Input.GetAxis(HorizontalKeyBoard) == 0)
+                    {
+                        rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
+                    }
+                }
+                
+
+                /*if(gameObject.transform.parent == null)
+                {
+                    gameObject.transform.parent = moveGround.transform;
+                }*/
+               
+
             }
             else
             {
@@ -101,13 +111,15 @@ public class PlayerMainController : MonoBehaviour
                 {
                     rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
                 }
+
+                /*if(gameObject.transform.parent != null)
+                {
+                    gameObject.transform.parent = null;
+                }*/
             }
         }
         
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -5, 5));
-        }
+        
         if (GameManager.move)
         {
             if (Input.GetAxis(HorizontalKeyMap) == 0 && Input.GetAxis(HorizontalKeyBoard) == 0)

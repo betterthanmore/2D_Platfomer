@@ -8,9 +8,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
-    public static GameManager Instance { get; private set; }   
-    
-    public int remainGears = 5;       
+    public static GameManager Instance { get; private set; }
+
+    public bool selectStage1 = true;
+    public bool selectStage2 = false;
+    public bool selectStage3 = false;
+    /*public int remainGears = 5;*/
     public int gearItem = 0;
     public bool nextSceneLoad1P = false;
     public bool nextSceneLoad2P = false;
@@ -22,16 +25,23 @@ public class GameManager : MonoBehaviour
     public bool butttonBPress = false;
     public float gauge = 1;
     public float gauge_Init = 0;
-    public bool selectStage1 = true;
-    public bool selectStage2 = false;
-    public bool selectStage3 = false;
     public bool stage_TA = false;
     public bool donPress_B = false;
     public bool move = true;
     public bool Vidio_N = false;
     public bool keyDown = true;         //키보드로 조작할 경우
     public bool joysticDown = true;     //조이스틱으로 조작할 경우
+    public bool stage = false;
 
+    public bool leverPos1 = false;
+    public bool leverPos2 = false;
+
+    public bool leverOn1 = false;
+    public bool leverOn2 = false;
+
+    public GameObject portal;
+    public GameObject portalLever1;
+    public GameObject portalLever2;
     private void Awake()
     {
         if (Instance)
@@ -48,10 +58,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    private void Start()
-    {
-        
-    }
+    
     private void Update()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
@@ -63,6 +70,23 @@ public class GameManager : MonoBehaviour
         {
             keyDown = false;
             joysticDown = true;
+        }
+
+        if(stage)
+        {
+            if(leverPos1 = Physics2D.OverlapBox(portalLever1.transform.position, portalLever1.GetComponent<SpriteRenderer>().size + new Vector2(0.5f, 0.5f), 0, 13))
+            {
+                /*if(Input.GetButtonDown())*/ //나중에 해당 레버를 누르게 되면 leverOn1 이걸 true 값으로 바꾸기, 그리고 레버 상호작용 하는 캐릭터가 둘 다 인지 소녀만인지 파악하기
+            }
+
+
+            leverPos2 = Physics2D.OverlapBox(portalLever2.transform.position, portalLever2.GetComponent<SpriteRenderer>().size + new Vector2(0.5f, 0.5f), 0, 14);
+        }
+
+
+        if(portalLever1 && portalLever2)        //나중에 레버 오브젝트에 해당 변수의 불 값을 조정해야됨
+        {
+            StartCoroutine("PortalOn");
         }
         
         if (!butttonBPress && reGameButtonDown && nextSceneButtonDown && (!reGame1P || !reGame2P))
@@ -92,7 +116,6 @@ public class GameManager : MonoBehaviour
             {
                 reGameButtonDown = false;
                 reGameStart = true;
-                //여기에 게임 매니저에서 불값 하나를 더 만들어 그게 트루일 때 씬이 넘어갈 수 있도록 변경
             }
         }
 
@@ -130,13 +153,21 @@ public class GameManager : MonoBehaviour
     {
         nextSceneLoad1P = false;
         nextSceneLoad2P = false;
-        remainGears = 5;
+        /*remainGears = 5;*/
         gearItem = 0;
         gauge = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    IEnumerator PortalOn()
+    {
+        portal.gameObject.SetActive(true);
+        portal.transform.DOScale(Vector2.one, 1);
+        yield return new WaitForSeconds(1f);
+    }
     public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
     {
+        leverOn1 = false;
+        leverOn2 = false;
         if (arg.name.Contains("Vidio"))
         {
             Vidio_N = false;
@@ -145,7 +176,7 @@ public class GameManager : MonoBehaviour
         {
             Vidio_N = true;
         }
-
+        
         if (arg.name.Contains("Stage"))
         {
             nextSceneLoad1P = false;
@@ -155,9 +186,18 @@ public class GameManager : MonoBehaviour
             reGame2P = false;
             reGameButtonDown = true;
             move = true;
+            stage = true;
+            portal = GameObject.Find("Portal_0602");
+            portalLever1 = GameObject.FindGameObjectWithTag("Lever1");
+            portalLever2 = GameObject.FindGameObjectWithTag("Lever2");
+            portal.gameObject.SetActive(false);
         }
         else
         {
+            stage = false;
+            portal = null;
+            portalLever1 = null;
+            portalLever2 = null;
             reGameButtonDown = false;
             nextSceneButtonDown = false;
         }

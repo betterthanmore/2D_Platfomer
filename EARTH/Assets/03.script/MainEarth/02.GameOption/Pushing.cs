@@ -25,7 +25,6 @@ public class Pushing : MonoBehaviour
     {
         if(collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
         {
-            collision.rigidbody.velocity = new Vector2(collision.rigidbody.velocity.x / 2, collision.rigidbody.velocity.y);
             isPush = true;
         }
     }
