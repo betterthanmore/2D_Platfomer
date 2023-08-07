@@ -85,7 +85,7 @@ public class PlayerMainController : MonoBehaviour
                 }
                 else if (GameManager.keyDown)
                 {
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
+                    rb.velocity = new Vector2(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
                     /*rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);*/
                     if (Input.GetAxis(HorizontalKeyBoard) == 0)
                     {
@@ -105,7 +105,7 @@ public class PlayerMainController : MonoBehaviour
             {
                 if (GameManager.keyDown)
                 {
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);
+                    rb.velocity = new Vector2(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);
                 }
                 else if (GameManager.joysticDown)
                 {

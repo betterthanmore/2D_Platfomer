@@ -36,12 +36,15 @@ public class GameManager : MonoBehaviour
     public bool leverPos1 = false;
     public bool leverPos2 = false;
 
+
     public bool leverOn1 = false;
     public bool leverOn2 = false;
 
-    public GameObject portal;
-    public GameObject portalLever1;
-    public GameObject portalLever2;
+    public GameObject portal = null;
+    public Transform portalLever1 = null;
+    public Transform portalLever2 = null;
+
+
     private void Awake()
     {
         if (Instance)
@@ -71,20 +74,27 @@ public class GameManager : MonoBehaviour
             keyDown = false;
             joysticDown = true;
         }
-
-        if(stage)
+        if (stage)
         {
-            if(leverPos1 = Physics2D.OverlapBox(portalLever1.transform.position, portalLever1.GetComponent<SpriteRenderer>().size + new Vector2(0.5f, 0.5f), 0, 13))
+            if(leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
             {
-                /*if(Input.GetButtonDown())*/ //나중에 해당 레버를 누르게 되면 leverOn1 이걸 true 값으로 바꾸기, 그리고 레버 상호작용 하는 캐릭터가 둘 다 인지 소녀만인지 파악하기
+                Debug.Log("범위 안에 들어옴");
+                if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
+                    leverOn1 = true;
+            }
+            else
+            {
+                Debug.Log("범위 안에 없음");
             }
 
-
-            leverPos2 = Physics2D.OverlapBox(portalLever2.transform.position, portalLever2.GetComponent<SpriteRenderer>().size + new Vector2(0.5f, 0.5f), 0, 14);
+            if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0 ,256) && !leverOn2)
+            {
+                if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
+                    leverOn2 = true;
+            }
         }
 
-
-        if(portalLever1 && portalLever2)        //나중에 레버 오브젝트에 해당 변수의 불 값을 조정해야됨
+        if(leverOn1 && leverOn2)       
         {
             StartCoroutine("PortalOn");
         }
@@ -188,18 +198,19 @@ public class GameManager : MonoBehaviour
             move = true;
             stage = true;
             portal = GameObject.Find("Portal_0602");
-            portalLever1 = GameObject.FindGameObjectWithTag("Lever1");
-            portalLever2 = GameObject.FindGameObjectWithTag("Lever2");
             portal.gameObject.SetActive(false);
+            portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
+            portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
+
         }
         else
         {
             stage = false;
             portal = null;
-            portalLever1 = null;
-            portalLever2 = null;
             reGameButtonDown = false;
             nextSceneButtonDown = false;
+            portalLever1 = null;
+            portalLever2 = null;
         }
     }
 }
