@@ -17,11 +17,7 @@ public class MainPlayer : PlayerMainController
     {
         base.Update();
         interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
-        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, Color.red);
-        if (interaction)
-        {
-            Debug.Log("범위안에 있음");
-        }
+        
         if (GameManager.move)
         {
             if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn) || Input.GetKeyDown(KeyCode.W) && (isGround || isPlayerOn))
@@ -30,11 +26,11 @@ public class MainPlayer : PlayerMainController
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             }
 
-            if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Z)) && state != State.HEAL)
+            if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL)
             {
                 state = State.HEAL;
-                StopCoroutine("SubGaugeHeal");
-                StartCoroutine("SubGaugeHeal");
+               
+                StartCoroutine(SubGaugeHeal());
             }
         }
         if (state != State.HEAL)
@@ -48,12 +44,18 @@ public class MainPlayer : PlayerMainController
                 an.SetBool("Run", false);
                 an.SetBool("Jump", true);
             } 
+
         }
     }
     IEnumerator SubGaugeHeal()
     {
         an.SetTrigger("Heal");
+        GameManager.move = false;
+        yield return null;
         yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);
+        state = State.IDEL;
+        an.SetTrigger("Escape");
+        GameManager.move = true;
         Heal();
 
     }
@@ -91,6 +93,11 @@ public class MainPlayer : PlayerMainController
             GameManager.gearItem = 0;
             SubPlayer.scrollbar.size += needGears * 0.05f;
         }
+        
+    }
+    public void HealStop()
+    {
+        StopCoroutine("SubGaugeHeal");
         state = State.IDEL;
     }
 
