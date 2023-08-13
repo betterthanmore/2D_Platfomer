@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class MainPlayer : PlayerMainController
 {
-    public enum State
-    {
-        JUMP,
-        MOVE,
-        HEAL,
-        IDEL
-    }
-    public State state = State.IDEL;
+    
     public bool interaction;
     // Start is called before the first frame update
     public override void Start()
@@ -23,8 +16,8 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        interaction = Physics2D.OverlapBox(transform.position, sr.size + new Vector2(0.5f, 0), 0, playerLayer);
-
+        interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
+        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, Color.red);
         if (interaction)
         {
             Debug.Log("범위안에 있음");
@@ -39,39 +32,43 @@ public class MainPlayer : PlayerMainController
 
             if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Z)) && state != State.HEAL)
             {
-                Debug.Log("힐 반응");
                 state = State.HEAL;
+                StopCoroutine("SubGaugeHeal");
                 StartCoroutine("SubGaugeHeal");
             }
         }
-        if (isPlayerOn || isGround)      //땅을 밟고 있지 않다면 걷는 모션 중지
+        if (state != State.HEAL)
         {
-            an.SetBool("Jump", false);
-        }
-        else
-        {
-            an.SetBool("Run", false);
-            an.SetBool("Jump", true);
+            if (isPlayerOn || isGround)      //땅을 밟고 있지 않다면 걷는 모션 중지
+            {
+                an.SetBool("Jump", false);
+            }
+            else
+            {
+                an.SetBool("Run", false);
+                an.SetBool("Jump", true);
+            } 
         }
     }
     IEnumerator SubGaugeHeal()
     {
-        yield return new WaitForSeconds(1);
+        an.SetTrigger("Heal");
+        yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);
         Heal();
-        /*an.SetTrigger("Heal");
-        yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);*/
+
     }
 
     public void Heal()
     {
        
-        state = State.IDEL;
         if (GameManager.gearItem == 0)
         {
             if( UIManager.minGearText != null)
             {
                 UIManager.minGearText.text = "기어 아이템이 없네..";
                 StartCoroutine(UIManager.MinimumGears());
+                Debug.Log("힐 반응");
+                state = State.IDEL;
             }
             return;
         }
@@ -94,6 +91,7 @@ public class MainPlayer : PlayerMainController
             GameManager.gearItem = 0;
             SubPlayer.scrollbar.size += needGears * 0.05f;
         }
+        state = State.IDEL;
     }
 
     private void OnTriggerEnter2D(Collider2D other)     //톱니바퀴에 관한 코드

@@ -128,7 +128,6 @@ public class UIManger : MonoBehaviour
             if (arg.name.Contains("Stage"))
             {
                 canvas = Instantiate<Canvas>(Resources.Load<Canvas>("Canvas"), null);
-                canvas.name = gameObject.name.Replace("(Clone)", "");
                 reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
                 reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                 minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();

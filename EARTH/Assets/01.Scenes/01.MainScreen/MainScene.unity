@@ -2502,7 +2502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainGears: 5
+  selectStage1: 1
+  selectStage2: 0
+  selectStage3: 0
   gearItem: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
@@ -2513,15 +2515,19 @@ MonoBehaviour:
   nextSceneButtonDown: 0
   butttonBPress: 0
   gauge: 1
-  selectStage1: 1
-  selectStage2: 0
-  selectStage3: 0
+  gauge_Init: 0
   stage_TA: 0
   donPress_B: 0
   move: 1
   Vidio_N: 0
   keyDown: 1
   joysticDown: 1
+  stage: 0
+  leverPos1: 0
+  leverPos2: 0
+  leverOn1: 0
+  leverOn2: 0
+  portal: {fileID: 0}
 --- !u!4 &1724979879
 Transform:
   m_ObjectHideFlags: 0
@@ -2971,6 +2977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGearText: {fileID: 0}
+  miniGearText_Outline: {fileID: 0}
   time_TA_Text: {fileID: 0}
   timeTAtime: 41
   canvas: {fileID: 0}

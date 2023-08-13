@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
     public bool leverOn2 = false;
 
     public GameObject portal = null;
-    public Transform portalLever1 = null;
-    public Transform portalLever2 = null;
+    /*public Transform portalLever1 = null;
+    public Transform portalLever2 = null;*/
 
 
     private void Awake()
@@ -74,25 +74,21 @@ public class GameManager : MonoBehaviour
             keyDown = false;
             joysticDown = true;
         }
-        if (stage)
+
+        /*if (stage)
         {
             if(leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
             {
-                Debug.Log("범위 안에 들어옴");
                 if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
                     leverOn1 = true;
             }
-            else
-            {
-                Debug.Log("범위 안에 없음");
-            }
-
+            
             if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0 ,256) && !leverOn2)
             {
                 if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
                     leverOn2 = true;
             }
-        }
+        }*/
 
         if(leverOn1 && leverOn2)       
         {
@@ -171,7 +167,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PortalOn()
     {
         portal.gameObject.SetActive(true);
-        portal.transform.DOScale(Vector2.one, 1);
+        portal.transform.DOScale(new Vector3(0.4f, 0.4f, 0.4f), 1);
         yield return new WaitForSeconds(1f);
     }
     public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
@@ -199,8 +195,8 @@ public class GameManager : MonoBehaviour
             stage = true;
             portal = GameObject.Find("Portal_0602");
             portal.gameObject.SetActive(false);
-            portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
-            portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
+            /*portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
+            portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();*/
 
         }
         else
@@ -209,8 +205,8 @@ public class GameManager : MonoBehaviour
             portal = null;
             reGameButtonDown = false;
             nextSceneButtonDown = false;
-            portalLever1 = null;
-            portalLever2 = null;
+            /*portalLever1 = null;
+            portalLever2 = null;*/
         }
     }
 }

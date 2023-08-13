@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class PlayerMainController : MonoBehaviour
 {
+    public enum State
+    {
+        JUMP,
+        MOVE,
+        HEAL,
+        IDEL,
+        HOLD
+    }
+    public State state = State.IDEL;
+
     public enum PLAYERTYPE
     {
         PLAYER_01,
@@ -15,7 +25,8 @@ public class PlayerMainController : MonoBehaviour
     protected string HorizontalKeyMap = "Horizontal1";
     protected string HorizontalKeyBoard;
     protected string JumpKeyMap = "GamePad1_A";
-    
+
+    public int dir = 0;
     public float ObjectImageScale = 1;
     public LayerMask groundLayer;
     public float jumpForce = 0;
@@ -131,15 +142,18 @@ public class PlayerMainController : MonoBehaviour
                 if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxis(HorizontalKeyBoard) < 0)
                 {
                     sr.flipX = true;
+                    dir = -1;
                 }
                 else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxis(HorizontalKeyBoard) > 0)
                 {
                     sr.flipX = false;
+                    dir = 1;
                 }
                 if (isGround || isPlayerOn)
                 {
                     an.SetBool("Run", true);
                 }
+                state = State.MOVE;
             }
         }
         

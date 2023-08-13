@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 5ea9f81c53710d34c8fa6d11b2f42a8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53e2912722a29a443a5f524db1e26cd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.31, y: 0.68}
+  m_Size: {x: 6.8, y: 19.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,11 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396d0eca75532684c9125934ce00998d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 3
   playertype: 0
   groundCheck: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  dir: 0
   ObjectImageScale: 1
   groundLayer:
     serializedVersion: 2
@@ -134,12 +136,13 @@ MonoBehaviour:
   jumpForce: 5
   isGround: 0
   isplayer: 0
-  isPlayerOn: 0
-  rayHit: {fileID: 0}
+  isPlayerOn: {fileID: 0}
+  moveGround: {fileID: 0}
   otherVelocity: 0
   moveGroundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  interaction: 0
 --- !u!95 &3215600195468353781
 Animator:
   serializedVersion: 4
