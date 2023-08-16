@@ -16,7 +16,7 @@ public class Pushing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPush)
+        if (!isPush && transform.parent == null)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
@@ -35,4 +35,27 @@ public class Pushing : MonoBehaviour
             isPush = false;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
+        {
+            if (collision.GetComponent<PlayerMainController>().state != PlayerMainController.State.HOLD)
+            {
+                collision.GetComponent<PlayerMainController>().moveSpeed = 0.5f;
+            } 
+        }
+        
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
+        {
+            if (collision.GetComponent<PlayerMainController>().state != PlayerMainController.State.HOLD)
+            {
+                    collision.GetComponent<PlayerMainController>().moveSpeed = 2;
+            } 
+        }
+    }
+
 }

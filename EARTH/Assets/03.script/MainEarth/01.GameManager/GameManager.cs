@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             joysticDown = true;
         }
 
-        /*if (stage)
+        /*if (stage)    
         {
             if(leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
             {

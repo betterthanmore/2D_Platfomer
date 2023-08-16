@@ -82,10 +82,13 @@ public class UIManger : MonoBehaviour
     }
     public IEnumerator MinimumGears()
     {
+        miniGearText_Outline.DOFade(0f, 0f);
         minGearText.DOFade(0, 0);
-        minGearText.GetComponent<Text>().DOFade(1f, 1f);
+        minGearText.DOFade(1f, 1f);
+        miniGearText_Outline.DOFade(1f, 1f);
         yield return new WaitForSeconds(1.5f);
-        minGearText.GetComponent<Text>().DOFade(0f, 1f);
+        minGearText.DOFade(0f, 1f);
+        miniGearText_Outline.DOFade(0f, 1f);
         yield return new WaitForSeconds(1.01f);
     }
 

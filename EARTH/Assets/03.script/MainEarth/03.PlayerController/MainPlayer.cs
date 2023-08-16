@@ -10,6 +10,7 @@ public class MainPlayer : PlayerMainController
     public override void Start()
     {
         base.Start();
+
     }
 
     // Update is called once per frame
@@ -17,44 +18,52 @@ public class MainPlayer : PlayerMainController
     {
         base.Update();
         interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
-        
         if (GameManager.move)
         {
-            if (gameObject.tag == "MainPlayer" && Input.GetButtonDown(JumpKeyMap) && (isGround || isPlayerOn) || Input.GetKeyDown(KeyCode.W) && (isGround || isPlayerOn))
+            if (boxSense)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                HoldAction();
             }
 
-            if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL)
+            if (!boxHold)
             {
-                state = State.HEAL;
-               
-                StartCoroutine(SubGaugeHeal());
+                if (Input.GetButtonDown(JumpKeyMap) && (isStepOn || isPlayerOn) || Input.GetKeyDown(KeyCode.W) && (isStepOn || isPlayerOn))
+                {
+                    JumpAction();
+                }
+
+                if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
+                {
+                    an.SetTrigger("Heal");
+                    state = State.HEAL;
+                    StartCoroutine(SubGaugeHeal());
+                } 
             }
         }
-        if (state != State.HEAL)
+        /*if (state != State.HEAL)
         {
-            if (isPlayerOn || isGround)      //땅을 밟고 있지 않다면 걷는 모션 중지
+            if (isPlayerOn || isStepOn)
             {
-                an.SetBool("Jump", false);
+                state = State.IDEL;
             }
+
             else
             {
                 an.SetBool("Run", false);
-                an.SetBool("Jump", true);
-            } 
+                state = State.IDEL;
+            }
 
-        }
+        }*/
+        AnimationTransform();
+
     }
     IEnumerator SubGaugeHeal()
     {
-        an.SetTrigger("Heal");
         GameManager.move = false;
         yield return null;
         yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);
-        state = State.IDEL;
         an.SetTrigger("Escape");
+        state = State.IDEL;
         GameManager.move = true;
         Heal();
 
@@ -69,7 +78,6 @@ public class MainPlayer : PlayerMainController
             {
                 UIManager.minGearText.text = "기어 아이템이 없네..";
                 StartCoroutine(UIManager.MinimumGears());
-                Debug.Log("힐 반응");
                 state = State.IDEL;
             }
             return;
@@ -95,10 +103,38 @@ public class MainPlayer : PlayerMainController
         }
         
     }
+    public void JumpAction()
+    {
+        state = State.MOVE;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+    }
+
     public void HealStop()
     {
         StopCoroutine("SubGaugeHeal");
         state = State.IDEL;
+    }
+
+    public void HoldAction()
+    {
+        if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("버튼 누름");
+            state = State.HOLD;
+            boxHold = true;
+            boxSense.collider.transform.parent = gameObject.transform;
+            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        if (Input.GetButtonUp("GamePad1_X") || Input.GetKeyUp(KeyCode.H))
+        {
+            state = State.IDEL;
+            boxHold = false;
+            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            boxSense.transform.parent = null;
+            moveSpeed = 2;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)     //톱니바퀴에 관한 코드
