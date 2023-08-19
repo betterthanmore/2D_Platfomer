@@ -4568,7 +4568,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4598,7 +4598,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 12
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4648,7 +4648,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 11
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5075,20 +5075,20 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 8ff93ee1c0459464fbf95fbbe63b2e96, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 21300000, guid: 89dbd030cb8e2194183dbd3f47dfc7a1, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 3c33ef72a432a084da051fde5ac124d2, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: b9de11e3d940e3e44a6018688679e065, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 97b10cc25e2149547b1ed2eeb1687bb0, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: e6dd6296ce8538042bd97f37714f426e, type: 3}
+    m_Data: {fileID: 21300000, guid: b9de11e3d940e3e44a6018688679e065, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: 96c943bf1ade978419b9cdb2ecfa103f, type: 3}
   - m_RefCount: 101
     m_Data: {fileID: 21300000, guid: cea67273d8aa43c4fa51ae081f15fb45, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: e6dd6296ce8538042bd97f37714f426e, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 271
     m_Data:
@@ -5219,7 +5219,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

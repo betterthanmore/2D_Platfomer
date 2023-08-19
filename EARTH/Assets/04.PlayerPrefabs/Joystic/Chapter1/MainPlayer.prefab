@@ -180,12 +180,14 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2560
+  dir: 0
   ObjectImageScale: 1.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   jumpForce: 5
-  isGround: 0
+  moveSpeed: 2
+  isStepOn: 0
   isplayer: 0
   isPlayerOn: {fileID: 0}
   moveGround: {fileID: 0}
@@ -193,6 +195,7 @@ MonoBehaviour:
   moveGroundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  boxHold: 0
   interaction: 0
 --- !u!61 &9148175913699961683
 BoxCollider2D:
@@ -207,7 +210,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.49518323}
+  m_Offset: {x: -0.000000059604645, y: 0.49518323}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -218,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32458332, y: 0.6262636}
+  m_Size: {x: 0.32157743, y: 0.6262636}
   m_EdgeRadius: 0
 --- !u!70 &5389807365182798919
 CapsuleCollider2D:

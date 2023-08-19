@@ -156,6 +156,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 6208
   jumpForce: 2
+  moveSpeed: 2
   isStepOn: 0
   isplayer: 0
   isPlayerOn: {fileID: 0}
@@ -210,7 +211,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.42613244}
+  m_Size: {x: 0.34725973, y: 0.42613244}
   m_EdgeRadius: 0
 --- !u!1 &7832249301975797611
 GameObject:
