@@ -26,8 +26,8 @@ public class PlayerMainController : MonoBehaviour
     protected string JumpKeyMap = "GamePad1_A";
 
     public int dir = 0;
-    public float ObjectImageScale = 1;
     public LayerMask groundLayer;
+    public float rayRange = 0.1f;
     public float jumpForce = 0;
     public float moveSpeed = 2;      
     protected Rigidbody2D rb;
@@ -77,8 +77,8 @@ public class PlayerMainController : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        isStepOn = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-        moveGround = Physics2D.OverlapCircle(groundCheck.position, 0.1f, moveGroundLayer);
+        isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
+        moveGround = Physics2D.OverlapCircle(groundCheck.position, rayRange, moveGroundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + 0.5f, transform.position.z), Vector2.right * dir, 0.15f, 2048);
 

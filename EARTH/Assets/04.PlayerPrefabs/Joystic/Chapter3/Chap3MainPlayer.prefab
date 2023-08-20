@@ -130,12 +130,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   dir: 0
-  ObjectImageScale: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 6208
+  rayRange: 0.1
   jumpForce: 5
-  isGround: 0
+  moveSpeed: 2
+  isStepOn: 0
   isplayer: 0
   isPlayerOn: {fileID: 0}
   moveGround: {fileID: 0}
@@ -143,6 +144,7 @@ MonoBehaviour:
   moveGroundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  boxHold: 0
   interaction: 0
 --- !u!95 &3215600195468353781
 Animator:
