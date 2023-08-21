@@ -44,7 +44,7 @@ public class SelectStageMode : MonoBehaviour
     {
         SceneManager.LoadScene("ChapterSelect");
     }
-    public void Chapter1()
+    public void Chapter1()  //스테이지 고르는 화면으로 변경 해야됨
     {
         SceneManager.LoadScene("Tutorial_Stage1");
     }

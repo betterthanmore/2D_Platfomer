@@ -261,7 +261,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Button1Animation
+  m_Name: Button1Animation 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Normal
@@ -269,31 +269,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Highlighted
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Pressed
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Selected
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Disabled
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -424,31 +424,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.0162597
+        value: -104.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.15
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -461,31 +443,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 55.863373
-        inSlope: -319.0349
-        outSlope: -319.0349
+        value: -1.1085358
+        inSlope: -435.98874
+        outSlope: -435.98874
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 1
+        outWeight: 0.5833585
       - serializedVersion: 3
-        time: 0.06666667
-        value: 43.373592
-        inSlope: 2.812038
-        outSlope: 2.812038
+        time: 0.083333336
+        value: -0.868101
+        inSlope: 221.40251
+        outSlope: 221.40251
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.1251922
-        outWeight: 1
+        outWeight: 0.25497645
       - serializedVersion: 3
-        time: 0.15
-        value: 55.887703
-        inSlope: -186.68016
-        outSlope: -186.68016
+        time: 0.16666667
+        value: 0.8834572
+        inSlope: -504.1037
+        outSlope: -504.1037
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.38108647
-        outWeight: 1
+        inWeight: 0.31034577
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -510,14 +492,14 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 83635035
-      attribute: 1460864421
+      attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 83635035
-      attribute: 538195251
+      attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
       customType: 28
@@ -528,7 +510,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.15
+    m_StopTime: 0.16666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -568,31 +550,13 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.0162597
+        value: -104.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.15
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -605,31 +569,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 55.863373
-        inSlope: -319.0349
-        outSlope: -319.0349
+        value: -1.1085358
+        inSlope: -435.98874
+        outSlope: -435.98874
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 1
+        outWeight: 0.5833585
       - serializedVersion: 3
-        time: 0.06666667
-        value: 43.373592
-        inSlope: 2.812038
-        outSlope: 2.812038
+        time: 0.083333336
+        value: -0.868101
+        inSlope: 221.40251
+        outSlope: 221.40251
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.1251922
-        outWeight: 1
+        outWeight: 0.25497645
       - serializedVersion: 3
-        time: 0.15
-        value: 55.887703
-        inSlope: -186.68016
-        outSlope: -186.68016
+        time: 0.16666667
+        value: 0.8834572
+        inSlope: -504.1037
+        outSlope: -504.1037
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.38108647
-        outWeight: 1
+        inWeight: 0.31034577
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
