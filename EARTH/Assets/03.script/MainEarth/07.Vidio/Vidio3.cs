@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Vidio3 : MonoBehaviour
 {
-    GameManager GameManager => GameManager.Instance;
 
     void Start()
     {
@@ -19,9 +18,6 @@ public class Vidio3 : MonoBehaviour
     IEnumerator StageVidio2()
     {
         yield return new WaitForSeconds(26);
-        GameManager.selectStage1 = true;
-        GameManager.selectStage2 = false;
-        GameManager.selectStage3 = false;
         SceneManager.LoadScene(1);
 
     }

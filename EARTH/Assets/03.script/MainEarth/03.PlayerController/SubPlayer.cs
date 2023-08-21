@@ -28,18 +28,24 @@ public class SubPlayer : PlayerMainController
     {
         base.Update();
         subPlayerPosYTrs = gameObject.transform.position.y;
-        if (GameManager.move || !boxHold)
+        if (GameManager.move)
         {
-            if (Input.GetButtonDown(JumpKeyMap) && enableBoost || Input.GetKeyDown(KeyCode.UpArrow) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
+            if (boxSense)
             {
-                state = State.MOVE;
-                subplayerPosYCrt = gameObject.transform.position.y;
+                HoldAction();
             }
-            if (Input.GetButtonUp(JumpKeyMap) || maxDistance || Input.GetKeyUp(KeyCode.UpArrow))  //점프키를 
+            if (!boxHold)
             {
-                state = State.IDEL;
-                enableBoost = false;
-
+                if (Input.GetButtonDown(JumpKeyMap) && enableBoost || Input.GetKeyDown(KeyCode.UpArrow) && enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
+                {
+                    state = State.MOVE;
+                    subplayerPosYCrt = gameObject.transform.position.y;
+                }
+                if (Input.GetButtonUp(JumpKeyMap) || maxDistance || Input.GetKeyUp(KeyCode.UpArrow))  //점프키를 
+                {
+                    state = State.IDEL;
+                    enableBoost = false;
+                }
             }
 
             if (gameObject.tag == "SubPlayer" && (Input.GetButton(JumpKeyMap) || Input.GetKey(KeyCode.UpArrow)) && scrollbar.size > 0.001 && !maxDistance && enableBoost)        //부스트
@@ -66,5 +72,42 @@ public class SubPlayer : PlayerMainController
 
 
     }
+    public void HoldAction()
+    {
+        if (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))
+        {
+            StartCoroutine("OverHeadBox");
+            
+        }
+
+        if (Input.GetButtonUp("GamePad2_X") || Input.GetKeyUp(KeyCode.L))
+        {
+            state = State.IDEL;
+            boxHold = false;
+            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            boxSense.transform.parent = null;
+            moveSpeed = 2;
+        }
+    }
+    IEnumerator OverHeadBox()
+    {
+        Debug.Log("코루틴 반응");
+        state = State.HOLD;
+        boxHold = true;
+        boxSense.collider.transform.parent = gameObject.transform;
+        boxSense.collider.gameObject.layer = 3;
+        boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        Vector2 boxPos = boxSense.collider.transform.position;
+        while (boxPos == new Vector2(Mathf.Clamp(boxPos.x, boxPos.x, 0), Mathf.Clamp(boxPos.y, boxPos.y, 0.6f)))
+        {
+            boxPos = new Vector2(Mathf.Clamp(boxPos.x, boxPos.x, 0) * Time.deltaTime, Mathf.Clamp(boxPos.y, boxPos.y, 0.6f) * Time.deltaTime);
+
+        }
+        yield return new WaitForSeconds(1);
+    }
+    /*IEnumerator Put()
+    {
+
+    }*/
 
 }

@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Vidio2 : MonoBehaviour
 {
-    GameManager GameManager => GameManager.Instance;
 
     // Start is called before the first frame update
     void Start()
@@ -21,9 +20,6 @@ public class Vidio2 : MonoBehaviour
     IEnumerator StageVidio2()
     {
         yield return new WaitForSeconds(5);
-        GameManager.selectStage1 = false;
-        GameManager.selectStage2 = false;
-        GameManager.selectStage3 = true;
         SceneManager.LoadScene(2);
 
     }

@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
     public static GameManager Instance { get; private set; }
 
-    public bool selectStage1 = true;
-    public bool selectStage2 = false;
-    public bool selectStage3 = false;
+    
     /*public int remainGears = 5;*/
     public int gearItem = 0;
     public bool nextSceneLoad1P = false;
@@ -32,6 +30,7 @@ public class GameManager : MonoBehaviour
     public bool keyDown = true;         //키보드로 조작할 경우
     public bool joysticDown = true;     //조이스틱으로 조작할 경우
     public bool stage = false;
+    public int clearStage = 0;
 
     public bool leverPos1 = false;
     public bool leverPos2 = false;
@@ -207,6 +206,7 @@ public class GameManager : MonoBehaviour
             nextSceneButtonDown = false;
             /*portalLever1 = null;
             portalLever2 = null;*/
+            //씬 이름에 공통으로 포함된 단어를 이용하여 해당 씬이 로드될 때마다 특정 숫자를 올려 전달해준다.
         }
     }
 }

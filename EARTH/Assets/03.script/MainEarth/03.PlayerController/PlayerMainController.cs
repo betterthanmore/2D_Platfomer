@@ -42,6 +42,8 @@ public class PlayerMainController : MonoBehaviour
     public float otherVelocity;
     public LayerMask moveGroundLayer;
     public bool boxHold = false;
+    public float rayDis = 0.15f;
+    public float rayPosy = 0.5f;
     protected GameManager GameManager => GameManager.Instance;
     protected UIManger UIManager => UIManger.uiManger;
 
@@ -80,8 +82,12 @@ public class PlayerMainController : MonoBehaviour
         isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
         moveGround = Physics2D.OverlapCircle(groundCheck.position, rayRange, moveGroundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
-        boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + 0.5f, transform.position.z), Vector2.right * dir, 0.15f, 2048);
+        boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, 2048);
 
+        if (boxSense)
+        {
+            Debug.Log("센서 안에 들어옴");
+        }
         if (GameManager.move)
         {
             if (moveGround)
