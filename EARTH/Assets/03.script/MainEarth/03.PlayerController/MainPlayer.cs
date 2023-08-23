@@ -17,6 +17,18 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
+        if (!boxHold)
+        {
+            if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
+            {
+                state = State.IDEL;
+            }
+            else
+            {
+                state = State.MOVE;
+            }
+        }
+
         interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
         if (GameManager.move)
         {

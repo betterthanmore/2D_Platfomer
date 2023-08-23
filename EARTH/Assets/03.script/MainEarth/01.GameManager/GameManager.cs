@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public bool joysticDown = true;     //조이스틱으로 조작할 경우
     public bool stage = false;
     public int clearStage = 0;
+    public int chapter1Num = 0;
+    public int chapter2Num = 0;
+    public int chapter3Num = 0;
 
     public bool leverPos1 = false;
     public bool leverPos2 = false;
@@ -40,8 +43,8 @@ public class GameManager : MonoBehaviour
     public bool leverOn2 = false;
 
     public GameObject portal = null;
-    /*public Transform portalLever1 = null;
-    public Transform portalLever2 = null;*/
+    public Transform portalLever1 = null;
+    public Transform portalLever2 = null;
 
 
     private void Awake()
@@ -74,22 +77,24 @@ public class GameManager : MonoBehaviour
             joysticDown = true;
         }
 
-        /*if (stage)    
+        if (stage)
         {
-            if(leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
+            if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
             {
+                Debug.Log("레버 반응");
                 if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
                     leverOn1 = true;
             }
-            
-            if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0 ,256) && !leverOn2)
+
+            if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, 512) && !leverOn2)
             {
-                if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
+                Debug.Log("레버 반응2");
+                if (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O))
                     leverOn2 = true;
             }
-        }*/
+        }
 
-        if(leverOn1 && leverOn2)       
+        if (leverOn1 && leverOn2)       
         {
             StartCoroutine("PortalOn");
         }
@@ -166,7 +171,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PortalOn()
     {
         portal.gameObject.SetActive(true);
-        portal.transform.DOScale(new Vector3(0.4f, 0.4f, 0.4f), 1);
+        portal.transform.DOScale(new Vector3(0.05f, 0.05f, 0.4f), 1);
         yield return new WaitForSeconds(1f);
     }
     public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
@@ -194,8 +199,21 @@ public class GameManager : MonoBehaviour
             stage = true;
             portal = GameObject.Find("Portal_0602");
             portal.gameObject.SetActive(false);
-            /*portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
-            portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();*/
+            portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
+            portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
+            if (arg.name.Contains("Chap1_"))
+            {
+                chapter1Num++;
+            }
+            else if (arg.name.Contains("Chap2_"))
+            {
+                chapter2Num++;
+            }
+            else if (arg.name.Contains("Chap3_"))
+            {
+                chapter3Num++;
+            }
+
 
         }
         else
@@ -204,8 +222,8 @@ public class GameManager : MonoBehaviour
             portal = null;
             reGameButtonDown = false;
             nextSceneButtonDown = false;
-            /*portalLever1 = null;
-            portalLever2 = null;*/
+            portalLever1 = null;
+            portalLever2 = null;
             //씬 이름에 공통으로 포함된 단어를 이용하여 해당 씬이 로드될 때마다 특정 숫자를 올려 전달해준다.
         }
     }

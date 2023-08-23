@@ -38,5 +38,10 @@ public class BoostController : MonoBehaviour
         {
             an.SetBool("Jump", false);
         }
+
+        if(Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("GamePad2_X"))
+        {
+            an.SetBool("Hold", true);
+        }
     }
 }

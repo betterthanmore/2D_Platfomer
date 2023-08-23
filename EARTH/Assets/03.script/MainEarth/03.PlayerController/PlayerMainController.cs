@@ -9,7 +9,8 @@ public class PlayerMainController : MonoBehaviour
         MOVE,
         IDEL,
         HOLD,
-        HEAL
+        HEAL,
+        SUBHOLD
     }
     public State state = State.IDEL;
 
@@ -42,6 +43,7 @@ public class PlayerMainController : MonoBehaviour
     public float otherVelocity;
     public LayerMask moveGroundLayer;
     public bool boxHold = false;
+    public bool subBoxHold = false;
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
     protected GameManager GameManager => GameManager.Instance;
@@ -153,19 +155,6 @@ public class PlayerMainController : MonoBehaviour
                     }
                 }
             }
-
-            if (!boxHold)
-            {
-                if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
-                {
-                    state = State.IDEL;
-                }
-                else
-                {
-                    state = State.MOVE;
-                } 
-            }
-            
         }
     }
 
@@ -214,7 +203,7 @@ public class PlayerMainController : MonoBehaviour
             case State.HOLD:
                 an.SetBool("Hold", true);
                 moveSpeed = 0.5f;
-
+                // ¿Ã∞≈∂´ø° ∑Œ∫ø æ÷¥œ∏ﬁ¿Ãº«¿Ã ¿⁄≤Ÿ ∏ÿ√„
                 if (rb.velocity.x == 0)     
                 {
                     an.speed = 0;
@@ -227,6 +216,21 @@ public class PlayerMainController : MonoBehaviour
                 break;
             case State.HEAL:
                 break;
+            case State.SUBHOLD:
+                an.SetBool("Hold", true);
+                moveSpeed = 0.5f;
+                if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0)
+                {
+                    sr.flipX = true;
+                    dir = -1;
+                }
+                else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxisRaw(HorizontalKeyBoard) > 0)
+                {
+                    sr.flipX = false;
+                    dir = 1;
+                }
+                break;
+
             default:
                 break;
         }
