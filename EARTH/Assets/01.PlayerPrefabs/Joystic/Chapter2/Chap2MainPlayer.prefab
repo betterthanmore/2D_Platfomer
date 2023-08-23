@@ -180,6 +180,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  subMove: 1
   dir: 0
   groundLayer:
     serializedVersion: 2
@@ -196,6 +197,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   boxHold: 0
+  subBoxHold: 0
+  rayDis: 0.2
+  rayPosy: 0.2
   interaction: 0
 --- !u!61 &2056331821368654821
 BoxCollider2D:

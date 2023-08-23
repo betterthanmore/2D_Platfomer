@@ -13,9 +13,10 @@ public class SubPlayer : PlayerMainController
     private float subPlayerPosYTrs;     //부스트 사용하면서 바뀌는 위치Y 값을 저장
     public bool enableBoost = true;            //부스트 사용 가능 여부
     public bool maxDistance = false;            //부스트로 올라간 거리가 최대치가 됐을 때 자동으로 떨어지게
-    public bool subMove = true;
     public float boxPosX;
     public Vector2 boxPos;
+    public Vector2 boxPosInit;
+    public bool putOnBox_L = false;
 
     public override void Start()
     {
@@ -29,11 +30,11 @@ public class SubPlayer : PlayerMainController
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
 
-        /*if (subMove)
+        if (subMove)
         {
-        }*/
+            base.Update();
+        }
         if (!subBoxHold)
         {
             if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
@@ -88,11 +89,7 @@ public class SubPlayer : PlayerMainController
             }
 
         }
-        if (boxPos == new Vector2(0, 0.8f))
-        {
-            Debug.Log("코루틴 마지막 실행");
-            subMove = true;
-        }
+        
 
         if (isStepOn)   //땅에 닿는다면
         {
@@ -111,6 +108,7 @@ public class SubPlayer : PlayerMainController
         subBoxHold = true;
         state = State.SUBHOLD;
         boxSense.collider.transform.parent = gameObject.transform;
+        boxPosInit = transform.GetChild(2).localPosition;
         boxSense.collider.gameObject.layer = 3;
         boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         Vector2 boxPos = transform.GetChild(2).localPosition;
@@ -121,91 +119,176 @@ public class SubPlayer : PlayerMainController
     public void PutAction()
     {
         state = State.IDEL;
-        StartCoroutine("Put");
+        StartCoroutine("BoxPut");
     }
     IEnumerator OverHeadBox()
     {
         boxPos = transform.GetChild(2).localPosition;
         if (dir == 1)
         {
-            while (boxPos.x > 0 || boxPos.y < 0.8f)
+            while (boxPos.x != 0 && boxPos.y != 0.8f)
             {
                 boxPosX += Time.deltaTime * 0.05f;
                 boxPos.x = Mathf.Clamp(boxPos.x - boxPosX, 0, 0.6f);
-                if(boxPos.y < 0.8f)
-                {
-                    boxPos.y = Mathf.Clamp(boxPos.y + 0.8f * Time.deltaTime, 0, 0.8f);
-                }
-                Debug.Log(boxPos.y);
+                boxPos.y = Mathf.Clamp(boxPos.y + 0.8f * Time.deltaTime, 0, 0.8f);
                 boxPos = boxPos.normalized * 0.8f;
                 transform.GetChild(2).localPosition = boxPos;
+                if (boxPos == new Vector2(0, 0.8f))
+                {
+                    Debug.Log("코루틴 마지막 실행");
+                    subMove = true;
+                }
                 yield return null;
             }
+            putOnBox_L = false;
         }
         else if (dir == -1)
         {
-            while (boxPos.x < 0 || boxPos.y < 0.8f)
+            while (boxPos.x != 0 && boxPos.y != 0.8f)
             {
                 boxPosX += Time.deltaTime * 0.05f;
                 boxPos.x = Mathf.Clamp(boxPos.x + boxPosX, -0.6f, 0);
                 boxPos.y = Mathf.Clamp(boxPos.y + 0.8f * Time.deltaTime, 0, 0.8f);
                 boxPos = boxPos.normalized * 0.8f;
                 transform.GetChild(2).localPosition = boxPos;
+                if (boxPos == new Vector2(0, 0.8f))
+                {
+                    Debug.Log("코루틴 마지막 실행");
+                    subMove = true;
+                }
                 yield return null;
             }
+            putOnBox_L = true;
         }
-
-        
     }
-    IEnumerator Put()
-    {       //추가 수정해야됨
+    IEnumerator BoxPut()
+    {       
         boxPos = transform.GetChild(2).localPosition;
 
         if (dir == 1)
         {
-            while (boxPos.x >= Mathf.Clamp(boxPos.x, 0, 0.6f) && boxPos.y <= Mathf.Clamp(boxPos.y, 0, 0.8f))
+            if (!putOnBox_L)
+                boxPos = boxPosInit;
+
+            else
+                boxPos = -boxPosInit;
+
+            yield return null;
+            PlayerStateInit();
+            /*while (boxPos != boxPosInit)
             {
+                Debug.Log("초기값: " + boxPosInit);
+                Debug.Log(boxPos);
+                boxPosX += Time.deltaTime * 0.01f;
+                if (!putOnBox_L)
+                {
+                    *//*boxPos = new Vector2(Mathf.Lerp(0, boxPosInit.x, 1), Mathf.Clamp(boxPos.y - 0.8f * Time.deltaTime, boxPosInit.y, 0.8f));*//*
+                    if (boxPos.x != boxPosInit.x)
+                        boxPos.x = Mathf.Clamp(boxPos.x + boxPosX, 0, boxPosInit.x);
+                }
                 
-                boxPosX -= Time.deltaTime;
-                boxPos += new Vector2(-0.5f * dir, 0.6f).normalized * Mathf.Rad2Deg * Time.deltaTime * 2;
+                else
+                {
+                    *//*boxPos = new Vector2(Mathf.Lerp(0, -boxPosInit.x, 1), Mathf.Clamp(boxPos.y - 0.8f * Time.deltaTime, boxPosInit.y, 0.8f));*//*
+                    if (boxPos.x != -boxPosInit.x)
+                        boxPos.x = Mathf.Clamp(boxPos.x + boxPosX, 0, -boxPosInit.x);
+
+                }
+                if (boxPos.y != boxPosInit.y)
+                    boxPos.y = Mathf.Clamp(boxPos.y - 5f * Time.deltaTime, boxPosInit.y, 0.8f);
+
+                boxPos = boxPos.normalized * 0.8f;
                 transform.GetChild(2).localPosition = boxPos;
+                if (!putOnBox_L)
+                {
+                    if (boxPos == new Vector2(boxPosInit.x, boxPosInit.y))
+                    {
+                        Debug.Log("오른쪽 내려놓기 진입");
+                        subMove = true;
+                        PlayerStateInit();
+                    }
+                }
+                else
+                {
+                    if (boxPos == new Vector2(-boxPosInit.x, boxPosInit.y))
+                    {
+                        Debug.Log("오른쪽 내려놓기 진입");
+                        subMove = true;
+                        PlayerStateInit();
+                    }
+                }
                 yield return null;
-            }
+            }*/
         }
         else if (dir == -1)
         {
-            while (boxPos.x >= Mathf.Clamp(boxPos.x, -0.06f, 0) && boxPos.y <= Mathf.Clamp(boxPos.y, 0, 0.8f))
-            {
-                boxPos += new Vector2(-0.5f * dir, 0.4f).normalized * Time.deltaTime * 2;
-                transform.GetChild(2).localPosition = boxPos;
-                yield return null;
-            }
+            if(!putOnBox_L)
+                boxPos = -boxPosInit;
 
-        }
+            else
+                boxPos = boxPosInit;
 
-        if (boxPos.x > 0 || boxPos.y < 0.8f)
-        {
-            boxPos = new Vector2(0, 0.8f);
-        }
-
-
-        if (boxPos == new Vector2(0, 0.8f))
-        {
-            subMove = true;
-        }
-
-        while (boxPos.x >= Mathf.Clamp(boxPos.x, -0.6f, 0.6f) && boxPos.y >= Mathf.Clamp(boxPos.y, 0, 0.9f))
-        {
-            boxPos += new Vector2(0.5f * dir, -0.4f).normalized* Time.deltaTime * 2;
-            transform.GetChild(2).localPosition = boxPos;
             yield return null;
+            PlayerStateInit();
 
+
+            /*while (boxPos!= boxPosInit)
+            {
+                Debug.Log(boxPos);
+                *//*boxPos = boxPos.normalized * 0.8f;*//*
+                boxPosX += Time.deltaTime * 0.05f;
+                if (!putOnBox_L)
+                {
+                    *//*boxPos = new Vector2(Mathf.Lerp(0, -boxPosInit.x, 1), Mathf.Clamp(boxPos.y - 0.8f * Time.deltaTime, boxPosInit.y, 0.8f)).normalized;*//*
+                    if (boxPos.x != -boxPosInit.x)
+                    {
+                        boxPos.x = Mathf.Clamp(boxPos.x - boxPosX, -boxPosInit.x, 0); 
+                    }
+                }
+                else
+                {
+                    *//*boxPos = new Vector2(Mathf.Lerp(0, boxPosInit.x, 1), Mathf.Clamp(boxPos.y - 0.8f * Time.deltaTime, boxPosInit.y, 0.8f)).normalized;*//*
+                    if (boxPos.x != boxPosInit.x)
+                        boxPos.x = Mathf.Clamp(boxPos.x - boxPosX, boxPosInit.x, 0);
+                }
+                if(boxPos.y != boxPosInit.y)
+                    boxPos.y = Mathf.Clamp(boxPos.y - 0.8f * Time.deltaTime, boxPosInit.y, 0.8f);
+
+                boxPos = boxPos.normalized * 0.8f;
+                transform.GetChild(2).localPosition = boxPos;
+
+                if (!putOnBox_L)
+                {
+                    if (boxPos == new Vector2(-boxPosInit.x, boxPosInit.y))
+                    {
+                        Debug.Log("왼쪽 내려놓기 진입");
+                        subMove = true;
+                        PlayerStateInit();
+                    }
+                }
+                else
+                {
+                    if (boxPos == new Vector2(boxPosInit.x, boxPosInit.y))
+                    {
+                        Debug.Log("왼쪽 내려놓기 진입");
+                        subMove = true;
+                        PlayerStateInit();
+                    }
+                }
+
+                yield return null;
+            }*/
         }
-        yield return new WaitForSeconds(1.5f);
+
+    }
+    public void PlayerStateInit()
+    {
+        Debug.Log("진입");
         transform.GetChild(2).gameObject.layer = 11;
         transform.GetChild(2).GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        subBoxHold = false;
         transform.GetChild(2).transform.parent = null;
+        subBoxHold = false;
+        subMove = true;
         moveSpeed = 2;
     }
 

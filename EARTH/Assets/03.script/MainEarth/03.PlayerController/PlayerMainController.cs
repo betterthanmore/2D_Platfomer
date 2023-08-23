@@ -26,6 +26,9 @@ public class PlayerMainController : MonoBehaviour
     protected string HorizontalKeyBoard;
     protected string JumpKeyMap = "GamePad1_A";
 
+    public bool subMove = true;
+
+
     public int dir = 0;
     public LayerMask groundLayer;
     public float rayRange = 0.1f;
@@ -219,12 +222,12 @@ public class PlayerMainController : MonoBehaviour
             case State.SUBHOLD:
                 an.SetBool("Hold", true);
                 moveSpeed = 0.5f;
-                if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0)
+                if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0 && subMove)
                 {
                     sr.flipX = true;
                     dir = -1;
                 }
-                else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxisRaw(HorizontalKeyBoard) > 0)
+                else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxisRaw(HorizontalKeyBoard) > 0 && subMove)
                 {
                     sr.flipX = false;
                     dir = 1;

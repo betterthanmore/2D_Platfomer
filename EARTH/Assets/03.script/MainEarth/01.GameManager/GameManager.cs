@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
     public static GameManager Instance { get; private set; }
 
-    
+    public string sceneName;
     /*public int remainGears = 5;*/
     public int gearItem = 0;
     public bool nextSceneLoad1P = false;
@@ -176,6 +176,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
     {
+        sceneName = SceneManager.GetActiveScene().name;
         leverOn1 = false;
         leverOn2 = false;
         if (arg.name.Contains("Vidio"))
@@ -201,19 +202,6 @@ public class GameManager : MonoBehaviour
             portal.gameObject.SetActive(false);
             portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
             portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
-            if (arg.name.Contains("Chap1_"))
-            {
-                chapter1Num++;
-            }
-            else if (arg.name.Contains("Chap2_"))
-            {
-                chapter2Num++;
-            }
-            else if (arg.name.Contains("Chap3_"))
-            {
-                chapter3Num++;
-            }
-
 
         }
         else

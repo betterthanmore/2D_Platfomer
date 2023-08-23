@@ -150,6 +150,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2304
+  subMove: 1
   dir: 0
   groundLayer:
     serializedVersion: 2
@@ -166,11 +167,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   boxHold: 0
+  subBoxHold: 0
+  rayDis: 0.2
+  rayPosy: 0.2
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
   enableBoost: 1
   maxDistance: 1
+  boxPosX: 0
+  boxPos: {x: 0, y: 0}
+  boxPosInit: {x: 0, y: 0}
+  putOnBox_L: 0
 --- !u!70 &1461924491688125780
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class Portal : MonoBehaviour
     public bool textFadeRun = true;                           //플레이어에게 게임 플레이 중 해당 사항을 알려주기 위한 모든 글씨
     public bool subReady = false;                       //포탈을 넘어가기 위한 서브캐의 불리언 값
     public bool mainReady = false;                      //포탈을 넘어가기 위한 메인캐의 불리언 값
-    public Scrollbar scrollbar;
     public float timer;
     private SpriteRenderer sr;
 
@@ -25,7 +24,6 @@ public class Portal : MonoBehaviour
     void Start()
     {
         portalText = GameObject.Find("NextStage").GetComponent<Text>();
-        scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -130,7 +128,56 @@ public class Portal : MonoBehaviour
             GameManager.remainGears = 5;
             GameManager.gearItem = 0;*/
             GameManager.gauge_Init = GameManager.gauge;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (GameManager.sceneName.Contains("Chap1"))
+            {
+                if(GameManager.sceneName == "Chap1_Tutorial_Stage1")
+                {
+                    SceneManager.LoadScene("Chap1_Stage1");
+                }
+                else if(GameManager.sceneName.Contains("Chap1_TA_Stage4"))
+                {
+                    GameManager.chapter1Num++;
+                    SceneManager.LoadScene("Chapter1_Mode");
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+
+            }
+            else if (GameManager.sceneName.Contains("Chap2"))
+            {
+                if (GameManager.sceneName == "Chap2_Tutorial_Stage2")
+                {
+                    SceneManager.LoadScene("Chap2_Stage6");
+                }
+                else if(!GameManager.sceneName.Contains("Chap2_TA_Stage9"))
+                {
+                    GameManager.chapter2Num++;
+                    SceneManager.LoadScene("Chapter2_Mode");
+                }
+                else
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+            }
+            else if (GameManager.sceneName.Contains("Chap3"))
+            {
+                if (GameManager.sceneName == "Chap3_Tutirial_Stage3")
+                {
+                    SceneManager.LoadScene("Chap3_Stage10");
+                }
+                else if(!GameManager.sceneName.Contains("Chap3_TA_Stage13"))
+                {
+                    GameManager.chapter3Num++;
+                    SceneManager.LoadScene("Chapter3_Mode");
+                }
+                else
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+            }
+
             mainReady = false;
             subReady = false;
         }

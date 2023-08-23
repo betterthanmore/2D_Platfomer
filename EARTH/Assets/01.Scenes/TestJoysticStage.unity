@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
   gearItem: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
@@ -979,10 +980,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chap3SubPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 4806827163322576059, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: rayDis
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576060, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1026,10 +1023,6 @@ PrefabInstance:
     - target: {fileID: 4806827163322576060, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806827163322576063, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_FlipX
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
@@ -1611,6 +1604,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6131218474568217847, guid: c2bd6910e771b4946b33fa019910f9f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131218474568217847, guid: c2bd6910e771b4946b33fa019910f9f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131218474568217847, guid: c2bd6910e771b4946b33fa019910f9f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131218474568217847, guid: c2bd6910e771b4946b33fa019910f9f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5
       objectReference: {fileID: 0}
@@ -1780,6 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
   gearItem: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
