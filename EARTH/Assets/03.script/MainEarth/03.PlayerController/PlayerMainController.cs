@@ -89,6 +89,8 @@ public class PlayerMainController : MonoBehaviour
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, 2048);
 
+        
+
         if (boxSense)
         {
             Debug.Log("센서 안에 들어옴");

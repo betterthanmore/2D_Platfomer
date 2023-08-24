@@ -89,14 +89,19 @@ public class GameManager : MonoBehaviour
                 Debug.Log("감지");
                 if (leverPos1.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
                 {
-                    if (!leverOn1)
+                    if(leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                    {
+                        UIManger.minGearTextStart = false;
+                        StartCoroutine(UIManger.MinimumGears("포탈이 우릴 부르고 있어! 어서 가자!"));
+                    }
+                    else if (!leverOn1 && !subLeverOn)
                     {
                         subLeverOn = true;
                         leverOn1 = true;
                     }
                     else if (UIManger.minGearTextStart == true)
                     {
-                        if (subLeverOn)
+                        if (subLeverOn && !leverOn1)
                         {
                             UIManger.minGearTextStart = false;
                             StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
@@ -112,14 +117,19 @@ public class GameManager : MonoBehaviour
                 }
                 else if(leverPos1.tag == "MainPlayer" && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q)))
                 {
-                    if (!leverOn1)
+                    if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                    {
+                        UIManger.minGearTextStart = false;
+                        StartCoroutine(UIManger.MinimumGears("포탈이 우릴 부르고 있어! 어서 가자!"));
+                    }
+                    else if (!leverOn1 && !mainLeverOn)
                     {
                         mainLeverOn = true;
                         leverOn1 = true;
                     }
-                    else if (UIManger.minGearTextStart == true)
+                    else if (UIManger.minGearTextStart )
                     {
-                        if (mainLeverOn)
+                        if (mainLeverOn && !leverOn1)
                         {
                             UIManger.minGearTextStart = false;
                             StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
@@ -142,16 +152,21 @@ public class GameManager : MonoBehaviour
             if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
             {
                 Debug.Log("감지");
-                if (leverPos1.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
+                if (leverPos2.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
                 {
-                    if (!leverOn2)
+                    if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                    {
+                        UIManger.minGearTextStart = false;
+                        StartCoroutine(UIManger.MinimumGears("포탈이 우릴 부르고 있어! 어서 가자!"));
+                    }
+                    else if (!leverOn2 && !subLeverOn)
                     {
                         subLeverOn = true;
                         leverOn2 = true;
                     }
-                    else if(UIManger.minGearTextStart == true)
+                    else if(UIManger.minGearTextStart)
                     {
-                        if (subLeverOn)
+                        if (subLeverOn && !leverOn2 && UIManger.minGearTextStart)
                         {
                             UIManger.minGearTextStart = false;
                             StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
@@ -166,16 +181,21 @@ public class GameManager : MonoBehaviour
                     }
                     
                 }
-                else if (leverPos1.tag == "MainPlayer" && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q)))
+                else if (leverPos2.tag == "MainPlayer" && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q)))
                 {
-                    if (!leverOn2)
+                    if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                    {
+                        UIManger.minGearTextStart = false;
+                        StartCoroutine(UIManger.MinimumGears("포탈이 우릴 부르고 있어! 어서 가자!"));
+                    }
+                    else if (!leverOn2 && !mainLeverOn)
                     {
                         mainLeverOn = true;
                         leverOn2 = true;
                     }
-                    else if(UIManger.minGearTextStart == true)
+                    else if(UIManger.minGearTextStart)
                     {
-                        if (mainLeverOn)
+                        if (mainLeverOn && !leverOn2)
                         {
                             UIManger.minGearTextStart = false;
                             StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
@@ -215,11 +235,11 @@ public class GameManager : MonoBehaviour
                 nextSceneButtonDown = false;
                 ForceNextStage();
             }
-            if (Input.GetButtonDown("GamePad1_RB"))
+            if (Input.GetButtonDown("GamePad1_LB"))
             {
                 reGame1P = true;
             }
-            if (Input.GetButtonDown("GamePad2_RB"))
+            if (Input.GetButtonDown("GamePad2_LB"))
             {
                 reGame2P = true;
             }
@@ -228,9 +248,14 @@ public class GameManager : MonoBehaviour
                 reGameButtonDown = false;
                 reGameStart = true;
             }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                reGame2P = true;
+                reGame1P = true;
+            }
         }
 
-        if ((reGameStart || Input.GetKeyDown(KeyCode.R)))
+        if (reGameStart)
         {
             timerRestart = false;
             reGameStart = false;

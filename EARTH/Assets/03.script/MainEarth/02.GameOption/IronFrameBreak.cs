@@ -24,9 +24,8 @@ public class IronFrameBreak : MonoBehaviour
         isBreak = Physics2D.OverlapBox(transform.position, new Vector2(sizeX - 0.47f, sizeY), 0, subPlayer);
         if (isBreak)
         {
-            if (Input.GetButtonDown("GamePad2_LT") || Input.GetKeyDown(KeyCode.Slash))
+            if (Input.GetButtonDown("GamePad2_RT") || Input.GetKeyDown(KeyCode.Slash))
             {
-                Debug.Log("버튼 반응");
                 StartCoroutine(FadeScreen2());
             }
         }
@@ -47,6 +46,5 @@ public class IronFrameBreak : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         UIManger.fadeOutscreenBoard.gameObject.SetActive(false);
         GameManager.move = true;
-        Debug.Log("움직일수있어");
     }
 }

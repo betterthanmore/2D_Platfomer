@@ -30,7 +30,7 @@ public class BoostController : MonoBehaviour
             an.SetBool("Run", false);
         }
 
-        if(Input.GetAxis("GamePad2_A") > 0 || Input.GetKey(KeyCode.UpArrow))
+        if((Input.GetAxis("GamePad2_A") > 0 || Input.GetKey(KeyCode.UpArrow)) && !SubPlayer.maxDistance)
         {
             an.SetBool("Jump", true);
         }
