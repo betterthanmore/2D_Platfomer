@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1212178248892219157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212178248892219159}
+  - component: {fileID: 1212178248892219158}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212178248892219159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212178248892219157}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1212178248892219158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212178248892219157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
+  gearItem: 0
+  nextSceneLoad1P: 0
+  nextSceneLoad2P: 0
+  reGame1P: 0
+  reGame2P: 0
+  reGameStart: 0
+  reGameButtonDown: 0
+  nextSceneButtonDown: 0
+  butttonBPress: 0
+  gauge: 1
+  gauge_Init: 0
+  stage_TA: 0
+  donPress_B: 0
+  move: 1
+  Vidio_N: 0
+  keyDown: 1
+  joysticDown: 1
+  stage: 0
+  clearStage: 0
+  chapter1Num: 0
+  chapter2Num: 0
+  chapter3Num: 0
+  leverPos1: 0
+  leverPos2: 0
+  leverOn1: 0
+  leverOn2: 0
+  portal: {fileID: 0}
+  portalLever1: {fileID: 0}
+  portalLever2: {fileID: 0}

@@ -39,13 +39,18 @@ public class Pushing : MonoBehaviour
     {
         if (collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
         {
-            if (collision.GetComponent<PlayerMainController>().state != PlayerMainController.State.HOLD)
+            /*if (collision.GetComponent<PlayerMainController>().state != PlayerMainController.State.HOLD)
             {
                 collision.GetComponent<PlayerMainController>().moveSpeed = 0.5f;
+            } */
+            if (collision.TryGetComponent<PlayerMainController>(out PlayerMainController pm))
+            {
+                if (pm.state != PlayerMainController.State.HOLD)
+                {
+                    pm.moveSpeed = 0.5f;
+                }
             } 
         }
-        
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -207,8 +207,6 @@ MonoBehaviour:
   enableBoost: 1
   maxDistance: 1
   boxPosX: 0
-  boxPos: {x: 0, y: 0}
-  boxPosInit: {x: 0, y: 0}
   putOnBox_L: 0
 --- !u!61 &4446798264190256803
 BoxCollider2D:
@@ -234,7 +232,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 0.42613244}
+  m_Size: {x: 0.31431428, y: 0.38229}
   m_EdgeRadius: 0
 --- !u!70 &1183363270707668507
 CapsuleCollider2D:

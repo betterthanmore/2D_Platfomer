@@ -206,7 +206,6 @@ public class PlayerMainController : MonoBehaviour
             case State.HOLD:
                 an.SetBool("Hold", true);
                 moveSpeed = 0.5f;
-                // ¿Ã∞≈∂´ø° ∑Œ∫ø æ÷¥œ∏ﬁ¿Ãº«¿Ã ¿⁄≤Ÿ ∏ÿ√„
                 if (rb.velocity.x == 0)     
                 {
                     an.speed = 0;

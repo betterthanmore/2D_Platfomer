@@ -2502,9 +2502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectStage1: 1
-  selectStage2: 0
-  selectStage3: 0
+  sceneName: 
   gearItem: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
@@ -2523,11 +2521,17 @@ MonoBehaviour:
   keyDown: 1
   joysticDown: 1
   stage: 0
+  clearStage: 0
+  chapter1Num: 0
+  chapter2Num: 0
+  chapter3Num: 0
   leverPos1: 0
   leverPos2: 0
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}
+  portalLever1: {fileID: 0}
+  portalLever2: {fileID: 0}
 --- !u!4 &1724979879
 Transform:
   m_ObjectHideFlags: 0
@@ -2535,7 +2539,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724979877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2990,7 +2994,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022028780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 484.2346, y: 740.2088, z: -3.6609628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -44,12 +44,15 @@ public class MainPlayer : PlayerMainController
                     JumpAction();
                 }
 
-                if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
+                if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
                 {
-                    an.SetTrigger("Heal");
-                    state = State.HEAL;
-                    StartCoroutine(SubGaugeHeal());
-                } 
+                    if (interaction && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
+                    {
+                        an.SetTrigger("Heal");
+                        state = State.HEAL;
+                        StartCoroutine(SubGaugeHeal());
+                    }  
+                }
             }
         }
         /*if (state != State.HEAL)
@@ -130,22 +133,25 @@ public class MainPlayer : PlayerMainController
 
     public void HoldAction()
     {
-        if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H))
+        if (rb.velocity.y > - 0.1f && rb.velocity.y < 0.1f)
         {
-            Debug.Log("버튼 누름");
-            state = State.HOLD;
-            boxHold = true;
-            boxSense.collider.transform.parent = gameObject.transform;
-            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-        }
+            if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.H))
+            {
+                Debug.Log("버튼 누름");
+                state = State.HOLD;
+                boxHold = true;
+                boxSense.collider.transform.parent = gameObject.transform;
+                boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            }
 
-        if (Input.GetButtonUp("GamePad1_X") || Input.GetKeyUp(KeyCode.H))
-        {
-            state = State.IDEL;
-            boxHold = false;
-            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            boxSense.transform.parent = null;
-            moveSpeed = 2;
+            if (Input.GetButtonUp("GamePad1_X") || Input.GetKeyUp(KeyCode.H))
+            {
+                state = State.IDEL;
+                boxHold = false;
+                boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                boxSense.transform.parent = null;
+                moveSpeed = 2;
+            } 
         }
     }
 

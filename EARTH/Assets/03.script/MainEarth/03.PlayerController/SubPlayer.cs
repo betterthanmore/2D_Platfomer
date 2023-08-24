@@ -13,9 +13,9 @@ public class SubPlayer : PlayerMainController
     private float subPlayerPosYTrs;     //부스트 사용하면서 바뀌는 위치Y 값을 저장
     public bool enableBoost = true;            //부스트 사용 가능 여부
     public bool maxDistance = false;            //부스트로 올라간 거리가 최대치가 됐을 때 자동으로 떨어지게
-    public float boxPosX;
-    public Vector2 boxPos;
-    public Vector2 boxPosInit;
+    public float boxPosX;               //박스 x포지션 정해주는 변수
+    /*public Vector2 boxPos;            //박스 포지션 위치 값을 받는 변수
+    public Vector2 boxPosInit;*/        //박스 잡았을 때 초깃값
     public bool putOnBox_L = false;
 
     public override void Start()
@@ -77,16 +77,16 @@ public class SubPlayer : PlayerMainController
                 }
             }
 
-            if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L)))
+            /*if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행 
             {
                 subMove = false;
                 HoldAction();
             }
-            if (subBoxHold && subMove && (Input.GetButtonUp("GamePad2_X") || Input.GetKeyUp(KeyCode.L)))
+            if (subBoxHold && subMove && (Input.GetButtonUp("GamePad2_X") || Input.GetKeyUp(KeyCode.L)))        //박스 내려놓기 실행
             {
                 boxPosX = 0;
                 PutAction();
-            }
+            }*/
 
         }
         
@@ -103,7 +103,7 @@ public class SubPlayer : PlayerMainController
 
 
     }
-    public void HoldAction()
+    /*public void HoldAction()          박스 들 때 메서드
     {
         subBoxHold = true;
         state = State.SUBHOLD;
@@ -113,15 +113,15 @@ public class SubPlayer : PlayerMainController
         boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
         Vector2 boxPos = transform.GetChild(2).localPosition;
         StartCoroutine("OverHeadBox");
-    }
+    }*/
 
         
-    public void PutAction()
+    /*public void PutAction()           //박스 내려놓았을 때 메서드
     {
         state = State.IDEL;
         StartCoroutine("BoxPut");
     }
-    IEnumerator OverHeadBox()
+    IEnumerator OverHeadBox()           //박스 들 때 코루틴
     {
         boxPos = transform.GetChild(2).localPosition;
         if (dir == 1)
@@ -160,8 +160,8 @@ public class SubPlayer : PlayerMainController
             }
             putOnBox_L = true;
         }
-    }
-    IEnumerator BoxPut()
+    }*/
+    /*IEnumerator BoxPut()      //박스 내려 놓기 코드
     {       
         boxPos = transform.GetChild(2).localPosition;
 
@@ -175,7 +175,7 @@ public class SubPlayer : PlayerMainController
 
             yield return null;
             PlayerStateInit();
-            /*while (boxPos != boxPosInit)
+            *//*while (boxPos != boxPosInit)
             {
                 Debug.Log("초기값: " + boxPosInit);
                 Debug.Log(boxPos);
@@ -218,7 +218,7 @@ public class SubPlayer : PlayerMainController
                     }
                 }
                 yield return null;
-            }*/
+            }*//*
         }
         else if (dir == -1)
         {
@@ -232,7 +232,7 @@ public class SubPlayer : PlayerMainController
             PlayerStateInit();
 
 
-            /*while (boxPos!= boxPosInit)
+            *//*while (boxPos!= boxPosInit)
             {
                 Debug.Log(boxPos);
                 *//*boxPos = boxPos.normalized * 0.8f;*//*
@@ -277,7 +277,7 @@ public class SubPlayer : PlayerMainController
                 }
 
                 yield return null;
-            }*/
+            }*//*
         }
 
     }
@@ -290,6 +290,6 @@ public class SubPlayer : PlayerMainController
         subBoxHold = false;
         subMove = true;
         moveSpeed = 2;
-    }
+    }*/
 
 }
