@@ -20,6 +20,7 @@ public class UIManger : MonoBehaviour
     public Canvas canvas;
     public Image fadeOutscreenBoard;
     public GameObject pauseScreen;
+    public bool minGearTextStart = true;
 
 
     // Start is called before the first frame update
@@ -80,8 +81,9 @@ public class UIManger : MonoBehaviour
             GameManager.donPress_B = false;
         }
     }
-    public IEnumerator MinimumGears()
+    public IEnumerator MinimumGears(string text)
     {
+        minGearText.text = text;
         miniGearText_Outline.DOFade(0f, 0f);
         minGearText.DOFade(0, 0);
         minGearText.DOFade(1f, 1f);
@@ -90,6 +92,7 @@ public class UIManger : MonoBehaviour
         minGearText.DOFade(0f, 1f);
         miniGearText_Outline.DOFade(0f, 1f);
         yield return new WaitForSeconds(1.01f);
+        minGearTextStart = true;
     }
 
     public void TimeATTACK()
@@ -120,7 +123,7 @@ public class UIManger : MonoBehaviour
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);
         reGame_Outline.DOFade(1, 1);
-        reGame_text.text = " 해당 버튼을 누르면 게임이 재시작합니다.";
+        reGame_text.text = " 양쪽 플레이어 모두 RB버튼을 누르면 게임이 재시작합니다.";
             
     }
     public void UIOnLoadSceneInfo(Scene arg, LoadSceneMode arg1)

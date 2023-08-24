@@ -91,8 +91,7 @@ public class MainPlayer : PlayerMainController
         {
             if( UIManager.minGearText != null)
             {
-                UIManager.minGearText.text = "기어 아이템이 없네..";
-                StartCoroutine(UIManager.MinimumGears());
+                StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
                 state = State.IDEL;
             }
             return;

@@ -128,6 +128,7 @@ public class Portal : MonoBehaviour
             GameManager.remainGears = 5;
             GameManager.gearItem = 0;*/
             GameManager.gauge_Init = GameManager.gauge;
+            GameManager.gearItemInit = GameManager.gearItem;
             if (GameManager.sceneName.Contains("Chap1"))
             {
                 if(GameManager.sceneName == "Chap1_Tutorial_Stage1")

@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 {
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
     public static GameManager Instance { get; private set; }
+    UIManger UIManger => UIManger.uiManger;
 
     public string sceneName;
     /*public int remainGears = 5;*/
     public int gearItem = 0;
+    public int gearItemInit = 0;
     public bool nextSceneLoad1P = false;
     public bool nextSceneLoad2P = false;
     public bool reGame1P = false;
@@ -34,11 +36,14 @@ public class GameManager : MonoBehaviour
     public int chapter1Num = 0;
     public int chapter2Num = 0;
     public int chapter3Num = 0;
+    public LayerMask playerLayer;
+    public bool timerRestart = false;
 
-    public bool leverPos1 = false;
-    public bool leverPos2 = false;
+    public Collider2D leverPos1 = null;
+    public Collider2D leverPos2 = null;
 
-
+    public bool mainLeverOn = false;
+    public bool subLeverOn = false;
     public bool leverOn1 = false;
     public bool leverOn2 = false;
 
@@ -79,18 +84,114 @@ public class GameManager : MonoBehaviour
 
         if (stage)
         {
-            if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, 256) && !leverOn1)
+            if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, playerLayer))
             {
-                Debug.Log("레버 반응");
-                if (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q))
-                    leverOn1 = true;
+                Debug.Log("감지");
+                if (leverPos1.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
+                {
+                    if (!leverOn1)
+                    {
+                        subLeverOn = true;
+                        leverOn1 = true;
+                    }
+                    else if (UIManger.minGearTextStart == true)
+                    {
+                        if (subLeverOn)
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
+
+                        }
+                        else
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
+                        }
+
+                    }
+                }
+                else if(leverPos1.tag == "MainPlayer" && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q)))
+                {
+                    if (!leverOn1)
+                    {
+                        mainLeverOn = true;
+                        leverOn1 = true;
+                    }
+                    else if (UIManger.minGearTextStart == true)
+                    {
+                        if (mainLeverOn)
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
+
+                        }
+                        else
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                leverPos1 = null;
             }
 
-            if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, 512) && !leverOn2)
+            if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
             {
-                Debug.Log("레버 반응2");
-                if (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O))
-                    leverOn2 = true;
+                Debug.Log("감지");
+                if (leverPos1.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
+                {
+                    if (!leverOn2)
+                    {
+                        subLeverOn = true;
+                        leverOn2 = true;
+                    }
+                    else if(UIManger.minGearTextStart == true)
+                    {
+                        if (subLeverOn)
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
+
+                        }
+                        else
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
+                        }
+                        
+                    }
+                    
+                }
+                else if (leverPos1.tag == "MainPlayer" && (Input.GetButtonDown("GamePad1_X") || Input.GetKeyDown(KeyCode.Q)))
+                {
+                    if (!leverOn2)
+                    {
+                        mainLeverOn = true;
+                        leverOn2 = true;
+                    }
+                    else if(UIManger.minGearTextStart == true)
+                    {
+                        if (mainLeverOn)
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
+                        }
+                        else
+                        {
+                            UIManger.minGearTextStart = false;
+                            StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
+                        }
+                        
+                    }
+                }
+            }
+            else
+            {
+                leverPos2 = null;
             }
         }
 
@@ -99,26 +200,26 @@ public class GameManager : MonoBehaviour
             StartCoroutine("PortalOn");
         }
         
-        if (!butttonBPress && reGameButtonDown && nextSceneButtonDown && (!reGame1P || !reGame2P))
+        if ((!butttonBPress && reGameButtonDown && nextSceneButtonDown && (!reGame1P || !reGame2P)) || timerRestart)
         {
-            if (Input.GetButtonDown("GamePad2_RB"))
+            /*if (Input.GetButtonDown("GamePad2_RB"))
             {
                 nextSceneLoad2P = true;
             }
             if (Input.GetButtonDown("GamePad1_RB"))
             {
                 nextSceneLoad1P = true;
-            }
+            }*/
             if (Input.GetKeyDown(KeyCode.P) || nextSceneLoad1P && nextSceneLoad2P)
             {
                 nextSceneButtonDown = false;
                 ForceNextStage();
             }
-            if (Input.GetButtonDown("GamePad1_X"))
+            if (Input.GetButtonDown("GamePad1_RB"))
             {
                 reGame1P = true;
             }
-            if (Input.GetButtonDown("GamePad2_X"))
+            if (Input.GetButtonDown("GamePad2_RB"))
             {
                 reGame2P = true;
             }
@@ -129,8 +230,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (reGameStart || Input.GetKeyDown(KeyCode.R))
+        if ((reGameStart || Input.GetKeyDown(KeyCode.R)))
         {
+            timerRestart = false;
             reGameStart = false;
             ReGameStart();
         }
@@ -156,6 +258,7 @@ public class GameManager : MonoBehaviour
     }
     public void ReGameStart()
     {
+        gearItem = gearItemInit;
         gauge = gauge_Init;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -179,6 +282,8 @@ public class GameManager : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
         leverOn1 = false;
         leverOn2 = false;
+        mainLeverOn = false;
+        subLeverOn = false;
         if (arg.name.Contains("Vidio"))
         {
             Vidio_N = false;
@@ -212,7 +317,6 @@ public class GameManager : MonoBehaviour
             nextSceneButtonDown = false;
             portalLever1 = null;
             portalLever2 = null;
-            //씬 이름에 공통으로 포함된 단어를 이용하여 해당 씬이 로드될 때마다 특정 숫자를 올려 전달해준다.
         }
     }
 }

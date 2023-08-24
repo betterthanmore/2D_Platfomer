@@ -2525,8 +2525,11 @@ MonoBehaviour:
   chapter1Num: 0
   chapter2Num: 0
   chapter3Num: 0
-  leverPos1: 0
-  leverPos2: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 768
+  leverPos1: {fileID: 0}
+  leverPos2: {fileID: 0}
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}

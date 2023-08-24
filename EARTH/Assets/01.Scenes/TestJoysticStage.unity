@@ -199,6 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 
   gearItem: 0
+  gearItemInit: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
   reGame1P: 0
@@ -220,8 +221,14 @@ MonoBehaviour:
   chapter1Num: 0
   chapter2Num: 0
   chapter3Num: 0
-  leverPos1: 0
-  leverPos2: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 768
+  timerRestart: 0
+  leverPos1: {fileID: 0}
+  leverPos2: {fileID: 0}
+  mainLeverOn: 0
+  subLeverOn: 0
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}
@@ -713,7 +720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540317623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3022, y: -2.6551, z: 0}
+  m_LocalPosition: {x: -10.08, y: -3.04, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -843,6 +850,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   fadeOutscreenBoard: {fileID: 0}
   pauseScreen: {fileID: 0}
+  minGearTextStart: 1
 --- !u!4 &1083588351
 Transform:
   m_ObjectHideFlags: 0
@@ -1188,7 +1196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371900063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4643, y: -2.639, z: 0}
+  m_LocalPosition: {x: -14.06, y: -3.05, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1787,6 +1795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 
   gearItem: 0
+  gearItemInit: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
   reGame1P: 0
@@ -1808,8 +1817,14 @@ MonoBehaviour:
   chapter1Num: 0
   chapter2Num: 0
   chapter3Num: 0
-  leverPos1: 0
-  leverPos2: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  timerRestart: 0
+  leverPos1: {fileID: 0}
+  leverPos2: {fileID: 0}
+  mainLeverOn: 0
+  subLeverOn: 0
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}
