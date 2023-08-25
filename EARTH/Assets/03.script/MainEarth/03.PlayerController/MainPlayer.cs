@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class MainPlayer : PlayerMainController
 {
     
@@ -17,20 +16,7 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        if (Input.GetButtonDown("GamePad1_LB"))
-        {
-            Debug.Log("왼블 반응");
-        }
-        if (Input.GetButtonDown("GamePad1_Menu"))
-        {
-            
-            Debug.Log("메뉴 트리거 반응");
-        }
-        if (Input.GetButtonDown("GamePad1_START"))
-        {
-            
-            Debug.Log("스타트 트리거 반응");
-        }
+        
         if (!boxHold)
         {
             if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))

@@ -130,33 +130,49 @@ public class UIManger : MonoBehaviour
     public void UIOnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
     {
 
-        if (!arg.name.Contains("Vidio"))
+        if (!arg.name.Contains("Main"))
         {
-            if (arg.name.Contains("Stage"))
+            if (!arg.name.Contains("Vidio"))
             {
-                canvas = Instantiate<Canvas>(Resources.Load<Canvas>("Canvas"), null);
-                reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
-                reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
-                minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
-                if (arg.name.Contains("TA"))
+                if (arg.name.Contains("Stage"))
                 {
-                    timeTAtime = 41;
-                    time_TA_Text = GameObject.Find("TimeAttack").GetComponent<Text>();
-                    gameOverTA_Text = GameObject.Find("GameOverTA").GetComponent<Text>();
-                    gameOverTA_Outline = GameObject.Find("GameOverTA").GetComponent<Outline>();
-                    GameManager.stage_TA = true;
+                    canvas = Instantiate<Canvas>(Resources.Load<Canvas>("Canvas"), null);
+                    reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
+                    reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
+                    minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
+                    if (arg.name.Contains("TA"))
+                    {
+                        timeTAtime = 41;
+                        time_TA_Text = GameObject.Find("TimeAttack").GetComponent<Text>();
+                        gameOverTA_Text = GameObject.Find("GameOverTA").GetComponent<Text>();
+                        gameOverTA_Outline = GameObject.Find("GameOverTA").GetComponent<Outline>();
+                        GameManager.stage_TA = true;
 
+                    }
+                    else
+                    {
+                        time_TA_Text = null;
+                        gameOverTA_Text = null;
+                        gameOverTA_Outline = null;
+                        GameManager.stage_TA = false;
+                    }
                 }
-                else
-                {
-                    time_TA_Text = null;
-                    gameOverTA_Text = null;
-                    gameOverTA_Outline = null;
-                    GameManager.stage_TA = false;
-                }
+                pauseScreen = GameObject.Find("B_Press");
+                pauseScreen.gameObject.SetActive(false);
             }
-            pauseScreen = GameObject.Find("B_Press");
-            pauseScreen.gameObject.SetActive(false);
+            else
+            {
+                canvas = null;
+                reGame_text = null;
+                reGame_Outline = null;
+                minGearText = null;
+                pauseScreen = null;
+
+                time_TA_Text = null;
+                gameOverTA_Text = null;
+                gameOverTA_Outline = null;
+                GameManager.stage_TA = false;
+            } 
         }
         else
         {
