@@ -46,7 +46,7 @@ public class MainPlayer : PlayerMainController
 
                 if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
                 {
-                    if (interaction && (Input.GetButtonDown("GamePad1_RB") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
+                    if (interaction && (Input.GetButtonDown("GamePad1_LB") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
                     {
                         if (GameManager.gearItem == 0)
                         {
@@ -135,7 +135,7 @@ public class MainPlayer : PlayerMainController
     {
         if (rb.velocity.y > - 0.1f && rb.velocity.y < 0.1f)
         {
-            if (Input.GetButtonDown("GamePad1_RB") || Input.GetKeyDown(KeyCode.H))
+            if (Input.GetButtonDown("GamePad1_LB") || Input.GetKeyDown(KeyCode.H))
             {
                 state = State.HOLD;
                 boxHold = true;
@@ -143,7 +143,7 @@ public class MainPlayer : PlayerMainController
                 boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
 
-            if (Input.GetButtonUp("GamePad1_RB") || Input.GetKeyUp(KeyCode.H))
+            if (Input.GetButtonUp("GamePad1_LB") || Input.GetKeyUp(KeyCode.H))
             {
                 state = State.IDEL;
                 boxHold = false;

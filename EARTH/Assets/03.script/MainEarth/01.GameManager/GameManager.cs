@@ -107,11 +107,11 @@ public class GameManager : MonoBehaviour
                 nextSceneButtonDown = false;
                 ForceNextStage();
             }
-            if (Input.GetButtonDown("GamePad1_LB"))
+            if (Input.GetButtonDown("GamePad1_RB"))
             {
                 reGame1P = true;
             }
-            if (Input.GetButtonDown("GamePad2_LB"))
+            if (Input.GetButtonDown("GamePad2_RB"))
             {
                 reGame2P = true;
             }
