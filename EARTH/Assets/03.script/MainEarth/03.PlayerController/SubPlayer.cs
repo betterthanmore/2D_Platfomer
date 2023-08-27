@@ -24,7 +24,7 @@ public class SubPlayer : PlayerMainController
         base.Start();
         cm = GameObject.Find("Main Camera").GetComponent<Camera>();
         scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
-        Debug.Log("서브 스타트 문");
+        scrollbar.size = GameManager.gauge;
     }
 
     // Update is called once per frame

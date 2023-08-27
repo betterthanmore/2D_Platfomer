@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
 
         if (stage)
         {
+            Debug.Log("스테이지 문 반응");
             LeVer();
         }
 
@@ -157,7 +158,6 @@ public class GameManager : MonoBehaviour
     {
         if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, playerLayer))
         {
-            Debug.Log("감지");
             if (leverPos1.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
             {
                 if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
@@ -222,7 +222,6 @@ public class GameManager : MonoBehaviour
 
         if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
         {
-            Debug.Log("감지");
             if (leverPos2.tag == "SubPlayer" && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.O)))
             {
                 if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
