@@ -295,8 +295,8 @@ public class GameManager : MonoBehaviour
         nextSceneLoad1P = false;
         nextSceneLoad2P = false;
         /*remainGears = 5;*/
-        gearItem = 0;
-        gauge = 1;
+        gearItem = gearItemInit;
+        gauge = gauge_Init;
         try
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
