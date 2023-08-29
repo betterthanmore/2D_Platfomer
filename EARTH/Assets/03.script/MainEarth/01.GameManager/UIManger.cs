@@ -67,6 +67,14 @@ public class UIManger : MonoBehaviour
         {
             StartCoroutine(ReGameTxet());
         }
+        if(pauseScreen != null)
+        {
+            if (GameManager.butttonBPress)
+                pauseScreen.SetActive(true);
+            else
+                pauseScreen.SetActive(false);
+        }
+        
     }
     public IEnumerator FadeScreen()
     {
@@ -124,7 +132,7 @@ public class UIManger : MonoBehaviour
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);
         reGame_Outline.DOFade(1, 1);
-        reGame_text.text = " 양쪽 플레이어 모두 B버튼을 누르면 게임이 재시작합니다.";
+        reGame_text.text = " 양쪽 플레이어 모두 RB버튼을 누르면 게임이 재시작합니다.";
             
     }
     public void UIOnLoadSceneInfo(Scene arg, LoadSceneMode arg1)

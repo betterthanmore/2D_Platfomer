@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public bool nextSceneButtonDown = false;
     public bool butttonBPress = false;
     public float gauge = 1;
-    public float gauge_Init = 0;
+    public float gauge_Init = 1;
     public bool stage_TA = false;
     public bool donPress_B = false;
     public bool move = true;
@@ -297,10 +297,11 @@ public class GameManager : MonoBehaviour
         /*remainGears = 5;*/
         gearItem = gearItemInit;
         gauge = gauge_Init;
-        try
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        /*try
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
         }
         catch (System.Exception)
         {
@@ -310,7 +311,7 @@ public class GameManager : MonoBehaviour
         finally
         {
             SceneManager.LoadScene("MainScene");
-        }
+        }*/
     }
     IEnumerator PortalOn()
     {
@@ -333,7 +334,7 @@ public class GameManager : MonoBehaviour
         {
             Vidio_N = true;
         }
-        
+
         if (arg.name.Contains("Stage"))
         {
             nextSceneLoad1P = false;

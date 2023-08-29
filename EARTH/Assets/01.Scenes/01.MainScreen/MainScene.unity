@@ -2504,6 +2504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: 
   gearItem: 0
+  gearItemInit: 0
   nextSceneLoad1P: 0
   nextSceneLoad2P: 0
   reGame1P: 0
@@ -2513,7 +2514,7 @@ MonoBehaviour:
   nextSceneButtonDown: 0
   butttonBPress: 0
   gauge: 1
-  gauge_Init: 0
+  gauge_Init: 1
   stage_TA: 0
   donPress_B: 0
   move: 1
@@ -2528,8 +2529,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 768
+  timerRestart: 0
   leverPos1: {fileID: 0}
   leverPos2: {fileID: 0}
+  mainLeverOn: 0
+  subLeverOn: 0
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}
@@ -2990,6 +2994,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   fadeOutscreenBoard: {fileID: 0}
   pauseScreen: {fileID: 0}
+  minGearTextStart: 1
 --- !u!4 &2022028782
 Transform:
   m_ObjectHideFlags: 0
