@@ -16,6 +16,7 @@ public class Pushing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!isPush && transform.parent == null)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -23,6 +24,7 @@ public class Pushing : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if(collision.gameObject.tag == "MainPlayer" || collision.gameObject.tag == "SubPlayer")
         {
             isPush = true;

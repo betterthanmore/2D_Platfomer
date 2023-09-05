@@ -65,7 +65,6 @@ public class Portal : MonoBehaviour
                 if (!mainReady)
                 {
                     mainReady = true;                    //다음씬 이동하기 위한 준비버튼
-
                 }
                 else
                 {
@@ -92,41 +91,10 @@ public class Portal : MonoBehaviour
                     }
                 }
             }
-
-            /*if (GameManager.gearItem >= 5)
-            {
-                
-                
-            }
-            else
-            {
-                if (textFadeRun)
-                {
-                    if (Input.GetButtonDown("GamePad1_Y") || Input.GetButtonDown("GamePad2_Y"))                 //나중에 키 변경
-                    {
-                        portalText.text = "기어가 모자랍니다. 남은 갯수: " + GameManager.remainGears;
-                        StartCoroutine(TextFade());
-                    } 
-                }
-            }*/
-
         }
         if(mainReady && subReady)           //서브랑 메인이 준비가 됐다면
         {
-            /*if (GameManager.gearItem <= 7)
-            {
-                GameManager.gauge += 0.2f;
-            }
-            else if (GameManager.gearItem <= 9)
-            {
-                GameManager.gauge += 0.5f;
-            }
-            else
-            {
-                GameManager.gauge += 0.7f;
-            }
-            GameManager.remainGears = 5;
-            GameManager.gearItem = 0;*/
+            
             GameManager.gauge_Init = GameManager.gauge;
             GameManager.gearItemInit = GameManager.gearItem;
             if (GameManager.sceneName.Contains("Chap1"))
@@ -175,8 +143,6 @@ public class Portal : MonoBehaviour
                 }
                 else
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-
             }
 
             mainReady = false;

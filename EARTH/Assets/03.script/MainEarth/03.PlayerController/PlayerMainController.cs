@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMainController : MonoBehaviour
 {
@@ -22,9 +23,7 @@ public class PlayerMainController : MonoBehaviour
     public PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
     public Transform groundCheck;    
     public LayerMask playerLayer;    
-    protected string HorizontalKeyMap = "Horizontal1";
-    protected string HorizontalKeyBoard;
-    protected string JumpKeyMap = "GamePad1_A";
+    protected string ControllerDevices = "XInputControllerWindows1";
 
     public bool subMove = true;
 
@@ -33,9 +32,11 @@ public class PlayerMainController : MonoBehaviour
     public LayerMask groundLayer;
     public float rayRange = 0.1f;
     public float jumpForce = 0;
-    public float moveSpeed = 2;      
+    public float moveSpeed = 2;
+    protected Vector2 playerMoveX;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
+    protected CapsuleCollider2D cc;
     protected Animator an;
     public bool isStepOn;
     public static bool fadeOut = false;     
@@ -43,12 +44,13 @@ public class PlayerMainController : MonoBehaviour
     public Collider2D isPlayerOn;
     public Collider2D moveGround;
     public RaycastHit2D boxSense;
-    public float otherVelocity;
+    public float otherVelocity = 0f;
     public LayerMask moveGroundLayer;
     public bool boxHold = false;
     public bool subBoxHold = false;
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
+    
     protected GameManager GameManager => GameManager.Instance;
     protected UIManger UIManager => UIManger.uiManger;
 
@@ -60,24 +62,15 @@ public class PlayerMainController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
+        cc = GetComponent<CapsuleCollider2D>();
 
         if (playertype == PLAYERTYPE.PLAYER_01)
         {
-            HorizontalKeyMap = "Horizontal1";
-            JumpKeyMap = "GamePad1_A";
+            ControllerDevices = "XInputControllerWindows";
         }
         else if (playertype == PLAYERTYPE.PLAYER_02)
         {
-            HorizontalKeyMap = "Horizontal2";
-            JumpKeyMap = "GamePad2_A";
-        }
-        if(gameObject.tag == "MainPlayer")
-        {
-            HorizontalKeyBoard = "HorizontalMain";
-        }
-        else if(gameObject.tag == "SubPlayer")
-        {
-            HorizontalKeyBoard = "HorizontalSub";
+            ControllerDevices = "XInputControllerWindows1";
         }
     }
 
@@ -89,15 +82,22 @@ public class PlayerMainController : MonoBehaviour
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, 2048);
 
-        if (GameManager.move)
+        if (!moveGround && playerMoveX.x == 0)
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
+        rb.velocity = new Vector2(playerMoveX.x, rb.velocity.y);
+        /*if (GameManager.move)
         {
+            rb.velocity = playerMove;
             if (moveGround)
             {
                 otherVelocity = moveGround.GetComponent<Rigidbody2D>().velocity.x;
+                rb.velocity = playerMove;
                 if (GameManager.joysticDown)
                 {
+
                     rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed + otherVelocity, rb.velocity.y);
-                    /*rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);*/
+                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
                     if (Input.GetAxis(HorizontalKeyMap) == 0)
                     {
                         rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
@@ -106,7 +106,7 @@ public class PlayerMainController : MonoBehaviour
                 else if (GameManager.keyDown)
                 {
                     rb.velocity = new Vector2(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
-                    /*rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);*/
+                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);
                     if (Input.GetAxis(HorizontalKeyBoard) == 0)
                     {
                         rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
@@ -119,11 +119,11 @@ public class PlayerMainController : MonoBehaviour
                 {
                     if (boxHold)
                     {
-                        if(dir == -1)
+                        if (dir == -1)
                         {
                             rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, 0, Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed), rb.velocity.y);
                         }
-                        else if(dir == 1)
+                        else if (dir == 1)
                         {
                             rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, 0), rb.velocity.y);
                         }
@@ -142,7 +142,7 @@ public class PlayerMainController : MonoBehaviour
                         {
                             rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, 0, Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed), rb.velocity.y);
                         }
-                        else if(dir == 1)
+                        else if (dir == 1)
                         {
                             rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, 0), rb.velocity.y);
                         }
@@ -154,6 +154,32 @@ public class PlayerMainController : MonoBehaviour
                     }
                 }
             }
+        }*/
+    }
+    public void Move(InputAction.CallbackContext input)
+    {
+        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard")
+        {
+            playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
+            if (input.ReadValue<Vector2>().x == 0)
+            {
+                playerMoveX.x = otherVelocity;
+            }
+        }
+    }
+
+    public void MoveDirection()
+    {
+        Debug.Log("Á¢±Ù");
+        if (rb.velocity.x < 0)
+        {
+            sr.flipX = true;
+            dir = -1;
+        }
+        else if (rb.velocity.x > 0)
+        {
+            sr.flipX = false;
+            dir = 1;
         }
     }
 
@@ -179,10 +205,10 @@ public class PlayerMainController : MonoBehaviour
                     an.SetBool("Jump", true);
                     an.SetBool("Run", false);
                 }
-
                 if (!boxHold)
                 {
-                    if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0)
+                    MoveDirection();
+                    /*if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0)
                     {
                         sr.flipX = true;
                         dir = -1;
@@ -191,7 +217,7 @@ public class PlayerMainController : MonoBehaviour
                     {
                         sr.flipX = false;
                         dir = 1;
-                    } 
+                    }*/
                 }
                 break;
             case State.IDEL:
@@ -217,7 +243,8 @@ public class PlayerMainController : MonoBehaviour
             case State.SUBHOLD:
                 an.SetBool("Hold", true);
                 moveSpeed = 0.5f;
-                if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0 && subMove)
+                MoveDirection();
+                /*if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0 && subMove)
                 {
                     sr.flipX = true;
                     dir = -1;
@@ -226,7 +253,7 @@ public class PlayerMainController : MonoBehaviour
                 {
                     sr.flipX = false;
                     dir = 1;
-                }
+                }*/
                 break;
 
             default:

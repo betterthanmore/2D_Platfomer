@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SubPlayer : PlayerMainController
 {
@@ -9,10 +10,10 @@ public class SubPlayer : PlayerMainController
     public int boostTime = 0;           //부스트 시간
     public float boostDistanceLimit = 1;//부스트로 한번에 올라갈 수 있는 거리
     public Camera cm;
+    private Vector2 boostPower;
     private float subplayerPosYCrt;    //부스트 사용할 때의 플레이어의 현재 위치 저장
     private float subPlayerPosYTrs;     //부스트 사용하면서 바뀌는 위치Y 값을 저장
     public bool enableBoost = true;            //부스트 사용 가능 여부
-    public static bool maxDistance = false;            //부스트로 올라간 거리가 최대치가 됐을 때 자동으로 떨어지게
     public float boxPosX;               //박스 x포지션 정해주는 변수
     /*public Vector2 boxPos;            //박스 포지션 위치 값을 받는 변수
     public Vector2 boxPosInit;*/        //박스 잡았을 때 초깃값
@@ -46,38 +47,43 @@ public class SubPlayer : PlayerMainController
                 state = State.MOVE;
             }
         }
+        
 
         subPlayerPosYTrs = gameObject.transform.position.y;
+        /*if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
+        {
+            enableBoost = false;
+        }*/
+
         if (GameManager.move)
         {
             
-            if (!subBoxHold)
+            if (!subBoxHold && enableBoost)
             {
-                if ((Input.GetButtonDown(JumpKeyMap) && enableBoost) || (Input.GetKeyDown(KeyCode.UpArrow) && enableBoost))     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
+                if ((Input.GetButtonDown("GamePad2_A") && enableBoost) || (Input.GetKeyDown(KeyCode.UpArrow) && enableBoost))     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
                 {
-                    Debug.Log("다운 키 잠프 반응");
                     state = State.MOVE;
                     subplayerPosYCrt = gameObject.transform.position.y;
                 }
 
-                if (Input.GetButtonUp(JumpKeyMap) || maxDistance || Input.GetKeyUp(KeyCode.UpArrow))  //점프키를 
+                if (Input.GetButtonUp("GamePad2_A") || Input.GetKeyUp(KeyCode.UpArrow))  //점프키를 
                 {
                     enableBoost = false;
                 }
 
-                if (gameObject.tag == "SubPlayer" && (Input.GetButton(JumpKeyMap) || Input.GetKey(KeyCode.UpArrow)) && !maxDistance && enableBoost && scrollbar.size > 0.001)        //부스트
+                if (gameObject.tag == "SubPlayer" && (Input.GetButton("GamePad2_A") || Input.GetKey(KeyCode.UpArrow)) && enableBoost && scrollbar.size > 0.001)        //부스트
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     scrollbar.size -= 1 * Time.deltaTime / boostTime;
                     GameManager.gauge = scrollbar.size;
                     if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
                     {
-                        maxDistance = true;
+                        enableBoost = false;
                     }
                 }
             }
 
-            /*if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행 
+            /*if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행
             {
                 subMove = false;
                 HoldAction();
@@ -89,12 +95,15 @@ public class SubPlayer : PlayerMainController
             }*/
 
         }
+        /*else
+        {
+            rb.velocity = 
+        }*/
         
 
         if (isStepOn)   //땅에 닿는다면
         {
             enableBoost = true;
-            maxDistance = false;
         }
 
         scrollbar.transform.position = cm.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + 0.6f));
@@ -103,6 +112,63 @@ public class SubPlayer : PlayerMainController
 
 
     }
+    public void Lever(InputAction.CallbackContext input)
+    {
+        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && input.started)
+            GameManager.SubLever();
+    }
+    /*public void BoostKeyDown(InputAction.CallbackContext input)
+    {
+        Debug.Log("누름");
+        if (!subBoxHold && input.control.parent.name == ControllerDevices)
+        {
+            
+        }
+    }*/
+    /*public void BoostKeyHold(InputAction.CallbackContext input)
+    {
+        if (input.control.parent.name == ControllerDevices)
+        {
+
+            if (input.started)
+            {
+                if (enableBoost)
+                {
+                    state = State.MOVE;
+                    subplayerPosYCrt = gameObject.transform.position.y;
+                }
+            }
+            else if (input.performed)
+            {
+                Debug.Log(input.GetType());
+                Debug.Log(input.valueType);
+                Debug.Log(input.ReadValueAsButton());
+                Debug.Log(input.ReadValue<System.Single>());
+                if (!subBoxHold)
+                {
+                    if (gameObject.tag == "SubPlayer" && enableBoost && scrollbar.size > 0.001)        //부스트
+                    {
+                        boostPower.y = input.ReadValue<System.Single>() * jumpForce;
+                        scrollbar.size -= 1 * Time.deltaTime / boostTime;
+                        GameManager.gauge = scrollbar.size;
+                    }
+                }
+            }
+            else if (input.canceled)
+            {
+                enableBoost = false;
+                Debug.Log("뗌");
+
+            }
+
+        }
+
+
+    }*/
+    /*public void BoostKeyUp(InputAction.CallbackContext input)
+    {
+       
+    }*/
     /*public void HoldAction()          박스 들 때 메서드
     {
         subBoxHold = true;
@@ -115,7 +181,7 @@ public class SubPlayer : PlayerMainController
         StartCoroutine("OverHeadBox");
     }*/
 
-        
+
     /*public void PutAction()           //박스 내려놓았을 때 메서드
     {
         state = State.IDEL;

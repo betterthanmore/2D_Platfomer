@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class MainPlayer : PlayerMainController
 {
-    
+
     public bool interaction;
+
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -16,7 +19,6 @@ public class MainPlayer : PlayerMainController
     public override void Update()
     {
         base.Update();
-        
         if (!boxHold)
         {
             if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
@@ -30,58 +32,11 @@ public class MainPlayer : PlayerMainController
         }
 
         interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
+
         if (GameManager.move)
         {
-            if (boxSense)
-            {
-                HoldAction();
-            }
-
-            if (!boxHold)
-            {
-                if (Input.GetButtonDown(JumpKeyMap) && (isStepOn || isPlayerOn) || Input.GetKeyDown(KeyCode.W) && (isStepOn || isPlayerOn))
-                {
-                    JumpAction();
-                }
-
-                if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
-                {
-                    if (interaction && (Input.GetButtonDown("GamePad1_LB") || Input.GetKeyDown(KeyCode.H)) && state != State.HEAL && !boxSense)// && (!leverPos1 || 1leverPos2))
-                    {
-                        if (GameManager.gearItem == 0)
-                        {
-                            if (UIManager.minGearText != null && UIManager.minGearTextStart)
-                            {
-                                StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
-                            }
-                        }
-                        else
-                        {
-                            an.SetTrigger("Heal");
-                            state = State.HEAL;
-                            StartCoroutine(SubGaugeHeal());
-                        }
-                       
-                    }  
-                }
-            }
+            AnimationTransform();
         }
-        /*if (state != State.HEAL)
-        {
-            if (isPlayerOn || isStepOn)
-            {
-                state = State.IDEL;
-            }
-
-            else
-            {
-                an.SetBool("Run", false);
-                state = State.IDEL;
-            }
-
-        }*/
-        AnimationTransform();
-
     }
     IEnumerator SubGaugeHeal()
     {
@@ -100,12 +55,12 @@ public class MainPlayer : PlayerMainController
         float maxGauge = 1;       //최대 게이지량에서
         float needGauge = 0;       //필요 게이지량만큼 더해주기 위해
         int needGears = 0;
-        
-        
+
+
         needGauge = maxGauge - SubPlayer.scrollbar.size;
-        
+
         needGears = (int)(needGauge / 0.05f);
-        if(needGears <= GameManager.gearItem)
+        if (needGears <= GameManager.gearItem)
         {
             GameManager.gearItem -= needGears;
             SubPlayer.scrollbar.size += needGears * 0.05f;
@@ -116,34 +71,29 @@ public class MainPlayer : PlayerMainController
             GameManager.gearItem = 0;
             SubPlayer.scrollbar.size += needGears * 0.05f;
         }
-        
-    }
-    public void JumpAction()
-    {
-        state = State.MOVE;
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
     }
 
-    public void HealStop()
+    private void OnTriggerEnter2D(Collider2D other)     //톱니바퀴에 관한 코드
     {
-        StopCoroutine("SubGaugeHeal");
-        state = State.IDEL;
-    }
-
-    public void HoldAction()
-    {
-        if (rb.velocity.y > - 0.1f && rb.velocity.y < 0.1f)
+        if (other.gameObject.tag == "GearItem")
         {
-            if (Input.GetButtonDown("GamePad1_LB") || Input.GetKeyDown(KeyCode.H))
+            Destroy(other.gameObject);
+            GameManager.gearItem += 1;
+        }
+    }
+    public void Hold(InputAction.CallbackContext input)
+    {
+        if (boxSense && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started)
             {
                 state = State.HOLD;
                 boxHold = true;
                 boxSense.collider.transform.parent = gameObject.transform;
                 boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
-
-            if (Input.GetButtonUp("GamePad1_LB") || Input.GetKeyUp(KeyCode.H))
+            if (input.canceled)
             {
                 state = State.IDEL;
                 boxHold = false;
@@ -153,19 +103,59 @@ public class MainPlayer : PlayerMainController
             } 
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other)     //톱니바퀴에 관한 코드
+    public void Heal(InputAction.CallbackContext input)
     {
-        if (other.gameObject.tag == "GearItem")
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && interaction)
         {
-            Destroy(other.gameObject);
-            GameManager.gearItem += 1;
-            /*if (GameManager.remainGears > 0)
+            if (!boxHold && input.started && state != State.HEAL && !boxSense && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
             {
-                GameManager.remainGears -= 1;
-                StopCoroutine(UIManager.MinimumGears());
-                StartCoroutine(UIManager.MinimumGears());           //6월 20일 추가하고 아직 조이스틱용 스크립트엔 안넣음 넣으면 지울 것
-            }*/
+                if (SubPlayer.scrollbar.size == 1)
+                {
+                    if (UIManager.minGearText != null && UIManager.minGearTextStart)
+                    {
+                        StartCoroutine(UIManager.MinimumGears("에너지가 충분하네!"));
+                    }
+                }
+                else if (GameManager.gearItem == 0)
+                {
+                    if (UIManager.minGearText != null && UIManager.minGearTextStart)
+                    {
+                        StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
+                    }
+                }
+                else
+                {
+                    an.SetTrigger("Heal");
+                    state = State.HEAL;
+                    StartCoroutine(SubGaugeHeal());
+                }
+
+            }
         }
     }
+    public void Jump(InputAction.CallbackContext input)
+    {
+        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && !boxHold && input.started)
+        {
+            if (isStepOn || isPlayerOn)
+            {
+                state = State.MOVE;
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            }
+        }
+    }
+    public void Lever(InputAction.CallbackContext input)
+    {
+        Debug.Log("반응");
+
+        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+            GameManager.MainLever();
+    }
+    /*public void HealStop()
+    {
+        StopCoroutine("SubGaugeHeal");
+        state = State.IDEL;
+    }*/
+
 }

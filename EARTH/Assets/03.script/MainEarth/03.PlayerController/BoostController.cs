@@ -17,7 +17,7 @@ public class BoostController : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetAxis("Horizontal2") != 0 || Input.GetAxis("HorizontalSub") != 0)
+        /*if(Input.GetAxis("Horizontal2") != 0 || Input.GetAxis("HorizontalSub") != 0)
         {
             an.SetBool("Run", true);
             if (Input.GetAxis("Horizontal2") > 0 || Input.GetAxis("HorizontalSub") > 0)
@@ -42,6 +42,6 @@ public class BoostController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("GamePad2_X"))
         {
             an.SetBool("Hold", true);
-        }
+        }*/
     }
 }

@@ -69,7 +69,7 @@ public class UIManger : MonoBehaviour
         }
         if(pauseScreen != null)
         {
-            if (GameManager.butttonBPress)
+            if (GameManager.buttonBPress)
                 pauseScreen.SetActive(true);
             else
                 pauseScreen.SetActive(false);

@@ -42,9 +42,8 @@ GameObject:
   - component: {fileID: 2746739507115594654}
   - component: {fileID: 2746739507115594655}
   - component: {fileID: 2746739507115594640}
-  - component: {fileID: 2746739507115594641}
   - component: {fileID: 2746739507115594643}
-  - component: {fileID: 2056331821368654821}
+  - component: {fileID: 2746739507115594641}
   - component: {fileID: 2747076035668081679}
   m_Layer: 8
   m_Name: Chap2MainPlayer
@@ -141,27 +140,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &2746739507115594641
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746739507115594644}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &2746739507115594643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,32 +179,27 @@ MonoBehaviour:
   rayDis: 0.2
   rayPosy: 0.2
   interaction: 0
---- !u!61 &2056331821368654821
-BoxCollider2D:
+--- !u!50 &2746739507115594641
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2746739507115594644}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 3aa416f4da304864683c74f69decc6d0, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.43028295}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.25666666, y: 0.7266667}
-    newSize: {x: 0.32, y: 0.84}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.22163391, y: 0.5927675}
-  m_EdgeRadius: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!70 &2747076035668081679
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -240,6 +213,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.12833333}
-  m_Size: {x: 0.25666666, y: 0.25666666}
+  m_Offset: {x: 0, y: 0.36333334}
+  m_Size: {x: 0.25666666, y: 0.7266667}
   m_Direction: 0
