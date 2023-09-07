@@ -184,7 +184,7 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Pause(InputAction.CallbackContext input)        //¾ÆÁ÷ ¾È¿Å±è
     {
-        if (!GameManager.donPress_B)
+        if (input.started)
         {
             if (!GameManager.buttonBPress)
             {

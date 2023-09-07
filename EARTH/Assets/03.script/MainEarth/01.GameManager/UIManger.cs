@@ -53,17 +53,6 @@ public class UIManger : MonoBehaviour
         {
             TimeATTACK();
         }
-        /*if (minGearText != null)
-        {
-            if (GameManager.remainGears > 0)
-            {
-                minGearText.text = GameManager.remainGears + "개만 더 먹으면 포탈 이동이 가능합니다.";
-            }
-            if (GameManager.remainGears == 0)
-            {
-                minGearText.text = "포탈 이동이 가능합니다.";
-            }
-        }*/
         if (GameManager.reGameStart)
         {
             StartCoroutine(ReGameTxet());
@@ -80,14 +69,14 @@ public class UIManger : MonoBehaviour
     public IEnumerator FadeScreen()
     {
         fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
-        GameManager.donPress_B = true;
+        GameManager.buttonBPress = false;
         yield return new WaitForSeconds(0.5f);
         fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);
         if (GameManager.Vidio_N)
         {
-            GameManager.donPress_B = false;
+            GameManager.buttonBPress = true;
         }
     }
     public IEnumerator MinimumGears(string text)
@@ -110,17 +99,15 @@ public class UIManger : MonoBehaviour
 
         if (timeTAtime > 0)
         {
-            time_TA_Text.text = ((int)(timeTAtime -= Time.deltaTime)).ToString();
+            time_TA_Text.text = ((int)Mathf.Clamp(timeTAtime -= Time.deltaTime, 0, timeTAtime)).ToString();
         }
-        else if (timeTAtime <= 0 && GameManager.reGameButtonDown)
+        else if (timeTAtime <= 0)
         {
-            GameManager.reGameButtonDown = false;
             GameManager.stage_TA = false;
-            timeTAtime = 0;
             gameOverTA_Text.DOFade(1, 1);
             gameOverTA_Outline.DOFade(1, 1);
             gameOverTA_Text.gameObject.transform.DOLocalMove(Vector2.zero, 1);
-            GameManager.timerRestart = true;
+            GameManager.reGameStart = true;
             StartCoroutine(ReGameTxet());
         }
 
@@ -135,7 +122,7 @@ public class UIManger : MonoBehaviour
     
     public IEnumerator ReGameTxet()
     {
-        GameManager.donPress_B = true;
+        GameManager.buttonBPress = false;
         GameManager.move = false;
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);

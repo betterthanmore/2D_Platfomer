@@ -135,7 +135,17 @@ public class MainPlayer : PlayerMainController
     }
     public void ReLoad(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
     {
-        
+        if (input.started && !GameManager.buttonBPress && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            GameManager.reGame1P = true;
+            if (GameManager.reGame1P && GameManager.reGame2P)
+            {
+                GameManager.reGameButtonDown = false;
+                GameManager.reGameStart = true;
+                GameManager.ReGameStart();
+            }
+        }
+
     }
     public void Portar(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
     {

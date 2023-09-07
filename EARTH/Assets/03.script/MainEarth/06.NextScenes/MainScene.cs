@@ -21,12 +21,12 @@ public class MainScene : MonoBehaviour
     }
     public void Exit()
     {
-        GameManager.donPress_B = true;
+        GameManager.buttonBPress = false;
         Application.Quit();
     }
     public void StartButton()
     {
-        GameManager.donPress_B = true;
+        GameManager.buttonBPress = false;
         StartCoroutine(StartButtonNextScene());
     }
     public IEnumerator StartButtonNextScene()

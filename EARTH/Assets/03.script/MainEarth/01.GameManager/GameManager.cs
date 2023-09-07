@@ -15,18 +15,14 @@ public class GameManager : MonoBehaviour
     public string sceneName;
     public int gearItem = 0;
     public int gearItemInit = 0;
-    public bool nextSceneLoad1P = false;
-    public bool nextSceneLoad2P = false;
     public bool reGame1P = false;
     public bool reGame2P = false;
     public bool reGameStart = false;
     public bool reGameButtonDown = false;
-    public bool nextSceneButtonDown = false;
     public bool buttonBPress = false;
     public float gauge = 1;
     public float gauge_Init = 1;
     public bool stage_TA = false;
-    public bool donPress_B = false;
     public bool move = true;
     public bool Vidio_N = false;
     public int clearStage = 0;
@@ -34,7 +30,6 @@ public class GameManager : MonoBehaviour
     public int chapter2Num = 0;
     public int chapter3Num = 0;
     public LayerMask playerLayer;
-    public bool timerRestart = false;
 
     public Collider2D leverPos1 = null;
     public Collider2D leverPos2 = null;
@@ -70,59 +65,24 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        
-
-        if (leverOn1 && leverOn2)       
+        if (!buttonBPress && reGameButtonDown)
         {
-            StartCoroutine("PortalOn");
-        }
-        
-        if ((!buttonBPress && reGameButtonDown && nextSceneButtonDown && (!reGame1P || !reGame2P)) || timerRestart)
-        {
-            if (Input.GetButtonDown("GamePad2_RB"))
-            {
-                nextSceneLoad2P = true;
-            }
-            if (Input.GetButtonDown("GamePad1_RB"))
-            {
-                nextSceneLoad1P = true;
-            }
-            if (Input.GetKeyDown(KeyCode.P) || nextSceneLoad1P && nextSceneLoad2P)
-            {
-                nextSceneButtonDown = false;
-                ForceNextStage();
-            }
-            if (Input.GetButtonDown("GamePad1_RB"))
-            {
-                reGame1P = true;
-            }
             if (Input.GetButtonDown("GamePad2_RB"))
             {
                 reGame2P = true;
             }
-            if (reGame1P && reGame2P)
-            {
-                reGameButtonDown = false;
-                reGameStart = true;
-            }
+            
             if (Input.GetKeyDown(KeyCode.R))
             {
                 reGame2P = true;
                 reGame1P = true;
             }
         }
-
-        if (reGameStart)
-        {
-            timerRestart = false;
-            reGameStart = false;
-            ReGameStart();
-        }
-
     }
     
     public void ReGameStart()
     {
+        reGameStart = false;
         gearItem = gearItemInit;
         gauge = gauge_Init;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -135,40 +95,14 @@ public class GameManager : MonoBehaviour
             UIManger.GearNumText(gearItem);
         }
     }
-    public void ForceNextStage()
-    {
-        nextSceneLoad1P = false;
-        nextSceneLoad2P = false;
-        /*remainGears = 5;*/
-        gearItem = gearItemInit;
-        gauge = gauge_Init;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);                   //여기도 나중에 건드려야함
-
-        /*try
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        catch (System.Exception)
-        {
-
-            throw;
-        }
-        finally
-        {
-            SceneManager.LoadScene("MainScene");
-        }*/
-    }
     
-    IEnumerator PortalOn()
+    public void PortalOn()
     {
         portal.gameObject.SetActive(true);
         portal.transform.DOScale(new Vector3(0.05f, 0.05f, 0.4f), 1);
-        yield return new WaitForSeconds(1f);
     }
-    
     public void MainLever()
     {
-        Debug.Log("메인레버");
         if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
         {
             if (leverPos2.tag == "MainPlayer")
@@ -182,6 +116,10 @@ public class GameManager : MonoBehaviour
                 {
                     mainLeverOn = true;
                     leverOn2 = true;
+                    if(leverOn1 && leverOn2)
+                    {
+                        PortalOn();
+                    }
                 }
                 else if (UIManger.minGearTextStart)
                 {
@@ -215,6 +153,10 @@ public class GameManager : MonoBehaviour
                 {
                     mainLeverOn = true;
                     leverOn1 = true;
+                    if (leverOn1 && leverOn2)
+                    {
+                        PortalOn();
+                    }
                 }
                 else if (UIManger.minGearTextStart)
                 {
@@ -240,7 +182,6 @@ public class GameManager : MonoBehaviour
     }
     public void SubLever()
     {
-        Debug.Log("서브레버");
         if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
         {
             if (leverPos2.tag == "SubPlayer")
@@ -254,6 +195,10 @@ public class GameManager : MonoBehaviour
                 {
                     subLeverOn = true;
                     leverOn2 = true;
+                    if (leverOn1 && leverOn2)
+                    {
+                        PortalOn();
+                    }
                 }
                 else if (UIManger.minGearTextStart)
                 {
@@ -287,6 +232,10 @@ public class GameManager : MonoBehaviour
                 {
                     subLeverOn = true;
                     leverOn1 = true;
+                    if (leverOn1 && leverOn2)
+                    {
+                        PortalOn();
+                    }
                 }
                 else if (UIManger.minGearTextStart)
                 {
@@ -329,9 +278,6 @@ public class GameManager : MonoBehaviour
 
         if (arg.name.Contains("Stage"))
         {
-            nextSceneLoad1P = false;
-            nextSceneLoad2P = false;
-            nextSceneButtonDown = true;
             reGame1P = false;
             reGame2P = false;
             reGameButtonDown = true;
@@ -346,7 +292,6 @@ public class GameManager : MonoBehaviour
         {
             portal = null;
             reGameButtonDown = false;
-            nextSceneButtonDown = false;
             portalLever1 = null;
             portalLever2 = null;
         }
