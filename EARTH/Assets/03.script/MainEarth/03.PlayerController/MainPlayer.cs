@@ -79,7 +79,7 @@ public class MainPlayer : PlayerMainController
         if (other.gameObject.tag == "GearItem")
         {
             Destroy(other.gameObject);
-            GameManager.gearItem += 1;
+            GameManager.GearNumText(1);
         }
     }
     public void Hold(InputAction.CallbackContext input)
@@ -131,6 +131,17 @@ public class MainPlayer : PlayerMainController
                 }
 
             }
+        }
+    }
+    public void ReLoad(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
+    {
+        
+    }
+    public void Portar(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
+    {
+        if((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        {
+
         }
     }
     public void Jump(InputAction.CallbackContext input)

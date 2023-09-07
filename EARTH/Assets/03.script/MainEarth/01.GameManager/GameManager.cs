@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public GameObject portal = null;
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
+
+    
 
 
     private void Awake()
@@ -117,24 +119,6 @@ public class GameManager : MonoBehaviour
             ReGameStart();
         }
 
-        if (!donPress_B)
-        {
-            if (Input.GetButtonDown("GamePad1_B") || Input.GetButtonDown("GamePad2_B"))
-            {
-                if (!buttonBPress)
-                {
-                    buttonBPress = true;
-                    move = false;
-                    Time.timeScale = 0;
-                }
-                else
-                {
-                    buttonBPress = false;
-                    move = true;
-                    Time.timeScale = 1;
-                }
-            }
-        }
     }
     
     public void ReGameStart()
@@ -142,6 +126,14 @@ public class GameManager : MonoBehaviour
         gearItem = gearItemInit;
         gauge = gauge_Init;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void GearNumText(int gear)
+    {
+        if (UIManger.gearNum != null)
+        {
+            gearItem += gear;
+            UIManger.GearNumText(gearItem);
+        }
     }
     public void ForceNextStage()
     {
@@ -173,51 +165,7 @@ public class GameManager : MonoBehaviour
         portal.transform.DOScale(new Vector3(0.05f, 0.05f, 0.4f), 1);
         yield return new WaitForSeconds(1f);
     }
-    public void Pause(InputAction.CallbackContext input)        //아직 안옮김
-    {
-        switch (input.control.parent.name)
-        {
-            case "XInputControllerWindows1":
-
-                break;
-            case "XInputControllerWindows":
-                break;
-            case "Keyboard":
-                break;
-            default:
-                break;
-        }
-    }
-    public void ReLoad(InputAction.CallbackContext input)       //아직 안옮김
-    {
-        switch (input.control.parent.name)
-        {
-            case "XInputControllerWindows1":
-
-                break;
-            case "XInputControllerWindows":
-                break;
-            case "Keyboard":
-                break;
-            default:
-                break;
-        }
-    }
-    public void Portar(InputAction.CallbackContext input)       //아직 안옮김
-    {
-        switch (input.control.parent.name)
-        {
-            case "XInputControllerWindows1":
-
-                break;
-            case "XInputControllerWindows":
-                break;
-            case "Keyboard":
-                break;
-            default:
-                break;
-        }
-    }
+    
     public void MainLever()
     {
         Debug.Log("메인레버");

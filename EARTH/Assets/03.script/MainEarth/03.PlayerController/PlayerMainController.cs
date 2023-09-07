@@ -182,7 +182,24 @@ public class PlayerMainController : MonoBehaviour
             dir = 1;
         }
     }
-
+    public void Pause(InputAction.CallbackContext input)        //¾ÆÁ÷ ¾È¿Å±è
+    {
+        if (!GameManager.donPress_B)
+        {
+            if (!GameManager.buttonBPress)
+            {
+                GameManager.buttonBPress = true;
+                GameManager.move = false;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                GameManager.buttonBPress = false;
+                GameManager.move = true;
+                Time.timeScale = 1;
+            } 
+        }
+    }
     public void AnimationTransform()
     {
         if(state != State.HOLD)

@@ -16,6 +16,7 @@ public class UIManger : MonoBehaviour
     private Outline gameOverTA_Outline;
     private Text reGame_text;
     private Outline reGame_Outline;
+    public Text gearNum;
     public float timeTAtime = 41;
     public Canvas canvas;
     public Image fadeOutscreenBoard;
@@ -124,6 +125,13 @@ public class UIManger : MonoBehaviour
         }
 
     }
+    public void GearNumText(int num)
+    {
+        if (gearNum != null)
+        {
+            gearNum.text = "x" + num;
+        }
+    }
     
     public IEnumerator ReGameTxet()
     {
@@ -148,6 +156,7 @@ public class UIManger : MonoBehaviour
                     reGame_text = GameObject.Find("ReGameText").GetComponent<Text>();
                     reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                     minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
+                    gearNum = GameObject.Find("GearNum").GetComponent<Text>();
                     if (arg.name.Contains("TA"))
                     {
                         timeTAtime = 41;
@@ -176,6 +185,7 @@ public class UIManger : MonoBehaviour
                 minGearText = null;
                 pauseScreen = null;
 
+                gearNum = null;
                 time_TA_Text = null;
                 gameOverTA_Text = null;
                 gameOverTA_Outline = null;
@@ -190,6 +200,7 @@ public class UIManger : MonoBehaviour
             minGearText = null;
             pauseScreen = null;
 
+            gearNum = null;
             time_TA_Text = null;
             gameOverTA_Text = null;
             gameOverTA_Outline = null;

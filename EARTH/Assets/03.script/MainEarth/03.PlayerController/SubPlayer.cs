@@ -112,10 +112,29 @@ public class SubPlayer : PlayerMainController
 
 
     }
+    public void ReLoad(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
+    {
+        
+    }
     public void Lever(InputAction.CallbackContext input)
     {
         if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && input.started)
             GameManager.SubLever();
+    }
+    public void Portar(InputAction.CallbackContext input)       //¾ÆÁ÷ ¾È¿Å±è
+    {
+        switch (input.control.parent.name)
+        {
+            case "XInputControllerWindows1":
+
+                break;
+            case "XInputControllerWindows":
+                break;
+            case "Keyboard":
+                break;
+            default:
+                break;
+        }
     }
     /*public void BoostKeyDown(InputAction.CallbackContext input)
     {

@@ -353,8 +353,8 @@ RectTransform:
   m_Father: {fileID: 42727386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -660,7 +660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &397804171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -754,8 +754,8 @@ RectTransform:
   m_Father: {fileID: 574759194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1077,7 +1077,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1650,7 +1650,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1776,16 +1776,13 @@ MonoBehaviour:
   reGameStart: 0
   reGameButtonDown: 0
   nextSceneButtonDown: 0
-  butttonBPress: 0
+  buttonBPress: 0
   gauge: 1
   gauge_Init: 1
   stage_TA: 0
   donPress_B: 0
   move: 1
   Vidio_N: 0
-  keyDown: 1
-  joysticDown: 1
-  stage: 0
   clearStage: 0
   chapter1Num: 0
   chapter2Num: 0
@@ -2151,6 +2148,7 @@ MonoBehaviour:
   minGearText: {fileID: 0}
   miniGearText_Outline: {fileID: 0}
   time_TA_Text: {fileID: 0}
+  gearNum: {fileID: 0}
   timeTAtime: 41
   canvas: {fileID: 0}
   fadeOutscreenBoard: {fileID: 0}
