@@ -82,43 +82,30 @@ public class MainPlayer : PlayerMainController
             GameManager.GearNumText(1);
         }
     }
-    public void Hold(InputAction.CallbackContext input)
+    
+    public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        if (boxSense && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
         {
-            if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started)
+            if (boxSense)
             {
                 state = State.HOLD;
                 boxHold = true;
                 boxSense.collider.transform.parent = gameObject.transform;
                 boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
-            if (input.canceled)
-            {
-                state = State.IDEL;
-                boxHold = false;
-                boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                boxSense.transform.parent = null;
-                moveSpeed = 2;
-            } 
-        }
-    }
-    public void Heal(InputAction.CallbackContext input)
-    {
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && interaction)
-        {
-            if (!boxHold && input.started && state != State.HEAL && !boxSense && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+            else if(state != State.HEAL && interaction)
             {
                 if (SubPlayer.scrollbar.size == 1)
                 {
-                    if (UIManager.minGearText != null && UIManager.minGearTextStart)
+                    if (UIManager.minGearText != null)
                     {
                         StartCoroutine(UIManager.MinimumGears("에너지가 충분하네!"));
                     }
                 }
                 else if (GameManager.gearItem == 0)
                 {
-                    if (UIManager.minGearText != null && UIManager.minGearTextStart)
+                    if (UIManager.minGearText != null)
                     {
                         StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
                     }
@@ -129,13 +116,20 @@ public class MainPlayer : PlayerMainController
                     state = State.HEAL;
                     StartCoroutine(SubGaugeHeal());
                 }
-
             }
+        }
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && boxHold &&  input.canceled && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            state = State.IDEL;
+            boxHold = false;
+            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            boxSense.transform.parent = null;
+            moveSpeed = 2;
         }
     }
     public void ReLoad(InputAction.CallbackContext input)       //아직 안옮김
     {
-        if (input.started && !GameManager.buttonBPress && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
         {
             GameManager.reGame1P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
@@ -149,9 +143,14 @@ public class MainPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)       //아직 안옮김
     {
-        if((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        if((GameManager.portalOnPlayer && input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
         {
-
+            if (GameManager.portal_Ready_Player[0])
+            {
+                StartCoroutine(UIManager.MinimumGears("로봇이 준비 될 때까지 기다려주자"));
+            }
+            else
+                GameManager.PortalAction();
         }
     }
     public void Jump(InputAction.CallbackContext input)
@@ -173,10 +172,4 @@ public class MainPlayer : PlayerMainController
         if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
             GameManager.MainLever();
     }
-    /*public void HealStop()
-    {
-        StopCoroutine("SubGaugeHeal");
-        state = State.IDEL;
-    }*/
-
 }

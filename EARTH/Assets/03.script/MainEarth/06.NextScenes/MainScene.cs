@@ -21,12 +21,11 @@ public class MainScene : MonoBehaviour
     }
     public void Exit()
     {
-        GameManager.buttonBPress = false;
         Application.Quit();
     }
     public void StartButton()
     {
-        GameManager.buttonBPress = false;
+        GameManager.buttonB_Lock = true;
         StartCoroutine(StartButtonNextScene());
     }
     public IEnumerator StartButtonNextScene()

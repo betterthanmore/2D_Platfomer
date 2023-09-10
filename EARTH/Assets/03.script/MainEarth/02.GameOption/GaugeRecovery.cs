@@ -21,7 +21,7 @@ public class GaugeRecovery : MonoBehaviour
         isSubPlayer = Physics2D.OverlapBox(transform.position, new Vector2(1, 1), 0, subPlayer);
         if (isSubPlayer)
         {
-            scrollbar.size += Time.deltaTime / 20;
+            scrollbar.size += Time.deltaTime / 3;
             
         }
     }

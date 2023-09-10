@@ -89,6 +89,24 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextScene_L_Stick_Press/N"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3cc075d-7ca4-457e-9fdf-4e62913ba17f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextScene_Window_Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""633b7e36-7cb1-45fe-b350-60c618a9289c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -215,6 +233,17 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""521c0146-6cc0-4def-9ab5-b3856731c14a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ec4da2fc-1cb6-4023-87c6-85e943d8275f"",
                     ""path"": ""<XInputController>/buttonNorth"",
                     ""interactions"": ""Press"",
@@ -256,6 +285,39 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""action"": ""Reroad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4e8b8e2-f869-4867-b60a-0beb0bdb51e9"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene_L_Stick_Press/N"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d648c2e-69b1-4db8-a6d7-46caf26e489d"",
+                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene_L_Stick_Press/N"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cc4b7db-6f63-40f5-b564-c642b47fc75c"",
+                    ""path"": ""<XInputController>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene_Window_Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -282,45 +344,18 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""BoostHold"",
+                    ""name"": ""Boost"",
                     ""type"": ""Button"",
                     ""id"": ""19991878-c18a-4e2b-a1cb-485363f32f59"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BoostKeyUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""9648968b-5edb-4324-b6bb-a5a06002becf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BoostKeyDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""3e81270b-2958-42b7-95f8-e12a9ba8f04d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Tap"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Lever"",
-                    ""type"": ""Button"",
-                    ""id"": ""4fe4df82-445d-42b6-8cfa-907cb9582be2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""Lever"",
                     ""type"": ""Button"",
-                    ""id"": ""e3d62a82-780f-4d3a-a731-8105d669e2d7"",
+                    ""id"": ""4fe4df82-445d-42b6-8cfa-907cb9582be2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -339,6 +374,24 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""name"": ""Reroad"",
                     ""type"": ""Button"",
                     ""id"": ""f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextScene_L_Stick_Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd6e5387-95df-4521-b034-20de80016890"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextScene_Window_Press"",
+                    ""type"": ""Button"",
+                    ""id"": ""8063a1d0-620d-495a-872f-7f78133cdd97"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -408,7 +461,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""BoostHold"",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -419,51 +472,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""BoostHold"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6410171b-8e22-412a-b4f3-f900ad1d2b01"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BoostKeyDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""46798e3d-6ee4-467e-ae50-90eef31d4c63"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BoostKeyDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2b962ff0-9d61-4b78-a03a-a1a763a70e3c"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BoostKeyUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""31ba89fc-2d41-450d-a40e-b960aca5f6d8"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BoostKeyUp"",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -486,17 +495,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Lever"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3c4d583e-353e-4887-809b-821a91192f8e"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -543,6 +541,28 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""action"": ""Reroad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce465123-d1cd-405a-99fd-b8ca20e444e3"",
+                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene_L_Stick_Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c44c305-2e17-45c8-97a3-8e8904aaf4dd"",
+                    ""path"": ""<XInputController>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextScene_Window_Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -558,17 +578,18 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_MainPlayer_Pause = m_MainPlayer.FindAction("Pause", throwIfNotFound: true);
         m_MainPlayer_Portal = m_MainPlayer.FindAction("Portal", throwIfNotFound: true);
         m_MainPlayer_Reroad = m_MainPlayer.FindAction("Reroad", throwIfNotFound: true);
+        m_MainPlayer_NextScene_L_Stick_PressN = m_MainPlayer.FindAction("NextScene_L_Stick_Press/N", throwIfNotFound: true);
+        m_MainPlayer_NextScene_Window_Press = m_MainPlayer.FindAction("NextScene_Window_Press", throwIfNotFound: true);
         // SubPlayer
         m_SubPlayer = asset.FindActionMap("SubPlayer", throwIfNotFound: true);
         m_SubPlayer_Move = m_SubPlayer.FindAction("Move", throwIfNotFound: true);
         m_SubPlayer_Break = m_SubPlayer.FindAction("Break", throwIfNotFound: true);
-        m_SubPlayer_BoostHold = m_SubPlayer.FindAction("BoostHold", throwIfNotFound: true);
-        m_SubPlayer_BoostKeyUp = m_SubPlayer.FindAction("BoostKeyUp", throwIfNotFound: true);
-        m_SubPlayer_BoostKeyDown = m_SubPlayer.FindAction("BoostKeyDown", throwIfNotFound: true);
+        m_SubPlayer_Boost = m_SubPlayer.FindAction("Boost", throwIfNotFound: true);
         m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
-        m_SubPlayer_Pause = m_SubPlayer.FindAction("Pause", throwIfNotFound: true);
         m_SubPlayer_Portal = m_SubPlayer.FindAction("Portal", throwIfNotFound: true);
         m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
+        m_SubPlayer_NextScene_L_Stick_Press = m_SubPlayer.FindAction("NextScene_L_Stick_Press", throwIfNotFound: true);
+        m_SubPlayer_NextScene_Window_Press = m_SubPlayer.FindAction("NextScene_Window_Press", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -635,6 +656,8 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainPlayer_Pause;
     private readonly InputAction m_MainPlayer_Portal;
     private readonly InputAction m_MainPlayer_Reroad;
+    private readonly InputAction m_MainPlayer_NextScene_L_Stick_PressN;
+    private readonly InputAction m_MainPlayer_NextScene_Window_Press;
     public struct MainPlayerActions
     {
         private @Controller m_Wrapper;
@@ -646,6 +669,8 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_MainPlayer_Pause;
         public InputAction @Portal => m_Wrapper.m_MainPlayer_Portal;
         public InputAction @Reroad => m_Wrapper.m_MainPlayer_Reroad;
+        public InputAction @NextScene_L_Stick_PressN => m_Wrapper.m_MainPlayer_NextScene_L_Stick_PressN;
+        public InputAction @NextScene_Window_Press => m_Wrapper.m_MainPlayer_NextScene_Window_Press;
         public InputActionMap Get() { return m_Wrapper.m_MainPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -676,6 +701,12 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Reroad.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnReroad;
+                @NextScene_L_Stick_PressN.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_L_Stick_PressN;
+                @NextScene_L_Stick_PressN.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_L_Stick_PressN;
+                @NextScene_L_Stick_PressN.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_L_Stick_PressN;
+                @NextScene_Window_Press.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
+                @NextScene_Window_Press.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
+                @NextScene_Window_Press.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
             }
             m_Wrapper.m_MainPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -701,6 +732,12 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Reroad.started += instance.OnReroad;
                 @Reroad.performed += instance.OnReroad;
                 @Reroad.canceled += instance.OnReroad;
+                @NextScene_L_Stick_PressN.started += instance.OnNextScene_L_Stick_PressN;
+                @NextScene_L_Stick_PressN.performed += instance.OnNextScene_L_Stick_PressN;
+                @NextScene_L_Stick_PressN.canceled += instance.OnNextScene_L_Stick_PressN;
+                @NextScene_Window_Press.started += instance.OnNextScene_Window_Press;
+                @NextScene_Window_Press.performed += instance.OnNextScene_Window_Press;
+                @NextScene_Window_Press.canceled += instance.OnNextScene_Window_Press;
             }
         }
     }
@@ -711,26 +748,24 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private ISubPlayerActions m_SubPlayerActionsCallbackInterface;
     private readonly InputAction m_SubPlayer_Move;
     private readonly InputAction m_SubPlayer_Break;
-    private readonly InputAction m_SubPlayer_BoostHold;
-    private readonly InputAction m_SubPlayer_BoostKeyUp;
-    private readonly InputAction m_SubPlayer_BoostKeyDown;
+    private readonly InputAction m_SubPlayer_Boost;
     private readonly InputAction m_SubPlayer_Lever;
-    private readonly InputAction m_SubPlayer_Pause;
     private readonly InputAction m_SubPlayer_Portal;
     private readonly InputAction m_SubPlayer_Reroad;
+    private readonly InputAction m_SubPlayer_NextScene_L_Stick_Press;
+    private readonly InputAction m_SubPlayer_NextScene_Window_Press;
     public struct SubPlayerActions
     {
         private @Controller m_Wrapper;
         public SubPlayerActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_SubPlayer_Move;
         public InputAction @Break => m_Wrapper.m_SubPlayer_Break;
-        public InputAction @BoostHold => m_Wrapper.m_SubPlayer_BoostHold;
-        public InputAction @BoostKeyUp => m_Wrapper.m_SubPlayer_BoostKeyUp;
-        public InputAction @BoostKeyDown => m_Wrapper.m_SubPlayer_BoostKeyDown;
+        public InputAction @Boost => m_Wrapper.m_SubPlayer_Boost;
         public InputAction @Lever => m_Wrapper.m_SubPlayer_Lever;
-        public InputAction @Pause => m_Wrapper.m_SubPlayer_Pause;
         public InputAction @Portal => m_Wrapper.m_SubPlayer_Portal;
         public InputAction @Reroad => m_Wrapper.m_SubPlayer_Reroad;
+        public InputAction @NextScene_L_Stick_Press => m_Wrapper.m_SubPlayer_NextScene_L_Stick_Press;
+        public InputAction @NextScene_Window_Press => m_Wrapper.m_SubPlayer_NextScene_Window_Press;
         public InputActionMap Get() { return m_Wrapper.m_SubPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -746,27 +781,24 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Break.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
                 @Break.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
                 @Break.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
-                @BoostHold.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostHold;
-                @BoostHold.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostHold;
-                @BoostHold.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostHold;
-                @BoostKeyUp.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyUp;
-                @BoostKeyUp.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyUp;
-                @BoostKeyUp.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyUp;
-                @BoostKeyDown.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyDown;
-                @BoostKeyDown.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyDown;
-                @BoostKeyDown.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoostKeyDown;
+                @Boost.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
                 @Lever.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
                 @Lever.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
                 @Lever.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
-                @Pause.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
                 @Portal.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
                 @Portal.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
                 @Portal.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
                 @Reroad.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
+                @NextScene_L_Stick_Press.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
+                @NextScene_L_Stick_Press.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
+                @NextScene_L_Stick_Press.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
+                @NextScene_Window_Press.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
+                @NextScene_Window_Press.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
+                @NextScene_Window_Press.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
             }
             m_Wrapper.m_SubPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -777,27 +809,24 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Break.started += instance.OnBreak;
                 @Break.performed += instance.OnBreak;
                 @Break.canceled += instance.OnBreak;
-                @BoostHold.started += instance.OnBoostHold;
-                @BoostHold.performed += instance.OnBoostHold;
-                @BoostHold.canceled += instance.OnBoostHold;
-                @BoostKeyUp.started += instance.OnBoostKeyUp;
-                @BoostKeyUp.performed += instance.OnBoostKeyUp;
-                @BoostKeyUp.canceled += instance.OnBoostKeyUp;
-                @BoostKeyDown.started += instance.OnBoostKeyDown;
-                @BoostKeyDown.performed += instance.OnBoostKeyDown;
-                @BoostKeyDown.canceled += instance.OnBoostKeyDown;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
                 @Lever.started += instance.OnLever;
                 @Lever.performed += instance.OnLever;
                 @Lever.canceled += instance.OnLever;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
                 @Portal.started += instance.OnPortal;
                 @Portal.performed += instance.OnPortal;
                 @Portal.canceled += instance.OnPortal;
                 @Reroad.started += instance.OnReroad;
                 @Reroad.performed += instance.OnReroad;
                 @Reroad.canceled += instance.OnReroad;
+                @NextScene_L_Stick_Press.started += instance.OnNextScene_L_Stick_Press;
+                @NextScene_L_Stick_Press.performed += instance.OnNextScene_L_Stick_Press;
+                @NextScene_L_Stick_Press.canceled += instance.OnNextScene_L_Stick_Press;
+                @NextScene_Window_Press.started += instance.OnNextScene_Window_Press;
+                @NextScene_Window_Press.performed += instance.OnNextScene_Window_Press;
+                @NextScene_Window_Press.canceled += instance.OnNextScene_Window_Press;
             }
         }
     }
@@ -811,17 +840,18 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnPortal(InputAction.CallbackContext context);
         void OnReroad(InputAction.CallbackContext context);
+        void OnNextScene_L_Stick_PressN(InputAction.CallbackContext context);
+        void OnNextScene_Window_Press(InputAction.CallbackContext context);
     }
     public interface ISubPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
-        void OnBoostHold(InputAction.CallbackContext context);
-        void OnBoostKeyUp(InputAction.CallbackContext context);
-        void OnBoostKeyDown(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
         void OnLever(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnPortal(InputAction.CallbackContext context);
         void OnReroad(InputAction.CallbackContext context);
+        void OnNextScene_L_Stick_Press(InputAction.CallbackContext context);
+        void OnNextScene_Window_Press(InputAction.CallbackContext context);
     }
 }

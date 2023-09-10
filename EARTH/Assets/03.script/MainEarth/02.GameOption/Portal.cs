@@ -56,7 +56,7 @@ public class Portal : MonoBehaviour
             sr.flipY = false;
         }
 
-        isPlayer = Physics2D.OverlapCircle(transform.position, portalImgScale / 3, player);
+        /*isPlayer = Physics2D.OverlapCircle(transform.position, portalImgScale / 3, player);
         if (isPlayer)
         {
             if ((Input.GetKeyDown(KeyCode.S) || Input.GetButtonDown("GamePad1_Y")) && Physics2D.OverlapCircle(transform.position, portalImgScale / 3, 256))    //메인 플레이어 버튼//나중에 키 변경
@@ -91,21 +91,21 @@ public class Portal : MonoBehaviour
                     }
                 }
             }
-        }
-        if(mainReady && subReady)           //서브랑 메인이 준비가 됐다면
+        }*/
+        /*if (mainReady && subReady)           //서브랑 메인이 준비가 됐다면
         {
-            
+
             GameManager.gauge_Init = GameManager.gauge;
             GameManager.gearItemInit = GameManager.gearItem;
             if (GameManager.sceneName.Contains("Chap1"))
             {
-                if(GameManager.sceneName == "Chap1_Tutorial_Stage1")
+                if (GameManager.sceneName == "Chap1_Tutorial_Stage1")
                 {
                     SceneManager.LoadScene("Chap1_Stage1");
                 }
-                else if(GameManager.sceneName.Contains("Chap1_TA_Stage4"))
+                else if (GameManager.sceneName.Contains("Chap1_TA_Stage4"))
                 {
-                    GameManager.chapter1Num++;
+                    GameManager.chapterNum[0]++;
                     SceneManager.LoadScene("Chapter1_Mode");
                 }
                 else
@@ -120,9 +120,9 @@ public class Portal : MonoBehaviour
                 {
                     SceneManager.LoadScene("Chap2_Stage6");
                 }
-                else if(!GameManager.sceneName.Contains("Chap2_TA_Stage9"))
+                else if (!GameManager.sceneName.Contains("Chap2_TA_Stage9"))
                 {
-                    GameManager.chapter2Num++;
+                    GameManager.chapterNum[1]++;
                     SceneManager.LoadScene("Chapter2_Mode");
                 }
                 else
@@ -136,20 +136,20 @@ public class Portal : MonoBehaviour
                 {
                     SceneManager.LoadScene("Chap3_Stage10");
                 }
-                else if(!GameManager.sceneName.Contains("Chap3_TA_Stage13"))
+                else if (!GameManager.sceneName.Contains("Chap3_TA_Stage13"))
                 {
-                    GameManager.chapter3Num++;
+                    GameManager.chapterNum[2]++;
                     SceneManager.LoadScene("Chapter3_Mode");
                 }
                 else
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-
+            GameManager.NextScene();
             mainReady = false;
             subReady = false;
-        }
+        }*/
     }
-    IEnumerator TextFade()
+    /*IEnumerator TextFade()
     {
         textFadeRun = false;
         portalText.DOFade(1f, 1f);
@@ -157,6 +157,6 @@ public class Portal : MonoBehaviour
         portalText.DOFade(0f, 1f);
         yield return new WaitForSeconds(1.5f);
         textFadeRun = true;
-    }
+    }*/
 
 }

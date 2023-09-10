@@ -86,75 +86,7 @@ public class PlayerMainController : MonoBehaviour
             rb.velocity = new Vector2(0, rb.velocity.y);
 
         rb.velocity = new Vector2(playerMoveX.x, rb.velocity.y);
-        /*if (GameManager.move)
-        {
-            rb.velocity = playerMove;
-            if (moveGround)
-            {
-                otherVelocity = moveGround.GetComponent<Rigidbody2D>().velocity.x;
-                rb.velocity = playerMove;
-                if (GameManager.joysticDown)
-                {
-
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed + otherVelocity, rb.velocity.y);
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
-                    if (Input.GetAxis(HorizontalKeyMap) == 0)
-                    {
-                        rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
-                    }
-                }
-                else if (GameManager.keyDown)
-                {
-                    rb.velocity = new Vector2(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed + otherVelocity, rb.velocity.y);
-                    rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);
-                    if (Input.GetAxis(HorizontalKeyBoard) == 0)
-                    {
-                        rb.velocity = new Vector2(otherVelocity, rb.velocity.y);
-                    }
-                }
-            }
-            else
-            {
-                if (GameManager.keyDown)
-                {
-                    if (boxHold)
-                    {
-                        if (dir == -1)
-                        {
-                            rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, 0, Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed), rb.velocity.y);
-                        }
-                        else if (dir == 1)
-                        {
-                            rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, 0), rb.velocity.y);
-                        }
-                    }
-                    else
-                    {
-                        rb.velocity = new Vector2(Input.GetAxisRaw(HorizontalKeyBoard) * moveSpeed, rb.velocity.y);
-
-                    }
-                }
-                else if (GameManager.joysticDown)
-                {
-                    if (boxHold)
-                    {
-                        if (dir == -1)
-                        {
-                            rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, 0, Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed), rb.velocity.y);
-                        }
-                        else if (dir == 1)
-                        {
-                            rb.velocity = new Vector2(Mathf.Clamp(Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, Input.GetAxisRaw(HorizontalKeyMap) * moveSpeed, 0), rb.velocity.y);
-                        }
-                    }
-                    else
-                    {
-                        rb.velocity = new Vector2(Input.GetAxis(HorizontalKeyMap) * moveSpeed, rb.velocity.y);
-
-                    }
-                }
-            }
-        }*/
+        
     }
     public void Move(InputAction.CallbackContext input)
     {
@@ -170,7 +102,6 @@ public class PlayerMainController : MonoBehaviour
 
     public void MoveDirection()
     {
-        Debug.Log("접근");
         if (rb.velocity.x < 0)
         {
             sr.flipX = true;
@@ -182,10 +113,40 @@ public class PlayerMainController : MonoBehaviour
             dir = 1;
         }
     }
+    public void NextScene_L_Stick_Press(InputAction.CallbackContext input)
+    {
+        if (input.started && input.control.parent.name == ControllerDevices)
+        {
+            GameManager.nextScene_Press[0] = true;
+            if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
+                GameManager.NextScene();
+        }
+        else if (input.canceled && input.control.parent.name == ControllerDevices)
+        {
+            GameManager.nextScene_Press[0] = false;
+        }
+        else if(input.control.parent.name == "Keyboard" && input.started)
+            GameManager.NextScene();
+    }
+    public void NextScene_Window_Press(InputAction.CallbackContext input)
+    {
+        if (input.started && input.control.parent.name == ControllerDevices)
+        {
+            GameManager.nextScene_Press[1] = true;
+            if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
+                GameManager.NextScene();
+        }
+        else if (input.canceled && input.control.parent.name == ControllerDevices)
+        {
+            GameManager.nextScene_Press[1] = false;
+        }
+    }
     public void Pause(InputAction.CallbackContext input)        //아직 안옮김
     {
-        if (input.started)
+        Debug.Log("반응");
+        if (input.started && !GameManager.buttonB_Lock)
         {
+            Debug.Log("반응2");
             if (!GameManager.buttonBPress)
             {
                 GameManager.buttonBPress = true;

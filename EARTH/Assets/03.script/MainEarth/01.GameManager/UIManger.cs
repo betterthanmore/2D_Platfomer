@@ -69,29 +69,33 @@ public class UIManger : MonoBehaviour
     public IEnumerator FadeScreen()
     {
         fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
-        GameManager.buttonBPress = false;
+        GameManager.buttonB_Lock = true;
         yield return new WaitForSeconds(0.5f);
         fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
         fadeOutscreenBoard.gameObject.SetActive(false);
         if (GameManager.Vidio_N)
         {
-            GameManager.buttonBPress = true;
+            GameManager.buttonB_Lock = false;
         }
     }
     public IEnumerator MinimumGears(string text)
     {
-        minGearTextStart = false;
-        minGearText.text = text;
-        miniGearText_Outline.DOFade(0f, 0f);
-        minGearText.DOFade(0, 0);
-        minGearText.DOFade(1f, 1f);
-        miniGearText_Outline.DOFade(1f, 1f);
-        yield return new WaitForSeconds(1.5f);
-        minGearText.DOFade(0f, 1f);
-        miniGearText_Outline.DOFade(0f, 1f);
-        yield return new WaitForSeconds(1.01f);
-        minGearTextStart = true;
+        if (minGearTextStart)
+        {
+            Debug.Log("텍스트 진입");
+            minGearTextStart = false;
+            minGearText.text = text;
+            miniGearText_Outline.DOFade(0f, 0f);
+            minGearText.DOFade(0, 0);
+            minGearText.DOFade(1f, 1f);
+            miniGearText_Outline.DOFade(1f, 1f);
+            yield return new WaitForSeconds(1.5f);
+            minGearText.DOFade(0f, 1f);
+            miniGearText_Outline.DOFade(0f, 1f);
+            yield return new WaitForSeconds(1.01f);
+            minGearTextStart = true; 
+        }
     }
 
     public void TimeATTACK()
@@ -122,7 +126,7 @@ public class UIManger : MonoBehaviour
     
     public IEnumerator ReGameTxet()
     {
-        GameManager.buttonBPress = false;
+        GameManager.buttonB_Lock = true;
         GameManager.move = false;
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);
@@ -160,6 +164,11 @@ public class UIManger : MonoBehaviour
                         gameOverTA_Outline = null;
                         GameManager.stage_TA = false;
                     }
+                }
+                else
+                {
+                    GameManager.stage_TA = false;
+
                 }
                 pauseScreen = GameObject.Find("B_Press");
                 pauseScreen.gameObject.SetActive(false);

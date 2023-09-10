@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "NextScene_L_Stick_Press/N",
+                    "type": "Button",
+                    "id": "f3cc075d-7ca4-457e-9fdf-4e62913ba17f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextScene_Window_Press",
+                    "type": "Button",
+                    "id": "633b7e36-7cb1-45fe-b350-60c618a9289c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -193,6 +211,17 @@
                 },
                 {
                     "name": "",
+                    "id": "521c0146-6cc0-4def-9ab5-b3856731c14a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ec4da2fc-1cb6-4023-87c6-85e943d8275f",
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "Press",
@@ -234,6 +263,39 @@
                     "action": "Reroad",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4e8b8e2-f869-4867-b60a-0beb0bdb51e9",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextScene_L_Stick_Press/N",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d648c2e-69b1-4db8-a6d7-46caf26e489d",
+                    "path": "<XInputController>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextScene_L_Stick_Press/N",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cc4b7db-6f63-40f5-b564-c642b47fc75c",
+                    "path": "<XInputController>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextScene_Window_Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -260,45 +322,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "BoostHold",
+                    "name": "Boost",
                     "type": "Button",
                     "id": "19991878-c18a-4e2b-a1cb-485363f32f59",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "BoostKeyUp",
-                    "type": "Button",
-                    "id": "9648968b-5edb-4324-b6bb-a5a06002becf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "BoostKeyDown",
-                    "type": "Button",
-                    "id": "3e81270b-2958-42b7-95f8-e12a9ba8f04d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Tap",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Lever",
-                    "type": "Button",
-                    "id": "4fe4df82-445d-42b6-8cfa-907cb9582be2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "Lever",
                     "type": "Button",
-                    "id": "e3d62a82-780f-4d3a-a731-8105d669e2d7",
+                    "id": "4fe4df82-445d-42b6-8cfa-907cb9582be2",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -317,6 +352,24 @@
                     "name": "Reroad",
                     "type": "Button",
                     "id": "f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextScene_L_Stick_Press",
+                    "type": "Button",
+                    "id": "fd6e5387-95df-4521-b034-20de80016890",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextScene_Window_Press",
+                    "type": "Button",
+                    "id": "8063a1d0-620d-495a-872f-7f78133cdd97",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -386,7 +439,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BoostHold",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -397,51 +450,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BoostHold",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6410171b-8e22-412a-b4f3-f900ad1d2b01",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BoostKeyDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "46798e3d-6ee4-467e-ae50-90eef31d4c63",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BoostKeyDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2b962ff0-9d61-4b78-a03a-a1a763a70e3c",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BoostKeyUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "31ba89fc-2d41-450d-a40e-b960aca5f6d8",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BoostKeyUp",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -464,17 +473,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lever",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3c4d583e-353e-4887-809b-821a91192f8e",
-                    "path": "<XInputController>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -519,6 +517,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reroad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce465123-d1cd-405a-99fd-b8ca20e444e3",
+                    "path": "<XInputController>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextScene_L_Stick_Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c44c305-2e17-45c8-97a3-8e8904aaf4dd",
+                    "path": "<XInputController>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextScene_Window_Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

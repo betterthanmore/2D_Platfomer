@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     UIManger UIManger => UIManger.uiManger;
 
+    public bool[] nextScene_Press = new bool[2] {false, false};
     public string sceneName;
     public int gearItem = 0;
     public int gearItemInit = 0;
@@ -20,15 +21,14 @@ public class GameManager : MonoBehaviour
     public bool reGameStart = false;
     public bool reGameButtonDown = false;
     public bool buttonBPress = false;
+    public bool buttonB_Lock = false;
     public float gauge = 1;
     public float gauge_Init = 1;
     public bool stage_TA = false;
     public bool move = true;
     public bool Vidio_N = false;
     public int clearStage = 0;
-    public int chapter1Num = 0;
-    public int chapter2Num = 0;
-    public int chapter3Num = 0;
+    public int[] chapterNum = new int[3] {0, 0, 0};
     public LayerMask playerLayer;
 
     public Collider2D leverPos1 = null;
@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public bool leverOn2 = false;
 
     public GameObject portal = null;
+    public Collider2D portalOnPlayer;
+    public bool[] portal_Ready_Player = new bool[2] { false, false };
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
 
@@ -65,7 +67,8 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        if (!buttonBPress && reGameButtonDown)
+        portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
+        if (!buttonB_Lock && reGameButtonDown)
         {
             if (Input.GetButtonDown("GamePad2_RB"))
             {
@@ -79,7 +82,41 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+    public void NextScene()
+    {
+        gauge_Init = gauge;
+        gearItemInit = gearItem;
+        if (!buttonB_Lock)
+        {
+            for (int i = 0; i < nextScene_Press.Length; i++)
+            {
+                nextScene_Press[i] = false;
+            }
+
+            if (sceneName.Contains("Chap1"))
+            {
+                if (chapterNum[0] <= 9)
+                    chapterNum[0]++;
+            }
+            else if (sceneName.Contains("Chap2"))
+            {
+                if (chapterNum[1] <= 9)
+                    chapterNum[1]++;
+            }
+            else
+            {
+                if (chapterNum[2] <= 9)
+                    chapterNum[2]++;
+            }
+
+            if (sceneName.Contains("Last"))
+                SceneManager.LoadScene("ChapterSelect");
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            } 
+        }
+    }
     public void ReGameStart()
     {
         reGameStart = false;
@@ -95,7 +132,24 @@ public class GameManager : MonoBehaviour
             UIManger.GearNumText(gearItem);
         }
     }
-    
+    public void PortalAction()
+    {
+        if(portalOnPlayer.tag == "MainPlayer")
+        {
+            portal_Ready_Player[0] = true;
+
+        }
+        else if(portalOnPlayer.tag == "SubPlayer")
+        {
+            portal_Ready_Player[1] = true;
+        }
+        
+        
+        if(portal_Ready_Player[0] && portal_Ready_Player[1])
+        {
+            NextScene();
+        }
+    }
     public void PortalOn()
     {
         portal.gameObject.SetActive(true);
@@ -107,9 +161,8 @@ public class GameManager : MonoBehaviour
         {
             if (leverPos2.tag == "MainPlayer")
             {
-                if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                if (leverOn1 && leverOn2)
                 {
-                    UIManger.minGearTextStart = false;
                     StartCoroutine(UIManger.MinimumGears("포탈은 이미 열렸어 어서가자!"));
                 }
                 else if (!leverOn2 && !mainLeverOn)
@@ -121,16 +174,14 @@ public class GameManager : MonoBehaviour
                         PortalOn();
                     }
                 }
-                else if (UIManger.minGearTextStart)
+                else
                 {
                     if (mainLeverOn && !leverOn2)
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
                     }
                     else
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
                     }
                 }
@@ -144,9 +195,8 @@ public class GameManager : MonoBehaviour
         {
             if (leverPos1.tag == "MainPlayer")
             {
-                if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                if (leverOn1 && leverOn2)
                 {
-                    UIManger.minGearTextStart = false;
                     StartCoroutine(UIManger.MinimumGears("포탈은 이미 열렸어 어서가자!"));
                 }
                 else if (!leverOn1 && !mainLeverOn)
@@ -158,17 +208,15 @@ public class GameManager : MonoBehaviour
                         PortalOn();
                     }
                 }
-                else if (UIManger.minGearTextStart)
+                else
                 {
                     if (mainLeverOn && !leverOn1)
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
 
                     }
                     else
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
                     }
 
@@ -186,9 +234,8 @@ public class GameManager : MonoBehaviour
         {
             if (leverPos2.tag == "SubPlayer")
             {
-                if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                if (leverOn1 && leverOn2)
                 {
-                    UIManger.minGearTextStart = false;
                     StartCoroutine(UIManger.MinimumGears("포탈은 이미 열렸어 어서가자!"));
                 }
                 else if (!leverOn2 && !subLeverOn)
@@ -200,16 +247,14 @@ public class GameManager : MonoBehaviour
                         PortalOn();
                     }
                 }
-                else if (UIManger.minGearTextStart)
+                else
                 {
                     if (subLeverOn && !leverOn2)
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
                     }
                     else
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
                     }
                 }
@@ -223,9 +268,8 @@ public class GameManager : MonoBehaviour
         {
             if (leverPos1.tag == "SubPlayer")
             {
-                if (leverOn1 && leverOn2 && UIManger.minGearTextStart)
+                if (leverOn1 && leverOn2)
                 {
-                    UIManger.minGearTextStart = false;
                     StartCoroutine(UIManger.MinimumGears("포탈은 이미 열렸어 어서가자!"));
                 }
                 else if (!leverOn1 && !subLeverOn)
@@ -237,17 +281,15 @@ public class GameManager : MonoBehaviour
                         PortalOn();
                     }
                 }
-                else if (UIManger.minGearTextStart)
+                else
                 {
                     if (subLeverOn && !leverOn1)
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("혼자서 전부 당겨버릴 셈이야?"));
 
                     }
                     else
                     {
-                        UIManger.minGearTextStart = false;
                         StartCoroutine(UIManger.MinimumGears("이미 작동된 레버야!"));
                     }
 
@@ -267,6 +309,7 @@ public class GameManager : MonoBehaviour
         leverOn2 = false;
         mainLeverOn = false;
         subLeverOn = false;
+        buttonB_Lock = true;
         if (arg.name.Contains("Vidio"))
         {
             Vidio_N = false;
@@ -295,5 +338,12 @@ public class GameManager : MonoBehaviour
             portalLever1 = null;
             portalLever2 = null;
         }
+
+        if (arg.name.Contains("Chapter1"))
+            clearStage = chapterNum[0];
+        else if(arg.name.Contains("Chapter2"))
+            clearStage = chapterNum[1];
+        else
+            clearStage = chapterNum[2];
     }
 }

@@ -138,7 +138,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: c9ec7dc4a5e17b24cb3358bd95d97132, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -336,6 +336,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f
     m_ActionName: SubPlayer/Reroad[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3cc075d-7ca4-457e-9fdf-4e62913ba17f
+    m_ActionName: MainPlayer/NextScene_L_Stick_Press[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 633b7e36-7cb1-45fe-b350-60c618a9289c
+    m_ActionName: MainPlayer/NextScene_Window_Press
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4806827163322576059}
+        m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+        m_MethodName: NextScene_L_Stick_Press
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fd6e5387-95df-4521-b034-20de80016890
+    m_ActionName: SubPlayer/NextScene_L_Stick_Press[/Keyboard/n]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4806827163322576059}
+        m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+        m_MethodName: NextScene_Window_Press
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8063a1d0-620d-495a-872f-7f78133cdd97
+    m_ActionName: SubPlayer/NextScene_Window_Press
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SubPlayer

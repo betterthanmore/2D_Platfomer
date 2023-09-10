@@ -35,7 +35,7 @@ public class IronFrameBreak : MonoBehaviour
         GameManager.move = false;
         UIManger.fadeOutscreenBoard.gameObject.SetActive(true);
         UIManger.fadeOutscreenBoard.DOFade(1, 1);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.1f);
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         if (gameObject.transform.childCount == 2)
         {

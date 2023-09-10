@@ -14,6 +14,7 @@ public class SubPlayer : PlayerMainController
     private float subplayerPosYCrt;    //부스트 사용할 때의 플레이어의 현재 위치 저장
     private float subPlayerPosYTrs;     //부스트 사용하면서 바뀌는 위치Y 값을 저장
     public bool enableBoost = true;            //부스트 사용 가능 여부
+    public bool boostKeyDown = false;
     public float boxPosX;               //박스 x포지션 정해주는 변수
     /*public Vector2 boxPos;            //박스 포지션 위치 값을 받는 변수
     public Vector2 boxPosInit;*/        //박스 잡았을 때 초깃값
@@ -50,17 +51,23 @@ public class SubPlayer : PlayerMainController
         
 
         subPlayerPosYTrs = gameObject.transform.position.y;
-        /*if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
-        {
-            enableBoost = false;
-        }*/
 
-        if (GameManager.move)
+        if (enableBoost && scrollbar.size > 0.001 && boostKeyDown)        //부스트
         {
-            
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            scrollbar.size -= 1 * Time.deltaTime / boostTime;
+            GameManager.gauge = scrollbar.size;
+            if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
+            {
+                enableBoost = false;
+            }
+        }
+        /*if (GameManager.move)
+        {
+
             if (!subBoxHold && enableBoost)
             {
-                if ((Input.GetButtonDown("GamePad2_A") && enableBoost) || (Input.GetKeyDown(KeyCode.UpArrow) && enableBoost))     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
+                if (enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
                 {
                     state = State.MOVE;
                     subplayerPosYCrt = gameObject.transform.position.y;
@@ -71,7 +78,7 @@ public class SubPlayer : PlayerMainController
                     enableBoost = false;
                 }
 
-                if (gameObject.tag == "SubPlayer" && (Input.GetButton("GamePad2_A") || Input.GetKey(KeyCode.UpArrow)) && enableBoost && scrollbar.size > 0.001)        //부스트
+                if (enableBoost && scrollbar.size > 0.001)        //부스트
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     scrollbar.size -= 1 * Time.deltaTime / boostTime;
@@ -83,7 +90,7 @@ public class SubPlayer : PlayerMainController
                 }
             }
 
-            /*if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행
+            if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행
             {
                 subMove = false;
                 HoldAction();
@@ -92,18 +99,16 @@ public class SubPlayer : PlayerMainController
             {
                 boxPosX = 0;
                 PutAction();
-            }*/
-
-        }
-        /*else
-        {
-            rb.velocity = 
+            }
         }*/
-        
+
+
+
 
         if (isStepOn)   //땅에 닿는다면
         {
             enableBoost = true;
+            subplayerPosYCrt = gameObject.transform.position.y;
         }
 
         scrollbar.transform.position = cm.WorldToScreenPoint(new Vector2(transform.position.x, transform.position.y + 0.6f));
@@ -112,30 +117,52 @@ public class SubPlayer : PlayerMainController
 
 
     }
-    public void ReLoad(InputAction.CallbackContext input)       //아직 안옮김
+    public void Boost(InputAction.CallbackContext input)
     {
-        
+        if (GameManager.move)
+        {
+            if (input.started && !subBoxHold && enableBoost)
+            {
+                boostKeyDown = true;
+                state = State.MOVE;
+            }
+            else if (input.canceled)
+            {
+                boostKeyDown = false;
+            } 
+        }
+    }
+    public void ReLoad(InputAction.CallbackContext input)
+    {
+        if (input.started && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            GameManager.reGame2P = true;
+            if (GameManager.reGame1P && GameManager.reGame2P)
+            {
+                GameManager.reGameButtonDown = false;
+                GameManager.reGameStart = true;
+                GameManager.ReGameStart();
+            }
+        }
+    }
+    public void Portar(InputAction.CallbackContext input)
+    {
+        if ((GameManager.portalOnPlayer && input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        {
+            if (GameManager.portal_Ready_Player[1])
+            {
+                StartCoroutine(UIManager.MinimumGears("소녀가 준비 될 때까지 기다려주자"));
+            }
+            else
+                GameManager.PortalAction();
+        }
     }
     public void Lever(InputAction.CallbackContext input)
     {
         if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && input.started)
             GameManager.SubLever();
     }
-    public void Portar(InputAction.CallbackContext input)       //아직 안옮김
-    {
-        switch (input.control.parent.name)
-        {
-            case "XInputControllerWindows1":
-
-                break;
-            case "XInputControllerWindows":
-                break;
-            case "Keyboard":
-                break;
-            default:
-                break;
-        }
-    }
+    
     /*public void BoostKeyDown(InputAction.CallbackContext input)
     {
         Debug.Log("누름");
