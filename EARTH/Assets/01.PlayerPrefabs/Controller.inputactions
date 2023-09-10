@@ -278,7 +278,7 @@
                 {
                     "name": "",
                     "id": "3d648c2e-69b1-4db8-a6d7-46caf26e489d",
-                    "path": "<XInputController>/leftStick/down",
+                    "path": "<XInputController>/leftStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -352,24 +352,6 @@
                     "name": "Reroad",
                     "type": "Button",
                     "id": "f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "NextScene_L_Stick_Press",
-                    "type": "Button",
-                    "id": "fd6e5387-95df-4521-b034-20de80016890",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "NextScene_Window_Press",
-                    "type": "Button",
-                    "id": "8063a1d0-620d-495a-872f-7f78133cdd97",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -517,28 +499,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reroad",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce465123-d1cd-405a-99fd-b8ca20e444e3",
-                    "path": "<XInputController>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextScene_L_Stick_Press",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3c44c305-2e17-45c8-97a3-8e8904aaf4dd",
-                    "path": "<XInputController>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextScene_Window_Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

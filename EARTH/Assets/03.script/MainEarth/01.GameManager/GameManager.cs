@@ -67,7 +67,11 @@ public class GameManager : MonoBehaviour
     
     private void Update()
     {
-        portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
+        if(portal != null)
+        {
+            portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
+        }
+        
         if (!buttonB_Lock && reGameButtonDown)
         {
             if (Input.GetButtonDown("GamePad2_RB"))

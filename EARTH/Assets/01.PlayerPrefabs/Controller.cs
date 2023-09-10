@@ -300,7 +300,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3d648c2e-69b1-4db8-a6d7-46caf26e489d"",
-                    ""path"": ""<XInputController>/leftStick/down"",
+                    ""path"": ""<XInputController>/leftStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -374,24 +374,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""name"": ""Reroad"",
                     ""type"": ""Button"",
                     ""id"": ""f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""NextScene_L_Stick_Press"",
-                    ""type"": ""Button"",
-                    ""id"": ""fd6e5387-95df-4521-b034-20de80016890"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""NextScene_Window_Press"",
-                    ""type"": ""Button"",
-                    ""id"": ""8063a1d0-620d-495a-872f-7f78133cdd97"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -541,28 +523,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""action"": ""Reroad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ce465123-d1cd-405a-99fd-b8ca20e444e3"",
-                    ""path"": ""<XInputController>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NextScene_L_Stick_Press"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3c44c305-2e17-45c8-97a3-8e8904aaf4dd"",
-                    ""path"": ""<XInputController>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NextScene_Window_Press"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -588,8 +548,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
         m_SubPlayer_Portal = m_SubPlayer.FindAction("Portal", throwIfNotFound: true);
         m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
-        m_SubPlayer_NextScene_L_Stick_Press = m_SubPlayer.FindAction("NextScene_L_Stick_Press", throwIfNotFound: true);
-        m_SubPlayer_NextScene_Window_Press = m_SubPlayer.FindAction("NextScene_Window_Press", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -752,8 +710,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private readonly InputAction m_SubPlayer_Lever;
     private readonly InputAction m_SubPlayer_Portal;
     private readonly InputAction m_SubPlayer_Reroad;
-    private readonly InputAction m_SubPlayer_NextScene_L_Stick_Press;
-    private readonly InputAction m_SubPlayer_NextScene_Window_Press;
     public struct SubPlayerActions
     {
         private @Controller m_Wrapper;
@@ -764,8 +720,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         public InputAction @Lever => m_Wrapper.m_SubPlayer_Lever;
         public InputAction @Portal => m_Wrapper.m_SubPlayer_Portal;
         public InputAction @Reroad => m_Wrapper.m_SubPlayer_Reroad;
-        public InputAction @NextScene_L_Stick_Press => m_Wrapper.m_SubPlayer_NextScene_L_Stick_Press;
-        public InputAction @NextScene_Window_Press => m_Wrapper.m_SubPlayer_NextScene_Window_Press;
         public InputActionMap Get() { return m_Wrapper.m_SubPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -793,12 +747,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Reroad.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
                 @Reroad.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
-                @NextScene_L_Stick_Press.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
-                @NextScene_L_Stick_Press.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
-                @NextScene_L_Stick_Press.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_L_Stick_Press;
-                @NextScene_Window_Press.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
-                @NextScene_Window_Press.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
-                @NextScene_Window_Press.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnNextScene_Window_Press;
             }
             m_Wrapper.m_SubPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -821,12 +769,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Reroad.started += instance.OnReroad;
                 @Reroad.performed += instance.OnReroad;
                 @Reroad.canceled += instance.OnReroad;
-                @NextScene_L_Stick_Press.started += instance.OnNextScene_L_Stick_Press;
-                @NextScene_L_Stick_Press.performed += instance.OnNextScene_L_Stick_Press;
-                @NextScene_L_Stick_Press.canceled += instance.OnNextScene_L_Stick_Press;
-                @NextScene_Window_Press.started += instance.OnNextScene_Window_Press;
-                @NextScene_Window_Press.performed += instance.OnNextScene_Window_Press;
-                @NextScene_Window_Press.canceled += instance.OnNextScene_Window_Press;
             }
         }
     }
@@ -851,7 +793,5 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnLever(InputAction.CallbackContext context);
         void OnPortal(InputAction.CallbackContext context);
         void OnReroad(InputAction.CallbackContext context);
-        void OnNextScene_L_Stick_Press(InputAction.CallbackContext context);
-        void OnNextScene_Window_Press(InputAction.CallbackContext context);
     }
 }
