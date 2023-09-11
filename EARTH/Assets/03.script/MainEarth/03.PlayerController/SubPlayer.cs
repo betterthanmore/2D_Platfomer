@@ -37,6 +37,7 @@ public class SubPlayer : PlayerMainController
         {
             base.Update();
         }
+
         if (!subBoxHold)
         {
             if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
@@ -48,8 +49,10 @@ public class SubPlayer : PlayerMainController
                 state = State.MOVE;
             }
         }
-        
-
+        if (objectSense)
+        {
+            Debug.Log(objectSense.collider.gameObject.layer);
+        }
         subPlayerPosYTrs = gameObject.transform.position.y;
 
         if (enableBoost && scrollbar.size > 0.001 && boostKeyDown)        //부스트
@@ -132,9 +135,35 @@ public class SubPlayer : PlayerMainController
             } 
         }
     }
+    public void IronBreak(InputAction.CallbackContext input)        //이거 게임매니저로 옮겨야됨. 이유는 코루틴이 끝나고 if문이 도는 것 같음 집에서 테스트 해봐야됨
+    {
+        if (objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move && 
+            (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            StartCoroutine(UIManager.FadeScreenSetUp());
+
+        }
+        /*if(objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown &&  GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            StartCoroutine(UIManager.FadeScreenSetUp());
+            if (GameManager.ironBreak)
+            {
+                Debug.Log("벽 파괴 시작");
+                objectSense.collider.transform.gameObject.SetActive(false);
+                if (objectSense.collider.transform.childCount == 2)
+                {
+                    objectSense.collider.transform.GetChild(1).gameObject.SetActive(true);
+                }
+                scrollbar.size -= 0.1f;
+            }
+        }*/
+
+    }
+    
     public void ReLoad(InputAction.CallbackContext input)
     {
-        if (input.started && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        if (input.started && GameManager.reGameButtonDown && 
+            (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
         {
             GameManager.reGame2P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)

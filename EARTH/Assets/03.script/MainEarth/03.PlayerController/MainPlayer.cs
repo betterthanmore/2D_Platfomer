@@ -87,12 +87,12 @@ public class MainPlayer : PlayerMainController
     {
         if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
         {
-            if (boxSense)
+            if (objectSense.collider.gameObject.layer == 2048)
             {
                 state = State.HOLD;
                 boxHold = true;
-                boxSense.collider.transform.parent = gameObject.transform;
-                boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                objectSense.collider.transform.parent = gameObject.transform;
+                objectSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
             else if(state != State.HEAL && interaction)
             {
@@ -122,8 +122,8 @@ public class MainPlayer : PlayerMainController
         {
             state = State.IDEL;
             boxHold = false;
-            boxSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            boxSense.transform.parent = null;
+            objectSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            objectSense.transform.parent = null;
             moveSpeed = 2;
         }
     }

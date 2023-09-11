@@ -149,6 +149,9 @@ MonoBehaviour:
   subBoxHold: 0
   rayDis: 0.2
   rayPosy: 0.2
+  objectDetection:
+    serializedVersion: 2
+    m_Bits: 2048
   interaction: 0
 --- !u!95 &3215600195468353781
 Animator:
@@ -272,14 +275,6 @@ MonoBehaviour:
     m_ActionId: 19991878-c18a-4e2b-a1cb-485363f32f59
     m_ActionName: SubPlayer/Boost[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/upArrow]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9648968b-5edb-4324-b6bb-a5a06002becf
-    m_ActionName: SubPlayer/BoostKeyUp[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3e81270b-2958-42b7-95f8-e12a9ba8f04d
-    m_ActionName: SubPlayer/BoostKeyDown[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth,/Keyboard/upArrow]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3215600195468353778}
         m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
@@ -296,25 +291,57 @@ MonoBehaviour:
     m_ActionId: 2d611da8-c1e4-43f1-8549-c71ce8f8b22b
     m_ActionName: MainPlayer/Lever[/Keyboard/g]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3215600195468353778}
+        m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 62f8539f-8069-47d7-9888-b50eae7c5c35
     m_ActionName: MainPlayer/Pause
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3215600195468353778}
+        m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
+        m_MethodName: Portar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f930c55c-b18f-4d10-92a1-6781c06a5b8a
     m_ActionName: MainPlayer/Portal[/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3215600195468353778}
+        m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
+        m_MethodName: ReLoad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c49bb5c2-a1e6-48e7-8048-f6c4616eb649
     m_ActionName: MainPlayer/Reroad[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 4fe4df82-445d-42b6-8cfa-907cb9582be2
     m_ActionName: SubPlayer/Lever[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e3d62a82-780f-4d3a-a731-8105d669e2d7
-    m_ActionName: SubPlayer/Pause
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 9ac2feab-4940-428c-9a28-0c23c2587443
@@ -355,14 +382,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 633b7e36-7cb1-45fe-b350-60c618a9289c
     m_ActionName: MainPlayer/NextScene_Window_Press
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fd6e5387-95df-4521-b034-20de80016890
-    m_ActionName: SubPlayer/NextScene_L_Stick_Press[/Keyboard/n]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 8063a1d0-620d-495a-872f-7f78133cdd97
-    m_ActionName: SubPlayer/NextScene_Window_Press
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MainPlayer

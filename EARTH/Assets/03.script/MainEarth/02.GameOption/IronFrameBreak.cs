@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 public class IronFrameBreak : MonoBehaviour
 {
-    public bool isBreak;
+    /*public bool isBreak;
     public LayerMask subPlayer;
     private Scrollbar scrollbar;
     public float sizeX;
@@ -46,5 +46,5 @@ public class IronFrameBreak : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         UIManger.fadeOutscreenBoard.gameObject.SetActive(false);
         GameManager.move = true;
-    }
+    }*/
 }

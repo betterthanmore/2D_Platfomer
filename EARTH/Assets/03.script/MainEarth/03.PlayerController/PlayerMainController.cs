@@ -43,14 +43,16 @@ public class PlayerMainController : MonoBehaviour
     public bool isplayer = false;
     public Collider2D isPlayerOn;
     public Collider2D moveGround;
-    public RaycastHit2D boxSense;
+    public RaycastHit2D objectSense;
     public float otherVelocity = 0f;
     public LayerMask moveGroundLayer;
     public bool boxHold = false;
     public bool subBoxHold = false;
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
-    
+    public LayerMask objectDetection;
+
+
     protected GameManager GameManager => GameManager.Instance;
     protected UIManger UIManager => UIManger.uiManger;
 
@@ -78,9 +80,8 @@ public class PlayerMainController : MonoBehaviour
     public virtual void Update()
     {
         isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
-        moveGround = Physics2D.OverlapCircle(groundCheck.position, rayRange, moveGroundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
-        boxSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, 2048);
+        objectSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, objectDetection);
 
         if (!moveGround && playerMoveX.x == 0)
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -141,12 +142,10 @@ public class PlayerMainController : MonoBehaviour
             GameManager.nextScene_Press[1] = false;
         }
     }
-    public void Pause(InputAction.CallbackContext input)        //아직 안옮김
+    public void Pause(InputAction.CallbackContext input)        
     {
-        Debug.Log("반응");
         if (input.started && !GameManager.buttonB_Lock)
         {
-            Debug.Log("반응2");
             if (!GameManager.buttonBPress)
             {
                 GameManager.buttonBPress = true;

@@ -66,9 +66,21 @@ public class UIManger : MonoBehaviour
         }
         
     }
+    public IEnumerator FadeScreenSetUp()
+    {
+        GameManager.move = false;
+        fadeOutscreenBoard.gameObject.SetActive(true);
+        fadeOutscreenBoard.DOFade(1, 1);
+        yield return new WaitForSeconds(1.1f);
+        GameManager.IronBreakStart();
+        yield return new WaitForSeconds(0.2f);
+        fadeOutscreenBoard.DOFade(0, 1);
+        yield return new WaitForSeconds(1.1f);
+        fadeOutscreenBoard.gameObject.SetActive(false);
+        GameManager.move = true;
+    }
     public IEnumerator FadeScreen()
     {
-        fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
         GameManager.buttonB_Lock = true;
         yield return new WaitForSeconds(0.5f);
         fadeOutscreenBoard.DOFade(0, 1);
@@ -148,6 +160,7 @@ public class UIManger : MonoBehaviour
                     reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                     minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
                     gearNum = GameObject.Find("GearNum").GetComponent<Text>();
+                    fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
                     if (arg.name.Contains("TA"))
                     {
                         timeTAtime = 41;
@@ -169,6 +182,7 @@ public class UIManger : MonoBehaviour
                 {
                     GameManager.stage_TA = false;
 
+
                 }
                 pauseScreen = GameObject.Find("B_Press");
                 pauseScreen.gameObject.SetActive(false);
@@ -180,6 +194,7 @@ public class UIManger : MonoBehaviour
                 reGame_Outline = null;
                 minGearText = null;
                 pauseScreen = null;
+                fadeOutscreenBoard = null;
 
                 gearNum = null;
                 time_TA_Text = null;
@@ -195,6 +210,7 @@ public class UIManger : MonoBehaviour
             reGame_Outline = null;
             minGearText = null;
             pauseScreen = null;
+            fadeOutscreenBoard = null;
 
             gearNum = null;
             time_TA_Text = null;

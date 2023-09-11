@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public bool[] portal_Ready_Player = new bool[2] { false, false };
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
+    /*public bool ironBreak = false;*/
+    public GameObject ironBreak = null;
 
     
 
@@ -305,7 +307,15 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+    public void IronBreakStart()
+    {
+        ironBreak.transform.gameObject.SetActive(false);
+        if (ironBreak.transform.childCount == 2)
+        {
+            ironBreak.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        SubPlayer.scrollbar.size -= 0.1f;
+    }
     public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
     {
         sceneName = SceneManager.GetActiveScene().name;
@@ -330,6 +340,14 @@ public class GameManager : MonoBehaviour
             reGameButtonDown = true;
             move = true;
             portal = GameObject.Find("Portal_0602");
+            if (GameObject.FindGameObjectWithTag("IronBreak"))      //나중에 이걸로 프레임 워크 만들면 좋을듯
+            {
+                ironBreak = GameObject.FindGameObjectWithTag("IronBreak");
+            }
+            else
+            {
+                ironBreak = null;
+            }
             portal.gameObject.SetActive(false);
             portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
             portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
