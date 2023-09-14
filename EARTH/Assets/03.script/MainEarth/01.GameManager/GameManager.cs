@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("시작");
         if (Instance)
         {
             Destroy(gameObject);
@@ -66,7 +67,11 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
+    private void Start()
+    {
+        Debug.Log("시작1");
+    }
+
     private void Update()
     {
         if(portal != null)
@@ -316,7 +321,7 @@ public class GameManager : MonoBehaviour
         }
         SubPlayer.scrollbar.size -= 0.1f;
     }
-    public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
+    public void OnLoadSceneInfo(Scene arg, LoadSceneMode arg1)      //Start함수보다 먼저 실행됨 Awake보단 늦음
     {
         sceneName = SceneManager.GetActiveScene().name;
         leverOn1 = false;

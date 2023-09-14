@@ -16,7 +16,6 @@ public class SelectStageMode : MonoBehaviour
     {
 
         sceneName = SceneManager.GetActiveScene().name;
-        Debug.Log(SceneManager.GetActiveScene().name);
         if (sceneName.Contains("Mode"))
         {
             canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -32,7 +31,6 @@ public class SelectStageMode : MonoBehaviour
 
             for (int i = 0; i < GameManager.clearStage + 1; i++)
             {
-                Debug.Log("½ÇÇà");
                 chapter1[i].interactable = true;
             }
         }

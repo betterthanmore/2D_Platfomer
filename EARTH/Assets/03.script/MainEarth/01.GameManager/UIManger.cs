@@ -148,7 +148,6 @@ public class UIManger : MonoBehaviour
     }
     public void UIOnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
     {
-
         if (!arg.name.Contains("Main"))
         {
             if (!arg.name.Contains("Vidio"))
@@ -160,7 +159,6 @@ public class UIManger : MonoBehaviour
                     reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                     minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
                     gearNum = GameObject.Find("GearNum").GetComponent<Text>();
-                    fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
                     if (arg.name.Contains("TA"))
                     {
                         timeTAtime = 41;
@@ -194,8 +192,7 @@ public class UIManger : MonoBehaviour
                 reGame_Outline = null;
                 minGearText = null;
                 pauseScreen = null;
-                fadeOutscreenBoard = null;
-
+                /*fadeOutscreenBoard = null;*/
                 gearNum = null;
                 time_TA_Text = null;
                 gameOverTA_Text = null;
@@ -210,7 +207,7 @@ public class UIManger : MonoBehaviour
             reGame_Outline = null;
             minGearText = null;
             pauseScreen = null;
-            fadeOutscreenBoard = null;
+            /*fadeOutscreenBoard = null;*/
 
             gearNum = null;
             time_TA_Text = null;
@@ -218,7 +215,7 @@ public class UIManger : MonoBehaviour
             gameOverTA_Outline = null;
             GameManager.stage_TA = false;
         }
-        
+        fadeOutscreenBoard = GameObject.Find("FadeOutscreenBoard").GetComponent<Image>();
         StartCoroutine(FadeScreen());
     }
 }
