@@ -178,6 +178,9 @@ MonoBehaviour:
   subBoxHold: 0
   rayDis: 0.2
   rayPosy: 0.2
+  objectDetection:
+    serializedVersion: 2
+    m_Bits: 0
   interaction: 0
 --- !u!50 &2746739507115594641
 Rigidbody2D:
@@ -213,6 +216,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.36333334}
-  m_Size: {x: 0.25666666, y: 0.7266667}
+  m_Offset: {x: 0, y: 0.436}
+  m_Size: {x: 0.308, y: 0.872}
   m_Direction: 0

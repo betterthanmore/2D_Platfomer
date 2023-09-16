@@ -536,6 +536,54 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ButtonController"",
+            ""id"": ""801e6fe5-9b2a-4126-ba04-a4919ad7ebff"",
+            ""actions"": [
+                {
+                    ""name"": ""Start/Stage"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc8fd73b-36da-4d37-9ef8-f75bff42e63b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""caac79a2-b1bc-4a8a-b991-10a01b833c50"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9490555f-daa2-4be8-af0c-8e15730c3f26"",
+                    ""path"": ""<XInputController>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start/Stage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37abb828-73b3-4ec8-aaf6-5e8342a2cb39"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -559,6 +607,10 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
         m_SubPlayer_Portal = m_SubPlayer.FindAction("Portal", throwIfNotFound: true);
         m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
+        // ButtonController
+        m_ButtonController = asset.FindActionMap("ButtonController", throwIfNotFound: true);
+        m_ButtonController_StartStage = m_ButtonController.FindAction("Start/Stage", throwIfNotFound: true);
+        m_ButtonController_Select = m_ButtonController.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -784,6 +836,47 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         }
     }
     public SubPlayerActions @SubPlayer => new SubPlayerActions(this);
+
+    // ButtonController
+    private readonly InputActionMap m_ButtonController;
+    private IButtonControllerActions m_ButtonControllerActionsCallbackInterface;
+    private readonly InputAction m_ButtonController_StartStage;
+    private readonly InputAction m_ButtonController_Select;
+    public struct ButtonControllerActions
+    {
+        private @Controller m_Wrapper;
+        public ButtonControllerActions(@Controller wrapper) { m_Wrapper = wrapper; }
+        public InputAction @StartStage => m_Wrapper.m_ButtonController_StartStage;
+        public InputAction @Select => m_Wrapper.m_ButtonController_Select;
+        public InputActionMap Get() { return m_Wrapper.m_ButtonController; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ButtonControllerActions set) { return set.Get(); }
+        public void SetCallbacks(IButtonControllerActions instance)
+        {
+            if (m_Wrapper.m_ButtonControllerActionsCallbackInterface != null)
+            {
+                @StartStage.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
+                @StartStage.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
+                @StartStage.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
+                @Select.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
+            }
+            m_Wrapper.m_ButtonControllerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @StartStage.started += instance.OnStartStage;
+                @StartStage.performed += instance.OnStartStage;
+                @StartStage.canceled += instance.OnStartStage;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
+            }
+        }
+    }
+    public ButtonControllerActions @ButtonController => new ButtonControllerActions(this);
     public interface IMainPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -804,5 +897,10 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnLever(InputAction.CallbackContext context);
         void OnPortal(InputAction.CallbackContext context);
         void OnReroad(InputAction.CallbackContext context);
+    }
+    public interface IButtonControllerActions
+    {
+        void OnStartStage(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

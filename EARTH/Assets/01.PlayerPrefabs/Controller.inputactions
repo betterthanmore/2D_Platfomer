@@ -514,6 +514,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ButtonController",
+            "id": "801e6fe5-9b2a-4126-ba04-a4919ad7ebff",
+            "actions": [
+                {
+                    "name": "Start/Stage",
+                    "type": "Button",
+                    "id": "dc8fd73b-36da-4d37-9ef8-f75bff42e63b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "caac79a2-b1bc-4a8a-b991-10a01b833c50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9490555f-daa2-4be8-af0c-8e15730c3f26",
+                    "path": "<XInputController>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start/Stage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37abb828-73b3-4ec8-aaf6-5e8342a2cb39",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
