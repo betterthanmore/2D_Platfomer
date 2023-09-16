@@ -3,39 +3,89 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class SelectStageMode : MonoBehaviour
 {
+    
 
-    public List<Button> chapter1 = new List<Button>();
-    public Canvas canvas = null;
-    string sceneName;
+    
+    public string sceneName;
     GameManager GameManager => GameManager.Instance;
+    UIManger UIManger => UIManger.uiManger;
     // Start is called before the first frame update
-    void Start()
+    
+    
+    public void ButtonSelect(InputAction.CallbackContext input)
     {
-
-        sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName.Contains("Mode"))
+        Debug.Log(input.control.name);
+        if (input.started && input.control.device.name == "XInputControllerWindows" && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
         {
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            for (int i = 0; i < 8; i++)
+            if (input.control.name == "left")
             {
-                chapter1.Add(canvas.transform.GetChild(i).GetComponentInChildren<Button>());
+                if(GameManager.selectButton == 9)
+                {
+                    GameManager.selectButton = 2;
+                }
+                else
+                {
+                    GameManager.SelectButton = -1;
+                }
             }
-
-            for (int i = 0; i < chapter1.Count; i++)
+            else if(input.control.name == "right")
             {
-                chapter1[i].interactable = false;
+                if (GameManager.selectButton == 2)
+                {
+                    GameManager.selectButton = 9;
+                }
+                else
+                {
+                    GameManager.SelectButton = 1;
+                }
             }
-
-            for (int i = 0; i < GameManager.clearStage + 1; i++)
+            for (int i = 0; i < GameManager.allButton.Count; i++)
             {
-                chapter1[i].interactable = true;
+                if (GameManager.allButton[i] == GameManager.allButton[GameManager.SelectButton])
+                    GameManager.allButton[i].animator.SetTrigger("Highlighted");
+                else
+                    GameManager.allButton[i].animator.SetTrigger("Normal");
             }
         }
     }
+    public void ButtonDownUP(InputAction.CallbackContext input)
+    {
+        if(input.started && input.control.device.name == "XInputControllerWindows" && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
+        {
+            if (input.control.name == "up")
+                GameManager.SelectButton = -3;
+            else if(input.control.name == "down")
+            {
+                if(GameManager.selectButton == 6)
+                {
+                    GameManager.selectButton = 0;
+                }
+                else
+                {
+                    GameManager.SelectButton = 3;
+                }
+            }
 
+            for (int i = 0; i < GameManager.allButton.Count; i++)
+            {
+                if (GameManager.allButton[i] == GameManager.allButton[GameManager.SelectButton])
+                    GameManager.allButton[i].animator.SetTrigger("Highlighted");
+                else
+                    GameManager.allButton[i].animator.SetTrigger("Normal");
+            }
+        }
+    }
+    
+    public void ButtonPress(InputAction.CallbackContext input)
+    {
+        if (input.control.device.name == "XInputControllerWindows" && input.started && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
+        {
+            GameManager.allButton[GameManager.selectButton].onClick?.Invoke();
+        }
+    }
     // Update is called once per frame
     void Update()
     {

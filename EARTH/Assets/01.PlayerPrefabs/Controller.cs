@@ -542,7 +542,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
             ""id"": ""801e6fe5-9b2a-4126-ba04-a4919ad7ebff"",
             ""actions"": [
                 {
-                    ""name"": ""Start/Stage"",
+                    ""name"": ""Main_Select"",
                     ""type"": ""Button"",
                     ""id"": ""dc8fd73b-36da-4d37-9ef8-f75bff42e63b"",
                     ""expectedControlType"": ""Button"",
@@ -551,9 +551,18 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Press"",
                     ""type"": ""Button"",
                     ""id"": ""caac79a2-b1bc-4a8a-b991-10a01b833c50"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Chapter_Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""743f2a00-ab3f-4992-be18-2b0a08355ad3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -568,7 +577,18 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Start/Stage"",
+                    ""action"": ""Main_Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2695d52-7f06-4606-a7bd-f4f164046ada"",
+                    ""path"": ""<XInputController>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Main_Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -579,7 +599,29 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ecac817-6bc8-4af2-9c86-4d75495176d0"",
+                    ""path"": ""<XInputController>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Chapter_Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""384f0c96-2ee9-456b-86ca-977e25a930ae"",
+                    ""path"": ""<XInputController>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Chapter_Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -609,8 +651,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
         // ButtonController
         m_ButtonController = asset.FindActionMap("ButtonController", throwIfNotFound: true);
-        m_ButtonController_StartStage = m_ButtonController.FindAction("Start/Stage", throwIfNotFound: true);
-        m_ButtonController_Select = m_ButtonController.FindAction("Select", throwIfNotFound: true);
+        m_ButtonController_Main_Select = m_ButtonController.FindAction("Main_Select", throwIfNotFound: true);
+        m_ButtonController_Press = m_ButtonController.FindAction("Press", throwIfNotFound: true);
+        m_ButtonController_Chapter_Select = m_ButtonController.FindAction("Chapter_Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -840,14 +883,16 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     // ButtonController
     private readonly InputActionMap m_ButtonController;
     private IButtonControllerActions m_ButtonControllerActionsCallbackInterface;
-    private readonly InputAction m_ButtonController_StartStage;
-    private readonly InputAction m_ButtonController_Select;
+    private readonly InputAction m_ButtonController_Main_Select;
+    private readonly InputAction m_ButtonController_Press;
+    private readonly InputAction m_ButtonController_Chapter_Select;
     public struct ButtonControllerActions
     {
         private @Controller m_Wrapper;
         public ButtonControllerActions(@Controller wrapper) { m_Wrapper = wrapper; }
-        public InputAction @StartStage => m_Wrapper.m_ButtonController_StartStage;
-        public InputAction @Select => m_Wrapper.m_ButtonController_Select;
+        public InputAction @Main_Select => m_Wrapper.m_ButtonController_Main_Select;
+        public InputAction @Press => m_Wrapper.m_ButtonController_Press;
+        public InputAction @Chapter_Select => m_Wrapper.m_ButtonController_Chapter_Select;
         public InputActionMap Get() { return m_Wrapper.m_ButtonController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -857,22 +902,28 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ButtonControllerActionsCallbackInterface != null)
             {
-                @StartStage.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
-                @StartStage.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
-                @StartStage.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnStartStage;
-                @Select.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
-                @Select.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
-                @Select.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnSelect;
+                @Main_Select.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnMain_Select;
+                @Main_Select.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnMain_Select;
+                @Main_Select.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnMain_Select;
+                @Press.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnPress;
+                @Press.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnPress;
+                @Press.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnPress;
+                @Chapter_Select.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
+                @Chapter_Select.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
+                @Chapter_Select.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
             }
             m_Wrapper.m_ButtonControllerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @StartStage.started += instance.OnStartStage;
-                @StartStage.performed += instance.OnStartStage;
-                @StartStage.canceled += instance.OnStartStage;
-                @Select.started += instance.OnSelect;
-                @Select.performed += instance.OnSelect;
-                @Select.canceled += instance.OnSelect;
+                @Main_Select.started += instance.OnMain_Select;
+                @Main_Select.performed += instance.OnMain_Select;
+                @Main_Select.canceled += instance.OnMain_Select;
+                @Press.started += instance.OnPress;
+                @Press.performed += instance.OnPress;
+                @Press.canceled += instance.OnPress;
+                @Chapter_Select.started += instance.OnChapter_Select;
+                @Chapter_Select.performed += instance.OnChapter_Select;
+                @Chapter_Select.canceled += instance.OnChapter_Select;
             }
         }
     }
@@ -900,7 +951,8 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     }
     public interface IButtonControllerActions
     {
-        void OnStartStage(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
+        void OnMain_Select(InputAction.CallbackContext context);
+        void OnPress(InputAction.CallbackContext context);
+        void OnChapter_Select(InputAction.CallbackContext context);
     }
 }

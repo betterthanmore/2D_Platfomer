@@ -520,7 +520,7 @@
             "id": "801e6fe5-9b2a-4126-ba04-a4919ad7ebff",
             "actions": [
                 {
-                    "name": "Start/Stage",
+                    "name": "Main_Select",
                     "type": "Button",
                     "id": "dc8fd73b-36da-4d37-9ef8-f75bff42e63b",
                     "expectedControlType": "Button",
@@ -529,9 +529,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select",
+                    "name": "Press",
                     "type": "Button",
                     "id": "caac79a2-b1bc-4a8a-b991-10a01b833c50",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chapter_Select",
+                    "type": "Button",
+                    "id": "743f2a00-ab3f-4992-be18-2b0a08355ad3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -546,7 +555,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start/Stage",
+                    "action": "Main_Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d2695d52-7f06-4606-a7bd-f4f164046ada",
+                    "path": "<XInputController>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Main_Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -557,7 +577,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ecac817-6bc8-4af2-9c86-4d75495176d0",
+                    "path": "<XInputController>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chapter_Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "384f0c96-2ee9-456b-86ca-977e25a930ae",
+                    "path": "<XInputController>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Chapter_Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

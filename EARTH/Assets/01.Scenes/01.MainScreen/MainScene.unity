@@ -859,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8700781192228542323, guid: 61e7a9befe3db4b49b9600bb8bd684e0, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8700781192228542323, guid: 61e7a9befe3db4b49b9600bb8bd684e0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1602,8 +1602,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2047012318}
   - {fileID: 1779581805}
+  - {fileID: 2047012318}
   - {fileID: 1504354704}
   - {fileID: 397804171}
   - {fileID: 834387144}
@@ -1967,6 +1967,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapter1: []
+  canvas: {fileID: 0}
+  allButton: []
+  selectButton: -1
   nextScene_Press: 0000
   sceneName: 
   gearItem: 0
@@ -1982,8 +1986,8 @@ MonoBehaviour:
   stage_TA: 0
   move: 1
   Vidio_N: 0
-  clearStage: 0
-  chapterNum: 000000000000000000000000
+  clearStage: 1
+  chapterNum: 010000000100000001000000
   playerLayer:
     serializedVersion: 2
     m_Bits: 768
@@ -2048,7 +2052,7 @@ RectTransform:
   m_Children:
   - {fileID: 708455443}
   m_Father: {fileID: 1483459327}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2500,7 +2504,7 @@ RectTransform:
   m_Children:
   - {fileID: 1889323986}
   m_Father: {fileID: 1483459327}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class MainScene : MonoBehaviour
 {
     public List<Button> allButton = new List<Button>();
-    public int selectButton = 1;
+    public int selectButton = -1;
     public int SelectButton 
     {
         get {return selectButton; }
@@ -17,7 +17,7 @@ public class MainScene : MonoBehaviour
         {
             if (selectButton == allButton.Count - 1)
             {
-                selectButton -= value;
+                selectButton = 0;
             }
             else
             {
@@ -30,10 +30,17 @@ public class MainScene : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Button[] tempButton = GameObject.FindObjectsOfType<Button>();
+        /*Button[] tempButton = GameObject.FindObjectsOfType<Button>();
         for (int i = 0; i < tempButton.Length; i++)
         {
             allButton.Add(tempButton[i]);
+        }*/
+        Canvas temp = GameObject.FindObjectOfType<Canvas>();
+        for (int i = 0; i < temp.transform.childCount; i++)
+        {
+            Button parent = temp.transform.GetChild(i).GetComponent<Button>();
+            if (parent != null)
+                allButton.Add(parent);
         }
     }
     void Start()

@@ -8,10 +8,89 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public List<Button> chapter1 = new List<Button>();
+    public Canvas canvas = null;
+    public List<Button> allButton = new List<Button>();
+    public int selectButton = -1;
+    public int SelectButton
+    {
+        get { return selectButton; }
+
+        set
+        {
+            if (selectButton >= 0)
+            {
+                if (value > 0)
+                {
+                    if (value == 1)
+                    {
+                        if (selectButton == allButton.Count - 1)
+                        {
+                            selectButton = 0;
+                        }
+                        else
+                        {
+                            selectButton += value;
+                        }
+                    }
+                    else if (value == 3)
+                    {
+                        if (allButton.Count > value)
+                        {
+                            if(selectButton + value >= allButton.Count)
+                            {
+                                selectButton -= value * 2;
+                            }
+                            else
+                            {
+                                selectButton += value;
+                            }
+                        }
+                        else
+                        {
+                            selectButton = value - allButton.Count;
+                        }
+                    }
+                }
+                else if (value < 0)
+                {
+                    if (value == -1)
+                    {
+                        if (selectButton == 0)
+                        {
+                            selectButton = allButton.Count - 1;
+                        }
+                        else
+                        {
+                            selectButton += value;
+                        }
+                    }
+                    else if (value == -3)
+                    {
+                        if (Mathf.Abs(value) > selectButton)
+                        {
+                            selectButton += (allButton.Count - 1 + value);
+                        }
+                        else
+                        {
+                            selectButton += value;
+                        }
+                    }
+                }
+                else if(value == 0)
+                {
+                    selectButton = 0;
+                }
+            }
+            else
+            {
+                selectButton = 0;
+            }
+        }
+    }
     //protected SceneChanger SceneChanger => SceneChanger.Instance;
     public static GameManager Instance { get; private set; }
     UIManger UIManger => UIManger.uiManger;
-
     public bool[] nextScene_Press = new bool[2] {false, false};
     public string sceneName;
     public int gearItem = 0;
@@ -28,7 +107,7 @@ public class GameManager : MonoBehaviour
     public bool move = true;
     public bool Vidio_N = false;
     public int clearStage = 0;
-    public int[] chapterNum = new int[3] {0, 0, 0};
+    public int[] chapterNum = new int[3] {1, 1, 1};
     public LayerMask playerLayer;
 
     public Collider2D leverPos1 = null;
@@ -106,17 +185,17 @@ public class GameManager : MonoBehaviour
 
             if (sceneName.Contains("Chap1"))
             {
-                if (chapterNum[0] <= 9)
+                if (chapterNum[0] < 9)
                     chapterNum[0]++;
             }
             else if (sceneName.Contains("Chap2"))
             {
-                if (chapterNum[1] <= 9)
+                if (chapterNum[1] < 9)
                     chapterNum[1]++;
             }
             else
             {
-                if (chapterNum[2] <= 9)
+                if (chapterNum[2] < 9)
                     chapterNum[2]++;
             }
 
@@ -365,12 +444,52 @@ public class GameManager : MonoBehaviour
             portalLever1 = null;
             portalLever2 = null;
         }
-
         if (arg.name.Contains("Chapter1"))
             clearStage = chapterNum[0];
         else if(arg.name.Contains("Chapter2"))
             clearStage = chapterNum[1];
-        else
+        else if(arg.name.Contains("Chapter3"))
             clearStage = chapterNum[2];
+
+        if (arg.name.Contains("Chapter"))
+        {
+            allButton.Clear();
+            chapter1.Clear();
+            sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName.Contains("Mode"))
+            {
+                canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+                for (int i = 0; i < 9; i++)
+                {
+                    chapter1.Add(canvas.transform.GetChild(i).GetComponentInChildren<Button>());
+                }
+
+                for (int i = 0; i < chapter1.Count; i++)
+                {
+                    chapter1[i].interactable = false;
+                }
+                Debug.Log(clearStage);
+                for (int i = 0; i < clearStage ; i++)
+                {
+                    chapter1[i].interactable = true;
+                }
+
+            }
+            Canvas temp = GameObject.FindObjectOfType<Canvas>();
+            for (int i = 0; i < temp.transform.childCount; i++)
+            {
+
+                Button parent = temp.transform.GetChild(i).GetComponent<Button>();
+                if (parent != null && parent.interactable == true)
+                    allButton.Add(parent);
+
+            }
+        }
+        else
+        {
+            canvas = null;
+        }
+
+
     }
 }
