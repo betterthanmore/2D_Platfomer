@@ -4069,17 +4069,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1249199968 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4806827163322576059, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-  m_PrefabInstance: {fileID: 8336336189374601521}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74f46c37b2a949489b47c2f4af62e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1348262422
 GameObject:
   m_ObjectHideFlags: 0
@@ -4124,7 +4113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5443,33 +5432,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1249199968}
-    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: IronBreak
-      objectReference: {fileID: 0}
-    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SubPlayer, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576058, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_Name
       value: Chap3SubPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576060, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576060, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5540,6 +5509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5233875a9db5e304cafdfc2931263c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapter1: []
+  canvas: {fileID: 0}
+  allButton: []
+  back: {fileID: 0}
+  selectButton: -1
   nextScene_Press: 0000
   sceneName: 
   gearItem: 0

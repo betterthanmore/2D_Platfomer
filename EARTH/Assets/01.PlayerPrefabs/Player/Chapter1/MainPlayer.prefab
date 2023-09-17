@@ -179,7 +179,7 @@ MonoBehaviour:
   groundCheck: {fileID: 8602042781898720996}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 512
   subMove: 1
   dir: 0
   groundLayer:
@@ -200,6 +200,9 @@ MonoBehaviour:
   subBoxHold: 0
   rayDis: 0.2
   rayPosy: 0.2
+  objectDetection:
+    serializedVersion: 2
+    m_Bits: 2048
   interaction: 0
 --- !u!70 &5389807365182798919
 CapsuleCollider2D:
@@ -323,7 +326,19 @@ MonoBehaviour:
     m_ActionId: 62f8539f-8069-47d7-9888-b50eae7c5c35
     m_ActionName: MainPlayer/Pause
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5439974346655379913}
+        m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
+        m_MethodName: Portar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f930c55c-b18f-4d10-92a1-6781c06a5b8a
     m_ActionName: MainPlayer/Portal[/Keyboard/s]
   - m_PersistentCalls:
@@ -388,20 +403,8 @@ MonoBehaviour:
     m_ActionName: SubPlayer/BoostHold[/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 9648968b-5edb-4324-b6bb-a5a06002becf
-    m_ActionName: SubPlayer/BoostKeyUp[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3e81270b-2958-42b7-95f8-e12a9ba8f04d
-    m_ActionName: SubPlayer/BoostKeyDown[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 4fe4df82-445d-42b6-8cfa-907cb9582be2
     m_ActionName: SubPlayer/Lever[/Keyboard/numpadEnter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e3d62a82-780f-4d3a-a731-8105d669e2d7
-    m_ActionName: SubPlayer/Pause
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 9ac2feab-4940-428c-9a28-0c23c2587443
@@ -412,12 +415,20 @@ MonoBehaviour:
     m_ActionName: SubPlayer/Reroad[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fd6e5387-95df-4521-b034-20de80016890
-    m_ActionName: SubPlayer/NextScene_L_Stick_Press[/Keyboard/n]
+    m_ActionId: dc8fd73b-36da-4d37-9ef8-f75bff42e63b
+    m_ActionName: ButtonController/Main_Select
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8063a1d0-620d-495a-872f-7f78133cdd97
-    m_ActionName: SubPlayer/NextScene_Window_Press
+    m_ActionId: caac79a2-b1bc-4a8a-b991-10a01b833c50
+    m_ActionName: ButtonController/Press
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 743f2a00-ab3f-4992-be18-2b0a08355ad3
+    m_ActionName: ButtonController/Chapter_Select
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
+    m_ActionName: ButtonController/BackButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MainPlayer

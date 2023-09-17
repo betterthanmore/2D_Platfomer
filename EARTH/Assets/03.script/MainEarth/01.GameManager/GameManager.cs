@@ -137,7 +137,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("시작");
         if (Instance)
         {
             Destroy(gameObject);
@@ -154,12 +153,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("시작1");
     }
 
     private void Update()
     {
-        if(portal != null)
+        if (portal != null)
         {
             portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
         }
@@ -253,7 +251,7 @@ public class GameManager : MonoBehaviour
     }
     public void MainLever()
     {
-        if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
+        if (leverPos2 = Physics2D.OverlapBox(new Vector2(portalLever2.position.x - 0.2f, portalLever2.position.y + 0.2f), Vector2.one * 0.5f, 0, playerLayer))
         {
             if (leverPos2.tag == "MainPlayer")
             {
@@ -287,7 +285,7 @@ public class GameManager : MonoBehaviour
         {
             leverPos2 = null;
         }
-        if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, playerLayer))
+        if (leverPos1 = Physics2D.OverlapBox(new Vector2(portalLever1.position.x - 0.2f, portalLever1.position.y + 0.2f), Vector2.one * 0.5f, 0, playerLayer))
         {
             if (leverPos1.tag == "MainPlayer")
             {
@@ -326,7 +324,7 @@ public class GameManager : MonoBehaviour
     }
     public void SubLever()
     {
-        if (leverPos2 = Physics2D.OverlapBox(portalLever2.position, Vector2.one, 0, playerLayer))
+        if (leverPos2 = Physics2D.OverlapBox(new Vector2(portalLever2.position.x - 0.2f, portalLever2.position.y + 0.2f), Vector2.one * 0.5f, 0, playerLayer))
         {
             if (leverPos2.tag == "SubPlayer")
             {
@@ -360,7 +358,7 @@ public class GameManager : MonoBehaviour
         {
             leverPos2 = null;
         }
-        if (leverPos1 = Physics2D.OverlapBox(portalLever1.position, Vector2.one, 0, playerLayer))
+        if (leverPos1 = Physics2D.OverlapBox(new Vector2(portalLever1.position.x - 0.2f, portalLever1.position.y + 0.2f), Vector2.one * 0.5f, 0, playerLayer))
         {
             if (leverPos1.tag == "SubPlayer")
             {

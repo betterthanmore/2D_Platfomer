@@ -149,7 +149,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7832249301975797604}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 256
   subMove: 1
   dir: 0
   groundLayer:
@@ -170,10 +170,14 @@ MonoBehaviour:
   subBoxHold: 0
   rayDis: 0.2
   rayPosy: 0.2
+  objectDetection:
+    serializedVersion: 2
+    m_Bits: 3072
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
   enableBoost: 1
+  boostKeyDown: 0
   boxPosX: 0
   putOnBox_L: 0
 --- !u!70 &1461924491688125780
@@ -185,7 +189,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7832249301321474061}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c9ec7dc4a5e17b24cb3358bd95d97132, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -270,21 +274,37 @@ MonoBehaviour:
     m_ActionId: 69ff8abb-e288-4422-a2f5-ed41acd60f2c
     m_ActionName: SubPlayer/Move[/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4978933844596368101}
+        m_TargetAssemblyTypeName: SubPlayer, Assembly-CSharp
+        m_MethodName: IronBreak
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 736d0cf2-161f-4280-b73e-881070a10e35
     m_ActionName: SubPlayer/Break
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4978933844596368101}
+        m_TargetAssemblyTypeName: SubPlayer, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 19991878-c18a-4e2b-a1cb-485363f32f59
     m_ActionName: SubPlayer/BoostHold[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9648968b-5edb-4324-b6bb-a5a06002becf
-    m_ActionName: SubPlayer/BoostKeyUp[/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3e81270b-2958-42b7-95f8-e12a9ba8f04d
-    m_ActionName: SubPlayer/BoostKeyDown[/Keyboard/upArrow]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4978933844596368101}
@@ -302,49 +322,53 @@ MonoBehaviour:
     m_ActionId: 4fe4df82-445d-42b6-8cfa-907cb9582be2
     m_ActionName: SubPlayer/Lever[/Keyboard/numpadEnter]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e3d62a82-780f-4d3a-a731-8105d669e2d7
-    m_ActionName: SubPlayer/Pause
-  - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4978933844596368101}
+        m_TargetAssemblyTypeName: SubPlayer, Assembly-CSharp
+        m_MethodName: Portar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9ac2feab-4940-428c-9a28-0c23c2587443
     m_ActionName: SubPlayer/Portal[/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4978933844596368101}
+        m_TargetAssemblyTypeName: SubPlayer, Assembly-CSharp
+        m_MethodName: ReLoad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f
     m_ActionName: SubPlayer/Reroad[/Keyboard/r]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4978933844596368101}
-        m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
-        m_MethodName: NextScene_L_Stick_Press
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: fd6e5387-95df-4521-b034-20de80016890
-    m_ActionName: SubPlayer/NextScene_L_Stick_Press[/Keyboard/n]
+      m_Calls: []
+    m_ActionId: dc8fd73b-36da-4d37-9ef8-f75bff42e63b
+    m_ActionName: ButtonController/Main_Select
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4978933844596368101}
-        m_TargetAssemblyTypeName: PlayerMainController, Assembly-CSharp
-        m_MethodName: NextScene_Window_Press
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8063a1d0-620d-495a-872f-7f78133cdd97
-    m_ActionName: SubPlayer/NextScene_Window_Press
+      m_Calls: []
+    m_ActionId: caac79a2-b1bc-4a8a-b991-10a01b833c50
+    m_ActionName: ButtonController/Press
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 743f2a00-ab3f-4992-be18-2b0a08355ad3
+    m_ActionName: ButtonController/Chapter_Select
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
+    m_ActionName: ButtonController/BackButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: SubPlayer

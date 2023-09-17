@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 3
   playertype: 0
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 3215600196210503970}
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -382,6 +382,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 633b7e36-7cb1-45fe-b350-60c618a9289c
     m_ActionName: MainPlayer/NextScene_Window_Press
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc8fd73b-36da-4d37-9ef8-f75bff42e63b
+    m_ActionName: ButtonController/Main_Select
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: caac79a2-b1bc-4a8a-b991-10a01b833c50
+    m_ActionName: ButtonController/Press
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 743f2a00-ab3f-4992-be18-2b0a08355ad3
+    m_ActionName: ButtonController/Chapter_Select
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
+    m_ActionName: ButtonController/BackButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MainPlayer
