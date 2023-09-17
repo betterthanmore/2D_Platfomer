@@ -567,6 +567,15 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BackButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb2caf92-4bb7-4a38-8c2e-e4335f7b6328"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -624,6 +633,17 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""action"": ""Chapter_Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1cd110aa-0179-4162-962a-41a0f562d406"",
+                    ""path"": ""<XInputController>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BackButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -654,6 +674,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_ButtonController_Main_Select = m_ButtonController.FindAction("Main_Select", throwIfNotFound: true);
         m_ButtonController_Press = m_ButtonController.FindAction("Press", throwIfNotFound: true);
         m_ButtonController_Chapter_Select = m_ButtonController.FindAction("Chapter_Select", throwIfNotFound: true);
+        m_ButtonController_BackButton = m_ButtonController.FindAction("BackButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -886,6 +907,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private readonly InputAction m_ButtonController_Main_Select;
     private readonly InputAction m_ButtonController_Press;
     private readonly InputAction m_ButtonController_Chapter_Select;
+    private readonly InputAction m_ButtonController_BackButton;
     public struct ButtonControllerActions
     {
         private @Controller m_Wrapper;
@@ -893,6 +915,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         public InputAction @Main_Select => m_Wrapper.m_ButtonController_Main_Select;
         public InputAction @Press => m_Wrapper.m_ButtonController_Press;
         public InputAction @Chapter_Select => m_Wrapper.m_ButtonController_Chapter_Select;
+        public InputAction @BackButton => m_Wrapper.m_ButtonController_BackButton;
         public InputActionMap Get() { return m_Wrapper.m_ButtonController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -911,6 +934,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Chapter_Select.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
                 @Chapter_Select.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
                 @Chapter_Select.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnChapter_Select;
+                @BackButton.started -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnBackButton;
+                @BackButton.performed -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnBackButton;
+                @BackButton.canceled -= m_Wrapper.m_ButtonControllerActionsCallbackInterface.OnBackButton;
             }
             m_Wrapper.m_ButtonControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -924,6 +950,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Chapter_Select.started += instance.OnChapter_Select;
                 @Chapter_Select.performed += instance.OnChapter_Select;
                 @Chapter_Select.canceled += instance.OnChapter_Select;
+                @BackButton.started += instance.OnBackButton;
+                @BackButton.performed += instance.OnBackButton;
+                @BackButton.canceled += instance.OnBackButton;
             }
         }
     }
@@ -954,5 +983,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnMain_Select(InputAction.CallbackContext context);
         void OnPress(InputAction.CallbackContext context);
         void OnChapter_Select(InputAction.CallbackContext context);
+        void OnBackButton(InputAction.CallbackContext context);
     }
 }

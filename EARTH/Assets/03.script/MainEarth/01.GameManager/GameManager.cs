@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Button> chapter1 = new List<Button>();
     public Canvas canvas = null;
     public List<Button> allButton = new List<Button>();
+    public Button back = null;
     public int selectButton = -1;
     public int SelectButton
     {
@@ -48,7 +49,8 @@ public class GameManager : MonoBehaviour
                         }
                         else
                         {
-                            selectButton = value - allButton.Count;
+                            selectButton = selectButton + 0;
+                            /*selectButton = value - allButton.Count;*/
                         }
                     }
                 }
@@ -66,10 +68,14 @@ public class GameManager : MonoBehaviour
                         }
                     }
                     else if (value == -3)
-                    {
-                        if (Mathf.Abs(value) > selectButton)
+                    {   
+                        if(allButton.Count < Mathf.Abs(value))
                         {
-                            selectButton += (allButton.Count - 1 + value);
+                            selectButton = selectButton + 0;
+                        }
+                        else if (Mathf.Abs(value) > selectButton)
+                        {
+                            selectButton += (allButton.Count + value);
                         }
                         else
                         {
@@ -480,14 +486,24 @@ public class GameManager : MonoBehaviour
             {
 
                 Button parent = temp.transform.GetChild(i).GetComponent<Button>();
-                if (parent != null && parent.interactable == true)
+                if (parent != null && parent.interactable == true && parent.gameObject.tag == "Untagged")
                     allButton.Add(parent);
 
+            }
+            if (GameObject.FindGameObjectWithTag("Back"))
+            {
+                back = GameObject.FindGameObjectWithTag("Back").GetComponent<Button>();
+            }
+            else
+            {
+                back = null;
             }
         }
         else
         {
             canvas = null;
+            back = null;
+
         }
 
 

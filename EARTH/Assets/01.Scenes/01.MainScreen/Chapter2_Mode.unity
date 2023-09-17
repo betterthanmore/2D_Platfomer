@@ -1937,8 +1937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a953a0e81ccd6fc408027a4e809e738c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapter1: []
-  canvas: {fileID: 0}
+  sceneName: 
 --- !u!4 &1408045334
 Transform:
   m_ObjectHideFlags: 0
@@ -3295,7 +3294,7 @@ GameObject:
   - component: {fileID: 1959018447}
   m_Layer: 5
   m_Name: Back
-  m_TagString: Untagged
+  m_TagString: Back
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

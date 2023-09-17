@@ -22,25 +22,11 @@ public class SelectStageMode : MonoBehaviour
         {
             if (input.control.name == "left")
             {
-                if(GameManager.selectButton == 9)
-                {
-                    GameManager.selectButton = 2;
-                }
-                else
-                {
-                    GameManager.SelectButton = -1;
-                }
+                GameManager.SelectButton = -1;
             }
             else if(input.control.name == "right")
             {
-                if (GameManager.selectButton == 2)
-                {
-                    GameManager.selectButton = 9;
-                }
-                else
-                {
-                    GameManager.SelectButton = 1;
-                }
+                GameManager.SelectButton = 1;
             }
             for (int i = 0; i < GameManager.allButton.Count; i++)
             {
@@ -49,6 +35,13 @@ public class SelectStageMode : MonoBehaviour
                 else
                     GameManager.allButton[i].animator.SetTrigger("Normal");
             }
+        }
+    }
+    public void BackButton(InputAction.CallbackContext input)
+    {
+        if (input.control.device.name == "XInputControllerWindows" && input.started && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
+        {
+            GameManager.back.onClick?.Invoke();
         }
     }
     public void ButtonDownUP(InputAction.CallbackContext input)

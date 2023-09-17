@@ -545,6 +545,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BackButton",
+                    "type": "Button",
+                    "id": "bb2caf92-4bb7-4a38-8c2e-e4335f7b6328",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -600,6 +609,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Chapter_Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cd110aa-0179-4162-962a-41a0f562d406",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
