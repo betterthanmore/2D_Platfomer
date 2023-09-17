@@ -5635,10 +5635,6 @@ MonoBehaviour:
     m_ActionName: SubPlayer/Lever[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest,/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e3d62a82-780f-4d3a-a731-8105d669e2d7
-    m_ActionName: SubPlayer/Pause[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9ac2feab-4940-428c-9a28-0c23c2587443
     m_ActionName: SubPlayer/Portal[/XInputControllerWindows/buttonNorth,/XInputControllerWindows1/buttonNorth,/Keyboard/downArrow]
   - m_PersistentCalls:
@@ -5655,12 +5651,20 @@ MonoBehaviour:
     m_ActionName: MainPlayer/NextScene_Window_Press
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fd6e5387-95df-4521-b034-20de80016890
-    m_ActionName: SubPlayer/NextScene_L_Stick_Press
+    m_ActionId: dc8fd73b-36da-4d37-9ef8-f75bff42e63b
+    m_ActionName: ButtonController/Main_Select
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 8063a1d0-620d-495a-872f-7f78133cdd97
-    m_ActionName: SubPlayer/NextScene_Window_Press
+    m_ActionId: caac79a2-b1bc-4a8a-b991-10a01b833c50
+    m_ActionName: ButtonController/Press
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 743f2a00-ab3f-4992-be18-2b0a08355ad3
+    m_ActionName: ButtonController/Chapter_Select
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
+    m_ActionName: ButtonController/BackButton
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MainPlayer
@@ -5679,11 +5683,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3215600195468353774, guid: beb2ccbc1d3304540805d7f1533a9bb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.571
+      value: -4.584
       objectReference: {fileID: 0}
     - target: {fileID: 3215600195468353774, guid: beb2ccbc1d3304540805d7f1533a9bb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.346
+      value: -4.501
       objectReference: {fileID: 0}
     - target: {fileID: 3215600195468353774, guid: beb2ccbc1d3304540805d7f1533a9bb3, type: 3}
       propertyPath: m_LocalPosition.z

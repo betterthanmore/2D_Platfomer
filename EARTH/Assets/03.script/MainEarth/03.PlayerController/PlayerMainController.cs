@@ -27,6 +27,10 @@ public class PlayerMainController : MonoBehaviour
 
     public bool subMove = true;
 
+    public bool cultup_On = false;
+    public CapsuleCollider2D cap_c;
+    public bool private_move;
+    public float[] size_Init = new float[2];
 
     public int dir = 0;
     public LayerMask groundLayer;
@@ -36,7 +40,6 @@ public class PlayerMainController : MonoBehaviour
     protected Vector2 playerMoveX;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
-    protected CapsuleCollider2D cc;
     protected Animator an;
     public bool isStepOn;
     public static bool fadeOut = false;     
@@ -64,7 +67,7 @@ public class PlayerMainController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
-        cc = GetComponent<CapsuleCollider2D>();
+        cap_c = GetComponent<CapsuleCollider2D>();
 
         if (playertype == PLAYERTYPE.PLAYER_01)
         {
@@ -91,7 +94,7 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard")
+        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && GameManager.move && private_move)
         {
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
             if (input.ReadValue<Vector2>().x == 0)

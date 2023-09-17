@@ -107,6 +107,15 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CultUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""5433ad91-ce49-441c-a656-5794675aeb77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -316,6 +325,17 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextScene_Window_Press"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""911dd4b0-ea2c-4719-a1b9-5859f9cbaea2"",
+                    ""path"": ""<XInputController>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CultUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -661,6 +681,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_MainPlayer_Reroad = m_MainPlayer.FindAction("Reroad", throwIfNotFound: true);
         m_MainPlayer_NextScene_L_Stick_PressN = m_MainPlayer.FindAction("NextScene_L_Stick_Press/N", throwIfNotFound: true);
         m_MainPlayer_NextScene_Window_Press = m_MainPlayer.FindAction("NextScene_Window_Press", throwIfNotFound: true);
+        m_MainPlayer_CultUp = m_MainPlayer.FindAction("CultUp", throwIfNotFound: true);
         // SubPlayer
         m_SubPlayer = asset.FindActionMap("SubPlayer", throwIfNotFound: true);
         m_SubPlayer_Move = m_SubPlayer.FindAction("Move", throwIfNotFound: true);
@@ -743,6 +764,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private readonly InputAction m_MainPlayer_Reroad;
     private readonly InputAction m_MainPlayer_NextScene_L_Stick_PressN;
     private readonly InputAction m_MainPlayer_NextScene_Window_Press;
+    private readonly InputAction m_MainPlayer_CultUp;
     public struct MainPlayerActions
     {
         private @Controller m_Wrapper;
@@ -756,6 +778,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         public InputAction @Reroad => m_Wrapper.m_MainPlayer_Reroad;
         public InputAction @NextScene_L_Stick_PressN => m_Wrapper.m_MainPlayer_NextScene_L_Stick_PressN;
         public InputAction @NextScene_Window_Press => m_Wrapper.m_MainPlayer_NextScene_Window_Press;
+        public InputAction @CultUp => m_Wrapper.m_MainPlayer_CultUp;
         public InputActionMap Get() { return m_Wrapper.m_MainPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -792,6 +815,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @NextScene_Window_Press.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
                 @NextScene_Window_Press.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
                 @NextScene_Window_Press.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnNextScene_Window_Press;
+                @CultUp.started -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnCultUp;
+                @CultUp.performed -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnCultUp;
+                @CultUp.canceled -= m_Wrapper.m_MainPlayerActionsCallbackInterface.OnCultUp;
             }
             m_Wrapper.m_MainPlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -823,6 +849,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @NextScene_Window_Press.started += instance.OnNextScene_Window_Press;
                 @NextScene_Window_Press.performed += instance.OnNextScene_Window_Press;
                 @NextScene_Window_Press.canceled += instance.OnNextScene_Window_Press;
+                @CultUp.started += instance.OnCultUp;
+                @CultUp.performed += instance.OnCultUp;
+                @CultUp.canceled += instance.OnCultUp;
             }
         }
     }
@@ -968,6 +997,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnReroad(InputAction.CallbackContext context);
         void OnNextScene_L_Stick_PressN(InputAction.CallbackContext context);
         void OnNextScene_Window_Press(InputAction.CallbackContext context);
+        void OnCultUp(InputAction.CallbackContext context);
     }
     public interface ISubPlayerActions
     {

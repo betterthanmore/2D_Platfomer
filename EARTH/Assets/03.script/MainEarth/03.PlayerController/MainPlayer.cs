@@ -6,7 +6,8 @@ public class MainPlayer : PlayerMainController
 {
 
     public bool interaction;
-
+    
+    
 
     // Start is called before the first frame update
     public override void Start()
@@ -82,7 +83,32 @@ public class MainPlayer : PlayerMainController
             GameManager.GearNumText(1);
         }
     }
-    
+    public void CultUp(InputAction.CallbackContext input)
+    {
+        if(!objectSense && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move 
+            && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            cultup_On = true;
+            private_move = false;
+            size_Init[0] = cap_c.size.x;
+            size_Init[1] = cap_c.size.y;
+            StartCoroutine(CultUP_On());
+            
+
+        }
+        else if(!cultup_On && GameManager.move && input.canceled && private_move
+            && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        {
+            //여기에 다시 일어서는 로직을 자면 됨
+        }
+    }
+    IEnumerator CultUP_On()
+    {
+        cap_c.offset = new Vector2(0, 0.2207956f);
+        cap_c.size = new Vector2(size_Init[0], size_Init[1]);
+        yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);
+        private_move = true;
+    }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
         if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
@@ -127,7 +153,7 @@ public class MainPlayer : PlayerMainController
             moveSpeed = 2;
         }
     }
-    public void ReLoad(InputAction.CallbackContext input)       //아직 안옮김
+    public void ReLoad(InputAction.CallbackContext input)
     {
         if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
         {
@@ -141,7 +167,7 @@ public class MainPlayer : PlayerMainController
         }
 
     }
-    public void Portar(InputAction.CallbackContext input)       //아직 안옮김
+    public void Portar(InputAction.CallbackContext input)
     {
         if((GameManager.portalOnPlayer && input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
         {
@@ -155,7 +181,7 @@ public class MainPlayer : PlayerMainController
     }
     public void Jump(InputAction.CallbackContext input)
     {
-        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && !boxHold && input.started)
+        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && !boxHold && input.started && !cultup_On)
         {
             if (isStepOn || isPlayerOn)
             {
