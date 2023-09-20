@@ -87,6 +87,7 @@ public class SelectStageMode : MonoBehaviour
     {
         SceneManager.LoadScene("ChapterSelect");
     }
+    #region 챕터 고르는 곳
     public void Chapter1()  //스테이지 고르는 화면으로 변경 해야됨
     {
         SceneManager.LoadScene("Chapter1_Mode");
@@ -99,7 +100,8 @@ public class SelectStageMode : MonoBehaviour
     {
         SceneManager.LoadScene("Chapter3_Mode");
     }
-
+    #endregion
+    #region 챕터 1 스테이지
     public void Chap1_Stage1()
     {
         //Stage1 TA_Stage1
@@ -107,38 +109,39 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap1_Stage2()
     {
-        SceneManager.LoadScene("Stage2");
+        SceneManager.LoadScene("Chap1_Stage2");
     }
     public void Chap1_Stage3()
     {
-        SceneManager.LoadScene("Stage3");
+        SceneManager.LoadScene("Chap1_Stage3");
     }
     public void Chap1_Stage4()
     {
-        SceneManager.LoadScene("Stage4");
+        SceneManager.LoadScene("Chap1_Stage4");
     }
     public void Chap1_Stage5()
     {
-        SceneManager.LoadScene("Stage5");
+        SceneManager.LoadScene("Chap1_Stage5");
     }
     public void Chap1_Stage6()
     {
-        SceneManager.LoadScene("TA_Stage1");
+        SceneManager.LoadScene("Chap1_TA_Stage1");
     }
     public void Chap1_Stage7()
     {
-        SceneManager.LoadScene("TA_Stage2");
+        SceneManager.LoadScene("Chap1_TA_Stage2");
     }
     public void Chap1_Stage8()
     {
-        SceneManager.LoadScene("TA_Stage3");
+        SceneManager.LoadScene("Chap1_TA_Stage3");
     }
     public void Chap1_Stage9()
     {
-        SceneManager.LoadScene("TA_Stage4");
+        SceneManager.LoadScene("Chap1_TA_Stage4(Chap1_Last)");
     }
+    #endregion
 
-
+    #region 챕터 2 스테이지
     public void Chap2_Stage1()
     {
         //Stage1 TA_Stage1
@@ -146,36 +149,38 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap2_Stage2()
     {
-        SceneManager.LoadScene("Stage6");
+        SceneManager.LoadScene("Chap2_Stage7");
     }
     public void Chap2_Stage3()
     {
-        SceneManager.LoadScene("Stage7");
+        SceneManager.LoadScene("Chap2_Stage8");
     }
     public void Chap2_Stage4()
     {
-        SceneManager.LoadScene("Stage8");
+        SceneManager.LoadScene("Chap2_Stage9");
     }
     public void Chap2_Stage5()
     {
-        SceneManager.LoadScene("Stage9");
+        SceneManager.LoadScene("Chap2_TA_Stage5");
     }
     public void Chap2_Stage6()
     {
-        SceneManager.LoadScene("TA_Stage5");
+        SceneManager.LoadScene("Chap2_TA_Stage6");
     }
     public void Chap2_Stage7()
     {
-        SceneManager.LoadScene("TA_Stage6");
+        SceneManager.LoadScene("Chap2_TA_Stage7");
     }
     public void Chap2_Stage8()
     {
-        SceneManager.LoadScene("TA_Stage7");
+        SceneManager.LoadScene("Chap2_TA_Stage8");
     }
     public void Chap2_Stage9()
     {
-        SceneManager.LoadScene("TA_Stage8");
+        SceneManager.LoadScene("Chap2_TA_Stage9(Chap2_Last)");
     }
+    #endregion
+    #region 챕터 3 스테이지
     public void Chap3_Stage1()
     {
         //Stage1 TA_Stage1
@@ -183,34 +188,35 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap3_Stage2()
     {
-        SceneManager.LoadScene("Stage10");
+        SceneManager.LoadScene("Chap3_Stage11");
     }
     public void Chap3_Stage3()
     {
-        SceneManager.LoadScene("Stage11");
+        SceneManager.LoadScene("Chap3_Stage12");
     }
     public void Chap3_Stage4()
     {
-        SceneManager.LoadScene("Stage12");
+        SceneManager.LoadScene("Chap3_Stage13");
     }
     public void Chap3_Stage5()
     {
-        SceneManager.LoadScene("Stage13");
+        SceneManager.LoadScene("Chap3_Stage14");
     }
     public void Chap3_Stage6()
     {
-        SceneManager.LoadScene("TA_Stage9");
+        SceneManager.LoadScene("Chap3_TA_Stage10");
     }
     public void Chap3_Stage7()
     {
-        SceneManager.LoadScene("TA_Stage10");
+        SceneManager.LoadScene("Chap3_TA_Stage11");
     }
     public void Chap3_Stage8()
     {
-        SceneManager.LoadScene("TA_Stage11");
+        SceneManager.LoadScene("Chap3_TA_Stage12");
     }
     public void Chap3_Stage9()
     {
-        SceneManager.LoadScene("TA_Stage12");
+        SceneManager.LoadScene("Chap3_TA_Stage13(Chap3_Last)");
     }
+    #endregion
 }

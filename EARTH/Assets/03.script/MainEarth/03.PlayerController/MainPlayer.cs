@@ -86,7 +86,7 @@ public class MainPlayer : PlayerMainController
     public void CultUp(InputAction.CallbackContext input)
     {
         if(!objectSense && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move 
-            && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+            && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             cultup_On = true;
             private_move = false;
@@ -97,7 +97,7 @@ public class MainPlayer : PlayerMainController
 
         }
         else if(!cultup_On && GameManager.move && input.canceled && private_move
-            && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+            && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             //여기에 다시 일어서는 로직을 자면 됨
         }
@@ -111,7 +111,7 @@ public class MainPlayer : PlayerMainController
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             if (objectSense.collider.gameObject.layer == 2048)
             {
@@ -143,8 +143,12 @@ public class MainPlayer : PlayerMainController
                     StartCoroutine(SubGaugeHeal());
                 }
             }
+            else
+            {
+                Debug.Log("최종");
+            }
         }
-        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && boxHold &&  input.canceled && GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && boxHold &&  input.canceled && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             state = State.IDEL;
             boxHold = false;
@@ -155,13 +159,12 @@ public class MainPlayer : PlayerMainController
     }
     public void ReLoad(InputAction.CallbackContext input)
     {
-        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             GameManager.reGame1P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
             {
                 GameManager.reGameButtonDown = false;
-                GameManager.reGameStart = true;
                 GameManager.ReGameStart();
             }
         }
@@ -169,7 +172,7 @@ public class MainPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if((GameManager.portalOnPlayer && input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        if((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
         {
             if (GameManager.portal_Ready_Player[0])
             {
@@ -181,7 +184,7 @@ public class MainPlayer : PlayerMainController
     }
     public void Jump(InputAction.CallbackContext input)
     {
-        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && !boxHold && input.started && !cultup_On)
+        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && !boxHold && input.started && !cultup_On)
         {
             if (isStepOn || isPlayerOn)
             {
@@ -195,7 +198,7 @@ public class MainPlayer : PlayerMainController
     {
         Debug.Log("반응");
 
-        if ((input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
             GameManager.MainLever();
     }
 }

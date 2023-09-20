@@ -94,7 +94,7 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && GameManager.move && private_move)
+        if (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard" && GameManager.move && private_move)
         {
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
             if (input.ReadValue<Vector2>().x == 0)
@@ -119,28 +119,28 @@ public class PlayerMainController : MonoBehaviour
     }
     public void NextScene_L_Stick_Press(InputAction.CallbackContext input)
     {
-        if (input.started && input.control.parent.name == ControllerDevices)
+        if (input.started && input.control.device.name == ControllerDevices)
         {
             GameManager.nextScene_Press[0] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled && input.control.parent.name == ControllerDevices)
+        else if (input.canceled && input.control.device.name == ControllerDevices)
         {
             GameManager.nextScene_Press[0] = false;
         }
-        else if(input.control.parent.name == "Keyboard" && input.started)
+        else if(input.control.device.name == "Keyboard" && input.started)
             GameManager.NextScene();
     }
     public void NextScene_Window_Press(InputAction.CallbackContext input)
     {
-        if (input.started && input.control.parent.name == ControllerDevices)
+        if (input.started && input.control.device.name == ControllerDevices)
         {
             GameManager.nextScene_Press[1] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled && input.control.parent.name == ControllerDevices)
+        else if (input.canceled && input.control.device.name == ControllerDevices)
         {
             GameManager.nextScene_Press[1] = false;
         }

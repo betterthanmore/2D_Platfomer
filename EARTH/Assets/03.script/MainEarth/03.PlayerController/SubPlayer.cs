@@ -67,32 +67,6 @@ public class SubPlayer : PlayerMainController
         }
         /*if (GameManager.move)
         {
-
-            if (!subBoxHold && enableBoost)
-            {
-                if (enableBoost)     //땅에 닿고 부스트 키를 눌렀을 때만 플레이어의 Y축 값을 저장한다.
-                {
-                    state = State.MOVE;
-                    subplayerPosYCrt = gameObject.transform.position.y;
-                }
-
-                if (Input.GetButtonUp("GamePad2_A") || Input.GetKeyUp(KeyCode.UpArrow))  //점프키를 
-                {
-                    enableBoost = false;
-                }
-
-                if (enableBoost && scrollbar.size > 0.001)        //부스트
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    scrollbar.size -= 1 * Time.deltaTime / boostTime;
-                    GameManager.gauge = scrollbar.size;
-                    if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
-                    {
-                        enableBoost = false;
-                    }
-                }
-            }
-
             if (boxSense && (Input.GetButtonDown("GamePad2_X") || Input.GetKeyDown(KeyCode.L))) 박스 들기 실행
             {
                 subMove = false;
@@ -104,8 +78,6 @@ public class SubPlayer : PlayerMainController
                 PutAction();
             }
         }*/
-
-
 
 
         if (isStepOn)   //땅에 닿는다면
@@ -124,12 +96,12 @@ public class SubPlayer : PlayerMainController
     {
         if (GameManager.move)
         {
-            if (input.started && !subBoxHold && enableBoost)
+            if (input.started && !subBoxHold && enableBoost && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && isStepOn)
             {
                 boostKeyDown = true;
                 state = State.MOVE;
             }
-            else if (input.canceled)
+            else if (input.canceled && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
             {
                 boostKeyDown = false;
             } 
@@ -138,45 +110,29 @@ public class SubPlayer : PlayerMainController
     public void IronBreak(InputAction.CallbackContext input)        //이거 게임매니저로 옮겨야됨. 이유는 코루틴이 끝나고 if문이 도는 것 같음 집에서 테스트 해봐야됨
     {
         if (objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move && 
-            (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+            (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             StartCoroutine(UIManager.FadeScreenSetUp());
 
         }
-        /*if(objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown &&  GameManager.move && (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
-        {
-            StartCoroutine(UIManager.FadeScreenSetUp());
-            if (GameManager.ironBreak)
-            {
-                Debug.Log("벽 파괴 시작");
-                objectSense.collider.transform.gameObject.SetActive(false);
-                if (objectSense.collider.transform.childCount == 2)
-                {
-                    objectSense.collider.transform.GetChild(1).gameObject.SetActive(true);
-                }
-                scrollbar.size -= 0.1f;
-            }
-        }*/
-
     }
     
     public void ReLoad(InputAction.CallbackContext input)
     {
         if (input.started && GameManager.reGameButtonDown && 
-            (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard"))
+            (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
             GameManager.reGame2P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
             {
                 GameManager.reGameButtonDown = false;
-                GameManager.reGameStart = true;
                 GameManager.ReGameStart();
             }
         }
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if ((GameManager.portalOnPlayer && input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard") && input.started)
+        if ((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
         {
             if (GameManager.portal_Ready_Player[1])
             {
@@ -188,18 +144,10 @@ public class SubPlayer : PlayerMainController
     }
     public void Lever(InputAction.CallbackContext input)
     {
-        if (input.control.parent.name == ControllerDevices || input.control.parent.name == "Keyboard" && input.started)
+        if (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard" && input.started)
             GameManager.SubLever();
     }
     
-    /*public void BoostKeyDown(InputAction.CallbackContext input)
-    {
-        Debug.Log("누름");
-        if (!subBoxHold && input.control.parent.name == ControllerDevices)
-        {
-            
-        }
-    }*/
     /*public void BoostKeyHold(InputAction.CallbackContext input)
     {
         if (input.control.parent.name == ControllerDevices)
@@ -239,10 +187,6 @@ public class SubPlayer : PlayerMainController
         }
 
 
-    }*/
-    /*public void BoostKeyUp(InputAction.CallbackContext input)
-    {
-       
     }*/
     /*public void HoldAction()          박스 들 때 메서드
     {

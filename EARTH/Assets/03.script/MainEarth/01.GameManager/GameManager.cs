@@ -161,20 +161,6 @@ public class GameManager : MonoBehaviour
         {
             portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
         }
-        
-        if (!buttonB_Lock && reGameButtonDown)
-        {
-            if (Input.GetButtonDown("GamePad2_RB"))
-            {
-                reGame2P = true;
-            }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                reGame2P = true;
-                reGame1P = true;
-            }
-        }
     }
     public void NextScene()
     {
@@ -216,6 +202,11 @@ public class GameManager : MonoBehaviour
         reGameStart = false;
         gearItem = gearItemInit;
         gauge = gauge_Init;
+        if(UIManger.reGame_text != null && UIManger.reGame_Outline != null)
+        {
+            UIManger.reGame_text.DOFade(0, 0);       //나중에 변경
+            UIManger.reGame_Outline.DOFade(0, 0);
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GearNumText(int gear)
@@ -503,7 +494,7 @@ public class GameManager : MonoBehaviour
             back = null;
 
         }
-
+        selectButton = -1;
 
     }
 }

@@ -14,8 +14,8 @@ public class UIManger : MonoBehaviour
     public Text time_TA_Text;
     private Text gameOverTA_Text;
     private Outline gameOverTA_Outline;
-    private Text reGame_text;
-    private Outline reGame_Outline;
+    public Text reGame_text;
+    public Outline reGame_Outline;
     public Text gearNum;
     public float timeTAtime = 41;
     public Canvas canvas;
@@ -95,7 +95,6 @@ public class UIManger : MonoBehaviour
     {
         if (minGearTextStart)
         {
-            Debug.Log("텍스트 진입");
             minGearTextStart = false;
             minGearText.text = text;
             miniGearText_Outline.DOFade(0f, 0f);
@@ -138,12 +137,11 @@ public class UIManger : MonoBehaviour
     
     public IEnumerator ReGameTxet()
     {
-        GameManager.buttonB_Lock = true;
         GameManager.move = false;
         yield return new WaitForSeconds(1);
         reGame_text.DOFade(1, 1);
         reGame_Outline.DOFade(1, 1);
-        reGame_text.text = " 양쪽 플레이어 모두 RB버튼을 누르면 게임이 재시작합니다.";
+        reGame_text.text = " 양쪽 플레이어 모두 LB버튼을 누르면 게임이 재시작합니다.";
             
     }
     public void UIOnLoadSceneInfo(Scene arg, LoadSceneMode arg1)
