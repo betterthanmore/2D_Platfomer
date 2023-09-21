@@ -1048,7 +1048,7 @@ Transform:
   - {fileID: 1565035350}
   - {fileID: 618648832}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1089283475
 GameObject:
@@ -6412,7 +6412,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1464010473205448750
 GameObject:
@@ -6464,11 +6464,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2529755126861899770}
   - component: {fileID: 2529755126861899749}
-  - component: {fileID: 2529755126861899768}
   - component: {fileID: 2529755126861899771}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: IronFrame_1 (1)
-  m_TagString: Untagged
+  m_TagString: IronBreak
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6525,18 +6524,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2529755126861899768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2529755126861899748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c791fb74a371ff47980a55b33133ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2529755126861899770
 Transform:
   m_ObjectHideFlags: 0

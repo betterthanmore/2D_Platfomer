@@ -113,7 +113,7 @@ public class SubPlayer : PlayerMainController
             return;
         else if (objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move &&
             (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
-        {
+        {       //콜라이더를 검출해내는거라 자식 빈오브젝트에 넣어둔 철근들 다 수정해야됨ㅋㅋ
             GameManager.move = false;
             StartCoroutine(UIManager.FadeScreenSetUp());
 

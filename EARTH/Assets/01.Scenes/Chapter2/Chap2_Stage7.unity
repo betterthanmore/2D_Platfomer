@@ -966,7 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7611417854547135982, guid: a2c4936890111564c8e61ca5836916e3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7611417854547135982, guid: a2c4936890111564c8e61ca5836916e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1094,7 +1094,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &801668036
 Rigidbody2D:
@@ -1612,7 +1612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1665,26 +1665,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289940668}
-  - component: {fileID: 1289940667}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BreakIron
-  m_TagString: Untagged
+  m_TagString: IronBreak
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1289940667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289940666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c791fb74a371ff47980a55b33133ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1289940668
 Transform:
   m_ObjectHideFlags: 0
@@ -2308,7 +2295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4786756671495326907, guid: 5a5182beaa0b0ee49af8651a4e891131, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4786756671495326907, guid: 5a5182beaa0b0ee49af8651a4e891131, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7116,7 +7103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746739507115594654, guid: a711c7998c47fb5468f460d15f45c9ca, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2746739507115594654, guid: a711c7998c47fb5468f460d15f45c9ca, type: 3}
       propertyPath: m_LocalPosition.x

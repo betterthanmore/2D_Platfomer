@@ -205,7 +205,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &79438176
 PrefabInstance:
@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746739507115594654, guid: a711c7998c47fb5468f460d15f45c9ca, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2746739507115594654, guid: a711c7998c47fb5468f460d15f45c9ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,7 +330,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4233701083304622147, guid: 4bd4ae8cd4a5f3b4bb7de03739ed628d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4233701083304622147, guid: 4bd4ae8cd4a5f3b4bb7de03739ed628d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -733,7 +733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 206999088}
   - component: {fileID: 206999087}
-  - component: {fileID: 206999089}
   - component: {fileID: 206999090}
   m_Layer: 6
   m_Name: IronFrame_1
@@ -801,27 +800,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206999086}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.93, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4440902, y: 2.0382516, z: -0.005993668}
   m_LocalScale: {x: 1.35, y: 1.9222385, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 598558933}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Children: []
+  m_Father: {fileID: 1763010077}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &206999089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206999086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c791fb74a371ff47980a55b33133ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &206999090
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1007,7 +993,7 @@ Transform:
   m_Children:
   - {fileID: 1684564996}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &325037430
 SpriteRenderer:
@@ -1087,12 +1073,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598558932}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.8074075, y: -0.52542907, z: 0}
-  m_LocalScale: {x: 0.7023062, y: 1.4238805, z: 1}
+  m_LocalPosition: {x: -0.64590997, y: 1.0282516, z: -0.005993668}
+  m_LocalScale: {x: 1.3499999, y: 1.9222386, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 206999088}
-  m_RootOrder: 0
+  m_Father: {fileID: 1763010077}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &598558934
 BoxCollider2D:
@@ -1433,7 +1419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2296465692665544894, guid: cb5b6e0e6f570de45a3b6430af870065, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1662,7 +1648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4786756671495326907, guid: 5a5182beaa0b0ee49af8651a4e891131, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4786756671495326907, guid: 5a5182beaa0b0ee49af8651a4e891131, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1887,7 +1873,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1408460390
 GameObject:
@@ -5777,6 +5763,39 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!1 &1763010076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763010077}
+  m_Layer: 10
+  m_Name: IronFame_Break
+  m_TagString: IronBreak
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763010077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763010076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3140902, y: -1.1082517, z: 0.005993668}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 206999088}
+  - {fileID: 598558933}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1766472950
 GameObject:
   m_ObjectHideFlags: 0
@@ -5816,5 +5835,5 @@ Transform:
   - {fileID: 1565035350}
   - {fileID: 618648832}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

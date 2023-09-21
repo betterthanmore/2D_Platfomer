@@ -384,9 +384,14 @@ public class GameManager : MonoBehaviour
     }
     public void IronBreakStart()
     {
-        ironBreak.transform.gameObject.SetActive(false);
-        if (ironBreak.transform.childCount == 2)
+        if(ironBreak.transform.childCount == 0)
         {
+            ironBreak.transform.gameObject.SetActive(false);
+
+        }
+        else if (ironBreak.transform.childCount == 2)
+        {
+            ironBreak.transform.GetChild(0).gameObject.SetActive(false);
             ironBreak.transform.GetChild(1).gameObject.SetActive(true);
         }
         SubPlayer.scrollbar.size -= 0.1f;
