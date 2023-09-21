@@ -203,10 +203,6 @@ public class GameManager : MonoBehaviour
         gearItem = gearItemInit;
         gauge = gauge_Init;
         if(UIManger.reGame_text != null && UIManger.reGame_Outline != null)
-        {
-            UIManger.reGame_text.DOFade(0, 0);       //나중에 변경
-            UIManger.reGame_Outline.DOFade(0, 0);
-        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void GearNumText(int gear)
@@ -403,6 +399,7 @@ public class GameManager : MonoBehaviour
         mainLeverOn = false;
         subLeverOn = false;
         buttonB_Lock = true;
+        reGameStart = false;
         if (arg.name.Contains("Vidio"))
         {
             Vidio_N = false;

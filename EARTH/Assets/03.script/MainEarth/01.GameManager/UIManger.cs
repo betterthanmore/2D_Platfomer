@@ -53,10 +53,6 @@ public class UIManger : MonoBehaviour
         {
             TimeATTACK();
         }
-        if (GameManager.reGameStart)
-        {
-            StartCoroutine(ReGameTxet());
-        }
         if(pauseScreen != null)
         {
             if (GameManager.buttonBPress)

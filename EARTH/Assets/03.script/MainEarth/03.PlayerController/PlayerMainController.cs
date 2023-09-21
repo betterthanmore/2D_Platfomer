@@ -29,7 +29,7 @@ public class PlayerMainController : MonoBehaviour
 
     public bool cultup_On = false;
     public CapsuleCollider2D cap_c;
-    public bool private_move;
+    public bool private_move = true;
     public float[] size_Init = new float[2];
 
     public int dir = 0;
@@ -37,7 +37,7 @@ public class PlayerMainController : MonoBehaviour
     public float rayRange = 0.1f;
     public float jumpForce = 0;
     public float moveSpeed = 2;
-    protected Vector2 playerMoveX;
+    public Vector2 playerMoveX;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected Animator an;
@@ -94,7 +94,7 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        if (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard" && GameManager.move && private_move)
+        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && private_move)
         {
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
             if (input.ReadValue<Vector2>().x == 0)
@@ -102,6 +102,8 @@ public class PlayerMainController : MonoBehaviour
                 playerMoveX.x = otherVelocity;
             }
         }
+        else
+            playerMoveX.x = 0;
     }
 
     public void MoveDirection()

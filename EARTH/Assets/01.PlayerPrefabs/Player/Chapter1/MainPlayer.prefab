@@ -181,6 +181,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   subMove: 1
+  cultup_On: 0
+  cap_c: {fileID: 0}
+  private_move: 1
+  size_Init:
+  - 0
+  - 0
   dir: 0
   groundLayer:
     serializedVersion: 2
@@ -188,6 +194,7 @@ MonoBehaviour:
   rayRange: 0.1
   jumpForce: 5
   moveSpeed: 2
+  playerMoveX: {x: 0, y: 0}
   isStepOn: 0
   isplayer: 0
   isPlayerOn: {fileID: 0}
@@ -429,6 +436,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
     m_ActionName: ButtonController/BackButton
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5433ad91-ce49-441c-a656-5794675aeb77
+    m_ActionName: MainPlayer/CultUp
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MainPlayer

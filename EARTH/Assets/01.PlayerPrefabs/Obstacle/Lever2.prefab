@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4233701083304622147}
   - component: {fileID: 4233701083304622146}
   - component: {fileID: 9067053449098302418}
+  - component: {fileID: -5932257807010475689}
   m_Layer: 0
   m_Name: Lever2
   m_TagString: Untagged
@@ -105,3 +106,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5932257807010475689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233701083304622149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0792ee960fce1054b8407ccfd1302686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

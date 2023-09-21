@@ -113,14 +113,16 @@ public class MainPlayer : PlayerMainController
     {
         if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
-            if (objectSense.collider.gameObject.layer == 2048)
+            if (objectSense.collider == null)
+                return;
+            else if (objectSense.collider.gameObject.layer == 2048)
             {
                 state = State.HOLD;
                 boxHold = true;
                 objectSense.collider.transform.parent = gameObject.transform;
                 objectSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
-            else if(state != State.HEAL && interaction)
+            else if (state != State.HEAL && interaction)
             {
                 if (SubPlayer.scrollbar.size == 1)
                 {
@@ -172,7 +174,9 @@ public class MainPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
+        if (GameManager.portalOnPlayer == null)
+            return;
+        else if ((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
         {
             if (GameManager.portal_Ready_Player[0])
             {

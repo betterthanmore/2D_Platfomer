@@ -109,9 +109,12 @@ public class SubPlayer : PlayerMainController
     }
     public void IronBreak(InputAction.CallbackContext input)        //이거 게임매니저로 옮겨야됨. 이유는 코루틴이 끝나고 if문이 도는 것 같음 집에서 테스트 해봐야됨
     {
-        if (objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move && 
+        if (objectSense.collider == null)
+            return;
+        else if (objectSense.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move &&
             (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
+            GameManager.move = false;
             StartCoroutine(UIManager.FadeScreenSetUp());
 
         }
