@@ -131,10 +131,6 @@ public class GameManager : MonoBehaviour
     public Transform portalLever2 = null;
     /*public bool ironBreak = false;*/
     public GameObject ironBreak = null;
-
-    
-
-
     private void Awake()
     {
         if (Instance)
@@ -384,15 +380,17 @@ public class GameManager : MonoBehaviour
     }
     public void IronBreakStart()
     {
-        if(ironBreak.transform.childCount == 0)
+        
+        if (ironBreak.transform.parent)
+        {
+            Debug.Log("자식 있음");
+            ironBreak.transform.parent.GetChild(0).gameObject.SetActive(false);
+            ironBreak.transform.parent.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (ironBreak.transform.childCount == 0)
         {
             ironBreak.transform.gameObject.SetActive(false);
-
-        }
-        else if (ironBreak.transform.childCount == 2)
-        {
-            ironBreak.transform.GetChild(0).gameObject.SetActive(false);
-            ironBreak.transform.GetChild(1).gameObject.SetActive(true);
+            Debug.Log("자식 없음");
         }
         SubPlayer.scrollbar.size -= 0.1f;
     }

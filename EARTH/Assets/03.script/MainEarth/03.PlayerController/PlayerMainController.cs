@@ -190,16 +190,6 @@ public class PlayerMainController : MonoBehaviour
                 if (!boxHold)
                 {
                     MoveDirection();
-                    /*if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0)
-                    {
-                        sr.flipX = true;
-                        dir = -1;
-                    }
-                    else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxisRaw(HorizontalKeyBoard) > 0)
-                    {
-                        sr.flipX = false;
-                        dir = 1;
-                    }*/
                 }
                 break;
             case State.IDEL:
@@ -218,7 +208,6 @@ public class PlayerMainController : MonoBehaviour
                 {
                     an.speed = 1;
                 }
-
                 break;
             case State.HEAL:
                 break;
@@ -226,16 +215,6 @@ public class PlayerMainController : MonoBehaviour
                 an.SetBool("Hold", true);
                 moveSpeed = 0.5f;
                 MoveDirection();
-                /*if (Input.GetAxis(HorizontalKeyMap) < 0 || Input.GetAxisRaw(HorizontalKeyBoard) < 0 && subMove)
-                {
-                    sr.flipX = true;
-                    dir = -1;
-                }
-                else if (Input.GetAxis(HorizontalKeyMap) > 0 || Input.GetAxisRaw(HorizontalKeyBoard) > 0 && subMove)
-                {
-                    sr.flipX = false;
-                    dir = 1;
-                }*/
                 break;
 
             default:
