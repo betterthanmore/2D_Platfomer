@@ -4,23 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class MainPlayer : PlayerMainController
 {
-
-    public bool interaction;
-    
-    
-
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-
     }
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
-        if (!boxHold)
+
+        if (!boxHold && !cultup_On)
         {
             if (rb.velocity.x == 0 && (isStepOn || isPlayerOn))
             {
@@ -32,7 +27,6 @@ public class MainPlayer : PlayerMainController
             }
         }
 
-        interaction = Physics2D.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.right * dir, 0.5f, playerLayer);
 
         if (GameManager.move)
         {
@@ -85,78 +79,105 @@ public class MainPlayer : PlayerMainController
     }
     public void CultUp(InputAction.CallbackContext input)
     {
-        if(!objectSense && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move 
+        if (!private_move)
+            return;
+        else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed && GameManager.move 
             && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
-            cultup_On = true;
-            private_move = false;
-            size_Init[0] = cap_c.size.x;
-            size_Init[1] = cap_c.size.y;
-            StartCoroutine(CultUP_On());
-            
-
+            if (!cultup_On)
+            {
+                cultup_On = true;
+                private_move = false;
+                state = State.CULTUP;
+                size_Init[0] = cap_c.size.x;
+                size_Init[1] = cap_c.size.y;
+                offset_init = cap_c.offset.y;
+                StartCoroutine(CultUP_On()); 
+            }
+            else
+            {
+                private_move = false;
+                cap_c.size = new Vector2(size_Init[0], size_Init[1]);
+                cap_c.offset = new Vector2(0, offset_init);
+                state = State.IDEL;
+                StartCoroutine(CultUP_On_Back());
+                
+            }
         }
-        else if(!cultup_On && GameManager.move && input.canceled && private_move
-            && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
-        {
-            //여기에 다시 일어서는 로직을 자면 됨
-        }
+    }
+    IEnumerator CultUP_On_Back()
+    {
+        yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
+        cultup_On = false;
+        moveSpeed = 2;
+        private_move = true;
     }
     IEnumerator CultUP_On()
     {
-        cap_c.offset = new Vector2(0, 0.2207956f);
-        cap_c.size = new Vector2(size_Init[0], size_Init[1]);
-        yield return new WaitForSeconds(an.GetCurrentAnimatorStateInfo(0).length);
+        cap_c.offset = new Vector2(0, offset_trans);
+        cap_c.size = new Vector2(size_trans[0], size_trans[1]);
+        yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
+        state = State.CULTUPRUN;
         private_move = true;
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.started && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
         {
-            if (objectSense.collider == null)
+            if (objectSense.Length == 0)
+            {
+                Debug.Log("리턴");
                 return;
-            else if (objectSense.collider.gameObject.layer == 2048)
-            {
-                state = State.HOLD;
-                boxHold = true;
-                objectSense.collider.transform.parent = gameObject.transform;
-                objectSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             }
-            else if (state != State.HEAL && interaction)
+            else if (input.started)
             {
-                if (SubPlayer.scrollbar.size == 1)
+                foreach (var item in objectSense)
                 {
-                    if (UIManager.minGearText != null)
+                    if (item.collider.gameObject.layer == 11 && state != State.HOLD)
                     {
-                        StartCoroutine(UIManager.MinimumGears("에너지가 충분하네!"));
+                        Debug.Log("잡기");
+                        state = State.HOLD;
+                        boxHold = true;
+                        item.collider.transform.parent = gameObject.transform;
+                        item.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+
                     }
-                }
-                else if (GameManager.gearItem == 0)
-                {
-                    if (UIManager.minGearText != null)
+                    else if (state == State.HOLD)
                     {
-                        StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
+                        Debug.Log("놓기");
+                        state = State.IDEL;
+                        boxHold = false;
+                        item.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                        item.transform.parent = null;
+                        moveSpeed = 2;
                     }
-                }
-                else
-                {
-                    an.SetTrigger("Heal");
-                    state = State.HEAL;
-                    StartCoroutine(SubGaugeHeal());
+                    else if (item.collider.gameObject.layer == 9 && state != State.HOLD && state != State.HEAL)
+                    {
+                        Debug.Log("수리");
+                        if (SubPlayer.scrollbar.size == 1)
+                        {
+                            if (UIManager.minGearText != null)
+                            {
+                                StartCoroutine(UIManager.MinimumGears("에너지가 충분하네!"));
+                            }
+                        }
+                        else if (GameManager.gearItem == 0)
+                        {
+                            if (UIManager.minGearText != null)
+                            {
+                                StartCoroutine(UIManager.MinimumGears("기어 아이템이 없네.."));
+                            }
+                        }
+                        else
+                        {
+                            an.SetTrigger("Heal");
+                            state = State.HEAL;
+                            StartCoroutine(SubGaugeHeal());
+                        }
+                    }
+                    break;
                 }
             }
-            else
-            {
-                Debug.Log("최종");
-            }
-        }
-        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && boxHold &&  input.canceled && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
-        {
-            state = State.IDEL;
-            boxHold = false;
-            objectSense.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            objectSense.transform.parent = null;
-            moveSpeed = 2;
         }
     }
     public void ReLoad(InputAction.CallbackContext input)
@@ -196,12 +217,14 @@ public class MainPlayer : PlayerMainController
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             }
+            return;
         }
     }
     public void Lever(InputAction.CallbackContext input)
     {
         Debug.Log("반응");
-
+        Debug.Log(input.control.device.name);
+        Debug.Log(input.interaction);
         if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
             GameManager.MainLever();
     }

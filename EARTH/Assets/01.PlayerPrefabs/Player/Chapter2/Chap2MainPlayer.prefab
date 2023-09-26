@@ -154,18 +154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 3
-  playertype: 0
   groundCheck: {fileID: 2746739505979178950}
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  subMove: 1
-  cultup_On: 0
+  ControllerDevices: 
   cap_c: {fileID: 0}
   private_move: 1
   size_Init:
   - 0
   - 0
+  size_trans:
+  - 0.308
+  - 0.43
+  offset_init: 0.436
+  offset_trans: 0.2207956
   dir: 0
   groundLayer:
     serializedVersion: 2
@@ -173,11 +176,7 @@ MonoBehaviour:
   rayRange: 0.1
   jumpForce: 5
   moveSpeed: 2
-  playerMoveX: {x: 0, y: 0}
-  isStepOn: 0
   isplayer: 0
-  isPlayerOn: {fileID: 0}
-  moveGround: {fileID: 0}
   otherVelocity: 0
   moveGroundLayer:
     serializedVersion: 2
@@ -189,7 +188,7 @@ MonoBehaviour:
   objectDetection:
     serializedVersion: 2
     m_Bits: 2048
-  interaction: 0
+  boxPush: 0
 --- !u!50 &2746739507115594641
 Rigidbody2D:
   serializedVersion: 4
@@ -437,11 +436,23 @@ MonoBehaviour:
     m_ActionId: bb2caf92-4bb7-4a38-8c2e-e4335f7b6328
     m_ActionName: ButtonController/BackButton
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2746739507115594643}
+        m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
+        m_MethodName: CultUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5433ad91-ce49-441c-a656-5794675aeb77
     m_ActionName: MainPlayer/CultUp
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Main
   m_DefaultActionMap: MainPlayer
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

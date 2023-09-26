@@ -11,7 +11,9 @@ public class PlayerMainController : MonoBehaviour
         IDEL,
         HOLD,
         HEAL,
-        SUBHOLD
+        SUBHOLD,
+        CULTUP,
+        CULTUPRUN
     }
     public State state = State.IDEL;
 
@@ -20,33 +22,34 @@ public class PlayerMainController : MonoBehaviour
         PLAYER_01,
         PLAYER_02
     }
-    public PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
+    protected PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
     public Transform groundCheck;    
     public LayerMask playerLayer;    
-    protected string ControllerDevices = "XInputControllerWindows1";
+    public string ControllerDevices;
 
-    public bool subMove = true;
-
-    public bool cultup_On = false;
+    protected bool cultup_On = false;
     public CapsuleCollider2D cap_c;
     public bool private_move = true;
     public float[] size_Init = new float[2];
+    public float[] size_trans = new float[2];
+    public float offset_init;
+    public float offset_trans;
 
     public int dir = 0;
     public LayerMask groundLayer;
     public float rayRange = 0.1f;
     public float jumpForce = 0;
     public float moveSpeed = 2;
-    public Vector2 playerMoveX;
+    protected Vector2 playerMoveX;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected Animator an;
-    public bool isStepOn;
+    protected bool isStepOn;
     public static bool fadeOut = false;     
     public bool isplayer = false;
-    public Collider2D isPlayerOn;
-    public Collider2D moveGround;
-    public RaycastHit2D objectSense;
+    protected Collider2D isPlayerOn;
+    protected Collider2D moveGround;
+    public RaycastHit2D[] objectSense;
     public float otherVelocity = 0f;
     public LayerMask moveGroundLayer;
     public bool boxHold = false;
@@ -54,6 +57,7 @@ public class PlayerMainController : MonoBehaviour
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
     public LayerMask objectDetection;
+    public bool boxPush = false;
 
 
     protected GameManager GameManager => GameManager.Instance;
@@ -69,14 +73,14 @@ public class PlayerMainController : MonoBehaviour
         an = GetComponent<Animator>();
         cap_c = GetComponent<CapsuleCollider2D>();
 
-        if (playertype == PLAYERTYPE.PLAYER_01)
-        {
-            ControllerDevices = "XInputControllerWindows";
-        }
-        else if (playertype == PLAYERTYPE.PLAYER_02)
+        /*if (playertype == PLAYERTYPE.PLAYER_02)
         {
             ControllerDevices = "XInputControllerWindows1";
         }
+        else if (playertype == PLAYERTYPE.PLAYER_01)
+        {
+            ControllerDevices = "XInputControllerWindows";
+        }*/
     }
 
     // Update is called once per frame
@@ -84,7 +88,13 @@ public class PlayerMainController : MonoBehaviour
     {
         isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
-        objectSense = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, objectDetection);
+        objectSense = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, objectDetection);
+        boxPush = Physics2D.OverlapCapsule(transform.position, cap_c.size * 1.1f, 0, 0, 11);
+        if (boxPush)
+            Debug.Log("박스 감지");
+
+        if (!private_move)
+            playerMoveX.x = 0;
 
         if (!moveGround && playerMoveX.x == 0)
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -94,16 +104,23 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && private_move)
+        if (ControllerDevices.Length == 0)
+            ControllerDevices = input.control.device.name;
+        if ((input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && private_move)
         {
+            
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
             if (input.ReadValue<Vector2>().x == 0)
             {
                 playerMoveX.x = otherVelocity;
             }
+            return;
         }
-        else
+        else if((input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && !private_move)
+        {
             playerMoveX.x = 0;
+            return;
+        }
     }
 
     public void MoveDirection()
@@ -175,7 +192,6 @@ public class PlayerMainController : MonoBehaviour
         switch (state)
         {
             case State.MOVE:
-
                 if ((isStepOn || isPlayerOn))
                 {
                     an.SetBool("Run", true);
@@ -196,6 +212,8 @@ public class PlayerMainController : MonoBehaviour
                 an.SetBool("Jump", false);
                 an.SetBool("Run", false);
                 an.SetBool("Hold", false);
+                if(gameObject.layer == 8)
+                    an.SetBool("CultUp", false);
                 break;
             case State.HOLD:
                 an.SetBool("Hold", true);
@@ -216,7 +234,22 @@ public class PlayerMainController : MonoBehaviour
                 moveSpeed = 0.5f;
                 MoveDirection();
                 break;
-
+            case State.CULTUP:
+                an.SetBool("CultUp", true);
+                break;
+            case State.CULTUPRUN:
+                an.SetBool("Run", true);
+                moveSpeed = 0.5f;
+                MoveDirection();
+                if (rb.velocity.x == 0)
+                {
+                    an.speed = 0;
+                }
+                else
+                {
+                    an.speed = 1;
+                }
+                break;
             default:
                 break;
         }

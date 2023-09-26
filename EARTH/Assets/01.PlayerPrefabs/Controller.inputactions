@@ -2,6 +2,222 @@
     "name": "Controller",
     "maps": [
         {
+            "name": "SubPlayer",
+            "id": "5098502a-951d-476f-a314-f4735e673a00",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "69ff8abb-e288-4422-a2f5-ed41acd60f2c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Break",
+                    "type": "Button",
+                    "id": "736d0cf2-161f-4280-b73e-881070a10e35",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "19991878-c18a-4e2b-a1cb-485363f32f59",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Lever",
+                    "type": "Button",
+                    "id": "4fe4df82-445d-42b6-8cfa-907cb9582be2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Portal",
+                    "type": "Button",
+                    "id": "9ac2feab-4940-428c-9a28-0c23c2587443",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reroad",
+                    "type": "Button",
+                    "id": "f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "581bcca1-c0c5-495a-aa90-5346fecc4a1c",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "399c85ea-f78a-414e-b5f3-e71cfde35232",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Break",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24471c1a-b239-4631-b685-1d272ebb3071",
+                    "path": "<Keyboard>/numpadPeriod",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Break",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "WASD",
+                    "id": "c99fff99-3627-4671-b349-1eab4807a61d",
+                    "path": "Dpad(mode=2)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "52b28263-d462-4b9f-82a9-da6a7fc92539",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "39d7f9c0-4543-4424-8a9c-816420eba451",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "668053f8-e999-46c0-9c91-dcecc153cefd",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "277492f8-6480-493e-9c71-4247e551f666",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3efc90e3-783d-4136-8e5e-19e4e91fef65",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Lever",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3cbdce39-6e8e-4e4e-8373-24d9e90cd772",
+                    "path": "<Keyboard>/numpadEnter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lever",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19af8cb1-078f-4c43-aa7b-45f53f54f11e",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Portal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d90c95f2-8295-41f5-a5c4-ecfcbc8f9931",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Portal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd9a5eac-0b9e-4e6a-9f60-46e6c770d818",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Reroad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da270ae1-d55c-45dc-bb26-cfea832f47e1",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reroad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "MainPlayer",
             "id": "d60bee33-aa1f-4ae2-b882-94d9e5b3ad56",
             "actions": [
@@ -20,7 +236,7 @@
                     "id": "8fa7c534-f9ed-4955-8d9a-1ac62dac7ad4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -29,7 +245,7 @@
                     "id": "f06e5b3e-d887-441d-8d4c-0d30e82d6e56",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -103,7 +319,7 @@
                     "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -114,7 +330,7 @@
                     "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Heal, BoxHold",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -169,7 +385,7 @@
                     "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -191,7 +407,7 @@
                     "path": "<XInputController>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Lever",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -213,7 +429,7 @@
                     "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -235,7 +451,7 @@
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Portal",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -257,7 +473,7 @@
                     "path": "<XInputController>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "Reroad",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -290,7 +506,7 @@
                     "path": "<XInputController>/leftStickPress",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "NextScene_L_Stick_Press/N",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -301,7 +517,7 @@
                     "path": "<XInputController>/select",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "NextScene_Window_Press",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -312,224 +528,8 @@
                     "path": "<XInputController>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Main",
                     "action": "CultUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "SubPlayer",
-            "id": "5098502a-951d-476f-a314-f4735e673a00",
-            "actions": [
-                {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "69ff8abb-e288-4422-a2f5-ed41acd60f2c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Break",
-                    "type": "Button",
-                    "id": "736d0cf2-161f-4280-b73e-881070a10e35",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Boost",
-                    "type": "Button",
-                    "id": "19991878-c18a-4e2b-a1cb-485363f32f59",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Lever",
-                    "type": "Button",
-                    "id": "4fe4df82-445d-42b6-8cfa-907cb9582be2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Portal",
-                    "type": "Button",
-                    "id": "9ac2feab-4940-428c-9a28-0c23c2587443",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Reroad",
-                    "type": "Button",
-                    "id": "f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "581bcca1-c0c5-495a-aa90-5346fecc4a1c",
-                    "path": "<XInputController>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "399c85ea-f78a-414e-b5f3-e71cfde35232",
-                    "path": "<XInputController>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Break",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "24471c1a-b239-4631-b685-1d272ebb3071",
-                    "path": "<Keyboard>/delete",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Break",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "WASD",
-                    "id": "c99fff99-3627-4671-b349-1eab4807a61d",
-                    "path": "Dpad(mode=2)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "left",
-                    "id": "52b28263-d462-4b9f-82a9-da6a7fc92539",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "39d7f9c0-4543-4424-8a9c-816420eba451",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "668053f8-e999-46c0-9c91-dcecc153cefd",
-                    "path": "<XInputController>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "277492f8-6480-493e-9c71-4247e551f666",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3efc90e3-783d-4136-8e5e-19e4e91fef65",
-                    "path": "<XInputController>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lever",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3cbdce39-6e8e-4e4e-8373-24d9e90cd772",
-                    "path": "<Keyboard>/numpadEnter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lever",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "19af8cb1-078f-4c43-aa7b-45f53f54f11e",
-                    "path": "<XInputController>/buttonNorth",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Portal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d90c95f2-8295-41f5-a5c4-ecfcbc8f9931",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Portal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bd9a5eac-0b9e-4e6a-9f60-46e6c770d818",
-                    "path": "<XInputController>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Reroad",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "da270ae1-d55c-45dc-bb26-cfea832f47e1",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Reroad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -646,5 +646,28 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Main",
+            "bindingGroup": "Main",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Sub",
+            "bindingGroup": "Sub",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

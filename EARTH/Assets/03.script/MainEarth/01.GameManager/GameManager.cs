@@ -155,7 +155,9 @@ public class GameManager : MonoBehaviour
     {
         if (portal != null)
         {
-            portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, 1 / 3, playerLayer);
+            portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, portal.transform.localScale.x * 8, playerLayer);
+            if(portalOnPlayer)
+                Debug.Log("포탈 안에 들어옴");
         }
     }
     public void NextScene()
