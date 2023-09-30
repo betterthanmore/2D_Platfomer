@@ -24,222 +24,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     ""name"": ""Controller"",
     ""maps"": [
         {
-            ""name"": ""SubPlayer"",
-            ""id"": ""5098502a-951d-476f-a314-f4735e673a00"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""69ff8abb-e288-4422-a2f5-ed41acd60f2c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Break"",
-                    ""type"": ""Button"",
-                    ""id"": ""736d0cf2-161f-4280-b73e-881070a10e35"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Boost"",
-                    ""type"": ""Button"",
-                    ""id"": ""19991878-c18a-4e2b-a1cb-485363f32f59"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Lever"",
-                    ""type"": ""Button"",
-                    ""id"": ""4fe4df82-445d-42b6-8cfa-907cb9582be2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Portal"",
-                    ""type"": ""Button"",
-                    ""id"": ""9ac2feab-4940-428c-9a28-0c23c2587443"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Reroad"",
-                    ""type"": ""Button"",
-                    ""id"": ""f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""581bcca1-c0c5-495a-aa90-5346fecc4a1c"",
-                    ""path"": ""<XInputController>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""399c85ea-f78a-414e-b5f3-e71cfde35232"",
-                    ""path"": ""<XInputController>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Break"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""24471c1a-b239-4631-b685-1d272ebb3071"",
-                    ""path"": ""<Keyboard>/numpadPeriod"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Break"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""c99fff99-3627-4671-b349-1eab4807a61d"",
-                    ""path"": ""Dpad(mode=2)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""52b28263-d462-4b9f-82a9-da6a7fc92539"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""39d7f9c0-4543-4424-8a9c-816420eba451"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""668053f8-e999-46c0-9c91-dcecc153cefd"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""277492f8-6480-493e-9c71-4247e551f666"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3efc90e3-783d-4136-8e5e-19e4e91fef65"",
-                    ""path"": ""<XInputController>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Lever"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3cbdce39-6e8e-4e4e-8373-24d9e90cd772"",
-                    ""path"": ""<Keyboard>/numpadEnter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Lever"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""19af8cb1-078f-4c43-aa7b-45f53f54f11e"",
-                    ""path"": ""<XInputController>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Portal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d90c95f2-8295-41f5-a5c4-ecfcbc8f9931"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Portal"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bd9a5eac-0b9e-4e6a-9f60-46e6c770d818"",
-                    ""path"": ""<XInputController>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Sub"",
-                    ""action"": ""Reroad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da270ae1-d55c-45dc-bb26-cfea832f47e1"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Reroad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""MainPlayer"",
             ""id"": ""d60bee33-aa1f-4ae2-b882-94d9e5b3ad56"",
             ""actions"": [
@@ -558,6 +342,222 @@ public partial class @Controller : IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""SubPlayer"",
+            ""id"": ""5098502a-951d-476f-a314-f4735e673a00"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""69ff8abb-e288-4422-a2f5-ed41acd60f2c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""736d0cf2-161f-4280-b73e-881070a10e35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""19991878-c18a-4e2b-a1cb-485363f32f59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lever"",
+                    ""type"": ""Button"",
+                    ""id"": ""4fe4df82-445d-42b6-8cfa-907cb9582be2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Portal"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ac2feab-4940-428c-9a28-0c23c2587443"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reroad"",
+                    ""type"": ""Button"",
+                    ""id"": ""f25c7593-3f4f-4e68-ac1f-e1e7c7f4308f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""581bcca1-c0c5-495a-aa90-5346fecc4a1c"",
+                    ""path"": ""<XInputController>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""399c85ea-f78a-414e-b5f3-e71cfde35232"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24471c1a-b239-4631-b685-1d272ebb3071"",
+                    ""path"": ""<Keyboard>/numpadPeriod"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""c99fff99-3627-4671-b349-1eab4807a61d"",
+                    ""path"": ""Dpad(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""52b28263-d462-4b9f-82a9-da6a7fc92539"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""39d7f9c0-4543-4424-8a9c-816420eba451"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""668053f8-e999-46c0-9c91-dcecc153cefd"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""277492f8-6480-493e-9c71-4247e551f666"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3efc90e3-783d-4136-8e5e-19e4e91fef65"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Lever"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cbdce39-6e8e-4e4e-8373-24d9e90cd772"",
+                    ""path"": ""<Keyboard>/numpadEnter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lever"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19af8cb1-078f-4c43-aa7b-45f53f54f11e"",
+                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Portal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d90c95f2-8295-41f5-a5c4-ecfcbc8f9931"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Portal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd9a5eac-0b9e-4e6a-9f60-46e6c770d818"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Reroad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da270ae1-d55c-45dc-bb26-cfea832f47e1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reroad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""ButtonController"",
             ""id"": ""801e6fe5-9b2a-4126-ba04-a4919ad7ebff"",
             ""actions"": [
@@ -693,14 +693,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // SubPlayer
-        m_SubPlayer = asset.FindActionMap("SubPlayer", throwIfNotFound: true);
-        m_SubPlayer_Move = m_SubPlayer.FindAction("Move", throwIfNotFound: true);
-        m_SubPlayer_Break = m_SubPlayer.FindAction("Break", throwIfNotFound: true);
-        m_SubPlayer_Boost = m_SubPlayer.FindAction("Boost", throwIfNotFound: true);
-        m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
-        m_SubPlayer_Portal = m_SubPlayer.FindAction("Portal", throwIfNotFound: true);
-        m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
         // MainPlayer
         m_MainPlayer = asset.FindActionMap("MainPlayer", throwIfNotFound: true);
         m_MainPlayer_Move = m_MainPlayer.FindAction("Move", throwIfNotFound: true);
@@ -713,6 +705,14 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         m_MainPlayer_NextScene_L_Stick_PressN = m_MainPlayer.FindAction("NextScene_L_Stick_Press/N", throwIfNotFound: true);
         m_MainPlayer_NextScene_Window_Press = m_MainPlayer.FindAction("NextScene_Window_Press", throwIfNotFound: true);
         m_MainPlayer_CultUp = m_MainPlayer.FindAction("CultUp", throwIfNotFound: true);
+        // SubPlayer
+        m_SubPlayer = asset.FindActionMap("SubPlayer", throwIfNotFound: true);
+        m_SubPlayer_Move = m_SubPlayer.FindAction("Move", throwIfNotFound: true);
+        m_SubPlayer_Break = m_SubPlayer.FindAction("Break", throwIfNotFound: true);
+        m_SubPlayer_Boost = m_SubPlayer.FindAction("Boost", throwIfNotFound: true);
+        m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
+        m_SubPlayer_Portal = m_SubPlayer.FindAction("Portal", throwIfNotFound: true);
+        m_SubPlayer_Reroad = m_SubPlayer.FindAction("Reroad", throwIfNotFound: true);
         // ButtonController
         m_ButtonController = asset.FindActionMap("ButtonController", throwIfNotFound: true);
         m_ButtonController_Main_Select = m_ButtonController.FindAction("Main_Select", throwIfNotFound: true);
@@ -774,79 +774,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // SubPlayer
-    private readonly InputActionMap m_SubPlayer;
-    private ISubPlayerActions m_SubPlayerActionsCallbackInterface;
-    private readonly InputAction m_SubPlayer_Move;
-    private readonly InputAction m_SubPlayer_Break;
-    private readonly InputAction m_SubPlayer_Boost;
-    private readonly InputAction m_SubPlayer_Lever;
-    private readonly InputAction m_SubPlayer_Portal;
-    private readonly InputAction m_SubPlayer_Reroad;
-    public struct SubPlayerActions
-    {
-        private @Controller m_Wrapper;
-        public SubPlayerActions(@Controller wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_SubPlayer_Move;
-        public InputAction @Break => m_Wrapper.m_SubPlayer_Break;
-        public InputAction @Boost => m_Wrapper.m_SubPlayer_Boost;
-        public InputAction @Lever => m_Wrapper.m_SubPlayer_Lever;
-        public InputAction @Portal => m_Wrapper.m_SubPlayer_Portal;
-        public InputAction @Reroad => m_Wrapper.m_SubPlayer_Reroad;
-        public InputActionMap Get() { return m_Wrapper.m_SubPlayer; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(SubPlayerActions set) { return set.Get(); }
-        public void SetCallbacks(ISubPlayerActions instance)
-        {
-            if (m_Wrapper.m_SubPlayerActionsCallbackInterface != null)
-            {
-                @Move.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
-                @Break.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
-                @Break.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
-                @Break.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
-                @Boost.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
-                @Boost.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
-                @Boost.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
-                @Lever.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
-                @Lever.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
-                @Lever.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
-                @Portal.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
-                @Portal.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
-                @Portal.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
-                @Reroad.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
-                @Reroad.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
-                @Reroad.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
-            }
-            m_Wrapper.m_SubPlayerActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Break.started += instance.OnBreak;
-                @Break.performed += instance.OnBreak;
-                @Break.canceled += instance.OnBreak;
-                @Boost.started += instance.OnBoost;
-                @Boost.performed += instance.OnBoost;
-                @Boost.canceled += instance.OnBoost;
-                @Lever.started += instance.OnLever;
-                @Lever.performed += instance.OnLever;
-                @Lever.canceled += instance.OnLever;
-                @Portal.started += instance.OnPortal;
-                @Portal.performed += instance.OnPortal;
-                @Portal.canceled += instance.OnPortal;
-                @Reroad.started += instance.OnReroad;
-                @Reroad.performed += instance.OnReroad;
-                @Reroad.canceled += instance.OnReroad;
-            }
-        }
-    }
-    public SubPlayerActions @SubPlayer => new SubPlayerActions(this);
 
     // MainPlayer
     private readonly InputActionMap m_MainPlayer;
@@ -953,6 +880,79 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     }
     public MainPlayerActions @MainPlayer => new MainPlayerActions(this);
 
+    // SubPlayer
+    private readonly InputActionMap m_SubPlayer;
+    private ISubPlayerActions m_SubPlayerActionsCallbackInterface;
+    private readonly InputAction m_SubPlayer_Move;
+    private readonly InputAction m_SubPlayer_Break;
+    private readonly InputAction m_SubPlayer_Boost;
+    private readonly InputAction m_SubPlayer_Lever;
+    private readonly InputAction m_SubPlayer_Portal;
+    private readonly InputAction m_SubPlayer_Reroad;
+    public struct SubPlayerActions
+    {
+        private @Controller m_Wrapper;
+        public SubPlayerActions(@Controller wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_SubPlayer_Move;
+        public InputAction @Break => m_Wrapper.m_SubPlayer_Break;
+        public InputAction @Boost => m_Wrapper.m_SubPlayer_Boost;
+        public InputAction @Lever => m_Wrapper.m_SubPlayer_Lever;
+        public InputAction @Portal => m_Wrapper.m_SubPlayer_Portal;
+        public InputAction @Reroad => m_Wrapper.m_SubPlayer_Reroad;
+        public InputActionMap Get() { return m_Wrapper.m_SubPlayer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SubPlayerActions set) { return set.Get(); }
+        public void SetCallbacks(ISubPlayerActions instance)
+        {
+            if (m_Wrapper.m_SubPlayerActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
+                @Break.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
+                @Break.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
+                @Break.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
+                @Boost.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBoost;
+                @Lever.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
+                @Lever.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
+                @Lever.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnLever;
+                @Portal.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
+                @Portal.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
+                @Portal.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPortal;
+                @Reroad.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
+                @Reroad.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
+                @Reroad.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnReroad;
+            }
+            m_Wrapper.m_SubPlayerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Break.started += instance.OnBreak;
+                @Break.performed += instance.OnBreak;
+                @Break.canceled += instance.OnBreak;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
+                @Lever.started += instance.OnLever;
+                @Lever.performed += instance.OnLever;
+                @Lever.canceled += instance.OnLever;
+                @Portal.started += instance.OnPortal;
+                @Portal.performed += instance.OnPortal;
+                @Portal.canceled += instance.OnPortal;
+                @Reroad.started += instance.OnReroad;
+                @Reroad.performed += instance.OnReroad;
+                @Reroad.canceled += instance.OnReroad;
+            }
+        }
+    }
+    public SubPlayerActions @SubPlayer => new SubPlayerActions(this);
+
     // ButtonController
     private readonly InputActionMap m_ButtonController;
     private IButtonControllerActions m_ButtonControllerActionsCallbackInterface;
@@ -1027,15 +1027,6 @@ public partial class @Controller : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_SubSchemeIndex];
         }
     }
-    public interface ISubPlayerActions
-    {
-        void OnMove(InputAction.CallbackContext context);
-        void OnBreak(InputAction.CallbackContext context);
-        void OnBoost(InputAction.CallbackContext context);
-        void OnLever(InputAction.CallbackContext context);
-        void OnPortal(InputAction.CallbackContext context);
-        void OnReroad(InputAction.CallbackContext context);
-    }
     public interface IMainPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -1048,6 +1039,15 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         void OnNextScene_L_Stick_PressN(InputAction.CallbackContext context);
         void OnNextScene_Window_Press(InputAction.CallbackContext context);
         void OnCultUp(InputAction.CallbackContext context);
+    }
+    public interface ISubPlayerActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnBreak(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
+        void OnLever(InputAction.CallbackContext context);
+        void OnPortal(InputAction.CallbackContext context);
+        void OnReroad(InputAction.CallbackContext context);
     }
     public interface IButtonControllerActions
     {

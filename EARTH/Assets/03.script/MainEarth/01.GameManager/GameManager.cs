@@ -130,7 +130,8 @@ public class GameManager : MonoBehaviour
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
     /*public bool ironBreak = false;*/
-    public GameObject ironBreak = null;
+    public GameObject ironBreak = null; 
+    //게임 시작 시 플레이어를 불러와서  차례대로 instance를 해서 newinputsystem에 순차적으로 적용시킨다.
     private void Awake()
     {
         if (Instance)

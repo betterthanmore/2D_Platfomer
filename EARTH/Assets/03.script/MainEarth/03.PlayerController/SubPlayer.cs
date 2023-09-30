@@ -96,7 +96,7 @@ public class SubPlayer : PlayerMainController
     {
         
         Debug.Log(input.control.device.name);
-        if (GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+        if (GameManager.move /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
         {
             
             if (input.started)
@@ -129,8 +129,8 @@ public class SubPlayer : PlayerMainController
             {
                 return;
             }
-            else if (item.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move &&
-                (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+            else if (item.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move /*&&
+                (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
             {
                 GameManager.move = false;
                 StartCoroutine(UIManager.FadeScreenSetUp());
@@ -141,8 +141,8 @@ public class SubPlayer : PlayerMainController
     
     public void ReLoad(InputAction.CallbackContext input)
     {
-        if (input.started && GameManager.reGameButtonDown && 
-            (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+        if (input.started && GameManager.reGameButtonDown /*&& 
+            (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
         {
             GameManager.reGame2P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
@@ -154,7 +154,7 @@ public class SubPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if ((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
+        if (GameManager.portalOnPlayer/* && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/ && input.started)
         {
             if (GameManager.portal_Ready_Player[1])
             {
@@ -166,7 +166,7 @@ public class SubPlayer : PlayerMainController
     }
     public void Lever(InputAction.CallbackContext input)
     {
-        if (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard" && input.started)
+        if (/*input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard" &&*/ input.started)
             GameManager.SubLever();
     }
     
@@ -176,7 +176,7 @@ public class SubPlayer : PlayerMainController
         {
             if (item.collider.gameObject.layer != 11)
                 continue;
-            else if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
+            else if (/*(input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ input.started)
             {
                 subBoxHold = true;
                 state = State.SUBHOLD;

@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 625a80088693e7a40a4c15c481974769, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b88df8d2c090794a8a4e5ac477d66eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1970,6 +1970,7 @@ MonoBehaviour:
   chapter1: []
   canvas: {fileID: 0}
   allButton: []
+  back: {fileID: 0}
   selectButton: -1
   nextScene_Press: 0000
   sceneName: 
@@ -2135,7 +2136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89d6e34be35a9774187def2a33b2953d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 03c8944dbf5369c488069d9b3eff865b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2391,7 +2392,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c86935e9ef6eaf44a91d963a16474194, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f5d05dc899975d47a5db088c6413f32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2449,6 +2450,8 @@ MonoBehaviour:
   minGearText: {fileID: 0}
   miniGearText_Outline: {fileID: 0}
   time_TA_Text: {fileID: 0}
+  reGame_text: {fileID: 0}
+  reGame_Outline: {fileID: 0}
   gearNum: {fileID: 0}
   timeTAtime: 41
   canvas: {fileID: 0}
@@ -2587,7 +2590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d54f8d8db8c59eb44953db8b24358fcb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 80578497e9d27a24d8bef7b08a7ef823, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2712,10 +2715,6 @@ PrefabInstance:
     - target: {fileID: 7401703202269633817, guid: fd98ee007bac78d459837a00925756bf, type: 3}
       propertyPath: m_Name
       value: SoundManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7401703202269633819, guid: fd98ee007bac78d459837a00925756bf, type: 3}
-      propertyPath: soundWindow
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7401703202269633820, guid: fd98ee007bac78d459837a00925756bf, type: 3}
       propertyPath: m_RootOrder

@@ -25,13 +25,13 @@ public class PlayerMainController : MonoBehaviour
     protected PLAYERTYPE playertype = PLAYERTYPE.PLAYER_01;
     public Transform groundCheck;    
     public LayerMask playerLayer;    
-    public string ControllerDevices;
+   /* public string ControllerDevices;*/
 
     protected bool cultup_On = false;
     public CapsuleCollider2D cap_c;
     public bool private_move = true;
-    public float[] size_Init = new float[2];
-    public float[] size_trans = new float[2];
+    public float size_Init = 0;
+    public float size_trans = 0;
     public float offset_init;
     public float offset_trans;
 
@@ -58,7 +58,7 @@ public class PlayerMainController : MonoBehaviour
     public float rayPosy = 0.5f;
     public LayerMask objectDetection;
     public bool boxPush = false;
-
+    /*PlayerInput move_input = new PlayerInput();*/
 
     protected GameManager GameManager => GameManager.Instance;
     protected UIManger UIManager => UIManger.uiManger;
@@ -75,6 +75,7 @@ public class PlayerMainController : MonoBehaviour
 
         /*if (playertype == PLAYERTYPE.PLAYER_02)
         {
+
             ControllerDevices = "XInputControllerWindows1";
         }
         else if (playertype == PLAYERTYPE.PLAYER_01)
@@ -104,9 +105,9 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        if (ControllerDevices.Length == 0)
-            ControllerDevices = input.control.device.name;
-        if ((input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && private_move)
+        /*if (ControllerDevices.Length == 0)
+            ControllerDevices = input.control.device.name;*/
+        if (/*(input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ GameManager.move && private_move)
         {
             
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
@@ -116,7 +117,7 @@ public class PlayerMainController : MonoBehaviour
             }
             return;
         }
-        else if((input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && GameManager.move && !private_move)
+        else if(/*(input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && */GameManager.move && !private_move)
         {
             playerMoveX.x = 0;
             return;
@@ -138,13 +139,13 @@ public class PlayerMainController : MonoBehaviour
     }
     public void NextScene_L_Stick_Press(InputAction.CallbackContext input)
     {
-        if (input.started && input.control.device.name == ControllerDevices)
+        if (input.started /*&& input.control.device.name == ControllerDevices*/)
         {
             GameManager.nextScene_Press[0] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled && input.control.device.name == ControllerDevices)
+        else if (input.canceled /*&& input.control.device.name == ControllerDevices*/)
         {
             GameManager.nextScene_Press[0] = false;
         }
@@ -153,13 +154,13 @@ public class PlayerMainController : MonoBehaviour
     }
     public void NextScene_Window_Press(InputAction.CallbackContext input)
     {
-        if (input.started && input.control.device.name == ControllerDevices)
+        if (input.started /*&& input.control.device.name == ControllerDevices*/)
         {
             GameManager.nextScene_Press[1] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled && input.control.device.name == ControllerDevices)
+        else if (input.canceled/* && input.control.device.name == ControllerDevices*/)
         {
             GameManager.nextScene_Press[1] = false;
         }

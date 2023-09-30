@@ -32,7 +32,7 @@ public class SoundManager : MonoBehaviour
     {
         for (int i = 0; i < bglist.Length; i++)
         {
-            if (arg0.name == bglist[i].name)
+            if (bglist[i].name.Contains(arg0.name))
                 BgSoundPlay(bglist[i]);
         }
     }
@@ -72,11 +72,19 @@ public class SoundManager : MonoBehaviour
     }
     public void BgSoundPlay(AudioClip clip)
     {
-        bgSound.clip = clip;
-        bgSound.loop = true;
-        bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
-        bgSound.volume = 0.1f;
-        bgSound.Play();
+        if(bgSound.clip != clip)
+        {
+            bgSound.clip = clip;
+            bgSound.loop = true;
+            bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
+            bgSound.volume = 0.1f;
+            bgSound.Play();
+        }
+        else
+        {
+            return;
+        }
+        
     }
     
 }

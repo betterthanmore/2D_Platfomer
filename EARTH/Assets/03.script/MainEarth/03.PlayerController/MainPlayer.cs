@@ -82,22 +82,21 @@ public class MainPlayer : PlayerMainController
         if (!private_move)
             return;
         else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed && GameManager.move 
-            && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+            /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
         {
             if (!cultup_On)
             {
                 cultup_On = true;
                 private_move = false;
                 state = State.CULTUP;
-                size_Init[0] = cap_c.size.x;
-                size_Init[1] = cap_c.size.y;
+                size_Init = cap_c.size.y;
                 offset_init = cap_c.offset.y;
                 StartCoroutine(CultUP_On()); 
             }
             else
             {
                 private_move = false;
-                cap_c.size = new Vector2(size_Init[0], size_Init[1]);
+                cap_c.size = new Vector2(cap_c.size.x, size_Init);
                 cap_c.offset = new Vector2(0, offset_init);
                 state = State.IDEL;
                 StartCoroutine(CultUP_On_Back());
@@ -115,14 +114,14 @@ public class MainPlayer : PlayerMainController
     IEnumerator CultUP_On()
     {
         cap_c.offset = new Vector2(0, offset_trans);
-        cap_c.size = new Vector2(size_trans[0], size_trans[1]);
+        cap_c.size = new Vector2(cap_c.size.x, size_trans);
         yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
         state = State.CULTUPRUN;
         private_move = true;
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
         {
             if (objectSense.Length == 0)
             {
@@ -182,7 +181,7 @@ public class MainPlayer : PlayerMainController
     }
     public void ReLoad(InputAction.CallbackContext input)
     {
-        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard"))
+        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
         {
             GameManager.reGame1P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
@@ -197,7 +196,7 @@ public class MainPlayer : PlayerMainController
     {
         if (GameManager.portalOnPlayer == null)
             return;
-        else if ((GameManager.portalOnPlayer && input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
+        else if (GameManager.portalOnPlayer &&/* (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ input.started)
         {
             if (GameManager.portal_Ready_Player[0])
             {
@@ -209,7 +208,7 @@ public class MainPlayer : PlayerMainController
     }
     public void Jump(InputAction.CallbackContext input)
     {
-        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && !boxHold && input.started && !cultup_On)
+        if (/*(input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && */!boxHold && input.started && !cultup_On)
         {
             if (isStepOn || isPlayerOn)
             {
@@ -225,7 +224,7 @@ public class MainPlayer : PlayerMainController
         Debug.Log("¹ÝÀÀ");
         Debug.Log(input.control.device.name);
         Debug.Log(input.interaction);
-        if ((input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && input.started)
+        if (/*(input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ input.started)
             GameManager.MainLever();
     }
 }
