@@ -152,7 +152,7 @@ MonoBehaviour:
   rayPosy: 0.2
   objectDetection:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 2560
   boxPush: 0
 --- !u!95 &3215600195468353781
 Animator:
@@ -415,6 +415,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5433ad91-ce49-441c-a656-5794675aeb77
     m_ActionName: MainPlayer/CultUp
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1191ec3a-90b6-4e27-97ac-317ef0d2428d
+    m_ActionName: SubPlayer/Pause[/XInputControllerWindows/start,/XInputControllerWindows1/start,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Main
   m_DefaultActionMap: MainPlayer

@@ -213,7 +213,7 @@
                     "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Main",
+                    "groups": "Main;Sub",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -331,6 +331,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "1191ec3a-90b6-4e27-97ac-317ef0d2428d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Break",
@@ -530,6 +539,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Reroad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c9687f3-6044-4361-8cb0-ca16a2ebfe05",
+                    "path": "<XInputController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a2635fc-5f25-42a7-b754-e68fadbdf3ab",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Sub",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

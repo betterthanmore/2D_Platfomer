@@ -81,8 +81,7 @@ public class MainPlayer : PlayerMainController
     {
         if (!private_move)
             return;
-        else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed && GameManager.move 
-            /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
+        else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed && GameManager.move)
         {
             if (!cultup_On)
             {
@@ -121,7 +120,8 @@ public class MainPlayer : PlayerMainController
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
+        Debug.Log("힐 버튼");
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move)
         {
             if (objectSense.Length == 0)
             {
@@ -181,7 +181,7 @@ public class MainPlayer : PlayerMainController
     }
     public void ReLoad(InputAction.CallbackContext input)
     {
-        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
+        if (input.started && !GameManager.buttonB_Lock && GameManager.reGameButtonDown)
         {
             GameManager.reGame1P = true;
             if (GameManager.reGame1P && GameManager.reGame2P)
@@ -196,9 +196,9 @@ public class MainPlayer : PlayerMainController
     {
         if (GameManager.portalOnPlayer == null)
             return;
-        else if (GameManager.portalOnPlayer &&/* (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ input.started)
+        else if (GameManager.portalOnPlayer && input.started)
         {
-            if (GameManager.portal_Ready_Player[0])
+            if (GameManager.portal_Ready_Player[0] && !GameManager.portal_Ready_Player[1])
             {
                 StartCoroutine(UIManager.MinimumGears("로봇이 준비 될 때까지 기다려주자"));
             }

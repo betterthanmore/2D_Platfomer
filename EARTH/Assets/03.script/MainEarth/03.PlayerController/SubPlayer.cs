@@ -49,10 +49,7 @@ public class SubPlayer : PlayerMainController
                 state = State.MOVE;
             }
         }
-        /*if (objectSense)
-        {
-            Debug.Log(objectSense.collider.gameObject.layer);
-        }*/
+        
         subPlayerPosYTrs = gameObject.transform.position.y;
 
         if (enableBoost && scrollbar.size > 0.001 && boostKeyDown)        //부스트
@@ -154,14 +151,15 @@ public class SubPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if (GameManager.portalOnPlayer/* && (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/ && input.started)
+        if (GameManager.portalOnPlayer && input.started)
         {
-            if (GameManager.portal_Ready_Player[1])
+            if (GameManager.portal_Ready_Player[1] && !GameManager.portal_Ready_Player[0])
             {
                 StartCoroutine(UIManager.MinimumGears("소녀가 준비 될 때까지 기다려주자"));
             }
             else
                 GameManager.PortalAction();
+
         }
     }
     public void Lever(InputAction.CallbackContext input)

@@ -406,6 +406,11 @@ public class GameManager : MonoBehaviour
         subLeverOn = false;
         buttonB_Lock = true;
         reGameStart = false;
+        for (int i = 0; i < portal_Ready_Player.Length; i++)
+        {
+            portal_Ready_Player[i] = false;
+        }
+
         if (arg.name.Contains("Vidio"))
         {
             Vidio_N = false;

@@ -235,7 +235,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""path"": ""<XInputController>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Main"",
+                    ""groups"": ""Main;Sub"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -353,6 +353,15 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""1191ec3a-90b6-4e27-97ac-317ef0d2428d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Break"",
@@ -554,6 +563,28 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                     ""action"": ""Reroad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c9687f3-6044-4361-8cb0-ca16a2ebfe05"",
+                    ""path"": ""<XInputController>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a2635fc-5f25-42a7-b754-e68fadbdf3ab"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Sub"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -708,6 +739,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         // SubPlayer
         m_SubPlayer = asset.FindActionMap("SubPlayer", throwIfNotFound: true);
         m_SubPlayer_Move = m_SubPlayer.FindAction("Move", throwIfNotFound: true);
+        m_SubPlayer_Pause = m_SubPlayer.FindAction("Pause", throwIfNotFound: true);
         m_SubPlayer_Break = m_SubPlayer.FindAction("Break", throwIfNotFound: true);
         m_SubPlayer_Boost = m_SubPlayer.FindAction("Boost", throwIfNotFound: true);
         m_SubPlayer_Lever = m_SubPlayer.FindAction("Lever", throwIfNotFound: true);
@@ -884,6 +916,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_SubPlayer;
     private ISubPlayerActions m_SubPlayerActionsCallbackInterface;
     private readonly InputAction m_SubPlayer_Move;
+    private readonly InputAction m_SubPlayer_Pause;
     private readonly InputAction m_SubPlayer_Break;
     private readonly InputAction m_SubPlayer_Boost;
     private readonly InputAction m_SubPlayer_Lever;
@@ -894,6 +927,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
         private @Controller m_Wrapper;
         public SubPlayerActions(@Controller wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_SubPlayer_Move;
+        public InputAction @Pause => m_Wrapper.m_SubPlayer_Pause;
         public InputAction @Break => m_Wrapper.m_SubPlayer_Break;
         public InputAction @Boost => m_Wrapper.m_SubPlayer_Boost;
         public InputAction @Lever => m_Wrapper.m_SubPlayer_Lever;
@@ -911,6 +945,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnMove;
+                @Pause.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnPause;
                 @Break.started -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
                 @Break.performed -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
                 @Break.canceled -= m_Wrapper.m_SubPlayerActionsCallbackInterface.OnBreak;
@@ -933,6 +970,9 @@ public partial class @Controller : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
                 @Break.started += instance.OnBreak;
                 @Break.performed += instance.OnBreak;
                 @Break.canceled += instance.OnBreak;
@@ -1043,6 +1083,7 @@ public partial class @Controller : IInputActionCollection2, IDisposable
     public interface ISubPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnLever(InputAction.CallbackContext context);
