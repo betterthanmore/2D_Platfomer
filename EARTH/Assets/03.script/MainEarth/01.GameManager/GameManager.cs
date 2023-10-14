@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     public bool leverOn2 = false;
 
     public GameObject portal = null;
-    public Collider2D portalOnPlayer;
+    public Collider2D[] portalOnPlayer;
     public bool[] portal_Ready_Player = new bool[2] { false, false };
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
@@ -156,9 +156,11 @@ public class GameManager : MonoBehaviour
     {
         if (portal != null)
         {
-            portalOnPlayer = Physics2D.OverlapCircle(portal.transform.position, portal.transform.localScale.x * 8, playerLayer);
-            if(portalOnPlayer)
-                Debug.Log("포탈 안에 들어옴");
+            portalOnPlayer = Physics2D.OverlapCircleAll(portal.transform.position, portal.transform.localScale.x * 8, playerLayer);
+            if(portalOnPlayer.Length != 0)
+            {
+                Debug.Log("포탈감지");
+            }
         }
     }
     public void NextScene()
@@ -212,24 +214,37 @@ public class GameManager : MonoBehaviour
             UIManger.GearNumText(gearItem);
         }
     }
-    public void PortalAction()
+    public void MainPortalAction()
     {
-        if(portalOnPlayer.tag == "MainPlayer")
+        for (int i = 0; i < portalOnPlayer.Length; i++)
         {
-            portal_Ready_Player[0] = true;
-
-        }
-        else if(portalOnPlayer.tag == "SubPlayer")
-        {
-            portal_Ready_Player[1] = true;
-        }
-        
-        
-        if(portal_Ready_Player[0] && portal_Ready_Player[1])
-        {
-            NextScene();
+            if (portalOnPlayer[i].tag == "MainPlayer")
+            {
+                portal_Ready_Player[0] = true;
+                if (portal_Ready_Player[0] && portal_Ready_Player[1])
+                {
+                    NextScene();
+                }
+                break;
+            }
         }
     }
+    public void SubPortalAction()
+    {
+        for (int i = 0; i < portalOnPlayer.Length; i++)
+        {
+            if (portalOnPlayer[i].tag == "SubPlayer")
+            {
+                portal_Ready_Player[1] = true;
+                if (portal_Ready_Player[0] && portal_Ready_Player[1])
+                {
+                    NextScene();
+                }
+                break;
+            }
+        }
+    }
+    
     public void PortalOn()
     {
         portal.gameObject.SetActive(true);

@@ -151,15 +151,20 @@ public class SubPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if (GameManager.portalOnPlayer && input.started)
+        for (int i = 0; i < GameManager.portalOnPlayer.Length; i++)
         {
-            if (GameManager.portal_Ready_Player[1] && !GameManager.portal_Ready_Player[0])
+            if (input.started && GameManager.portalOnPlayer[i].gameObject.tag == "SubPlayer")
             {
-                StartCoroutine(UIManager.MinimumGears("소녀가 준비 될 때까지 기다려주자"));
-            }
-            else
-                GameManager.PortalAction();
-
+                Debug.Log("서브 포탈");
+                if (GameManager.portal_Ready_Player[1] && !GameManager.portal_Ready_Player[0])
+                {
+                    StartCoroutine(UIManager.MinimumGears("소녀가 준비 될 때까지 기다려주자"));
+                }
+                else
+                {
+                    GameManager.SubPortalAction();
+                }
+            } 
         }
     }
     public void Lever(InputAction.CallbackContext input)

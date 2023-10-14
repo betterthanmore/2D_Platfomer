@@ -54,16 +54,17 @@ public class MainPlayer : PlayerMainController
 
         needGauge = maxGauge - SubPlayer.scrollbar.size;
 
-        needGears = (int)(needGauge / 0.05f);
+        needGears = (int)(Mathf.Ceil(needGauge / 0.05f));
         if (needGears <= GameManager.gearItem)
         {
-            GameManager.gearItem -= needGears;
+            UIManager.GearNumText(GameManager.gearItem -= needGears);
             SubPlayer.scrollbar.size += needGears * 0.05f;
         }
         else
         {
             needGears = GameManager.gearItem;
             GameManager.gearItem = 0;
+            UIManager.GearNumText(0);
             SubPlayer.scrollbar.size += needGears * 0.05f;
         }
 
@@ -194,16 +195,20 @@ public class MainPlayer : PlayerMainController
     }
     public void Portar(InputAction.CallbackContext input)
     {
-        if (GameManager.portalOnPlayer == null)
-            return;
-        else if (GameManager.portalOnPlayer && input.started)
+        for (int i = 0; i < GameManager.portalOnPlayer.Length; i++)
         {
-            if (GameManager.portal_Ready_Player[0] && !GameManager.portal_Ready_Player[1])
+            if (input.started && GameManager.portalOnPlayer[i].gameObject.tag == "MainPlayer")
             {
-                StartCoroutine(UIManager.MinimumGears("로봇이 준비 될 때까지 기다려주자"));
-            }
-            else
-                GameManager.PortalAction();
+                Debug.Log("메인 포탈");
+                if (GameManager.portal_Ready_Player[0] && !GameManager.portal_Ready_Player[1])
+                {
+                    StartCoroutine(UIManager.MinimumGears("로봇이 준비 될 때까지 기다려주자"));
+                }
+                else
+                {
+                    GameManager.MainPortalAction();
+                }
+            } 
         }
     }
     public void Jump(InputAction.CallbackContext input)

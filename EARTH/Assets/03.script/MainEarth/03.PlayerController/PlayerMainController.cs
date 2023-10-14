@@ -72,16 +72,6 @@ public class PlayerMainController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         an = GetComponent<Animator>();
         cap_c = GetComponent<CapsuleCollider2D>();
-
-        /*if (playertype == PLAYERTYPE.PLAYER_02)
-        {
-
-            ControllerDevices = "XInputControllerWindows1";
-        }
-        else if (playertype == PLAYERTYPE.PLAYER_01)
-        {
-            ControllerDevices = "XInputControllerWindows";
-        }*/
     }
 
     // Update is called once per frame
@@ -94,7 +84,7 @@ public class PlayerMainController : MonoBehaviour
         if (boxPush)
             Debug.Log("박스 감지");
 
-        if (!private_move)
+        if (!private_move || !GameManager.move)
             playerMoveX.x = 0;
 
         if (!moveGround && playerMoveX.x == 0)
@@ -105,11 +95,9 @@ public class PlayerMainController : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext input)
     {
-        /*if (ControllerDevices.Length == 0)
-            ControllerDevices = input.control.device.name;*/
-        if (/*(input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ GameManager.move && private_move)
+        
+        if ( GameManager.move && private_move)
         {
-            
             playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
             if (input.ReadValue<Vector2>().x == 0)
             {
@@ -117,7 +105,7 @@ public class PlayerMainController : MonoBehaviour
             }
             return;
         }
-        else if(/*(input.control.parent.name == ControllerDevices || input.control.device.name == "Keyboard") && */GameManager.move && !private_move)
+        else if(GameManager.move && !private_move)
         {
             playerMoveX.x = 0;
             return;
@@ -139,13 +127,13 @@ public class PlayerMainController : MonoBehaviour
     }
     public void NextScene_L_Stick_Press(InputAction.CallbackContext input)
     {
-        if (input.started /*&& input.control.device.name == ControllerDevices*/)
+        if (input.started)
         {
             GameManager.nextScene_Press[0] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled /*&& input.control.device.name == ControllerDevices*/)
+        else if (input.canceled)
         {
             GameManager.nextScene_Press[0] = false;
         }
@@ -154,13 +142,13 @@ public class PlayerMainController : MonoBehaviour
     }
     public void NextScene_Window_Press(InputAction.CallbackContext input)
     {
-        if (input.started /*&& input.control.device.name == ControllerDevices*/)
+        if (input.started)
         {
             GameManager.nextScene_Press[1] = true;
             if (GameManager.nextScene_Press[0] && GameManager.nextScene_Press[1])
                 GameManager.NextScene();
         }
-        else if (input.canceled/* && input.control.device.name == ControllerDevices*/)
+        else if (input.canceled)
         {
             GameManager.nextScene_Press[1] = false;
         }

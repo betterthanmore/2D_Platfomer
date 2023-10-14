@@ -153,6 +153,7 @@ public class UIManger : MonoBehaviour
                     reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                     minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
                     gearNum = GameObject.Find("GearNum").GetComponent<Text>();
+                    minGearTextStart = true;
                     if (arg.name.Contains("TA"))
                     {
                         timeTAtime = 41;

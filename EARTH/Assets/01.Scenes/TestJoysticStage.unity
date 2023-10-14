@@ -4479,6 +4479,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1464010472542937230, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
 --- !u!1 &1580160922
@@ -5479,7 +5483,8 @@ MonoBehaviour:
   leverOn1: 0
   leverOn2: 0
   portal: {fileID: 0}
-  portalOnPlayer: {fileID: 0}
+  portalOnPlayer:
+  - {fileID: 0}
   portal_Ready_Player: 0000
   portalLever1: {fileID: 0}
   portalLever2: {fileID: 0}
