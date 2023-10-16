@@ -121,12 +121,11 @@ public class MainPlayer : PlayerMainController
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
     {
-        Debug.Log("힐 버튼");
-        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && GameManager.move)
+        if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
         {
+            playerMoveX.x = 0;
             if (objectSense.Length == 0)
             {
-                Debug.Log("리턴");
                 return;
             }
             else if (input.started)
@@ -135,7 +134,6 @@ public class MainPlayer : PlayerMainController
                 {
                     if (item.collider.gameObject.layer == 11 && state != State.HOLD)
                     {
-                        Debug.Log("잡기");
                         state = State.HOLD;
                         boxHold = true;
                         item.collider.transform.parent = gameObject.transform;
@@ -144,7 +142,6 @@ public class MainPlayer : PlayerMainController
                     }
                     else if (state == State.HOLD)
                     {
-                        Debug.Log("놓기");
                         state = State.IDEL;
                         boxHold = false;
                         item.collider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -153,7 +150,6 @@ public class MainPlayer : PlayerMainController
                     }
                     else if (item.collider.gameObject.layer == 9 && state != State.HOLD && state != State.HEAL)
                     {
-                        Debug.Log("수리");
                         if (SubPlayer.scrollbar.size == 1)
                         {
                             if (UIManager.minGearText != null)
@@ -199,7 +195,6 @@ public class MainPlayer : PlayerMainController
         {
             if (input.started && GameManager.portalOnPlayer[i].gameObject.tag == "MainPlayer")
             {
-                Debug.Log("메인 포탈");
                 if (GameManager.portal_Ready_Player[0] && !GameManager.portal_Ready_Player[1])
                 {
                     StartCoroutine(UIManager.MinimumGears("로봇이 준비 될 때까지 기다려주자"));

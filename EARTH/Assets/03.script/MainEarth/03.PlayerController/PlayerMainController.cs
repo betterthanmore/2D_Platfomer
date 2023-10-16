@@ -40,11 +40,11 @@ public class PlayerMainController : MonoBehaviour
     public float rayRange = 0.1f;
     public float jumpForce = 0;
     public float moveSpeed = 2;
-    protected Vector2 playerMoveX;
+    public Vector2 playerMoveX;
     protected Rigidbody2D rb;
     protected SpriteRenderer sr;
     protected Animator an;
-    protected bool isStepOn;
+    public bool isStepOn;
     public static bool fadeOut = false;     
     public bool isplayer = false;
     protected Collider2D isPlayerOn;
@@ -57,7 +57,6 @@ public class PlayerMainController : MonoBehaviour
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
     public LayerMask objectDetection;
-    public bool boxPush = false;
     /*PlayerInput move_input = new PlayerInput();*/
 
     protected GameManager GameManager => GameManager.Instance;
@@ -80,15 +79,10 @@ public class PlayerMainController : MonoBehaviour
         isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         objectSense = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, objectDetection);
-        boxPush = Physics2D.OverlapCapsule(transform.position, cap_c.size * 1.1f, 0, 0, 11);
-        if (boxPush)
-            Debug.Log("박스 감지");
 
-        if (!private_move || !GameManager.move)
+        if (!private_move || !GameManager.move || (state == State.HOLD && !isStepOn))
             playerMoveX.x = 0;
 
-        if (!moveGround && playerMoveX.x == 0)
-            rb.velocity = new Vector2(0, rb.velocity.y);
 
         rb.velocity = new Vector2(playerMoveX.x, rb.velocity.y);
         
@@ -98,14 +92,46 @@ public class PlayerMainController : MonoBehaviour
         
         if ( GameManager.move && private_move)
         {
-            playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
-            if (input.ReadValue<Vector2>().x == 0)
+            if(state == State.HOLD)
             {
-                playerMoveX.x = otherVelocity;
+                if (isStepOn)
+                {
+                    if (dir == -1)
+                    {
+                        if (input.ReadValue<Vector2>().x > 0)
+                        {
+                            playerMoveX.x = Mathf.Clamp(input.ReadValue<Vector2>().x, 0, 2) * moveSpeed;
+                        }
+                        else
+                        {
+                            playerMoveX.x = 0;
+                        }
+                    }
+                    else if (dir == 1)
+                    {
+                        if (input.ReadValue<Vector2>().x < 0)
+                        {
+                            playerMoveX.x = Mathf.Clamp(input.ReadValue<Vector2>().x, -2, 0) * moveSpeed;
+                        }
+                        else
+                        {
+                            playerMoveX.x = 0;
+                        }
+                    } 
+                }
+                return;
+            }
+            else
+            {
+                playerMoveX.x = input.ReadValue<Vector2>().x * moveSpeed + otherVelocity;
+                if (input.ReadValue<Vector2>().x == 0)
+                {
+                    playerMoveX.x = otherVelocity;
+                }
             }
             return;
         }
-        else if(GameManager.move && !private_move)
+        else if(!GameManager.move || !private_move)
         {
             playerMoveX.x = 0;
             return;
@@ -176,7 +202,7 @@ public class PlayerMainController : MonoBehaviour
         if(state != State.HOLD)
         {
             an.speed = 1;
-
+            groundCheck.localPosition = new Vector2(0, 0);
         }
         switch (state)
         {
@@ -206,6 +232,7 @@ public class PlayerMainController : MonoBehaviour
                 break;
             case State.HOLD:
                 an.SetBool("Hold", true);
+                groundCheck.localPosition = new Vector2(-0.15f * dir, 0);
                 moveSpeed = 0.5f;
                 if (rb.velocity.x == 0)     
                 {

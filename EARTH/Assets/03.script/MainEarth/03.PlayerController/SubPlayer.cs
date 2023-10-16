@@ -126,11 +126,10 @@ public class SubPlayer : PlayerMainController
             {
                 return;
             }
-            else if (item.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move /*&&
-                (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
+            else if (item.collider.gameObject.layer == 10 && input.started && GameManager.reGameButtonDown && GameManager.move)
             {
                 GameManager.move = false;
-                StartCoroutine(UIManager.FadeScreenSetUp());
+                StartCoroutine(UIManager.FadeScreenSetUp(item));
 
             } 
         }

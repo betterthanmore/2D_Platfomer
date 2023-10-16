@@ -129,8 +129,6 @@ public class GameManager : MonoBehaviour
     public bool[] portal_Ready_Player = new bool[2] { false, false };
     public Transform portalLever1 = null;
     public Transform portalLever2 = null;
-    /*public bool ironBreak = false;*/
-    public GameObject ironBreak = null; 
     //게임 시작 시 플레이어를 불러와서  차례대로 instance를 해서 newinputsystem에 순차적으로 적용시킨다.
     private void Awake()
     {
@@ -396,18 +394,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void IronBreakStart()
+    public void IronBreakStart(RaycastHit2D obj)
     {
         
-        if (ironBreak.transform.parent)
+        if (obj.transform.parent)
         {
             Debug.Log("자식 있음");
-            ironBreak.transform.parent.GetChild(0).gameObject.SetActive(false);
-            ironBreak.transform.parent.GetChild(1).gameObject.SetActive(true);
+            obj.transform.parent.GetChild(0).gameObject.SetActive(false);
+            obj.transform.parent.GetChild(1).gameObject.SetActive(true);
         }
-        else if (ironBreak.transform.childCount == 0)
+        else if (obj.transform.childCount == 0)
         {
-            ironBreak.transform.gameObject.SetActive(false);
+            obj.transform.gameObject.SetActive(false);
             Debug.Log("자식 없음");
         }
         SubPlayer.scrollbar.size -= 0.1f;
@@ -442,14 +440,14 @@ public class GameManager : MonoBehaviour
             reGameButtonDown = true;
             move = true;
             portal = GameObject.Find("Portal_0602");
-            if (GameObject.FindGameObjectWithTag("IronBreak"))      //나중에 이걸로 프레임 워크 만들면 좋을듯
+           /* if (GameObject.FindGameObjectWithTag("IronBreak"))      //나중에 이걸로 프레임 워크 만들면 좋을듯
             {
                 ironBreak = GameObject.FindGameObjectWithTag("IronBreak");
             }
             else
             {
                 ironBreak = null;
-            }
+            }*/
             portal.gameObject.SetActive(false);
             portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
             portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();

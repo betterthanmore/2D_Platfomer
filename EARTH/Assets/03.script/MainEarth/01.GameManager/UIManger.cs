@@ -62,13 +62,14 @@ public class UIManger : MonoBehaviour
         }
         
     }
-    public IEnumerator FadeScreenSetUp()
+    public IEnumerator FadeScreenSetUp(RaycastHit2D obj)
     {
+        Debug.Log("코루틴 입장");
         GameManager.move = false;
         fadeOutscreenBoard.gameObject.SetActive(true);
         fadeOutscreenBoard.DOFade(1, 1);
         yield return new WaitForSeconds(1.1f);
-        GameManager.IronBreakStart();
+        GameManager.IronBreakStart(obj);
         yield return new WaitForSeconds(0.2f);
         fadeOutscreenBoard.DOFade(0, 1);
         yield return new WaitForSeconds(1.1f);
