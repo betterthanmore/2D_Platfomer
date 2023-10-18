@@ -702,6 +702,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7832249301321474059, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -5149,9 +5153,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5439974346655379913, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034711, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_Name
       value: MainPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602042782526034711, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034717, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_RootOrder
@@ -5159,11 +5171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034717, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.38
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034717, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.54
+      value: -4.509
       objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034717, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5853,6 +5865,9 @@ MonoBehaviour:
   chapter1: []
   canvas: {fileID: 0}
   allButton: []
+  playerSetting:
+  - {fileID: 0}
+  - {fileID: 0}
   back: {fileID: 0}
   selectButton: -1
   nextScene_Press: 0000

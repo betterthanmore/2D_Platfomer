@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Button> chapter1 = new List<Button>();
     public Canvas canvas = null;
     public List<Button> allButton = new List<Button>();
+    public GameObject[] playerSetting = new GameObject[2];
     public Button back = null;
     public int selectButton = -1;
     public int SelectButton
@@ -148,6 +149,21 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        if (GameObject.FindGameObjectWithTag("MainPlayer"))
+        {
+            playerSetting[0] = GameObject.FindGameObjectWithTag("MainPlayer");
+            playerSetting[0].SetActive(false);
+        }
+        if (GameObject.FindGameObjectWithTag("SubPlayer"))
+        {
+            playerSetting[1] = GameObject.FindGameObjectWithTag("SubPlayer");
+            playerSetting[1].SetActive(false);
+        }
+
+        foreach (var item in playerSetting)
+        {
+            item.SetActive(true);
+        }
     }
 
     private void Update()

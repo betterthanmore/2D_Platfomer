@@ -160,10 +160,10 @@ MonoBehaviour:
     m_Bits: 512
   cap_c: {fileID: 0}
   private_move: 1
-  size_Init: 0.872
-  size_trans: 0.5596595
-  offset_init: 0.436
-  offset_trans: 0.2798298
+  size_Init: 0.7927273
+  size_trans: 0.5704398
+  offset_init: 0.3963636
+  offset_trans: 0.2852199
   dir: 0
   groundLayer:
     serializedVersion: 2
@@ -171,6 +171,8 @@ MonoBehaviour:
   rayRange: 0.1
   jumpForce: 5
   moveSpeed: 2
+  playerMoveX: {x: 0, y: 0}
+  isStepOn: 0
   isplayer: 0
   otherVelocity: 0
   moveGroundLayer:
@@ -183,7 +185,6 @@ MonoBehaviour:
   objectDetection:
     serializedVersion: 2
     m_Bits: 2560
-  boxPush: 0
 --- !u!50 &2746739507115594641
 Rigidbody2D:
   serializedVersion: 4
@@ -218,8 +219,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.436}
-  m_Size: {x: 0.308, y: 0.872}
+  m_Offset: {x: 0, y: 0.39636365}
+  m_Size: {x: 0.28, y: 0.7927273}
   m_Direction: 0
 --- !u!114 &2740975616307080854
 MonoBehaviour:

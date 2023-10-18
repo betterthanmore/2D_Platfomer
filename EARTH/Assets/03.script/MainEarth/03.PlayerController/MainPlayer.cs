@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class MainPlayer : PlayerMainController
 {
+    private void OnDisable()
+    {
+        Debug.Log("²¨Áü");
+    }
     // Start is called before the first frame update
     public override void Start()
     {
