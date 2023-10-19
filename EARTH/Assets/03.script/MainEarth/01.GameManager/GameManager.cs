@@ -160,9 +160,12 @@ public class GameManager : MonoBehaviour
             playerSetting[1].SetActive(false);
         }
 
-        foreach (var item in playerSetting)
+        if (GameObject.FindGameObjectWithTag("SubPlayer"))
         {
-            item.SetActive(true);
+            foreach (var item in playerSetting)
+            {
+                item.SetActive(true);
+            } 
         }
     }
 
@@ -180,6 +183,7 @@ public class GameManager : MonoBehaviour
     public void NextScene()
     {
         gauge_Init = gauge;
+        Debug.Log("기어 갯수 설정");
         gearItemInit = gearItem;
         if (!buttonB_Lock)
         {

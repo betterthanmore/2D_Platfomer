@@ -154,6 +154,8 @@ public class UIManger : MonoBehaviour
                     reGame_Outline = GameObject.Find("ReGameText").GetComponent<Outline>();
                     minGearText = GameObject.Find("MinimumGears").GetComponent<Text>();
                     gearNum = GameObject.Find("GearNum").GetComponent<Text>();
+                    Debug.Log("기어 갯수 갱신");
+                    gearNum.text = "x" + GameManager.gearItemInit.ToString();
                     minGearTextStart = true;
                     if (arg.name.Contains("TA"))
                     {

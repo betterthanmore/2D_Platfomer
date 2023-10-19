@@ -84,14 +84,14 @@ public class MainPlayer : PlayerMainController
     }
     public void CultUp(InputAction.CallbackContext input)
     {
-        if (!private_move)
+        if (!private_move || !isStepOn || !GameManager.move)
             return;
-        else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed && GameManager.move)
+        else if(objectSense.Length == 0 && rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && input.performed)
         {
             if (!cultup_On)
             {
-                cultup_On = true;
                 private_move = false;
+                cultup_On = true;
                 state = State.CULTUP;
                 size_Init = cap_c.size.y;
                 offset_init = cap_c.offset.y;
@@ -113,6 +113,7 @@ public class MainPlayer : PlayerMainController
         yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
         cultup_On = false;
         moveSpeed = 2;
+        jumpForce = 5;
         private_move = true;
     }
     IEnumerator CultUP_On()
@@ -121,6 +122,7 @@ public class MainPlayer : PlayerMainController
         cap_c.size = new Vector2(cap_c.size.x, size_trans);
         yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
         state = State.CULTUPRUN;
+        jumpForce = 2;
         private_move = true;
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
@@ -212,7 +214,7 @@ public class MainPlayer : PlayerMainController
     }
     public void Jump(InputAction.CallbackContext input)
     {
-        if (/*(input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") && */!boxHold && input.started && !cultup_On)
+        if (!boxHold && input.started  && GameManager.move && private_move)
         {
             if (isStepOn || isPlayerOn)
             {

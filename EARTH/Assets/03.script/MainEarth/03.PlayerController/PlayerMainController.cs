@@ -38,7 +38,7 @@ public class PlayerMainController : MonoBehaviour
     public int dir = 0;
     public LayerMask groundLayer;
     public float rayRange = 0.1f;
-    public float jumpForce = 0;
+    public float jumpForce = 5;
     public float moveSpeed = 2;
     public Vector2 playerMoveX;
     protected Rigidbody2D rb;
@@ -192,7 +192,10 @@ public class PlayerMainController : MonoBehaviour
             else
             {
                 GameManager.buttonBPress = false;
-                GameManager.move = true;
+                if (GameManager.stage_TA)
+                {
+                    GameManager.move = true; 
+                }
                 Time.timeScale = 1;
             } 
         }
