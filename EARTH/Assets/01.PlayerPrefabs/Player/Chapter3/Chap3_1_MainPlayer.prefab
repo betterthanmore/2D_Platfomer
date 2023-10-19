@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3215600195468353774}
+  - component: {fileID: 3215600195468353778}
   - component: {fileID: 3215600195468353777}
   - component: {fileID: 3215600195468353776}
-  - component: {fileID: 3215600195468353778}
   - component: {fileID: 3215600195468353781}
   - component: {fileID: 4154733623353239704}
   - component: {fileID: 8896968933001264808}
@@ -38,6 +38,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3215600195468353778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215600195468353780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396d0eca75532684c9125934ce00998d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 3
+  groundCheck: {fileID: 3215600196210503970}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  cap_c: {fileID: 0}
+  private_move: 1
+  size_Init: 0.8041667
+  size_trans: 0.5514766
+  offset_init: 0.4020833
+  offset_trans: 0.2757383
+  dir: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 6208
+  rayRange: 0.1
+  jumpForce: 5
+  moveSpeed: 2
+  playerMoveX: {x: 0, y: 0}
+  isStepOn: 0
+  isplayer: 0
+  otherVelocity: 0
+  moveGroundLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  boxHold: 0
+  subBoxHold: 0
+  rayDis: 0.2
+  rayPosy: 0.2
+  objectDetection:
+    serializedVersion: 2
+    m_Bits: 2560
 --- !u!212 &3215600195468353777
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -111,49 +155,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &3215600195468353778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3215600195468353780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 396d0eca75532684c9125934ce00998d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: 3
-  groundCheck: {fileID: 3215600196210503970}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  cap_c: {fileID: 0}
-  private_move: 1
-  size_Init: 0
-  size_trans: 0.5514766
-  offset_init: 0.4020833
-  offset_trans: 0.2757383
-  dir: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 6208
-  rayRange: 0.1
-  jumpForce: 5
-  moveSpeed: 2
-  isplayer: 0
-  otherVelocity: 0
-  moveGroundLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  boxHold: 0
-  subBoxHold: 0
-  rayDis: 0.2
-  rayPosy: 0.2
-  objectDetection:
-    serializedVersion: 2
-    m_Bits: 2560
-  boxPush: 0
 --- !u!95 &3215600195468353781
 Animator:
   serializedVersion: 4
@@ -235,7 +236,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3215600195468353778}
         m_TargetAssemblyTypeName: MainPlayer, Assembly-CSharp
-        m_MethodName: Heal
+        m_MethodName: HealandBoxHold
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
