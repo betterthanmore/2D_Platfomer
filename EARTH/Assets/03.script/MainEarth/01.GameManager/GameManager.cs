@@ -145,28 +145,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnLoadSceneInfo;
         }
-
+        
     }
     private void Start()
     {
-        if (GameObject.FindGameObjectWithTag("MainPlayer"))
-        {
-            playerSetting[0] = GameObject.FindGameObjectWithTag("MainPlayer");
-            playerSetting[0].SetActive(false);
-        }
-        if (GameObject.FindGameObjectWithTag("SubPlayer"))
-        {
-            playerSetting[1] = GameObject.FindGameObjectWithTag("SubPlayer");
-            playerSetting[1].SetActive(false);
-        }
 
-        if (GameObject.FindGameObjectWithTag("SubPlayer"))
-        {
-            foreach (var item in playerSetting)
-            {
-                item.SetActive(true);
-            } 
-        }
     }
 
     private void Update()
@@ -471,6 +454,24 @@ public class GameManager : MonoBehaviour
             portal.gameObject.SetActive(false);
             portalLever1 = GameObject.Find("Lever1").GetComponent<Transform>();
             portalLever2 = GameObject.Find("Lever2").GetComponent<Transform>();
+            if (GameObject.FindGameObjectWithTag("MainPlayer"))
+            {
+                if (GameObject.FindGameObjectWithTag("MainPlayer"))
+                {
+                    playerSetting[0] = GameObject.FindGameObjectWithTag("MainPlayer");
+                    playerSetting[0].SetActive(false);
+                }
+                if (GameObject.FindGameObjectWithTag("SubPlayer"))
+                {
+                    playerSetting[1] = GameObject.FindGameObjectWithTag("SubPlayer");
+                    playerSetting[1].SetActive(false);
+                }
+                
+                foreach (var item in playerSetting)
+                {
+                    item.SetActive(true);
+                }
+            }
 
         }
         else
