@@ -192,7 +192,7 @@ public class PlayerMainController : MonoBehaviour
             else
             {
                 GameManager.buttonBPress = false;
-                if (GameManager.stage_TA)
+                if (!GameManager.time_over)
                 {
                     GameManager.move = true; 
                 }

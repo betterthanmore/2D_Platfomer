@@ -41,11 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4786756671495326907}
   - component: {fileID: 4786756671495326906}
-  - component: {fileID: 1183363270707668507}
   - component: {fileID: 4786756671495326905}
   - component: {fileID: 4786756671495326902}
   - component: {fileID: 4786756671495326904}
   - component: {fileID: 7844388344418863282}
+  - component: {fileID: 6354801238028877716}
   m_Layer: 9
   m_Name: Chap2_2_SubPlayer
   m_TagString: SubPlayer
@@ -122,22 +122,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &1183363270707668507
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4786756671495326901}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25708333}
-  m_Size: {x: 0.35458332, y: 0.51416665}
-  m_Direction: 0
 --- !u!50 &4786756671495326905
 Rigidbody2D:
   serializedVersion: 4
@@ -189,6 +173,8 @@ MonoBehaviour:
   rayRange: 0.1
   jumpForce: 2
   moveSpeed: 2
+  playerMoveX: {x: 0, y: 0}
+  isStepOn: 0
   isplayer: 0
   otherVelocity: 0
   moveGroundLayer:
@@ -201,7 +187,6 @@ MonoBehaviour:
   objectDetection:
     serializedVersion: 2
     m_Bits: 3072
-  boxPush: 0
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
@@ -427,6 +412,22 @@ MonoBehaviour:
   m_DefaultActionMap: SubPlayer
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!70 &6354801238028877716
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786756671495326901}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.23}
+  m_Size: {x: 0.35458332, y: 0.55}
+  m_Direction: 0
 --- !u!1001 &875183797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -434,6 +435,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4786756671495326907}
     m_Modifications:
+    - target: {fileID: 4895782431174919330, guid: 58ce54958864b88459358742164e61c3, type: 3}
+      propertyPath: subPlayer
+      value: 
+      objectReference: {fileID: 4786756671495326902}
     - target: {fileID: 4895782431174919331, guid: 58ce54958864b88459358742164e61c3, type: 3}
       propertyPath: m_FlipX
       value: 0

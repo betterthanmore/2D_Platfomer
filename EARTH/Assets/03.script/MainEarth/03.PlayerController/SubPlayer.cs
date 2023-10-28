@@ -107,7 +107,6 @@ public class SubPlayer : PlayerMainController
             }
             else if (input.canceled )
             {
-                Debug.Log("π›¿¿");
                 boostKeyDown = false;
                 return;
             }
@@ -178,7 +177,7 @@ public class SubPlayer : PlayerMainController
         {
             if (item.collider.gameObject.layer != 11)
                 continue;
-            else if (/*(input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard") &&*/ input.started)
+            else if (input.started)
             {
                 subBoxHold = true;
                 state = State.SUBHOLD;

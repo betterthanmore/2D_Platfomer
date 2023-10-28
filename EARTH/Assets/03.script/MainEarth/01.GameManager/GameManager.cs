@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
     public float gauge = 1;
     public float gauge_Init = 1;
     public bool stage_TA = false;
+    public bool time_over = false;
     public bool move = true;
     public bool Vidio_N = false;
     public int clearStage = 0;
@@ -422,6 +423,7 @@ public class GameManager : MonoBehaviour
         subLeverOn = false;
         buttonB_Lock = true;
         reGameStart = false;
+        time_over = false;
         for (int i = 0; i < portal_Ready_Player.Length; i++)
         {
             portal_Ready_Player[i] = false;

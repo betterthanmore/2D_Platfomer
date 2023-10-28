@@ -114,6 +114,7 @@ public class UIManger : MonoBehaviour
         }
         else if (timeTAtime <= 0)
         {
+            GameManager.time_over = true;
             GameManager.stage_TA = false;
             gameOverTA_Text.DOFade(1, 1);
             gameOverTA_Outline.DOFade(1, 1);

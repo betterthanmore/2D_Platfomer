@@ -162,6 +162,8 @@ MonoBehaviour:
   rayRange: 0.1
   jumpForce: 2
   moveSpeed: 2
+  playerMoveX: {x: 0, y: 0}
+  isStepOn: 0
   isplayer: 0
   otherVelocity: 0
   moveGroundLayer:
@@ -174,7 +176,6 @@ MonoBehaviour:
   objectDetection:
     serializedVersion: 2
     m_Bits: 3072
-  boxPush: 0
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
