@@ -57,6 +57,7 @@ public class PlayerMainController : MonoBehaviour
     public float rayDis = 0.15f;
     public float rayPosy = 0.5f;
     public LayerMask objectDetection;
+    public bool jump = false;
     /*PlayerInput move_input = new PlayerInput();*/
 
     protected GameManager GameManager => GameManager.Instance;

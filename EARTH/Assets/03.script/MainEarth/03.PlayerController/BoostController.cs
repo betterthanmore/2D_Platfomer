@@ -34,7 +34,7 @@ public class BoostController : MonoBehaviour
                 an.SetBool("Run", false);
             }
 
-            if ((Input.GetAxis("GamePad2_A") > 0 || Input.GetKey(KeyCode.UpArrow)) && subPlayer.enableBoost)
+            if ((Input.GetAxis("GamePad2_A") > 0 || Input.GetKey(KeyCode.UpArrow)) && subPlayer.enableBoost && SubPlayer.scrollbar.size > 0.001f)
             {
                 an.SetBool("Jump", true);
             }

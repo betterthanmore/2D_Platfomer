@@ -223,6 +223,7 @@ public class MainPlayer : PlayerMainController
                 state = State.MOVE;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                jump = true;
             }
             return;
         }

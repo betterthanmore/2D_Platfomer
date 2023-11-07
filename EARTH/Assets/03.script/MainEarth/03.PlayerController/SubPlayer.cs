@@ -18,6 +18,8 @@ public class SubPlayer : PlayerMainController
     /*public Vector2 boxPos;            //박스 포지션 위치 값을 받는 변수
     public Vector2 boxPosInit;*/        //박스 잡았을 때 초깃값
     public bool putOnBox_L = false;
+    [Header("에너지 고갈 후 점프")]
+    public float jumping_force;
 
     public override void Start()
     {
@@ -60,7 +62,12 @@ public class SubPlayer : PlayerMainController
             if (subPlayerPosYTrs >= subplayerPosYCrt + boostDistanceLimit)
             {
                 enableBoost = false;
+                jump = true;
             }
+        }
+        else
+        {
+            
         }
         /*if (GameManager.move)
         {
@@ -91,19 +98,25 @@ public class SubPlayer : PlayerMainController
     }
     public void Boost(InputAction.CallbackContext input)
     {
-        
-        Debug.Log(input.control.device.name);
-        if (GameManager.move /*&& (input.control.device.name == ControllerDevices || input.control.device.name == "Keyboard")*/)
+        if (GameManager.move)
         {
             
             if (input.started)
             {
-                if(!subBoxHold && enableBoost && isStepOn)
+                if (scrollbar.size < 0.001)
+                {
+                    rb.AddForce(Vector2.up * jumping_force, ForceMode2D.Impulse);
+                }
+                Debug.Log("점프");
+                jump = true;
+                if (!subBoxHold && enableBoost && isStepOn)
                 {
                     boostKeyDown = true;
                     state = State.MOVE;
                     return;
                 }
+                
+                
             }
             else if (input.canceled )
             {
