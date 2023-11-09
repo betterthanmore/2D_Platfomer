@@ -74,13 +74,16 @@ public class Elevator : MonoBehaviour
         Debug.Log(min_size);
         Debug.Log(max_size);
         Debug.Log(target.y);
+        Debug.Log(target.y + Time.deltaTime * speed);
+        Debug.Log(Time.deltaTime * speed);
+        Debug.Log(speed);
         return target;
     }
     #endregion
     #region 가독성을 위해
     public void Left_Down1()
     {
-        left_rope.transform.localScale = Elevatorh_down(left_rope.transform.localScale, left_min, left_max, speed1);
+        //left_rope.transform.localScale = Elevatorh_down(left_rope.transform.localScale, left_min, left_max, speed1);
         Debug.Log(left_tile.transform.localPosition);
         left_tile.transform.localPosition = Elevatorh_down(left_tile.transform.localPosition, -left_min, -left_max, -speed1);
         Debug.Log(left_tile.transform.localPosition);
