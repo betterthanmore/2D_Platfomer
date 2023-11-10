@@ -874,6 +874,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.23
       objectReference: {fileID: 0}
+    - target: {fileID: 4055769800566406622, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6481,6 +6485,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5306747289907224648, guid: b2bf998772b1e914987a474316d5a958, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5306747290141694298, guid: b2bf998772b1e914987a474316d5a958, type: 3}
       propertyPath: m_RootOrder
       value: 28
@@ -6528,6 +6536,22 @@ PrefabInstance:
     - target: {fileID: 5306747290141694300, guid: b2bf998772b1e914987a474316d5a958, type: 3}
       propertyPath: m_Name
       value: Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306747290141694301, guid: b2bf998772b1e914987a474316d5a958, type: 3}
+      propertyPath: test
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306747290141694301, guid: b2bf998772b1e914987a474316d5a958, type: 3}
+      propertyPath: speed1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306747290141694301, guid: b2bf998772b1e914987a474316d5a958, type: 3}
+      propertyPath: speed2
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306747290289509487, guid: b2bf998772b1e914987a474316d5a958, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2bf998772b1e914987a474316d5a958, type: 3}

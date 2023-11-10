@@ -23,7 +23,6 @@ public class SubPlayer : PlayerMainController
 
     public override void Start()
     {
-
         base.Start();
         cm = GameObject.Find("Main Camera").GetComponent<Camera>();
         scrollbar = GameObject.Find("Scrollbar").GetComponent<Scrollbar>();
