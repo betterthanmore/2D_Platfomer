@@ -18,8 +18,8 @@ public class SubPlayer : PlayerMainController
     /*public Vector2 boxPos;            //박스 포지션 위치 값을 받는 변수
     public Vector2 boxPosInit;*/        //박스 잡았을 때 초깃값
     public bool putOnBox_L = false;
-    [Header("에너지 고갈 후 점프")]
-    public float jumping_force;
+    //[Header("에너지 고갈 후 점프")]
+    float jumping_force = 3f;
 
     public override void Start()
     {
@@ -81,8 +81,6 @@ public class SubPlayer : PlayerMainController
                 PutAction();
             }
         }*/
-
-
         if (isStepOn)   //땅에 닿는다면
         {
             enableBoost = true;
@@ -97,12 +95,12 @@ public class SubPlayer : PlayerMainController
     }
     public void Boost(InputAction.CallbackContext input)
     {
-        if (GameManager.move)
+        if (GameManager.move && private_move)
         {
             
             if (input.started)
             {
-                if (scrollbar.size < 0.001)
+                if (scrollbar.size < 0.001 && isStepOn)
                 {
                     rb.AddForce(Vector2.up * jumping_force, ForceMode2D.Impulse);
                 }

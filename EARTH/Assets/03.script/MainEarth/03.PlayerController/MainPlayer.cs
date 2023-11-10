@@ -122,7 +122,7 @@ public class MainPlayer : PlayerMainController
         cap_c.size = new Vector2(cap_c.size.x, size_trans);
         yield return new WaitForSeconds(an.GetCurrentAnimatorClipInfo(0).Length);
         state = State.CULTUPRUN;
-        jumpForce = 2;
+        jumpForce = 3f;
         private_move = true;
     }
     public void HealandBoxHold(InputAction.CallbackContext input)
@@ -220,7 +220,10 @@ public class MainPlayer : PlayerMainController
         {
             if (isStepOn || isPlayerOn)
             {
-                state = State.MOVE;
+                if(state != State.CULTUP && state != State.CULTUPRUN)
+                {
+                    state = State.MOVE;
+                }
                 rb.velocity = new Vector2(rb.velocity.x, 0);
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 jump = true;

@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 01f17b5b8a1f54745aaa40157e2e4481, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.49, y: 0.71}
@@ -176,6 +176,7 @@ MonoBehaviour:
   objectDetection:
     serializedVersion: 2
     m_Bits: 3072
+  jump: 0
   boostTime: 8
   boostDistanceLimit: 2
   cm: {fileID: 0}
@@ -196,8 +197,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25541666}
-  m_Size: {x: 0.35458332, y: 0.5108333}
+  m_Offset: {x: 0, y: 0.23}
+  m_Size: {x: 0.35458332, y: 0.55}
   m_Direction: 0
 --- !u!114 &4055769800566406622
 MonoBehaviour:
@@ -435,6 +436,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7832249301321474059}
     m_Modifications:
+    - target: {fileID: 4895782431174919330, guid: 58ce54958864b88459358742164e61c3, type: 3}
+      propertyPath: subPlayer
+      value: 
+      objectReference: {fileID: 4978933844596368101}
+    - target: {fileID: 4895782431174919331, guid: 58ce54958864b88459358742164e61c3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895782431174919331, guid: 58ce54958864b88459358742164e61c3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.023333333
+      objectReference: {fileID: 0}
     - target: {fileID: 4895782431174919357, guid: 58ce54958864b88459358742164e61c3, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -850,46 +850,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 557098482006089238, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: subPlayer
-      value: 
-      objectReference: {fileID: 914849276}
-    - target: {fileID: 557098482006089239, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_Size.x
-      value: 0.1225
-      objectReference: {fileID: 0}
-    - target: {fileID: 557098482006089239, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_Size.y
-      value: 0.023333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 557098482006089239, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1461924491688125780, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_Size.y
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 1461924491688125780, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4055769800566406622, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Sub
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: jumping_force
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7832249301321474058, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7832249301321474059, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -937,10 +897,6 @@ PrefabInstance:
     - target: {fileID: 7832249301321474061, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_Name
       value: SubPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 7832249301321474061, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
@@ -1127,17 +1083,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &914849276 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4978933844596368101, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
-  m_PrefabInstance: {fileID: 667206234}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74f46c37b2a949489b47c2f4af62e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &958984552
 GameObject:
   m_ObjectHideFlags: 0
