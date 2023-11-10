@@ -44,7 +44,7 @@ public class SelectStageMode : MonoBehaviour
             GameManager.back.onClick?.Invoke();
         }
     }
-    public void ButtonDownUP(InputAction.CallbackContext input)
+    public void ButtonDownUP(InputAction.CallbackContext input)//버튼을 활성화 시켜주는 로직 현재 버튼들의 번호를 나타낸다
     {
         if(input.started && input.control.device.name == "XInputControllerWindows" && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
         {
@@ -64,7 +64,7 @@ public class SelectStageMode : MonoBehaviour
 
             for (int i = 0; i < GameManager.allButton.Count; i++)
             {
-                if (GameManager.allButton[i] == GameManager.allButton[GameManager.SelectButton])
+                if (GameManager.allButton[i] == GameManager.allButton[GameManager.SelectButton])            //모든 버튼들을 검사해서 현재 선택할 버튼을 활성화 시켜주는 로직
                     GameManager.allButton[i].animator.SetTrigger("Highlighted");
                 else
                     GameManager.allButton[i].animator.SetTrigger("Normal");

@@ -12,8 +12,6 @@ public class MoveTile : MonoBehaviour
     public float min;
     public float max;
 
-
-
     // Update is called once per frame
     void Update()
     {
