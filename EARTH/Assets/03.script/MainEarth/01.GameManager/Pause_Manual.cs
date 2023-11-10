@@ -12,6 +12,7 @@ public class Pause_Manual : MonoBehaviour
     public float sound_diminish;
     public GameObject manual_note;
     public bool note_on = false;
+    public GameObject image;
 
     public int current_ui = 0;
     GameManager GameManager => GameManager.Instance;
@@ -29,6 +30,10 @@ public class Pause_Manual : MonoBehaviour
             switch (current_ui)
             {
                 case 0:
+                    if (image.activeSelf)
+                    {
+                        image.SetActive(false);
+                    }
                     note_controller_manual.animator.SetTrigger("Normal");
                     if(bgm_slider.value < 0)
                     {
@@ -45,6 +50,10 @@ public class Pause_Manual : MonoBehaviour
                     sound_diminish = 0;
                     break;
                 case 1:
+                    if (image.activeSelf)
+                    {
+                        image.SetActive(false);
+                    }
                     note_controller_manual.animator.SetTrigger("Normal");
                     if (sfx_slider.value < 0)
                     {
@@ -61,6 +70,10 @@ public class Pause_Manual : MonoBehaviour
                     sound_diminish = 0;
                     break;
                 case 2:
+                    if (!image.activeSelf)
+                    {
+                        image.SetActive(true);
+                    }
                     note_controller_manual.animator.SetTrigger("Highlighted");
                     break;
                 default:
