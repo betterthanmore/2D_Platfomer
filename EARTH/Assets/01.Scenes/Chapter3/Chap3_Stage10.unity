@@ -448,6 +448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576058, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_Name
       value: Chap3SubPlayer
@@ -8473,7 +8477,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1820328333}
   - component: {fileID: 1820328332}
-  - component: {fileID: 1820328334}
   - component: {fileID: 1820328335}
   m_Layer: 6
   m_Name: door1
@@ -8549,24 +8552,6 @@ Transform:
   m_Father: {fileID: 1617539623}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1820328334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820328331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77ad21f36ed1094faa52912babee546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  doorOpen: 0
-  isPlayers:
-    serializedVersion: 2
-    m_Bits: 0
-  imgSizeInt: 0
 --- !u!61 &1820328335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8716,7 +8701,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1464010472542937229, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_Name
-      value: Portal_0602 (1)
+      value: Portal_0602
       objectReference: {fileID: 0}
     - target: {fileID: 1464010472542937230, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_RootOrder

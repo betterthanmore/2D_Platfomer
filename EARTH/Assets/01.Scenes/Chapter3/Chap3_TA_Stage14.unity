@@ -713,6 +713,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576058, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_Name
       value: Chap3SubPlayer
@@ -8214,7 +8218,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1464010472542937229, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_Name
-      value: Portal_0602 (1)
+      value: Portal_0602
       objectReference: {fileID: 0}
     - target: {fileID: 1464010472542937230, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_RootOrder

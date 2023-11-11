@@ -358,7 +358,7 @@ Transform:
   m_GameObject: {fileID: 77181536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5640001, y: -2.519, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.69931835, y: 0.69931835, z: 0.69931835}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -632,6 +632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 760078602, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 4806827163322576058, guid: 22609613179bab64aa4a0591d59733b0, type: 3}
       propertyPath: m_Name
       value: Chap3SubPlayer
@@ -1393,6 +1397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632762037}
   - component: {fileID: 632762038}
+  - component: {fileID: 632762039}
   m_Layer: 0
   m_Name: door1 (1)
   m_TagString: Untagged
@@ -1467,6 +1472,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &632762039
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632762036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.55, y: 0.77}
+    newSize: {x: 0.55, y: 0.77}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55, y: 0.77}
+  m_EdgeRadius: 0
 --- !u!1 &821941417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 939198251}
   - component: {fileID: 939198252}
+  - component: {fileID: 939198253}
   m_Layer: 0
   m_Name: door1
   m_TagString: Untagged
@@ -1624,6 +1656,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &939198253
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939198250}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.55, y: 0.77}
+    newSize: {x: 0.55, y: 0.77}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55, y: 0.77}
+  m_EdgeRadius: 0
 --- !u!1 &1089283475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,8 +1881,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271351837}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.294, y: -5.01, z: 0.16220632}
-  m_LocalScale: {x: 2.0815969, y: 2.6280162, z: 2.0815969}
+  m_LocalPosition: {x: -16.294, y: -5.071, z: 0.16220632}
+  m_LocalScale: {x: 1.6032251, y: 2.024072, z: 1.6032251}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 572534683}
@@ -1876,7 +1934,7 @@ MonoBehaviour:
   doorOpenPos: {fileID: 184741992}
   doorClosePos: {fileID: 475279068}
   posTime: 0
-  imgSizeInt: 2.081597
+  imgSizeInt: 1.603225
 --- !u!212 &1271351841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7672,7 +7730,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1464010472542937229, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_Name
-      value: Portal_0602 (1)
+      value: Portal_0602
       objectReference: {fileID: 0}
     - target: {fileID: 1464010472542937230, guid: 41a0ca747c2575f479ad5775143e2cf1, type: 3}
       propertyPath: m_RootOrder

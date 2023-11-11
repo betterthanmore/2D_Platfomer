@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4055769800566406622, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Sub
+      objectReference: {fileID: 0}
     - target: {fileID: 7832249301321474059, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -746,11 +750,11 @@ MonoBehaviour:
   isPlayers:
     serializedVersion: 2
     m_Bits: 2816
-  doorPos: {fileID: 0}
-  doorOpenPos: {fileID: 0}
-  doorClosePos: {fileID: 0}
+  doorPos: {fileID: 1185473870}
+  doorOpenPos: {fileID: 1566104056}
+  doorClosePos: {fileID: 663713116}
   posTime: 0
-  imgSizeInt: 1
+  imgSizeInt: 1.560668
 --- !u!212 &345818171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -811,12 +815,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345818168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.006, y: -3.161, z: 0}
+  m_LocalPosition: {x: -6.3738427, y: -1.118856, z: 9.803026}
   m_LocalScale: {x: 1.5606678, y: 2.2044435, z: 1.5606678}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1239227119}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &580823596
 GameObject:
@@ -1025,12 +1029,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663713116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.2421575, y: -1.907856, z: 9.803026}
+  m_LocalPosition: {x: -0.71, y: 2.8, z: 9.803026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239227119}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &801668033
 GameObject:
@@ -1511,7 +1515,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239227119}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1185473872
 BoxCollider2D:
@@ -1734,11 +1738,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 345818172}
   - {fileID: 1185473871}
   - {fileID: 1566104057}
   - {fileID: 663713117}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1358282867
 PrefabInstance:
@@ -2235,12 +2240,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566104056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.2421575, y: -0.95785594, z: 9.803026}
+  m_LocalPosition: {x: -0.67, y: 4.57, z: 9.803026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1239227119}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629916713
 GameObject:
