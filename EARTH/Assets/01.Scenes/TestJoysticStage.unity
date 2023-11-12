@@ -850,6 +850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4055769800566406622, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7832249301321474059, guid: fd7fef81a09623c4ea48fb598c6d7f32, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -5950,6 +5954,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8602042782526034707, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8602042782526034711, guid: a1509aef45ad38544a276df95c2d71c0, type: 3}
       propertyPath: m_Name
       value: MainPlayer
@@ -6668,7 +6676,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5306747289907224648, guid: b2bf998772b1e914987a474316d5a958, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5306747290141694298, guid: b2bf998772b1e914987a474316d5a958, type: 3}
       propertyPath: m_RootOrder
@@ -6732,7 +6740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306747290289509487, guid: b2bf998772b1e914987a474316d5a958, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2bf998772b1e914987a474316d5a958, type: 3}
@@ -6743,6 +6751,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7857234788080967917, guid: b482978b31554eb41b23c1b711c04239, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7857234789266431504, guid: b482978b31554eb41b23c1b711c04239, type: 3}
       propertyPath: m_Name
       value: MoveTile

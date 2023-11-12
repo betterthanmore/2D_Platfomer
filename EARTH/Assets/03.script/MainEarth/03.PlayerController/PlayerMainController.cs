@@ -58,6 +58,7 @@ public class PlayerMainController : MonoBehaviour
     public float rayPosy = 0.5f;
     public LayerMask objectDetection;
     public bool jump = false;
+    public Collider2D movetile;
     /*PlayerInput move_input = new PlayerInput();*/
 
     protected GameManager GameManager => GameManager.Instance;
@@ -80,6 +81,18 @@ public class PlayerMainController : MonoBehaviour
         isStepOn = Physics2D.OverlapCircle(groundCheck.position, rayRange, groundLayer);
         isPlayerOn = Physics2D.OverlapCircle(groundCheck.position, 0.2f, playerLayer);
         objectSense = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y  + rayPosy, transform.position.z), Vector2.right * dir, rayDis, objectDetection);
+
+        if(movetile = Physics2D.OverlapCircle(groundCheck.position, rayRange, 1 << 12))
+        {
+            gameObject.transform.parent = movetile.gameObject.transform;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+        else
+        {
+            gameObject.transform.parent = null;
+            rb.bodyType = RigidbodyType2D.Dynamic;
+
+        }
 
         if (!private_move || !GameManager.move || (state == State.HOLD && !isStepOn))
             playerMoveX.x = 0;
