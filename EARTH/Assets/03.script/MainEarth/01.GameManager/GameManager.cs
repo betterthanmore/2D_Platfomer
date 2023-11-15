@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
                             selectButton += value;
                         }
                     }
-                    else if (value == 3)
+                    else if (value == 5)
                     {
                         if (allButton.Count > value)
                         {
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
                             selectButton += value;
                         }
                     }
-                    else if (value == -3)
+                    else if (value == -5)
                     {   
                         if(allButton.Count < Mathf.Abs(value))
                         {
@@ -178,17 +178,17 @@ public class GameManager : MonoBehaviour
 
             if (sceneName.Contains("Chap1"))
             {
-                if (chapterNum[0] < 9)
+                if (chapterNum[0] < 15)
                     chapterNum[0]++;
             }
             else if (sceneName.Contains("Chap2"))
             {
-                if (chapterNum[1] < 9)
+                if (chapterNum[1] < 15)
                     chapterNum[1]++;
             }
             else
             {
-                if (chapterNum[2] < 9)
+                if (chapterNum[2] < 15)
                     chapterNum[2]++;
             }
 
@@ -498,7 +498,7 @@ public class GameManager : MonoBehaviour
             if (sceneName.Contains("Mode"))
             {
                 canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 15; i++)
                 {
                     chapter1.Add(canvas.transform.GetChild(i).GetComponentInChildren<Button>());
                 }
@@ -517,7 +517,7 @@ public class GameManager : MonoBehaviour
             Canvas temp = GameObject.FindObjectOfType<Canvas>();
             for (int i = 0; i < temp.transform.childCount; i++)
             {
-
+                Debug.Log(i);
                 Button parent = temp.transform.GetChild(i).GetComponent<Button>();
                 if (parent != null && parent.interactable == true && parent.gameObject.tag == "Untagged")
                     allButton.Add(parent);

@@ -49,16 +49,16 @@ public class SelectStageMode : MonoBehaviour
         if(input.started && input.control.device.name == "XInputControllerWindows" && !GameManager.buttonB_Lock && !GameManager.buttonBPress)
         {
             if (input.control.name == "up")
-                GameManager.SelectButton = -3;
+                GameManager.SelectButton = -5;
             else if(input.control.name == "down")
             {
-                if(GameManager.selectButton == 6)
+                if(GameManager.selectButton == 10)
                 {
                     GameManager.selectButton = 0;
                 }
                 else
                 {
-                    GameManager.SelectButton = 3;
+                    GameManager.SelectButton = 5;
                 }
             }
 
@@ -125,17 +125,41 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap1_Stage6()
     {
-        SceneManager.LoadScene("Chap1_TA_Stage1");
+        SceneManager.LoadScene("Chap1_Stage5_1");
     }
     public void Chap1_Stage7()
     {
-        SceneManager.LoadScene("Chap1_TA_Stage2");
+        SceneManager.LoadScene("Chap1_Stage5_2");
     }
     public void Chap1_Stage8()
     {
-        SceneManager.LoadScene("Chap1_TA_Stage3");
+        SceneManager.LoadScene("Chap1_Stage5_3");
     }
     public void Chap1_Stage9()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage1");
+    }
+    public void Chap1_Stage10()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage2");
+    }
+    public void Chap1_Stage11()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage3");
+    }
+    public void Chap1_Stage12()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage3_1");
+    }
+    public void Chap1_Stage13()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage3_2");
+    }
+    public void Chap1_Stage14()
+    {
+        SceneManager.LoadScene("Chap1_TA_Stage3_3");
+    }
+    public void Chap1_Stage15()
     {
         SceneManager.LoadScene("Chap1_TA_Stage4(Chap1_Last)");
     }
@@ -161,21 +185,46 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap2_Stage5()
     {
-        SceneManager.LoadScene("Chap2_TA_Stage5");
+        SceneManager.LoadScene("Chap2_Stage9_1");
     }
     public void Chap2_Stage6()
     {
-        SceneManager.LoadScene("Chap2_TA_Stage6");
+        SceneManager.LoadScene("Chap2_Stage9_2");
     }
     public void Chap2_Stage7()
     {
-        SceneManager.LoadScene("Chap2_TA_Stage7");
+        SceneManager.LoadScene("Chap2_Stage9_3");
     }
     public void Chap2_Stage8()
     {
-        SceneManager.LoadScene("Chap2_TA_Stage8");
+        SceneManager.LoadScene("Chap2_Stage9_4");
     }
     public void Chap2_Stage9()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage5");
+    }
+    public void Chap2_Stage10()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage6");
+    }
+    public void Chap2_Stage11()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage7");
+    }
+    public void Chap2_Stage12()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage8");
+    }
+    public void Chap2_Stage13()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage8_1");
+    }
+
+    public void Chap2_Stage14()
+    {
+        SceneManager.LoadScene("Chap2_TA_Stage8_2");
+    }
+    public void Chap2_Stage15()
     {
         SceneManager.LoadScene("Chap2_TA_Stage9(Chap2_Last)");
     }
@@ -204,17 +253,41 @@ public class SelectStageMode : MonoBehaviour
     }
     public void Chap3_Stage6()
     {
-        SceneManager.LoadScene("Chap3_TA_Stage10");
+        SceneManager.LoadScene("Chap3_Stage15");
     }
     public void Chap3_Stage7()
     {
-        SceneManager.LoadScene("Chap3_TA_Stage11");
+        SceneManager.LoadScene("Chap3_Stage16");
     }
     public void Chap3_Stage8()
     {
-        SceneManager.LoadScene("Chap3_TA_Stage12");
+        SceneManager.LoadScene("Chap3_Stage17");
     }
     public void Chap3_Stage9()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage10");
+    }
+    public void Chap3_Stage10()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage11");
+    }
+    public void Chap3_Stage11()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage12");
+    }
+    public void Chap3_Stage12()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage12_1");
+    }
+    public void Chap3_Stage13()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage12_2");
+    }
+    public void Chap3_Stage14()
+    {
+        SceneManager.LoadScene("Chap3_TA_Stage12_3");
+    }
+    public void Chap3_Stage15()
     {
         SceneManager.LoadScene("Chap3_TA_Stage13(Chap3_Last)");
     }
