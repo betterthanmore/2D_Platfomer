@@ -127,6 +127,19 @@ public class Pause_Manual : MonoBehaviour
             
         }
     }
+    public void Button_Press2()
+    {
+        if (note_on)
+        {
+            note_on = false;
+            manual_note.SetActive(note_on);
+        }
+        else
+        {
+            note_on = true;
+            manual_note.SetActive(note_on);
+        }
+    }
     public void Sound_Slider(InputAction.CallbackContext input)
     {
         if (GameManager.buttonBPress && input.started && !note_on)

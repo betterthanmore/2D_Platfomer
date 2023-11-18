@@ -706,7 +706,7 @@
             "devices": [
                 {
                     "devicePath": "<XInputController>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {
@@ -722,11 +722,6 @@
             "devices": [
                 {
                     "devicePath": "<XInputController>",
-                    "isOptional": true,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -214,8 +214,6 @@ public class MainPlayer : PlayerMainController
     }
     public void Jump(InputAction.CallbackContext input)
     {
-        StartCoroutine(UIManager.MinimumGears(input.control.device.name));
-        
         if (!boxHold && input.started  && GameManager.move && private_move)
         {
             if (isStepOn || isPlayerOn)
