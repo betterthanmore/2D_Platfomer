@@ -6,7 +6,7 @@ public class ButtonAnimation : MonoBehaviour
 {
     Animator an;
     GameObject lever_Ui;
-    float time = 0;
+    public float time = 0;
     GameManager GameManager => GameManager.Instance;
     // Start is called before the first frame update
     void Awake()
@@ -29,7 +29,6 @@ public class ButtonAnimation : MonoBehaviour
 
         if(time >= 15)
         {
-            time = 0;
             lever_Ui.SetActive(false);
         }
         else
